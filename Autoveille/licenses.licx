@@ -1,0 +1,8 @@
+C1.Web.Mvc.LicenseDetector, C1.Web.Mvc
+C1.Web.Mvc.Finance.LicenseDetector, C1.Web.Mvc.Finance
+C1.Web.Mvc.Sheet.LicenseDetector, C1.Web.Mvc.FlexSheet
+C1.Web.Mvc.Viewer.LicenseDetector, C1.Web.Mvc.FlexViewer
+C1.Web.Mvc.MultiRow.LicenseDetector, C1.Web.Mvc.MultiRow
+C1.Web.Mvc.Olap.LicenseDetector, C1.Web.Mvc.Olap
+C1.Web.Mvc.TransposedGrid.LicenseDetector, C1.Web.Mvc.TransposedGrid
+C1.Web.Mvc.TransposedMultiRow.LicenseDetector, C1.Web.Mvc.TransposedMultiRow

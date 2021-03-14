@@ -1,0 +1,76 @@
+
+body{
+    background-color: #EFEFEF;
+}
+
+.header {
+    background-color: #160F0C;
+    height: 80px;
+    padding-top: 10px;
+    padding-right: 20px
+}
+
+.infoBar {
+    margin-left: 67px;
+    margin-top: 20px;
+}
+
+.menu {
+    background-color: #160F0C; 
+}
+
+.menuOpt {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdownBtn {
+    background-color: #fff;
+    color: #000;
+    width: 300px;
+    margin-bottom: 20px;
+    border: 1px solid #555454;
+}
+
+.dropdown-item {
+    width: 300px;
+}
+
+.tables {
+   
+}
+
+.details {
+    background: yellow;
+    display: none;
+}
+
+.prospects {
+    margin-left: 70px;
+    margin-bottom: 20px;
+}
+
+.optionsCampagne{
+    background: #D42027;
+    height: 70px;
+    margin-left: 100px;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: center;
+    padding-top: 20px;
+    padding-right: 50px;
+}
+
+.clientsTab {
+    height: 400px;
+    margin-left: 100px;
+    background-color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

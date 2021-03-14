@@ -1,0 +1,11 @@
+﻿////////////////////////////////////////////////////////////////
+// material theme
+//
+@import "../../misc/constants";
+
+// Primary, accent colors
+$mdl-primary: $mdl-green !default;
+$mdl-accent: $mdl-deep-purple !default;
+
+@import "../wijmo.theme.material.scss";
+

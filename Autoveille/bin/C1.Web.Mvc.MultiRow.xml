@@ -1,0 +1,694 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Web.Mvc.MultiRow</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Web.Mvc.MultiRow.HeaderCellGroup">
+            <summary>
+            Represents a HeaderLayoutDefinition on the MultiRow.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.HeaderCellGroup.Helper">
+            <summary>
+            Gets or sets the html helper object.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.HeaderCellGroup.#ctor">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.HeaderCellGroup"/> instance.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.HeaderCellGroup.#ctor(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.HeaderCellGroup"/> instance.
+            </summary>
+            <param name="helper">The HtmlHelper instance.</param>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.HeaderCellGroup.Header">
+            <summary>
+            Group header (shown when the headers are collapsed).
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.HeaderCellGroup.Colspan">
+            <summary>
+            Number of grid columns spanned by the group.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.HeaderCellGroup.Cells">
+            <summary>
+            Array of cell objects, which extend Column with colspan property.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.HeaderCellGroupBuilder">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.MultiRow.HeaderCellGroup" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.HeaderCellGroupBuilder.Cells(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.MultiRow.Cell,C1.Web.Mvc.MultiRow.Fluent.CellBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.MultiRow.Cell"/>.
+            </summary>
+            <param name="builder">The builder action.</param>
+            <returns>The cell group builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.HeaderCellGroupBuilder.#ctor(C1.Web.Mvc.MultiRow.HeaderCellGroup)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.Fluent.HeaderCellGroupBuilder" /> instance to configurate <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The <see cref="T:C1.Web.Mvc.MultiRow.HeaderCellGroup" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.HeaderCellGroupBuilder.Header(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.HeaderCellGroup.Header" />.
+            Group header (shown when the headers are collapsed).
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.HeaderCellGroupBuilder.Colspan(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.HeaderCellGroup.Colspan" />.
+            Number of grid columns spanned by the group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.MultiRow.MultiRow`1" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.#ctor(C1.Web.Mvc.MultiRow.MultiRow{`0})">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1" /> instance to configurate <paramref name="component"/>.
+            </summary>
+            <param name="component">The <see cref="T:C1.Web.Mvc.MultiRow.MultiRow`1" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.AutoGenerateColumns(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.AutoGenerateColumns" />.
+            Disabled for MultiRow. Gets or sets whether the grid should generate columns automatically based on the itemsSource.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.AllowDragging(C1.Web.Mvc.Grid.AllowDragging)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.AllowDragging" />.
+            Disabled for MultiRow. Gets or sets whether users are allowed to drag rows and/or columns with the mouse.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.AllowMerging(C1.Web.Mvc.Grid.AllowMerging)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.AllowMerging" />.
+            Disabled for MultiRow. Gets or sets which parts of the grid provide cell merging.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.ChildItemsPath(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.ChildItemsPath" />.
+            Disabled for MultiRow. Gets or sets the name of the property used to generate child rows in hierarchical grids.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientDraggedColumn(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggedColumn" /> client event.
+            Disabled for MultiRow. Occurs when the user finishes dragging a column.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientDraggedRow(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggedRow" /> client event.
+            Disabled for MultiRow. Occurs when the user finishes dragging a row.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientDraggingColumn(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggingColumn" /> client event.
+            Disabled for MultiRow. Occurs when the user starts dragging a column.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientDraggingRow(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggingRow" /> client event.
+            Disabled for MultiRow. Occurs when the user starts dragging a row.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.ColumnLayout(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.ColumnLayout" />.
+            Disabled for MultiRow. Gets or sets a JSON string that defines the current column layout." remarks="The column layout string represents an array with the columns and their properties. It can be used to persist column layouts defined by users so they are preserved across sessions, and can also be used to implement undo/redo functionality in applications that allow users to modify the column layout.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.NewRowAtTop(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.NewRowAtTop" />.
+            Sets a value that indicates whether the new row template should be located at the top of the grid or at the bottom.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.CenterHeadersVertically(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.CenterHeadersVertically" />.
+            Sets a value that determines whether the content of cells that span multiple rows should be vertically centered.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.CollapsedHeaders(System.Nullable{System.Boolean})">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.CollapsedHeaders" />.
+            Sets a value that determines whether column headers should be collapsed and displayed as a single row displaying the group headers.
+            </summary>
+            <remarks>
+            Setting to null causes the grid to show all header information (groups and columns).
+            </remarks>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.ShowHeaderCollapseButton(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.ShowHeaderCollapseButton" />.
+            Sets a value that determines whether the grid should display a button in the column header panel to allow users to collapse and expand the column headers.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientCollapsedHeadersChanging(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientCollapsedHeadersChanging" /> client event.
+            Occurs after the value of the collapsedHeaders property changes.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientCollapsedHeadersChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientCollapsedHeadersChanged" /> client event.
+            Occurs after the value of the collapsedHeaders property has changed.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.MultiRowGroupHeaders(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.MultiRowGroupHeaders" />.
+            Sets a value that determines whether group headers should have multiple rows instead of a single header row.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.AllowPinning(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.MultiRow`1.AllowPinning" />.
+            Disabled for MultiRow. Gets or sets whether the grid adds pin icons to the column headers and clicking the icons toggles the column's frozen state
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.LayoutDefinition(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.MultiRow.CellGroup,C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.MultiRow.CellGroup"/>.
+            </summary>
+            <param name="builder">The builder action.</param>
+            <returns>The MultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.HeaderLayoutDefinition(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.MultiRow.HeaderCellGroup,C1.Web.Mvc.MultiRow.Fluent.HeaderCellGroupBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.MultiRow.HeaderCellGroup"/>.
+            </summary>
+            <param name="builder">The builder action.</param>
+            <returns>The MultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.Columns(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.Column,C1.Web.Mvc.Fluent.ColumnBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.Column"/>.
+            </summary>
+            <remarks>Disabled for MultiRow.</remarks>
+            <param name="builder">The builder action.</param>
+            <returns>The MultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientDraggingColumnOver(System.String)">
+            <summary>
+            Overrides to hide this method.
+            </summary>
+            <param name="value">The value</param>
+            <returns>Current builder</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder`1.OnClientDraggingRowOver(System.String)">
+            <summary>
+            Overrides to hide this method.
+            </summary>
+            <param name="value">The value</param>
+            <returns>Current builder</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.CellBuilder">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.MultiRow.Cell" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellBuilder.#ctor(C1.Web.Mvc.MultiRow.Cell)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.Fluent.CellBuilder" /> instance to configurate <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The <see cref="T:C1.Web.Mvc.MultiRow.Cell" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellBuilder.AllowMerging(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.Cell.AllowMerging" />.
+            Disabled for MultiRow. Gets or sets whether cells in this row or column can be merged.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellBuilder.AllowDragging(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.Cell.AllowDragging" />.
+            Disabled for MultiRow. Gets or sets whether the user can move this row or column to a new position with the mouse.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellBuilder.AllowResizing(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.Cell.AllowResizing" />.
+            Disabled for MultiRow. Gets or sets a value that indicates whether the user can resize the row or column with the mouse.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellBuilder.Visible(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.Cell.Visible" />.
+            Disabled for MultiRow. Gets or sets whether this row or column is visible.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellBuilder.Colspan(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.Cell.Colspan" />.
+            Number of grid columns spanned by the group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellBuilder.Rowspan(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.Cell.Rowspan" />.
+            Number of grid rows spanned by the group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.MultiRow.CellGroup" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder.#ctor(C1.Web.Mvc.MultiRow.CellGroup)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder" /> instance to configurate <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The <see cref="T:C1.Web.Mvc.MultiRow.CellGroup" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder.Header(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.CellGroup.Header" />.
+            Group header (shown when the headers are collapsed).
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder.Colspan(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.CellGroup.Colspan" />.
+            Number of grid columns spanned by the group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder.IsRowHeader(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.MultiRow.CellGroup.IsRowHeader" />.
+            Gets or sets a value that determines whether this is a row header group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.CellGroupBuilder.Cells(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.MultiRow.Cell,C1.Web.Mvc.MultiRow.Fluent.CellBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.MultiRow.Cell"/>.
+            </summary>
+            <param name="builder">The builder action.</param>
+            <returns>The cell group builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.ControlBuilderFactoryExtension">
+            <summary>
+            Extends ControlBuilderFactory for MultiRowChart related controls creation.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.ControlBuilderFactoryExtension.MultiRow``1(C1.Web.Mvc.Fluent.ControlBuilderFactory,System.String)">
+            <summary>
+            Create a MultiRowBuilder.
+            </summary>
+            <typeparam name="T">The data item type.</typeparam>
+            <param name="controlBuilderFactory">The ControlBuilderFactory.</param>
+            <param name="selector">The selector.</param>
+            <returns>The MultiRowBuilder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.MultiRowFilterExtension">
+            <summary>
+            Define a static class to add the extension methods 
+            for all the controls which can use FlexGridFilter extender.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowFilterExtension.Filterable``1(C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder{``0},System.Action{C1.Web.Mvc.Fluent.FlexGridFilterBuilder{``0}})">
+            <summary>
+            Apply the FlexGridFilter extender in MultiRow.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="multiRowBuilder">The specified MultiRow builder.</param>
+            <param name="gridFilterBuilder">The specified FlexGridFilter builder.</param>
+            <returns>The MultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowFilterExtension.Filterable``1(C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder{``0})">
+            <summary>
+            Apply the default FlexGridFilter extender in MultiRow.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="multiRowBuilder">The specified MultiRow builder.</param>
+            <returns>The MultiRow filter.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.MultiRowGroupPanelExtension">
+            <summary>
+            Define a static class to add the extension methods 
+            for all the controls which can use FlexGridFilter extender.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowGroupPanelExtension.ShowGroupPanel``1(C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder{``0},System.Action{C1.Web.Mvc.Fluent.FlexGridGroupPanelBuilder{``0}},System.String)">
+            <summary>
+            Apply the FlexGridGroupPanel extender in FlexGrid.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="gridBuilder">The specified FlexGrid builder.</param>
+            <param name="gridGroupPanelBuilder">The specified FlexGridGroupPanel builder</param>
+            <param name="selector">The specified selector for the FlexGridGroupPanel's host element.</param>
+            <returns>The MultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.MultiRowGroupPanelExtension.ShowGroupPanel``1(C1.Web.Mvc.MultiRow.Fluent.MultiRowBuilder{``0},System.String)">
+            <summary>
+            Apply the default FlexGridGroupPanel extender in FlexGrid.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="gridBuilder">The specified FlexGrid builder.</param>
+            <param name="selector">The specified selector for the FlexGridGroupPanel's host element.</param>
+            <returns>The MultiRow builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Fluent.ScriptsBuilderExtension">
+            <summary>
+            Extends <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/> class for MultiRow scripts.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Fluent.ScriptsBuilderExtension.MultiRow(C1.Web.Mvc.Fluent.ScriptsBuilder)">
+            <summary>
+            Registers olap related script bundle.
+            </summary>
+            <param name="scriptsBuilder">The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</param>
+            <returns>The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.CellGroup">
+            <summary>
+            Represents a layout definition on the MultiRow.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.CellGroup.#ctor">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.CellGroup"/> instance.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.CellGroup.#ctor(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.CellGroup"/> instance.
+            </summary>
+            <param name="helper">The HtmlHelper instance.</param>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.CellGroup.Header">
+            <summary>
+            Group header (shown when the headers are collapsed).
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.CellGroup.Colspan">
+            <summary>
+            Number of grid columns spanned by the group.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.CellGroup.Cells">
+            <summary>
+            Array of cell objects, which extend Column with colspan property.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.CellGroup.IsRowHeader">
+            <summary>
+            Gets or sets a value that determines whether this is a row header group.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.CellGroup.Helper">
+            <summary>
+            Gets or sets the html helper object.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.MultiRow`1">
+            <summary>
+            The MultiRow control provides a powerful and flexible way to display and edit data in multiple rows per item.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.Columns">
+            <summary>
+            Disabled for MultiRow. Gets the grid's column collection.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggingColumnOver">
+            <summary>
+            Override to hide this property.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggingRowOver">
+            <summary>
+            Override to hide this property.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.MultiRow`1.#ctor(System.Web.Mvc.HtmlHelper,System.String)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.MultiRow`1" /> instance.
+            </summary>
+            <param name="helper">The html helper</param>
+            <param name="selector">The selector</param>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.AutoGenerateColumns">
+            <summary>
+            Disabled for MultiRow. Gets or sets whether the grid should generate columns automatically based on the itemsSource.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.AllowDragging">
+            <summary>
+            Disabled for MultiRow. Gets or sets whether users are allowed to drag rows and/or columns with the mouse.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.AllowMerging">
+            <summary>
+            Disabled for MultiRow. Gets or sets which parts of the grid provide cell merging.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.ChildItemsPath">
+            <summary>
+            Disabled for MultiRow. Gets or sets the name of the property used to generate child rows in hierarchical grids.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggedColumn">
+            <summary>
+            Disabled for MultiRow. Occurs when the user finishes dragging a column.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggedRow">
+            <summary>
+            Disabled for MultiRow. Occurs when the user finishes dragging a row.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggingColumn">
+            <summary>
+            Disabled for MultiRow. Occurs when the user starts dragging a column.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientDraggingRow">
+            <summary>
+            Disabled for MultiRow. Occurs when the user starts dragging a row.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.ColumnLayout">
+            <summary>
+            Disabled for MultiRow. Gets or sets a JSON string that defines the current column layout." remarks="The column layout string represents an array with the columns and their properties. It can be used to persist column layouts defined by users so they are preserved across sessions, and can also be used to implement undo/redo functionality in applications that allow users to modify the column layout.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.LayoutDefinition">
+            <summary>
+            Gets or sets an array that defines the layout of the rows used to display each data item.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.NewRowAtTop">
+            <summary>
+            Gets or sets a value that indicates whether the new row template should be located at the top of the grid or at the bottom.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.CenterHeadersVertically">
+            <summary>
+            Gets or sets a value that determines whether the content of cells that span multiple rows should be vertically centered.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.CollapsedHeaders">
+            <summary>
+            Gets or sets a value that determines whether column headers should be collapsed and displayed as a single row displaying the group headers.
+            </summary>
+            <remarks>
+            Setting to null causes the grid to show all header information (groups and columns).
+            </remarks>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.ShowHeaderCollapseButton">
+            <summary>
+            Gets or sets a value that determines whether the grid should display a button in the column header panel to allow users to collapse and expand the column headers.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientCollapsedHeadersChanging">
+            <summary>
+            Occurs after the value of the collapsedHeaders property changes.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.OnClientCollapsedHeadersChanged">
+            <summary>
+            Occurs after the value of the collapsedHeaders property has changed.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.MultiRowGroupHeaders">
+            <summary>
+            Gets or sets a value that determines whether group headers should have multiple rows instead of a single header row.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.HeaderLayoutDefinition">
+            <summary>
+            Gets or sets an array that defines the layout of the rows used to display the grid's column headers.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.MultiRow`1.AllowPinning">
+            <summary>
+            Disabled for MultiRow. Gets or sets whether the grid adds pin icons to the column headers and clicking the icons toggles the column's frozen state
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.MultiRow`1.GetFlatColumns">
+            <summary>
+            Gets all columns in the grid.
+            </summary>
+            <returns>Collection of columns.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.MultiRow`1.GetColumn(C1.Web.Mvc.ColumnInfo)">
+            <summary>
+            Gets column by the specified infomation.
+            </summary>
+            <param name="columnInfo">The column info.</param>
+            <returns>The column meets the specified column info.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.Cell">
+            <summary>
+            Represents a cell on the MultiRow.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.Cell.AllowMerging">
+            <summary>
+            Disabled for MultiRow. Gets or sets whether cells in this row or column can be merged.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.Cell.AllowDragging">
+            <summary>
+            Disabled for MultiRow. Gets or sets whether the user can move this row or column to a new position with the mouse.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.Cell.AllowResizing">
+            <summary>
+            Disabled for MultiRow. Gets or sets a value that indicates whether the user can resize the row or column with the mouse.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.Cell.Visible">
+            <summary>
+            Disabled for MultiRow. Gets or sets whether this row or column is visible.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.Cell.Colspan">
+            <summary>
+            Number of grid columns spanned by the group.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.Cell.Rowspan">
+            <summary>
+            Number of grid rows spanned by the group.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Cell.#ctor">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.Cell"/> instance.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.Cell.#ctor(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.Cell"/> instance.
+            </summary>
+            <param name="helper">The HtmlHelper instance.</param>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.CellInfo">
+            <summary>
+            Represents a cell info that describes a column on the MultiRow.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.CellInfo.#ctor">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.MultiRow.CellInfo"/> instance.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.CellInfo.Group">
+            <summary>
+            Gets or sets the index of the cell group which the cell belongs to.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.MultiRow.CellInfo.Index">
+            <summary>
+            Gets or sets the index of the column in the cell group's cells collection.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.MultiRow.LicenseDetector">
+            <summary>
+            Define a class for detecting C1.Web.Mvc.MultiRow license.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.MultiRow.LicenseDetector.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+    </members>
+</doc>

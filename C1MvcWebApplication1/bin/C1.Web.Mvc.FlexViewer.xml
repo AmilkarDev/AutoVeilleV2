@@ -1,0 +1,496 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Web.Mvc.FlexViewer</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Web.Mvc.Viewer.PdfViewer">
+            <summary>
+            Defines the pdf viewer control for displaying a pdf document source.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.PdfViewer.#ctor(System.Web.Mvc.HtmlHelper,System.String)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.Viewer.PdfViewer" /> instance.
+            </summary>
+            <param name="helper">The html helper</param>
+            <param name="selector">The selector</param>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.ReportViewer">
+            <summary>
+            Defines the report viewer control for displaying a report document source.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.ReportViewer.#ctor(System.Web.Mvc.HtmlHelper,System.String)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.Viewer.ReportViewer" /> instance.
+            </summary>
+            <param name="helper">The html helper</param>
+            <param name="selector">The selector</param>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ReportViewer.ReportName">
+            <summary>
+            Gets or sets the report name.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ReportViewer.Paginated">
+            <summary>
+            Gets or sets a value indicating whether the content should be represented as set of fixed sized pages.
+            </summary>
+            <remarks>
+            The default value is null, means using the default value from document source.
+            </remarks>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ReportViewer.Parameters">
+            <summary>
+            Gets or sets a dictionary of {name: value} pairs that describe the parameters used to run the report.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.ViewerBase">
+            <summary>
+            Defines an abstract class for the viewer controls.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.ViewerBase.#ctor(System.Web.Mvc.HtmlHelper,System.String)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.Viewer.ViewerBase" /> instance.
+            </summary>
+            <param name="helper">The html helper</param>
+            <param name="selector">The selector</param>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.ViewMode">
+            <summary>
+            Gets or sets the view mode.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientPageIndexChanged">
+            <summary>
+            Occurs after the page index is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientViewModeChanged">
+            <summary>
+            Occurs after the view mode is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.ZoomFactor">
+            <summary>
+            Gets or sets the zoom factor.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientZoomFactorChanged">
+            <summary>
+            Occurs after the zoom factor is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.ServiceUrl">
+            <summary>
+            Gets or sets the service url. It works as "~/api/" when it is not set.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.FilePath">
+            <summary>
+            Gets or sets the document path.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientQueryLoadingData">
+            <summary>
+            Queries the request data sent to the service before loading the document.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.FullScreen">
+            <summary>
+            Gets or sets whether viewer is under full screen mode.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientFullScreenChanged">
+            <summary>
+            Occurs after the full screen mode is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.SelectMouseMode">
+            <summary>
+            Deprecated: Use MouseMode instead.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientSelectMouseModeChanged">
+            <summary>
+            Deprecated: Use OnClientMouseModeChanged instead.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.ZoomMode">
+            <summary>
+            Gets or sets a value indicating the current zoom mode to show the document pages.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.ThresholdWidth">
+            <summary>
+            Gets or sets the threshold to switch between mobile and PC template
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.MouseMode">
+            <summary>
+            Gets or sets a value indicating the mouse behavior.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientMouseModeChanged">
+            <summary>
+            Occurs after the mouse mode is changed.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.RequestHeaders">
+            <summary>
+            Gets or sets an object containing request headers to be used when sending or requesting data. The most typical use for this property is in scenarios where authentication is required.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientBeforeSendRequest">
+            <summary>
+            Occurs before every request sent to the server.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientZoomModeChanged">
+            <summary>
+            Occurs after the zoom mode is changed.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.Fluent.PdfViewerBuilder">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.Viewer.PdfViewer" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.PdfViewerBuilder.#ctor(C1.Web.Mvc.Viewer.PdfViewer)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.Viewer.Fluent.PdfViewerBuilder" /> instance to configurate <paramref name="component"/>.
+            </summary>
+            <param name="component">The <see cref="T:C1.Web.Mvc.Viewer.PdfViewer" /> object to be configurated.</param>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.Fluent.ReportViewerBuilder">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.Viewer.ReportViewer" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ReportViewerBuilder.#ctor(C1.Web.Mvc.Viewer.ReportViewer)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.Viewer.Fluent.ReportViewerBuilder" /> instance to configurate <paramref name="component"/>.
+            </summary>
+            <param name="component">The <see cref="T:C1.Web.Mvc.Viewer.ReportViewer" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ReportViewerBuilder.ReportName(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ReportViewer.ReportName" />.
+            Sets the report name.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ReportViewerBuilder.Paginated(System.Nullable{System.Boolean})">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ReportViewer.Paginated" />.
+            Sets a value indicating whether the content should be represented as set of fixed sized pages.
+            </summary>
+            <remarks>
+            The default value is null, means using the default value from document source.
+            </remarks>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ReportViewerBuilder.Parameters(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ReportViewer.Parameters" />.
+            Sets a dictionary of {name: value} pairs that describe the parameters used to run the report.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.Viewer.ViewerBase" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.#ctor(`0)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2" /> instance to configurate <paramref name="component"/>.
+            </summary>
+            <param name="component">The <see cref="T:C1.Web.Mvc.Viewer.ViewerBase" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.ViewMode(C1.Web.Mvc.Viewer.ViewMode)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.ViewMode" />.
+            Sets the view mode.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientPageIndexChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientPageIndexChanged" /> client event.
+            Occurs after the page index is changed.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientViewModeChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientViewModeChanged" /> client event.
+            Occurs after the view mode is changed.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.ZoomFactor(System.Double)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.ZoomFactor" />.
+            Sets the zoom factor.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientZoomFactorChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientZoomFactorChanged" /> client event.
+            Occurs after the zoom factor is changed.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.ServiceUrl(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.ServiceUrl" />.
+            Sets the service url. It works as "~/api/" when it is not set.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.FilePath(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.FilePath" />.
+            Sets the document path.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientQueryLoadingData(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientQueryLoadingData" /> client event.
+            Queries the request data sent to the service before loading the document.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.FullScreen(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.FullScreen" />.
+            Sets whether viewer is under full screen mode.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientFullScreenChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientFullScreenChanged" /> client event.
+            Occurs after the full screen mode is changed.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.SelectMouseMode(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.SelectMouseMode" />.
+            Deprecated: Use MouseMode instead.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientSelectMouseModeChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientSelectMouseModeChanged" /> client event.
+            Deprecated: Use OnClientMouseModeChanged instead.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.ZoomMode(C1.Web.Mvc.Viewer.ZoomMode)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.ZoomMode" />.
+            Sets a value indicating the current zoom mode to show the document pages.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.ThresholdWidth(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.ThresholdWidth" />.
+            Sets the threshold to switch between mobile and PC template
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.MouseMode(C1.Web.Mvc.Viewer.MouseMode)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.MouseMode" />.
+            Sets a value indicating the mouse behavior.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientMouseModeChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientMouseModeChanged" /> client event.
+            Occurs after the mouse mode is changed.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.RequestHeaders(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.RequestHeaders" />.
+            Sets an object containing request headers to be used when sending or requesting data. The most typical use for this property is in scenarios where authentication is required.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientBeforeSendRequest(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientBeforeSendRequest" /> client event.
+            Occurs before every request sent to the server.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ViewerBaseBuilder`2.OnClientZoomModeChanged(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.Viewer.ViewerBase.OnClientZoomModeChanged" /> client event.
+            Occurs after the zoom mode is changed.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.Fluent.ControlBuilderFactoryExtension">
+            <summary>
+            Extends ControlBuilderFactory for Viewer related controls creation.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ControlBuilderFactoryExtension.ReportViewer(C1.Web.Mvc.Fluent.ControlBuilderFactory,System.String)">
+            <summary>
+            Create a ReportViewerBuilder.
+            </summary>
+            <param name="controlBuilderFactory">The ControlBuilderFactory.</param>
+            <param name="selector">The selector</param>
+            <returns>The ReportViewerBuilder</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ControlBuilderFactoryExtension.PdfViewer(C1.Web.Mvc.Fluent.ControlBuilderFactory,System.String)">
+            <summary>
+            Create a PdfViewerBuilder.
+            </summary>
+            <param name="controlBuilderFactory">The ControlBuilderFactory.</param>
+            <param name="selector">The selector</param>
+            <returns>The PdfViewerBuilder</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ControlBuilderFactoryExtension.FlexViewerResources(C1.Web.Mvc.Fluent.ControlBuilderFactory,System.Type[])">
+            <summary>
+            Render the css and js resources of the specified control type.
+            </summary>
+            <param name="controlBuilderFactory">The ControlBuilderFactory</param>
+            <param name="controlTypes">Specify the types of the controls</param>
+            <returns>The html string</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.Fluent.ScriptsBuilderExtension">
+            <summary>
+            Extends <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/> class for viewer scripts.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.Fluent.ScriptsBuilderExtension.FlexViewer(C1.Web.Mvc.Fluent.ScriptsBuilder)">
+            <summary>
+            Registers viewer related script bundle. This bundle contains: ReportViewer and PdfViewer controls.
+            </summary>
+            <param name="scriptsBuilder">The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</param>
+            <returns>The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.MouseMode">
+            <summary>
+            Specifies the mouse modes, which defines the mouse behavior of viewer.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.MouseMode.SelectTool">
+            <summary>
+            Select text.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.MouseMode.MoveTool">
+            <summary>
+            Move page.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.MouseMode.RubberbandTool">
+            <summary>
+            Rubberband to zoom.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.MouseMode.MagnifierTool">
+            <summary>
+            Magnifier tool.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.ViewMode">
+            <summary>
+            Defines the view modes.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.ViewMode.Single">
+            <summary>
+            The single view mode.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.ViewMode.Continuous">
+            <summary>
+            The continuous view mode.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.ZoomMode">
+            <summary>
+            Describes the supported zoom modes of FlexViewer.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.ZoomMode.Custom">
+            <summary>
+            Custom zoom mode. The actual zoom factor is determined by the value of the @see:ZoomFactor property.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.ZoomMode.PageWidth">
+            <summary>
+            Pages are zoomed in or out as necessary to fit the page width in the view panel.
+            </summary>
+        </member>
+        <member name="F:C1.Web.Mvc.Viewer.ZoomMode.WholePage">
+            <summary>
+            Pages are zoomed in or out as necessary to fit the whole page in the view panel.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.WebResources.Definitions.Viewer">
+            <summary>
+            Defines the related js and css for C1 FlexViewer controls.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.C1Viewer">
+            <summary>
+            Defines the related js and css for C1 FlexViewer controls.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.ViewerWebResourcesManager.#ctor(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            Create the resource manager for viewer related controls.
+            </summary>
+            <param name="helper">The specified helper.</param>
+        </member>
+        <member name="T:C1.Web.Mvc.Viewer.LicenseDetector">
+            <summary>
+            Define a class for detecting C1.Web.Mvc.FlexViewer license.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.Viewer.LicenseDetector.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Web.Mvc.TransposedGrid</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridFilterExtension">
+            <summary>
+            Define a static class to add the extension methods 
+            for all the controls which can use FlexGridFilter extender.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridFilterExtension.Filterable``1(C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder{``0},System.Action{C1.Web.Mvc.Fluent.FlexGridFilterBuilder{``0}})">
+            <summary>
+            Apply the FlexGridFilter extender in TransposedGrid.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="transposedGridBuilder">The specified TransposedGrid builder.</param>
+            <param name="gridFilterBuilder">The specified FlexGridFilter builder.</param>
+            <returns>The TransposedGrid builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridFilterExtension.Filterable``1(C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder{``0})">
+            <summary>
+            Apply the default FlexGridFilter extender in TransposedGrid.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="transposedGridBuilder">The specified TransposedGrid builder.</param>
+            <returns>The TransposedGrid filter.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridFilterExtension.Filterable(C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder{System.Object},System.Action{C1.Web.Mvc.Fluent.FlexGridFilterBuilder{System.Object}})">
+            <summary>
+            Apply the FlexGridFilter extender in TransposedGrid.
+            </summary>
+            <param name="transposedGridBuilder">The specified TransposedGrid builder.</param>
+            <param name="gridFilterBuilder">The specified FlexGridFilter builder.</param>
+            <returns>The TransposedGrid builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridFilterExtension.Filterable(C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder{System.Object})">
+            <summary>
+            Apply the default FlexGridFilter extender in TransposedGrid.
+            </summary>
+            <param name="transposedGridBuilder">The specified TransposedGrid builder.</param>
+            <returns>The TransposedGrid filter.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.TransposedGrid.TransposedGrid`1" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.Rows(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.Column,C1.Web.Mvc.Fluent.ColumnBuilder}})">
+            <summary>
+            Configure TransposedGrid.Rows"/>.
+            </summary>
+            <param name="builder">The builder action.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.AllowAddNew(System.Boolean)">
+            <summary>
+            This method is useless in TransposedGrid.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.AllowDelete(System.Boolean)">
+            <summary>
+            This method is useless in TransposedGrid.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.AutoGenerateColumns(System.Boolean)">
+            <summary>
+            This method is useless in TransposedGrid, using AutoGenerateRows instead.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.#ctor(C1.Web.Mvc.TransposedGrid.TransposedGrid{`0})">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1" /> instance to configurate <paramref name="component"/>.
+            </summary>
+            <param name="component">The <see cref="T:C1.Web.Mvc.TransposedGrid.TransposedGrid`1" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.AutoGenerateRows(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedGrid.TransposedGrid`1.AutoGenerateRows" />.
+            Sets a value that determines whether the grid should generate rows automatically based on the itemsSource.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.SortingType(C1.Web.Mvc.Grid.AllowSorting)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedGrid.TransposedGrid`1.SortingType" />.
+            Sets how the grid sort columns by clicking the column header cells.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.TransposedGridBuilder`1.HeadersVisibility(C1.Web.Mvc.Grid.HeadersVisibility)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedGrid.TransposedGrid`1.HeadersVisibility" />.
+            Sets a value that determines whether the row and column headers are visible.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedGrid.Fluent.ControlBuilderFactoryExtension">
+            <summary>
+            Extends ControlBuilderFactory for TransposedGrid related controls creation.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.ControlBuilderFactoryExtension.TransposedGrid``1(C1.Web.Mvc.Fluent.ControlBuilderFactory,System.String)">
+            <summary>
+            Create a TransposedGridBuilder.
+            </summary>
+            <typeparam name="T">The data item type.</typeparam>
+            <param name="controlBuilderFactory">The ControlBuilderFactory.</param>
+            <param name="selector">The selector.</param>
+            <returns>The TransposedGridBuilder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedGrid.Fluent.ScriptsBuilderExtension">
+            <summary>
+            Extends <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/> class for TransposedGrid scripts.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.Fluent.ScriptsBuilderExtension.TransposedGrid(C1.Web.Mvc.Fluent.ScriptsBuilder)">
+            <summary>
+            Registers olap related script bundle.
+            </summary>
+            <param name="scriptsBuilder">The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</param>
+            <returns>The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedGrid.TransposedGrid`1">
+            <summary>
+            The grid control display data using a transposed layout, where columns represent data items and rows represent item properties.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.TransposedGrid`1.#ctor(System.Web.Mvc.HtmlHelper,System.String)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedGrid.TransposedGrid`1" /> instance.
+            </summary>
+            <param name="helper">The html helper</param>
+            <param name="selector">The selector</param>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedGrid.TransposedGrid`1.AutoGenerateRows">
+            <summary>
+            Gets or sets a value that determines whether the grid should generate rows automatically based on the itemsSource.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedGrid.TransposedGrid`1.SortingType">
+            <summary>
+            Gets or sets how the grid sort columns by clicking the column header cells.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedGrid.TransposedGrid`1.HeadersVisibility">
+            <summary>
+            Gets or sets a value that determines whether the row and column headers are visible.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedGrid.LicenseDetector">
+            <summary>
+            Define a class for detecting C1.Web.Mvc.TransposedGrid license.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedGrid.LicenseDetector.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+    </members>
+</doc>

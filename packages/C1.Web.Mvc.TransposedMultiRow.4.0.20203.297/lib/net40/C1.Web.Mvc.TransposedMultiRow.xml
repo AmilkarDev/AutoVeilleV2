@@ -1,0 +1,580 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>C1.Web.Mvc.TransposedMultiRow</name>
+    </assembly>
+    <members>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.CellGroup">
+            <summary>
+            Represents a layout definition on the TransposedMultiRow.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.Helper">
+            <summary>
+            Gets or sets the html helper object.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.CellGroup.#ctor">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.CellGroup"/> instance.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.CellGroup.#ctor(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.CellGroup"/> instance.
+            </summary>
+            <param name="helper">The HtmlHelper instance.</param>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.Header">
+            <summary>
+            Group header (shown when the headers are collapsed).
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.Colspan">
+            <summary>
+            Number of grid columns spanned by the group.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.Cells">
+            <summary>
+            Array of cell objects, which extend Column with colspan property.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.IsRowHeader">
+            <summary>
+            Gets or sets a value that determines whether this is a row header group.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1">
+            <summary>
+            The Grid control to display data using a transposed layout, where columns represent data items and rows represent item properties. Also this control allows to display each item in multiple columns.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.Columns">
+            <summary>
+            Disabled for TransposedMultiRow. Gets the grid's column collection.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggingColumnOver">
+            <summary>
+            Override to hide this property.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggingRowOver">
+            <summary>
+            Override to hide this property.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.#ctor(System.Web.Mvc.HtmlHelper,System.String)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1" /> instance.
+            </summary>
+            <param name="helper">The html helper</param>
+            <param name="selector">The selector</param>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AutoGenerateColumns">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets whether the grid should generate columns automatically based on the itemsSource.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowDragging">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets whether users are allowed to drag rows and/or columns with the mouse.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowMerging">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets which parts of the grid provide cell merging.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.ChildItemsPath">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets the name of the property used to generate child rows in hierarchical grids.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggedColumn">
+            <summary>
+            Disabled for TransposedMultiRow. Occurs when the user finishes dragging a column.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggedRow">
+            <summary>
+            Disabled for TransposedMultiRow. Occurs when the user finishes dragging a row.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggingColumn">
+            <summary>
+            Disabled for TransposedMultiRow. Occurs when the user starts dragging a column.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggingRow">
+            <summary>
+            Disabled for TransposedMultiRow. Occurs when the user starts dragging a row.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.ColumnLayout">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets a JSON string that defines the current column layout." remarks="The column layout string represents an array with the columns and their properties. It can be used to persist column layouts defined by users so they are preserved across sessions, and can also be used to implement undo/redo functionality in applications that allow users to modify the column layout.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.LayoutDefinition">
+            <summary>
+            Gets or sets an array that defines the layout of the rows used to display each data item.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.NewRowAtTop">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets a value that indicates whether the new row template should be located at the top of the grid or at the bottom.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowPinning">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets whether the grid adds pin icons to the column headers and clicking the icons toggles the column's frozen state
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowSorting">
+            <summary>
+            TransposedMultiRow does not support sorting.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowAddNew">
+            <summary>
+            TransposedMultiRow does not support items addition.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowDelete">
+            <summary>
+            TransposedMultiRow does not support items deletion.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.SortingType">
+            <summary>
+            TransposedMultiRow does not support sorting.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.GetFlatColumns">
+            <summary>
+            Gets all columns in the grid.
+            </summary>
+            <returns>Collection of columns.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.GetColumn(C1.Web.Mvc.ColumnInfo)">
+            <summary>
+            Gets column by the specified infomation.
+            </summary>
+            <param name="columnInfo">The column info.</param>
+            <returns>The column meets the specified column info.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.#ctor(C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow{`0})">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1" /> instance to configurate <paramref name="component"/>.
+            </summary>
+            <param name="component">The <see cref="T:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.AutoGenerateColumns(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AutoGenerateColumns" />.
+            Disabled for TransposedMultiRow. Gets or sets whether the grid should generate columns automatically based on the itemsSource.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.AllowDragging(C1.Web.Mvc.Grid.AllowDragging)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowDragging" />.
+            Disabled for TransposedMultiRow. Gets or sets whether users are allowed to drag rows and/or columns with the mouse.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.AllowMerging(C1.Web.Mvc.Grid.AllowMerging)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowMerging" />.
+            Disabled for TransposedMultiRow. Gets or sets which parts of the grid provide cell merging.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.ChildItemsPath(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.ChildItemsPath" />.
+            Disabled for TransposedMultiRow. Gets or sets the name of the property used to generate child rows in hierarchical grids.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.OnClientDraggedColumn(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggedColumn" /> client event.
+            Disabled for TransposedMultiRow. Occurs when the user finishes dragging a column.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.OnClientDraggedRow(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggedRow" /> client event.
+            Disabled for TransposedMultiRow. Occurs when the user finishes dragging a row.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.OnClientDraggingColumn(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggingColumn" /> client event.
+            Disabled for TransposedMultiRow. Occurs when the user starts dragging a column.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.OnClientDraggingRow(System.String)">
+            <summary>
+            Configurates the <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.OnClientDraggingRow" /> client event.
+            Disabled for TransposedMultiRow. Occurs when the user starts dragging a row.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.ColumnLayout(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.ColumnLayout" />.
+            Disabled for TransposedMultiRow. Gets or sets a JSON string that defines the current column layout." remarks="The column layout string represents an array with the columns and their properties. It can be used to persist column layouts defined by users so they are preserved across sessions, and can also be used to implement undo/redo functionality in applications that allow users to modify the column layout.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.NewRowAtTop(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.NewRowAtTop" />.
+            Disabled for TransposedMultiRow. Gets or sets a value that indicates whether the new row template should be located at the top of the grid or at the bottom.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.AllowPinning(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowPinning" />.
+            Disabled for TransposedMultiRow. Gets or sets whether the grid adds pin icons to the column headers and clicking the icons toggles the column's frozen state
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.AllowSorting(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowSorting" />.
+            TransposedMultiRow does not support sorting.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.AllowAddNew(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowAddNew" />.
+            TransposedMultiRow does not support items addition.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.AllowDelete(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.AllowDelete" />.
+            TransposedMultiRow does not support items deletion.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.SortingType(C1.Web.Mvc.Grid.AllowSorting)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.TransposedMultiRow`1.SortingType" />.
+            TransposedMultiRow does not support sorting.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.LayoutDefinition(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.TransposedMultiRow.CellGroup,C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.TransposedMultiRow.CellGroup"/>.
+            </summary>
+            <param name="builder">The builder action.</param>
+            <returns>The TransposedMultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.Columns(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.Column,C1.Web.Mvc.Fluent.ColumnBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.Column"/>.
+            </summary>
+            <remarks>Disabled for TransposedMultiRow.</remarks>
+            <param name="builder">The builder action.</param>
+            <returns>The TransposedMultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.OnClientDraggingColumnOver(System.String)">
+            <summary>
+            Overrides to hide this method.
+            </summary>
+            <param name="value">The value</param>
+            <returns>Current builder</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder`1.OnClientDraggingRowOver(System.String)">
+            <summary>
+            Overrides to hide this method.
+            </summary>
+            <param name="value">The value</param>
+            <returns>Current builder</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.TransposedMultiRow.Cell" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder.#ctor(C1.Web.Mvc.TransposedMultiRow.Cell)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder" /> instance to configurate <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The <see cref="T:C1.Web.Mvc.TransposedMultiRow.Cell" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder.AllowMerging(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.Cell.AllowMerging" />.
+            Disabled for TransposedMultiRow. Gets or sets whether cells in this row or column can be merged.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder.AllowDragging(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.Cell.AllowDragging" />.
+            Disabled for TransposedMultiRow. Gets or sets whether the user can move this row or column to a new position with the mouse.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder.AllowResizing(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.Cell.AllowResizing" />.
+            Disabled for TransposedMultiRow. Gets or sets a value that indicates whether the user can resize the row or column with the mouse.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder.Visible(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.Cell.Visible" />.
+            Disabled for TransposedMultiRow. Gets or sets whether this row or column is visible.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder.Colspan(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.Cell.Colspan" />.
+            Number of grid columns spanned by the group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder.Rowspan(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.Cell.Rowspan" />.
+            Number of grid rows spanned by the group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder">
+            <summary>
+            Defines a builder to configurate <see cref="T:C1.Web.Mvc.TransposedMultiRow.CellGroup" />.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder.#ctor(C1.Web.Mvc.TransposedMultiRow.CellGroup)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder" /> instance to configurate <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The <see cref="T:C1.Web.Mvc.TransposedMultiRow.CellGroup" /> object to be configurated.</param>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder.Header(System.String)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.Header" />.
+            Group header (shown when the headers are collapsed).
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder.Colspan(System.Int32)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.Colspan" />.
+            Number of grid columns spanned by the group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder.IsRowHeader(System.Boolean)">
+            <summary>
+            Configurates <see cref="P:C1.Web.Mvc.TransposedMultiRow.CellGroup.IsRowHeader" />.
+            Sets a value that determines whether this is a row header group.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>Current builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.CellGroupBuilder.Cells(System.Action{C1.Web.Mvc.Fluent.ListItemFactory{C1.Web.Mvc.TransposedMultiRow.Cell,C1.Web.Mvc.TransposedMultiRow.Fluent.CellBuilder}})">
+            <summary>
+            Configure <see cref="T:C1.Web.Mvc.TransposedMultiRow.Cell"/>.
+            </summary>
+            <param name="builder">The builder action.</param>
+            <returns>The cell group builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Fluent.ControlBuilderFactoryExtension">
+            <summary>
+            Extends ControlBuilderFactory for TransposedMultiRowChart related controls creation.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.ControlBuilderFactoryExtension.TransposedMultiRow``1(C1.Web.Mvc.Fluent.ControlBuilderFactory,System.String)">
+            <summary>
+            Create a TransposedMultiRowBuilder.
+            </summary>
+            <typeparam name="T">The data item type.</typeparam>
+            <param name="controlBuilderFactory">The ControlBuilderFactory.</param>
+            <param name="selector">The selector.</param>
+            <returns>The TransposedMultiRowBuilder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowFilterExtension">
+            <summary>
+            Define a static class to add the extension methods 
+            for all the controls which can use FlexGridFilter extender.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowFilterExtension.Filterable``1(C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder{``0},System.Action{C1.Web.Mvc.Fluent.FlexGridFilterBuilder{``0}})">
+            <summary>
+            Apply the FlexGridFilter extender in TransposedMultiRow.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="transposedMultiRowBuilder">The specified TransposedMultiRow builder.</param>
+            <param name="gridFilterBuilder">The specified FlexGridFilter builder.</param>
+            <returns>The TransposedMultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowFilterExtension.Filterable``1(C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder{``0})">
+            <summary>
+            Apply the default FlexGridFilter extender in TransposedMultiRow.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="transposedMultiRowBuilder">The specified TransposedMultiRow builder.</param>
+            <returns>The TransposedMultiRow filter.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowGroupPanelExtension">
+            <summary>
+            Define a static class to add the extension methods 
+            for all the controls which can use FlexGridFilter extender.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowGroupPanelExtension.ShowGroupPanel``1(C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder{``0},System.Action{C1.Web.Mvc.Fluent.FlexGridGroupPanelBuilder{``0}},System.String)">
+            <summary>
+            Apply the FlexGridGroupPanel extender in FlexGrid.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="gridBuilder">The specified FlexGrid builder.</param>
+            <param name="gridGroupPanelBuilder">The specified FlexGridGroupPanel builder</param>
+            <param name="selector">The specified selector for the FlexGridGroupPanel's host element.</param>
+            <returns>The TransposedMultiRow builder.</returns>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowGroupPanelExtension.ShowGroupPanel``1(C1.Web.Mvc.TransposedMultiRow.Fluent.TransposedMultiRowBuilder{``0},System.String)">
+            <summary>
+            Apply the default FlexGridGroupPanel extender in FlexGrid.
+            </summary>
+            <typeparam name="T">The data record type.</typeparam>
+            <param name="gridBuilder">The specified FlexGrid builder.</param>
+            <param name="selector">The specified selector for the FlexGridGroupPanel's host element.</param>
+            <returns>The TransposedMultiRow builder.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Fluent.ScriptsBuilderExtension">
+            <summary>
+            Extends <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/> class for TransposedMultiRow scripts.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Fluent.ScriptsBuilderExtension.TransposedMultiRow(C1.Web.Mvc.Fluent.ScriptsBuilder)">
+            <summary>
+            Registers olap related script bundle.
+            </summary>
+            <param name="scriptsBuilder">The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</param>
+            <returns>The <see cref="T:C1.Web.Mvc.Fluent.ScriptsBuilder"/>.</returns>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.Cell">
+            <summary>
+            Represents a cell on the TransposedMultiRow.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.Cell.AllowMerging">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets whether cells in this row or column can be merged.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.Cell.AllowDragging">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets whether the user can move this row or column to a new position with the mouse.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.Cell.AllowResizing">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets a value that indicates whether the user can resize the row or column with the mouse.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.Cell.Visible">
+            <summary>
+            Disabled for TransposedMultiRow. Gets or sets whether this row or column is visible.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.Cell.Colspan">
+            <summary>
+            Number of grid columns spanned by the group.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.Cell.Rowspan">
+            <summary>
+            Number of grid rows spanned by the group.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Cell.#ctor">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.Cell"/> instance.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.Cell.#ctor(System.Web.Mvc.HtmlHelper)">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.Cell"/> instance.
+            </summary>
+            <param name="helper">The HtmlHelper instance.</param>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.CellInfo">
+            <summary>
+            Represents a cell info that describes a column on the TransposedMultiRow.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.CellInfo.#ctor">
+            <summary>
+            Creates one <see cref="T:C1.Web.Mvc.TransposedMultiRow.CellInfo"/> instance.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.CellInfo.Group">
+            <summary>
+            Gets or sets the index of the cell group which the cell belongs to.
+            </summary>
+        </member>
+        <member name="P:C1.Web.Mvc.TransposedMultiRow.CellInfo.Index">
+            <summary>
+            Gets or sets the index of the column in the cell group's cells collection.
+            </summary>
+        </member>
+        <member name="T:C1.Web.Mvc.TransposedMultiRow.LicenseDetector">
+            <summary>
+            Define a class for detecting C1.Web.Mvc.TransposedMultiRow license.
+            </summary>
+        </member>
+        <member name="M:C1.Web.Mvc.TransposedMultiRow.LicenseDetector.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+    </members>
+</doc>

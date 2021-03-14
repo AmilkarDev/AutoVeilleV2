@@ -1,0 +1,14 @@
+// wijmo.grid.selector
+
+.wj-flexgrid {
+    .wj-cell {
+        input.wj-column-selector {
+            margin: 4px;
+            vertical-align: bottom;
+            outline: none;
+            &.wj-column-selector-group {
+                transform: scale(1.25);
+            }
+        }
+    }
+}

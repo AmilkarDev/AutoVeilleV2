@@ -1,0 +1,1836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CFD97B94-FE2A-4682-AF60-132188100677}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Autoveille</RootNamespace>
+    <AssemblyName>Autoveille</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="C1.Web.Mvc, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.4.0.20203.297\lib\net40\C1.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="C1.Web.Mvc.Finance, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.Finance.4.0.20203.297\lib\net40\C1.Web.Mvc.Finance.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Mvc.FlexSheet, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.FlexSheet.4.0.20203.297\lib\net40\C1.Web.Mvc.FlexSheet.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Mvc.FlexViewer, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.FlexViewer.4.0.20203.297\lib\net40\C1.Web.Mvc.FlexViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Mvc.MultiRow, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.MultiRow.4.0.20203.297\lib\net40\C1.Web.Mvc.MultiRow.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Mvc.Olap, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.Olap.4.0.20203.297\lib\net40\C1.Web.Mvc.Olap.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Mvc.TransposedGrid, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.TransposedGrid.4.0.20203.297\lib\net40\C1.Web.Mvc.TransposedGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Mvc.TransposedMultiRow, Version=4.0.20203.297, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\C1.Web.Mvc.TransposedMultiRow.4.0.20203.297\lib\net40\C1.Web.Mvc.TransposedMultiRow.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\LogonAuthorize.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompteController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\Appels.cs" />
+    <Compile Include="Models\ConcessionsModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\component.css" />
+    <Content Include="Content\bootstrap\css\default.css" />
+    <Content Include="Content\bootstrap\css\SiteTeh.css" />
+    <Content Include="Content\bootstrap\css\template.css" />
+    <Content Include="Content\cssHoraire\bootstrap-grid.css" />
+    <Content Include="Content\cssHoraire\bootstrap-grid.min.css" />
+    <Content Include="Content\cssHoraire\bootstrap-reboot.css" />
+    <Content Include="Content\cssHoraire\bootstrap-reboot.min.css" />
+    <Content Include="Content\cssHoraire\bootstrap.css" />
+    <Content Include="Content\cssHoraire\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap2.css" />
+    <Content Include="Content\css\Copy of portail6.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\portail4.css" />
+    <Content Include="Content\css\portail5.css" />
+    <Content Include="Content\css\portail7.css" />
+    <Content Include="Content\fontawesome.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\AnnonceAppelsEntrant_MonSuly - Copie.png" />
+    <Content Include="Content\Images\AnnonceAppelsEntrant_MonSuly.jpg" />
+    <Content Include="Content\Images\AnnonceAppelsEntrant_MonSuly.png" />
+    <Content Include="Content\Images\AnnonceConnekt_MonSuly - Copie.png" />
+    <Content Include="Content\Images\AnnonceConnekt_MonSuly.png" />
+    <Content Include="Content\Images\bonhomme.png" />
+    <Content Include="Content\Images\cadenas.png" />
+    <Content Include="Content\Images\close.jpg" />
+    <Content Include="Content\Images\faviconSuly.png" />
+    <Content Include="Content\Images\fLogo_2016.png" />
+    <Content Include="Content\Images\glyphicons-41-stats.png" />
+    <Content Include="Content\Images\inLogo_2016.png" />
+    <Content Include="Content\Images\Maximaze.jpg" />
+    <Content Include="Content\Images\Minimize.jpg" />
+    <Content Include="Content\Images\RechercheStaistiques.png" />
+    <Content Include="Content\Images\RechercheStaistiques2.png" />
+    <Content Include="Content\Images\RechercheStaistiques3.png" />
+    <Content Include="Content\Images\sort.gif" />
+    <Content Include="Content\Images\sort.png" />
+    <Content Include="Content\Images\sort2.png" />
+    <Content Include="Content\Images\sort3.png" />
+    <Content Include="Content\Images\test.png" />
+    <Content Include="Content\Images\vide.png" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-yellow.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-yellow.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-amber.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-amber.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-cyan.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-cyan.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-deep_orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-deep_orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-deep_purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-deep_purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-light_blue.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-light_blue.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-light_green.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-light_green.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-lime.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-lime.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-pink.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-pink.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-purple.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-purple.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-red.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-red.min.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-teal.css" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-teal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cerulean.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cerulean.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cleandark.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cleandark.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cleanlight.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cleanlight.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cocoa.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cocoa.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.coral.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.coral.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cyborg.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cyborg.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.dark.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.dark.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.darkly.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.darkly.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.flatly.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.flatly.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.grayscale.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.grayscale.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.highcontrast.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.highcontrast.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.light.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.light.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.amber-indigo.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.amber-indigo.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.indigo-orange.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.indigo-orange.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.vars.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.vars.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.midnight.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.midnight.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.minimal.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.minimal.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.modern.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.modern.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.office.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.office.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.organic.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.organic.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.paper.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.paper.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.simplex.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.simplex.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.slate.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.slate.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.superhero.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.superhero.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.trust.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.trust.min.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.zen.css" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.zen.min.css" />
+    <Content Include="Content\wijmo\styles\wijmo-core.css" />
+    <Content Include="Content\wijmo\styles\wijmo-core.min.css" />
+    <Content Include="Content\wijmo\styles\wijmo.css" />
+    <Content Include="Content\wijmo\styles\wijmo.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap-datepicker-globalize.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\wijmo\styles\wijmo-core.scss" />
+    <Content Include="Content\wijmo\styles\wijmo.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.zen.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.trust.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.superhero.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.slate.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.simplex.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.paper.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.organic.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.office.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.modern.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.minimal.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.midnight.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.vars.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.indigo-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.material.amber-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.light.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.highcontrast.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.grayscale.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.flatly.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.darkly.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.dark.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cyborg.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.coral.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cocoa.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cleanlight.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cleandark.scss" />
+    <Content Include="Content\wijmo\styles\themes\wijmo.theme.cerulean.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.yellow-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.teal-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.red-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.purple-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.pink-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.orange-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.lime-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_green-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.light_blue-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.indigo-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.grey-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.green-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_purple-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.deep_orange-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.cyan-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.brown-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.blue_grey-amber.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-yellow.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-teal.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-red.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-pink.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-lime.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-light_green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-light_blue.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-indigo.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-green.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-deep_purple.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-deep_orange.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-cyan.scss" />
+    <Content Include="Content\wijmo\styles\themes\material\wijmo.theme.material.amber-blue.scss" />
+    <Content Include="Content\wijmo\styles\parts\_viewer.scss" />
+    <Content Include="Content\wijmo\styles\parts\_olap.scss" />
+    <Content Include="Content\wijmo\styles\parts\_nav.scss" />
+    <Content Include="Content\wijmo\styles\parts\_labeled_input.scss" />
+    <Content Include="Content\wijmo\styles\parts\_input.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid_sheet.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid_selector.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid_search.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid_multirow.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid_grouppanel.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid_filter.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid_cellmaker.scss" />
+    <Content Include="Content\wijmo\styles\parts\_grid.scss" />
+    <Content Include="Content\wijmo\styles\parts\_gauge.scss" />
+    <Content Include="Content\wijmo\styles\parts\_core.scss" />
+    <Content Include="Content\wijmo\styles\parts\_chart_interaction.scss" />
+    <Content Include="Content\wijmo\styles\parts\_chart_hierarchical.scss" />
+    <Content Include="Content\wijmo\styles\parts\_chart_finance.scss" />
+    <Content Include="Content\wijmo\styles\parts\_chart.scss" />
+    <Content Include="Content\wijmo\styles\misc\_variables.scss" />
+    <Content Include="Content\wijmo\styles\misc\_mixins.scss" />
+    <Content Include="Content\wijmo\styles\misc\_glyphs.scss" />
+    <Content Include="Content\wijmo\styles\misc\_constants.scss" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-migrate-3.0.0.js" />
+    <Content Include="Scripts\jquery-migrate-3.0.0.min.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.af-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.af.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.am-ET.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.am.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-AE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-BH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-DZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-EG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-IQ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-JO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-KW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-LB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-LY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-MA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-OM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-QA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-SA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-SY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-TN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-YE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.arn-CL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.arn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.as-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.as.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Cyrl-AZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Latn-AZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ba-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ba.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.be-BY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.be.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bg-BG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bg.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bn-BD.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bn-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bo-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.br-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.br.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Cyrl-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Latn-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ca-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ca.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.co-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.co.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cs-CZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cs.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cy-GB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cy.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.da-DK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.da.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-AT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-DE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-LI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-LU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dsb-DE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dsb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dv-MV.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dv.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.el-GR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.el.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-029.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-AU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-BZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-GB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-IE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-JM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-MY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-NZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-PH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-SG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-TT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-US.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-ZW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-AR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-BO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-CL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-CO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-CR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-DO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-EC.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-GT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-HN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-MX.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-NI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-SV.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-US.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-UY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-VE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.et-EE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.et.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.eu-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.eu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fa-IR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fa.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fi-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fil-PH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fil.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fo-FO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-BE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-LU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-MC.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fy-NL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fy.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ga-IE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ga.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gd-GB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gd.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gl-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gsw-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gsw.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gu-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ha-Latn-NG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ha-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ha.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.he-IL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.he.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hi-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hr-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hr-HR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hsb-DE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hsb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hu-HU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hy-AM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hy.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.id-ID.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.id.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ig-NG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ig.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ii-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ii.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.is-IS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.is.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.it-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.it-IT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.it.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Cans-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Cans.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Latn-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ja-JP.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ja.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ka-GE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ka.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kk-KZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kl-GL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.km-KH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.km.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kn-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ko-KR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ko.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kok-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kok.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ky-KG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ky.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lb-LU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lo-LA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lt-LT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lv-LV.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lv.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mi-NZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mk-MK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ml-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ml.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-MN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-Mong-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-Mong.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.moh-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.moh.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mr-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ms-BN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ms-MY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ms.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mt-MT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nb-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ne-NP.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ne.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nl-BE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nl-NL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nn-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.no.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nso-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nso.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.oc-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.oc.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.or-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.or.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pa-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pa.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pl-PL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.prs-AF.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.prs.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ps-AF.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ps.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pt-BR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pt-PT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.qut-GT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.qut.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz-BO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz-EC.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz-PE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rm-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rm.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ro-RO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ro.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ru-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ru.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rw-RW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rw.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sa-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sa.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sah-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sah.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.si-LK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.si.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sk-SK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sl-SI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sma-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sma-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sma.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smj-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smj-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smj.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smn-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sms-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sms.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sq-AL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sq.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-CS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-ME.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-RS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-CS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-ME.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-RS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sv-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sv-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sv.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sw-KE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sw.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.syr-SY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.syr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ta-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ta.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.te-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.te.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tg-Cyrl-TJ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tg-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tg.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.th-TH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.th.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tk-TM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tn-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tr-TR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tt-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tzm-Latn-DZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tzm-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tzm.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ug-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ug.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uk-UA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ur-PK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ur.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Cyrl-UZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Latn-UZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.vi-VN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.vi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.wo-SN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.wo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.xh-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.xh.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.yo-NG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.yo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-CHS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-CHT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-Hans.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-Hant.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-HK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-MO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-SG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-TW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zu-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.cultures.js" />
+    <Content Include="Scripts\jquery.globalize\globalize.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\table.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Compte\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMainOld.cshtml" />
+    <Content Include="Views\Home\InfoConcession.cshtml" />
+    <Content Include="Views\Home\TestJson.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Compte\Connexion.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Compte\Logoff.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutMain.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoveilleBL\AutoveilleBL.csproj">
+      <Project>{b2f57466-1c00-4612-8bcd-32dd3985fc7e}</Project>
+      <Name>AutoveilleBL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="Content\bootstrap-datepicker.min.css.map" />
+    <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker.standalone.min.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.min.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.min.css.map" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\bootstrap\badges.less" />
+    <Content Include="Content\bootstrap\bootstrap.less" />
+    <Content Include="Content\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\bootstrap\button-groups.less" />
+    <Content Include="Content\bootstrap\buttons.less" />
+    <Content Include="Content\bootstrap\carousel.less" />
+    <Content Include="Content\bootstrap\close.less" />
+    <Content Include="Content\bootstrap\code.less" />
+    <Content Include="Content\bootstrap\component-animations.less" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap\dropdowns.less" />
+    <Content Include="Content\bootstrap\forms.less" />
+    <Content Include="Content\bootstrap\glyphicons.less" />
+    <Content Include="Content\bootstrap\grid.less" />
+    <Content Include="Content\bootstrap\input-groups.less" />
+    <Content Include="Content\bootstrap\jumbotron.less" />
+    <Content Include="Content\bootstrap\labels.less" />
+    <Content Include="Content\bootstrap\list-group.less" />
+    <Content Include="Content\bootstrap\media.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Content\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\bootstrap\mixins\forms.less" />
+    <Content Include="Content\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\bootstrap\mixins\grid.less" />
+    <Content Include="Content\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\bootstrap\mixins\image.less" />
+    <Content Include="Content\bootstrap\mixins\labels.less" />
+    <Content Include="Content\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\bootstrap\mixins\panels.less" />
+    <Content Include="Content\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\bootstrap\mixins\resize.less" />
+    <Content Include="Content\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\bootstrap\mixins\size.less" />
+    <Content Include="Content\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\bootstrap\modals.less" />
+    <Content Include="Content\bootstrap\navbar.less" />
+    <Content Include="Content\bootstrap\navs.less" />
+    <Content Include="Content\bootstrap\normalize.less" />
+    <Content Include="Content\bootstrap\pager.less" />
+    <Content Include="Content\bootstrap\pagination.less" />
+    <Content Include="Content\bootstrap\panels.less" />
+    <Content Include="Content\bootstrap\popovers.less" />
+    <Content Include="Content\bootstrap\print.less" />
+    <Content Include="Content\bootstrap\progress-bars.less" />
+    <Content Include="Content\bootstrap\responsive-embed.less" />
+    <Content Include="Content\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\bootstrap\scaffolding.less" />
+    <Content Include="Content\bootstrap\tables.less" />
+    <Content Include="Content\bootstrap\theme.less" />
+    <Content Include="Content\bootstrap\thumbnails.less" />
+    <Content Include="Content\bootstrap\tooltip.less" />
+    <Content Include="Content\bootstrap\type.less" />
+    <Content Include="Content\bootstrap\utilities.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\wells.less" />
+    <Content Include="Content\cssHoraire\bootstrap-grid.css.map" />
+    <Content Include="Content\cssHoraire\bootstrap-grid.min.css.map" />
+    <Content Include="Content\cssHoraire\bootstrap-reboot.css.map" />
+    <Content Include="Content\cssHoraire\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\cssHoraire\bootstrap.css.map" />
+    <Content Include="Content\cssHoraire\bootstrap.min.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:65478/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
