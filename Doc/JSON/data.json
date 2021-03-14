@@ -1,0 +1,140 @@
+{
+    // Financement Equite
+    "financementEquite" : {
+        "client" : [
+            // un client financementEquite 
+            {
+               "numero":"000000",
+                "nom" : "exemple",
+                "prenom" : "exemple",
+                "companie" : "exemple",
+                "courriel" : "exemple",
+                "langue" : "exemple",
+                "ville" : "exemple",
+                "tel1" : "exemple",
+                "tel2" : "exemple",
+                "telMobile" : "exemple",
+                "vehiculeActuel" : {
+                    "marque" : "exemple",
+                    "modele" : "exemple",
+                    "annee" : "exemple",
+                    "etat" : "exemple",
+                    "dateAchat" : "exemple",
+                    "terme": "exemple",
+                    "typeAchat" : "exemple",
+                    "prixAchat" : "exemple",
+                    "valeurActuel" : "exemple",
+                    "niv" : "exemple",
+                    "finTerme" : "exemple"
+                },
+               "vehiculeDesire" : {
+                    "marque" : "exemple",
+                    "modele" : "exemple",
+                    "annee" : "exemple"
+                },
+               "noteAppel" : "exemple"
+            },
+            // un autre client financementEquite 
+            {
+               "numero":"exemple 1",
+                "nom" : "exemple 1",
+                "prenom" : "exemple 1",
+                "companie" : "exemple 1",
+                "courriel" : "exemple 1",
+                "langue" : "exemple 1",
+                "ville" : "exemple 1",
+                "tel1" : "exemple 1",
+                "tel2" : "exemple 1",
+                "telMobile" : "exemple",
+                "vehiculeActuel" : {
+                    "marque" : "exemple 1",
+                    "modele" : "exemple 1",
+                    "annee" : "exemple 1",
+                    "etat" : "exemple 1",
+                    "dateAchat" : "exemple 1",
+                    "terme": "exemple 1",
+                    "typeAchat" : "exemple 1",
+                    "prixAchat" : "exemple 1",
+                    "valeurActuel" : "exemple 1",
+                    "niv" : "exemple 1",
+                    "finTerme" : "exemple 1"
+                },
+               "vehiculeDesire" : {
+                    "marque" : "exemple 1",
+                    "modele" : "exemple 1",
+                    "annee" : "exemple 1"
+                },
+               "noteAppel" : "exemple 1"
+            }
+         ]
+    },
+    // Campagne Conquete
+    "campagneConquete" : {
+        "client" : [
+            // un client campagneConquete 
+            {
+               "numero":"test",
+                "nom" : "test",
+                "prenom" : "test",
+                "companie" : "test",
+                "courriel" : "test",
+                "langue" : "test",
+                "ville" : "test",
+                "tel1" : "test",
+                "tel2" : "test",
+                "telMobile" : "test",
+                "vehiculeActuel" : {
+                    "marque" : "test",
+                    "modele" : "test",
+                    "annee" : "test",
+                    "etat" : "test",
+                    "dateAchat" : "test",
+                    "terme": "test",
+                    "typeAchat" : "test",
+                    "prixAchat" : "test",
+                    "valeurActuel" : "test",
+                    "niv" : "test",
+                    "finTerme" : "test"
+                },
+               "vehiculeDesire" : {
+                    "marque" : "test",
+                    "modele" : "test",
+                    "annee" : "test"
+                },
+               "noteAppel" : "test"
+            },
+            // un autre client campagneConquete 
+            {
+               "numero":"test 0",
+                "nom" : "test 0",
+                "prenom" : "test 0",
+                "companie" : "test 0",
+                "courriel" : "test 0",
+                "langue" : "test 0",
+                "ville" : "test 0",
+                "tel1" : "test 0",
+                "tel2" : "test 0",
+                "telMobile" : "test 0",
+                "vehiculeActuel" : {
+                    "marque" : "test 0",
+                    "modele" : "test 0",
+                    "annee" : "test 0",
+                    "etat" : "test 0",
+                    "dateAchat" : "test 0",
+                    "terme": "test 0",
+                    "typeAchat" : "test 0",
+                    "prixAchat" : "test 0",
+                    "valeurActuel" : "test 0",
+                    "niv" : "test 0",
+                    "finTerme" : "test 0"
+                },
+               "vehiculeDesire" : {
+                    "marque" : "test 0",
+                    "modele" : "test 0",
+                    "annee" : "test 0"
+                },
+               "noteAppel" : "test 0"
+            }
+         ]
+    }
+}

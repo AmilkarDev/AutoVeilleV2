@@ -3,10 +3,39 @@
     ViewBag.Title = "InfoConcession";
 }
 
-<h2>Ventes</h2>
+<div class="alert alert-dark" style="height:60px;font-weight:bold;background-color:black">
+    <p style="float:left;color:white;font-weight:bold;">NOM CONCESSIONNAIRE</p>
+    <p style="float:right;color:white;font-weight:bold;">12 AVRIL AU 15 AVRIL 2021</p>
+</div>
+<div class="alert alert-dark row" style="height:60px;font-weight:bold;background-color:white;margin-top:-15px;">
+    <p class="col-md-4" style="float: left; color: black; font-weight: bold;">PROSPECTS TOTAL</p>
+    <p class="col-md-4" style="text-align:center;color:black;font-weight:bold;">PROSPECTS REJOINTS</p>
+    <p class="col-md-4 pull-right" style="text-align:right;float: right; color: black; font-weight: bold;">PROSPECTS A REJOINDRE</p>
+</div>
 
 
-        <label style="font-weight: 400; color: #808080; font-size: 26px"> Prochaine evenement </label> 
-<label style="font-weight: 400; color: #808080; font-size: 26px"> Date de debut @Model. </label> 
-<label style="font-weight: 400; color: #808080; font-size: 26px"> Prochaine evenement </label> 
+<div id="dvCampaignDetails" style="width:75%">
 
+</div>
+<div id="dvClientDetails" style="width:25%">
+
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Home/GetNomAppels',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                $('#dvCampaignDetails').html(result);
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    });
+</script>

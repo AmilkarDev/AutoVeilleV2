@@ -1,4 +1,0 @@
-J:\TI\SULY01INF1007Git\AutoveilleV2\Tools\bin\Debug\Tools.dll
-J:\TI\SULY01INF1007Git\AutoveilleV2\Tools\bin\Debug\Tools.pdb
-J:\TI\SULY01INF1007Git\AutoveilleV2\Tools\obj\Debug\Tools.dll
-J:\TI\SULY01INF1007Git\AutoveilleV2\Tools\obj\Debug\Tools.pdb

@@ -12,7 +12,7 @@ namespace Outils
         public static bool IsNullOrEmpty(this JToken token)
         {
             return (token == null) ||
-                   (token.Type == JTokenType.Null)  ;
+                   (token.Type == JTokenType.Null);
         }
     }
 }

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Autoveille.TestingModels.Client>
+
+<table class="table">
+    <tr style="color:white;background-color:black;height:40px;">
+        <th>
+            @Html.DisplayNameFor(model => model.ClientId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NomClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeleVehicule)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinTerme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeleVehicule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinTerme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                <button onclick="displayClientDetails()">
+                    <img src="~/Content/Images/Expand-green.png" alt="expand" />
+                </button>
+
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+    function displayClientDetails() {
+        $.ajax({
+            url: '/Home/GetFicheClient',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                //$('#clients').css("visibility","visible");
+                $('#dvClientDetails').html(result);
+               // $('#clients').toggle();
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    }
+</script>
