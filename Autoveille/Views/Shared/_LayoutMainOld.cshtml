@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/Content/images/faviconSuly.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>   
+
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet"/>
+    <link href="~/Content/css/custom.css" rel="stylesheet"/>
+    <link href="~/Content/css/portail4.css" rel="stylesheet"/>
+	<link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" type="text/css">
+	
+
+    <style>
+
+        .body {
+            font-family: Helvetica, Arial, sans-serif,"Times New Roman", Times, serif;
+            color: #282828;
+        }
+         .chat-offline {
+             background-color: #840102;
+             color: #ffffff;
+             z-index: 999999;
+             top: 0px;
+             bottom: 0px;
+             width: 300px;
+             height: 40px;
+             line-height: 38px;
+             text-align: center;
+             border: 0 none;
+             vertical-align: middle;
+             text-align: left;
+             font-family: Helvetica, Arial, sans-serif,"Times New Roman", Times, serif;
+             font-size: 17px;
+             left: 2px;
+             right: 20px;
+             padding-left: 8%;
+             border-bottom: 0;
+             border-top-left-radius: 7px;
+             border-top-right-radius: 7px;
+         }
+           .chat-offline-max {
+              position: fixed; 
+              bottom: 0; 
+              right: 20px; 
+              height: 400px;
+              width: 300px;
+              z-index: 999999;
+              }
+           
+           .chat-offline-min{
+                position: fixed; 
+                bottom: 0; 
+                right: 20px;
+                z-index: 999999;
+           }   
+           .chat-offline-max-bar {
+             background-color: #840102;
+             color: #ffffff;
+             z-index: 999999;
+             top: 0px;
+             bottom: 0px;
+             width: 300px;
+             height: 45px;
+             line-height: 38px;
+             text-align: left;
+             vertical-align: middle;
+            
+             font-family: Helvetica, Arial, sans-serif,"Times New Roman", Times, serif;
+             font-size: 17px;
+             left: 2px;
+             right: 20px;
+             padding-left: 8%;
+             border-top-left-radius: 7px;
+             border-top-right-radius: 7px;
+             border-style: solid;
+             border-left-width: 2px;
+             border-top-width: 2px;
+             border-right-width: 2px;
+             border-bottom-width: 0;
+             border-color: #840102;
+         }
+        .chat-icon-maximize {
+            text-align: right;
+            padding-left: 80%;
+        }
+        .longFormBottomContainer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .chat-tex-section2{
+            background-color: white;
+             padding-top: 10px;
+             padding-right: 15px; 
+             padding-left: 15px; 
+             border-left-style: solid;
+             border-left-width: 0.7px;
+             border-right-style: solid;
+             border-right-width: 0.7px;
+             z-index: 999999;
+        }
+
+
+        .chat-text {
+             background-color: #F4F4F4; 
+             border-radius: 7px;
+             color: black;
+             padding-right: 12px; 
+             padding-left: 12px; 
+             padding-top: 10px; 
+             padding-bottom: 12px; 
+             font-size: 11px; 
+             height: 50px;
+             text-align: center;
+             z-index: 999999;
+        }
+
+
+        .chat-message {
+             background-color: white; 
+             color: black;
+             font-size: 11px; 
+             text-align: center;
+             padding-right: 15px; 
+             padding-left: 15px; 
+             padding-top: 15px; 
+             padding-bottom: 15px; 
+             border-left-style: solid;
+             border-left-width: 0.7px;
+             border-right-style: solid;
+             border-right-width: 0.7px;
+             z-index: 999999;
+
+        }
+
+        .chat-textarea
+        {
+            background-color: white;
+            height: 210px; 
+            width: 272px; 
+            border-radius: 5px;  
+            border-style: solid; 
+            border-width: 0.5px;
+            font-size: 12px;
+            padding-left: 2px;
+            z-index: 999999;
+        }
+
+        .theme-text-color {
+            color: #ffffff;
+        }
+
+        .theme-background-color {
+            background-color: #840102;
+        }
+
+        .formButton {
+            width: 100%;
+            height: 50px;
+        }
+
+        .formButton {
+            width: 100%;
+            height: 50px;
+        }
+
+        .formButton:hover{
+            background: #740607;
+        }
+
+        button {
+            display: inline;
+            zoom: 1;
+            vertical-align: baseline;
+            outline: 0 none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            overflow: visible;
+            margin: 0;
+            padding: 7px 15px 8px 15px;
+            font: bold 14px/100% Arial,sans-serif;
+            background-color: #c1c1c1;
+            color: #3d3d3d;
+            border: 0;
+            float: left;
+        }
+
+        #innerWrapper {
+            background: #fff;
+            left: 2px;
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            bottom: 0;
+            *height: expression(this.parentNode.offsetHeight - 4+'px');
+            *width: expression(this.parentNode.offsetWidth - 4+'px');
+            -webkit-box-shadow: rgba(0,0,0,0.0980392) 0 0 1px 2px;
+            -moz-box-shadow: rgba(0,0,0,0.0980392) 0 0 1px 2px;
+            box-shadow: rgba(0,0,0,0.0980392) 0 0 1px 2px;
+        }
+
+        .border-corner {
+            border-radius: 5px 5px 0px 0px !important;
+            -moz-border-radius: 5px 5px 0px 0px !important;
+            -webkit-border-radius: 5px 5px 0px 0px !important;
+        }
+
+
+
+        .formMessageField {
+            padding: 10px 20px;
+            line-height: 1.2em;
+            color: #616161;
+            font-size: 15px;
+            text-align: center;
+            word-wrap: break-word;
+        }
+  
+            .feature_box.style2 span.icon {
+        margin-right: 0;
+        display: inline-block;
+        padding: 0;
+        float: left;
+        width: 50px;
+        text-align: center;
+        font-size:2.5em;
+                color: black;
+    }
+
+
+    .feature_box i.fa {
+        color: black;
+    }
+    .feature_box.style2 span.icon {
+        margin-right: 0;
+        display: inline-block;
+        padding: 0;
+        float: left;
+        width: 50px;
+        text-align: center;
+        font-size:2.5em;
+    }    
+
+    #clickableAwesomeFontMin {
+     cursor: pointer
+}
+        #clickableAwesomeFontMax {
+     cursor: pointer
+}
+    .act {
+            background-color:#840102;
+            
+}
+
+
+
+ /*.navbar-inverse .navbar-nav .dropdown-menu > li > a {
+   
+     font-weight: 500;
+}*/
+
+    /*a.active.act2  {
+        color:#840102;     
+       
+}*/
+@@media (max-width: 1100px) {
+  .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+}
+
+    </style>
+@*  <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/bundles/jqueryval")"></script>*@
+
+</head>
+  <body style="padding-top: 50px; padding-bottom: 20px" >
+  
+
+        
+
+
+  <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-left: 20px; padding-right: 20px">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+         </div>
+
+          <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+
+
+
+                    <li >@Html.ActionLink(
+                        "Liste concessions" , "Index", "Home", new {area = ""}, new { style = "font-size: 16px"})
+                    </li>   
+                  @if (!(Session["NomCommerce"] == null || String.IsNullOrEmpty(Session["NomCommerce"].ToString())) ) 
+                  {
+                    <li >@Html.ActionLink( Session["NomCommerce"].ToString() +  " " + "Recherche client/véhicule", "Recherche", "Home", new {area = ""}, new { style = "font-size: 16px"})
+                    </li>
+                  }
+                       
+              </ul>
+              <!-- emplacement du login -->
+              @Html.Partial("_LoginPartial")
+          </div>
+      </div>
+  </nav>
+      <br/><br/>
+  <div class="container body-content">
+      @*@Html.Partial("_Alerts")*@
+      @RenderBody()
+   
+   @{ var style = ViewBag.Title == "Connexion" ? "display:none" : "visibility: visible"; }
+
+      <div id="chatOffLineMax" class="chat-offline-max" style="display: none">
+
+          <div id="chatOffLineMaxBar" class="chat-offline-max-bar">
+              Support: hors-ligne
+
+              <span id='clickableAwesomeFontMin' class="icon" style="padding-left: 32%">	
+                 	    
+                   <i class="fa fa-chevron-down" > 	</i>
+                    
+                   </span>
+                    
+              @*              <a title="Maximiser" id="chat-maxified-link-container" href="#" style="padding-left: 32%;">
+                  <img src="~/Content/Images/Minimize.jpg" alt="Content folder" />
+              </a>*@
+
+          </div>
+          <div class="chat-tex-section2">
+              <div id="chatText" class="chat-text">
+                  <span id="chatTextMessage">
+                    Veuillez nous soumettre votre message et nous vous recontacterons dès que possible.
+                  </span>
+              </div>
+            </div>
+              <div  id="chatMessage" class="chat-message">
+                  <textarea id="txMessage" class="chat-textarea" >
+                  </textarea>
+              </div>
+              <div id="chatButton" class="longFormBottomContainer" style="width: 300px; height: 50px; padding-left: 0px; padding-bottom: 60px; padding-right: 0px; border-left-style: solid; border-left-width: 0.7px; border-right-style: solid; border-right-width: 0.7px; border-bottom-style: solid; border-bottom-width: 0.7px;">
+                  <button id="formSubmit" class="approveButton formButton theme-background-color theme-text-color">Soumettre</button>
+              </div>
+         
+      </div>
+
+      <div id="chatOffLineMin" class="chat-offline-min" style="@style" >
+          <div id="chatOffLine"  class="chat-offline">
+              Support: hors-ligne
+              <span class="icon" id='clickableAwesomeFontMax' style="padding-left: 32%">
+			       
+                   <i class="fa fa-chevron-up" ></i>
+                   </span>
+            @*  <a title="Maximiser" id="chat-minified-link-container" href="#" style="padding-left: 32%">*@
+
+
+                  @*<img src="~/Content/Images/Maximaze.jpg" alt="Content folder"/>*@
+              @*</a>*@
+          </div>
+
+      </div>
+
+  </div>
+
+ 
+  <footer>
+          <hr/>
+          <p>&nbsp;&nbsp;&nbsp; © @DateTime.Now.Year <a href="http://suly.ca/fr/" style="color:#640000;text-decoration:none;">Suly Inc.</a> Tous&nbsp;droits réservés. </p>
+  </footer>
+  <script src="~/Scripts/jquery-3.0.0.js"></script>
+  <script src="~/Scripts/bootstrap.js"></script>
+  <script src="~/Scripts/bootstrap-datepicker.js"></script>
+       <script src="~/Scripts/locales/bootstrap-datepicker.fr.js"></script>
+      
+          @* <script src="~/Scripts/jquery.validate.js"></script>*@
+  
+   <script type="text/javascript">
+      $(document).ready(function () {
+          $(function () {
+              jQuery.event.handle = jQuery.event.dispatch;
+              $("#txMessage").text("");
+          });
+          
+          var url = window.location;
+         
+          
+          $('ul.nav li a').each(function () {
+           
+              if (this.href == url ) {
+                  $("ul.nav li").each(function () {
+                      if ($(this).hasClass("act")) {
+                          $(this).removeClass("act");
+                      }                    
+                  });
+                  
+                  if ($(this).parent().attr("id") == "#liVentePrivee" || $(this).parent().attr("id") == "#liAutreListe"
+                        || $(this).parent().attr("id") == "#liListesGenerees") {
+                      $(this).css("color", "#840102");
+                      $(this).parent().parent().siblings().css("color", "white");
+                      $(this).parent().parent().siblings().addClass("act");
+                  } else {
+                      $("#liVentePrivee").css("color", "#333333");
+                      $("#liAutreListe").css("color", "#333333");
+                      $("liListesGenerees").css("color", "#333333");
+                      $(this).parent().addClass('act');
+                      $(this).css("color", "white");
+                     
+                  }
+                  
+              }
+          });
+
+      });
+
+      //$(function() {
+      //    $('.li')
+      //        .click(function() {
+      //            $('.nav').find('.active').removeClass('active');
+      //            $('.nav li a')
+      //                .each(function() {
+      //                    $(this).addClass('active');
+      //                });
+      //        });
+      //});
+
+
+      $(function() {
+          $("#chatOffLineMaxBar")
+              .click(function () {
+                  $("#chatOffLineMax").attr("style", "display: none");
+                  $("#chatOffLineMin").attr("style", "visibility: visible");
+              });
+      });
+
+      $(function () {
+          $("#chatOffLine")
+              .click(function () {
+                  $("#chatOffLineMin").attr("style", "display: none");
+                  $("#chatOffLineMax").attr("style", "visibility: visible");
+              });
+      });
+      
+      $(function () {
+          $("#formSubmit").click(function () {
+              $.ajax({
+                  url: '@Url.Action("SendMessage", "Message")',
+                  type: 'GET',
+                  contentType: "application/json; charset=utf-8",
+                  data: { Message:$("#txMessage").val() },
+                    error: function () {
+                    },
+                    cache: false,
+                    success: function (result) {
+                        $('#chatText span')
+                            .text(result == "Ok"
+                                ? "Votre message a été envoyé avec success. Nous vous contacterons dès que possible. Vous pouvez nous envoyer un autre message. "
+                                : "Une erreur est survenue pendant l'envoi du message. Vous pouvez ressayer plus tard. Nous vous contacterons dès que possible.");
+                        $("#chatText").attr("style", "height: 65px;");
+                        if (result == "Ok")
+                        {
+                            $("#txMessage").val("Message envoyé");
+                        }                      
+                        $("#txMessage").attr("style", "height: 195px;");
+                        
+
+                    }
+                });
+            });
+      });
+
+
+  </script>
+
+ 
+  <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+ 
+
+
+@RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Compte", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+
+                      @*         <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Démos <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("LINQ", "Linq", "Demo")</li>
+                            <li>@Html.ActionLink("Erreur non gérée", "GeneratedError", "Demo")</li>
+                       
+                    </li>*@
+
+            <li class="dropdown" >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bonjour @Session["Nom"]<span class="caret"></span></a>
+
+                @*@Html.ActionLink("Bonjour " + Session["Nom"] + "!", null, null, new {@Href = "#", @class = "dropdown-toggle", data_toggle = "dropdown", role = "button", aria_expanded = "false"})*@
+                <ul  class="dropdown-menu " role="menu">
+                   
+                        <li ><a href="javascript:document.getElementById('logoutForm').submit()">Déconnexion</a></li>
+                    
+                </ul>
+            </li>
+       </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right" >
+        <li>@Html.ActionLink("Connectez-vous", "Connexion", "Compte", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

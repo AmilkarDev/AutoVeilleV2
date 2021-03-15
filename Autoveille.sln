@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autoveille", "Autoveille\Autoveille.csproj", "{CFD97B94-FE2A-4682-AF60-132188100677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoveilleDAL", "AutoveilleDAL\AutoveilleDAL.csproj", "{A85BD2BD-A4DD-429F-9E44-95B91D331483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outils", "Outils\Outils.csproj", "{423D7C49-9FCE-4E71-8D69-6F528863FBD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoveilleBL", "AutoveilleBL\AutoveilleBL.csproj", "{B2F57466-1C00-4612-8BCD-32DD3985FC7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{87774D30-CA09-4E9B-A187-AEFE30A6C082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoveilleSegmentation", "AutoveilleSegmentation\AutoveilleSegmentation.csproj", "{CFFA80FC-C930-4A30-A98A-D61BB4F7ADDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFD97B94-FE2A-4682-AF60-132188100677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD97B94-FE2A-4682-AF60-132188100677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD97B94-FE2A-4682-AF60-132188100677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD97B94-FE2A-4682-AF60-132188100677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A85BD2BD-A4DD-429F-9E44-95B91D331483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A85BD2BD-A4DD-429F-9E44-95B91D331483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A85BD2BD-A4DD-429F-9E44-95B91D331483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A85BD2BD-A4DD-429F-9E44-95B91D331483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423D7C49-9FCE-4E71-8D69-6F528863FBD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423D7C49-9FCE-4E71-8D69-6F528863FBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423D7C49-9FCE-4E71-8D69-6F528863FBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423D7C49-9FCE-4E71-8D69-6F528863FBD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2F57466-1C00-4612-8BCD-32DD3985FC7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2F57466-1C00-4612-8BCD-32DD3985FC7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2F57466-1C00-4612-8BCD-32DD3985FC7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2F57466-1C00-4612-8BCD-32DD3985FC7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87774D30-CA09-4E9B-A187-AEFE30A6C082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87774D30-CA09-4E9B-A187-AEFE30A6C082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87774D30-CA09-4E9B-A187-AEFE30A6C082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87774D30-CA09-4E9B-A187-AEFE30A6C082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFA80FC-C930-4A30-A98A-D61BB4F7ADDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFA80FC-C930-4A30-A98A-D61BB4F7ADDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFA80FC-C930-4A30-A98A-D61BB4F7ADDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFA80FC-C930-4A30-A98A-D61BB4F7ADDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB81840A-746C-416D-A1E5-D0C933997678}
+	EndGlobalSection
+EndGlobal

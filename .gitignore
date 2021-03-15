@@ -1,0 +1,10 @@
+Tools/obj/
+Outils/obj/
+AutoveilleBL/obj/
+AutoveilleDAL/obj/
+AutoveilleSegmentation/obj/
+Autoveille/bin/
+Autoveille/obj/
+Tools/bin/
+Outils/bin/
+.vs/

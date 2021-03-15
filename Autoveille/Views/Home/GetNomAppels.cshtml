@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Autoveille.TestingModels.NomAppel>
+
+<table class="table appelsTable" style="width:100%;">
+    @foreach (var item in Model)
+    {
+        <tr style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;">
+            <td>
+                    <img src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayClients()" role="button">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbrProspects) prospects
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbrRejoints) rejoints
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbrArejoindre) a rejoindre
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbrRDV) RDV
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbrDesactivee) desactivées
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbrRelances) relances futures
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbrLitiges) litiges
+            </td>
+        </tr>
+        <tr>
+            <td id="clients" colspan="9" style="display:none;">
+            </td>
+        </tr>
+    }
+
+</table>
+
+    <script>
+        function displayClients() {
+            $.ajax({
+                url: '/Home/GetClients',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('#clients').html(result);
+                    $('#clients').toggle();
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+    </script>
+    

@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+      
+    <title>autoveille</title>
+  </head>
+    
+  <body>
+    <header>
+        <div class="header">
+            <div class="row">
+                <div class="col-11 logo">
+                    <div class="row">
+                        <div class="col-9">
+                            <img src="images/AutoVeille_Hor.png" width="300" height="46" alt="logo">
+                        </div>
+                        <div class="col-3 utilisateur">
+                            <span>NOM UTILISATEUR</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="menuIconDiv">
+                        <img class="menuIcon" src="images/Burger_noir.png" alt="burger">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu hidden">
+            <nav class="navbar navbar-expand-lg">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Tableau de bord</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Rapports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Appels</a>
+                        </li>
+                    </ul>
+                    <ul class="form-inline my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Mon profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="infoBar row">
+            <div class="btn-group col">
+                <button type="button" class="dropdownBtn btn dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown">
+                    NOM CONCESSION
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                    <a class="dropdown-item" href="#">option</a>
+                    <a class="dropdown-item" href="#">option 1</a>
+                    <a class="dropdown-item" href="#">option 2</a>
+                </div>
+            </div>
+            <div class="btn-group col">
+                <button type="button" class="dropdownBtn btn dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown">
+                    NOM D'ÉVÉNEMENT
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                    <a class="dropdown-item" href="#">option</a>
+                    <a class="dropdown-item" href="#">option 1</a>
+                    <a class="dropdown-item" href="#">option 2</a>
+                </div>
+            </div>
+            <div class="col date">
+                <span>13 JANV @ 15 JANV 2021</span>
+            </div>
+            <div class="float-right evtCour">
+                ÉVÉNEMENT EN COURS
+            </div>
+        </div>
+    </header>
+      
+    <main>
+        <div class="row">
+            <div class="col-9">
+               <div class="prospects row col-12">
+                   <div class="col">
+                       <span>99</span> PROSPECTS TOTAL
+                   </div>
+                   <div class="col">
+                       <span>34</span> PROSPECTS REJOINTS
+                   </div>
+                   <div class="col">
+                       <span>65</span> PROSPECTS À REJOINDRE
+                   </div>
+               </div>
+               <div>
+                    <div class="optionsCampagne col-12">
+                        <div class="row">
+                            <div class="btnPLus col-1">
+                                <img src="images/Plus.png" alt="plus"> 
+                            </div>
+                            <div class="col-2">
+                                FINANCEMENT ÉQUITÉ
+                            </div>
+                            <div class="col">
+                                10 prospects
+                            </div>
+                            <div class="col">
+                                4 rejoint
+                            </div>
+                            <div class="col">
+                                7 à rejoindre
+                            </div>
+                            <div class="col">
+                                2 RDV
+                            </div>
+                            <div class="col">
+                                0 désactivés
+                            </div>
+                            <div class="col">
+                                0 relance future
+                            </div>
+                            <div class="col">
+                                0 litiges
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clientsTab table-responsive hidden col-16">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Client/prospect</th>
+                                    <th>Vehicule actuel</th>
+                                    <th>Fin de terme</th>
+                                    <th>Téléphone 1</th>
+                                    <th>Téléphone 2</th>
+                                    <th>Tél. mobile</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="clientSelect unselected">
+                                    <th scope="row" class="clientId">1</th>
+                                    <td>Denis Tardif</td>
+                                    <td>FORD F-150 2018</td>
+                                    <td>12-12-2021</td>
+                                    <td>514 123-4567 <img class="float-right" src="images/Check-grey.png" alt="expand"></td>
+                                    <td><img class="float-right" src="images/Call-grey.png" alt="expand"></td>
+                                    <td>555 234-5678 <img class="float-right" src="images/Call-green.png" alt="expand"></td>
+                                    <td class="expand"><img src="images/Expand-green.png" alt="expand"></td>
+                                </tr>
+                                <tr class="clientSelect unselected">
+                                    <th scope="row" class="clientId">2</th>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td class="expand"><img src="images/Expand-grey.png" alt="expand"></td>
+                                </tr>
+                                <tr class="clientSelect unselected">
+                                    <th scope="row" class="clientId">3</th>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td class="expand"><img src="images/Expand-green.png" alt="expand"></td>
+                                </tr>
+                                <tr class="clientSelect unselected">
+                                    <th scope="row" class="clientId">4</th>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td>exemple</td>
+                                    <td class="expand"><img src="images/Expand-grey.png" alt="expand"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="optionsCampagne col-12">
+                          <div class="row">
+                            <div class="btnPLus col-1">
+                                <img src="images/Plus.png" alt="plus">
+                            </div>
+                            <div class="col-2">
+                                CAMPAGNE CONQUÉTE
+                            </div>
+                            <div class="col">
+                                9 prospects
+                            </div>
+                            <div class="col">
+                                0 rejoint
+                            </div>
+                            <div class="col">
+                                9 à rejoindre
+                            </div>
+                            <div class="col">
+                                0 RDV
+                            </div>
+                            <div class="col">
+                                0 désactivés
+                            </div>
+                            <div class="col">
+                                0 relance future
+                            </div>
+                            <div class="col">
+                                0 litiges
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clientsTab table-responsive hidden col-16"></div>
+                    <div class="optionsCampagne col-12">
+                          <div class="row">
+                            <div class="btnPLus col-1">
+                                <img src="images/Plus.png" alt="plus">
+                            </div>
+                            <div class="col-2">
+                                INVITATION VP
+                            </div>
+                            <div class="col">
+                                33 prospects
+                            </div>
+                            <div class="col">
+                                16 rejoint
+                            </div>
+                            <div class="col">
+                                17 à rejoindre
+                            </div>
+                            <div class="col">
+                                5 RDV
+                            </div>
+                            <div class="col">
+                                0 désactivés
+                            </div>
+                            <div class="col">
+                                3 relance future
+                            </div>
+                            <div class="col">
+                                1 litiges
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clientsTab table-responsive hidden col-16"></div>
+                    <div class="optionsCampagne col-12">
+                          <div class="row">
+                            <div class="btnPLus col-1">
+                                <img src="images/Plus.png" alt="plus">
+                            </div>
+                            <div class="col-2">
+                                RDV SERVICE
+                            </div>
+                            <div class="col">
+                                27 prospects
+                            </div>
+                            <div class="col">
+                                14 rejoint
+                            </div>
+                            <div class="col">
+                                13 à rejoindre
+                            </div>
+                            <div class="col">
+                                4 RDV
+                            </div>
+                            <div class="col">
+                                3 désactivés
+                            </div>
+                            <div class="col">
+                                7 relance future
+                            </div>
+                            <div class="col">
+                                0 litiges
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clientsTab table-responsive hidden col-16"></div>
+                    <div class="optionsCampagne col-12">
+                          <div class="row">
+                            <div class="btnPLus col-1">
+                                <img src="images/Plus.png" alt="plus">
+                            </div>
+                            <div class="col-2">
+                                WALK-OUT
+                            </div>
+                            <div class="col">
+                                19 prospects
+                            </div>
+                            <div class="col">
+                                0 rejoint
+                            </div>
+                            <div class="col">
+                                19 à rejoindre
+                            </div>
+                            <div class="col">
+                                0 RDV
+                            </div>
+                            <div class="col">
+                                0 désactivés
+                            </div>
+                            <div class="col">
+                                0 relance future
+                            </div>
+                            <div class="col">
+                                0 litiges
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clientsTab table-responsive hidden col-16"></div>
+                </div>
+            </div>
+            <!-- Optional JavaScript -->
+            <div class="details hidden col-3">
+                    <div class="row">
+                         <div class="col"><span></span><img src="images/Expand-green.png" alt="expend"></div>
+                         <div class="col-8"><span>Ouvrir une fiche de travail</span></div>
+                        <div class="col"><img src="images/Edit.png" alt="edit"></div>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">CLIENT/POSPECT:</span>
+                         <span class="col-12">JEAN-FRANÇOIS PAIEMENT</span>
+                    </div>
+                    <div class="row" >
+                         <span class="col-12">COMPAGNIE: </span>
+                         <span class="col-12">SULY INC.</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">LANGUE : FRANÇAIS</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">COURRIEL: JF@SULY.CA</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">VILLE: UNEVILLE</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">NO. CLIENT : 999999</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">VÉHICULE ACTUEL :</span>
+                         <span class="col-12">BMW X6 2020</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">NIV.: KMHTC6AE0EU193960</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">TYPE D'ACHAT: LOCATION</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">DATE D'ACHAT : 21-11-2019</span>
+                         <span class="col-12">TERME: 48 MOIS</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">VALEUR DU VÉHICULE : 20 000 $</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">VÉHICULE DÉSIRÉ :</span>
+                         <span class="col-12">FORD FIESTA</span>
+                    </div>
+                    <div class="row">
+                         <span class="col-12">NOTES D'APPELS PRÉCÉDENTS :</span>
+                    </div>
+                    <div class="row">
+                         <div class="col-12">
+                             <textarea disabled id="notes" name="notes" rows="4" cols="50">27 novembre 2019 
+Pas intérressé à changer de véhicule. Pas le temps de passer durant l'événement.
+2 mars 2019
+Tannée de son véhicule. rende z-vous prix.
+14 septembre 2018
+                             </textarea>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        
+        <div>
+            <button type="button" class="prospectBtn">AJOUTER UN PROSPECT</button>
+        </div>
+    </main>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
