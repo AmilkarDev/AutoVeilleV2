@@ -3,7 +3,9 @@ Outils/obj/
 AutoveilleBL/obj/
 AutoveilleDAL/obj/
 AutoveilleSegmentation/obj/
+AutoveilleSegmentation/bin/
 Autoveille/bin/
+AutoveilleDAL/bin/
 Autoveille/obj/
 Tools/bin/
 Outils/bin/
