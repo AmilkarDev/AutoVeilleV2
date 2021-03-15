@@ -6,41 +6,35 @@
     <title>@ViewBag.Title - AutoVeille Technologies</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-
+    <link href="~/Content/css/Layout.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
     <style>
-/*        .downMenu{
-            vertical-align:middle;
-            padding-bottom:10px;
-        }*/
-        .downMenu ul
-        {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: white ;
-        }
-
-        li {
-            float: left;
-        }
-
-            li a {
-                display: block;
-                color: #333333;
-                text-align: center;
-                margin-top: 15px;
-                text-decoration: none;
+            .downMenu {
+                text-align:right;
+                margin-right:55px;
             }
-
-        li a:hover {
-                    font-size:medium;
-                    font-weight:bold;
+        .downMenu li {
+            display: inline;
+            color: black;
         }
-        
-        
+
+        .downMenu li a {
+            color: black;
+        }
+
+
+        .downMenu li a:hover {
+            font-size: medium;
+            font-weight: bold;
+        }
+        #eventDiv  {
+            margin-right:35px;
+            text-align:center;
+            font-size:15px;
+            font-family:Arial;
+            font-stretch:extra-expanded;
+        }
     </style>
 </head>
 <body>
@@ -49,10 +43,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#" style="vertical-align:central;">
             <img src="~/Content/Images/Layout/AutoVeille_Hor.png" height="40" width="300" />
-
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" ></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto" style="vertical-align:central;">
@@ -63,7 +56,7 @@
                     <a class="nav-link" href="#">Nom d'utilisateur | </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link"  onclick="displayMenu()">
                         <i class="fas fa-bars"></i>
                     </a>
                 </li>
@@ -72,21 +65,21 @@
     </nav>
 
 
-    <div class="downMenu" style="width:100%">
-        <ul>
-            <li style="width:20%">
+    <div id="menu" style="display:none;">
+        <ul class="downMenu">
+            <li>
                 <a href="#">Tableau de Bord <span class="sr-only">(current)</span></a> |
             </li>
-            <li style="width:20%">
-                <a href="#">Rappel </a>
+            <li>
+                <a href="#">Rappel </a>  |
             </li>
-            <li style="width:20%">
-                <a href="#"> Gestionnaire d'appels</a>
+            <li>
+                <a href="#"> Gestionnaire d'appels</a> |
             </li>
-            <li style="width:20%">
-                <a href="#"> Gestionnaire de rendez vous</a>
+            <li>
+                <a href="#"> Gestionnaire de rendez vous</a> |
             </li>
-            <li style="width:20%">
+            <li>
                 <a href="#"> Fermer la session</a>
             </li>
         </ul>
@@ -110,5 +103,12 @@
     @RenderSection("scripts", required: false)
 
 
-</body>
-</html>
+        <script type="text/javascript">
+
+            function displayMenu() {
+                $('#menu').toggle();
+            }
+        </script>
+       
+</body >
+</html >

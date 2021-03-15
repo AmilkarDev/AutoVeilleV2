@@ -1,16 +1,11 @@
 ﻿@model IEnumerable<Autoveille.TestingModels.NomAppel>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-<table class="table">
+<table class="table appelsTable" style="width:100%;">
     @foreach (var item in Model)
     {
-        <tr style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;padding-right:50px">
+        <tr style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;">
             <td>
-                <button onclick="displayClients()">
-                    <img src="~/Content/Images/Plus.png" width="30" height="30" alt="Plus button Logo">
-                </button>
+                    <img src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayClients()" role="button">
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nom)
@@ -44,23 +39,22 @@
     }
 
 </table>
-<script>
-    function displayClients() {
-        console.log('bbbbb');
-        $.ajax({
-            url: '/Home/GetClients',
-            contentType: 'application/html; charset=utf-8',
-            type: 'GET',
-            dataType: 'html',
-            success: function (result) {
 
-                //$('#clients').css("visibility","visible");
-                $('#clients').html(result);
-                $('#clients').toggle();
-            },
-            error: function (xhr, status) {
-                alert(status);
-            }
-        });
-    }
-</script>
+    <script>
+        function displayClients() {
+            $.ajax({
+                url: '/Home/GetClients',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('#clients').html(result);
+                    $('#clients').toggle();
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+    </script>
+    

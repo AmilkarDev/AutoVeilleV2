@@ -54,30 +54,37 @@
                 @Html.DisplayFor(modelItem => item.Mobile)
             </td>
             <td>
-                <button onclick="displayClientDetails()">
-                    <img src="~/Content/Images/Expand-green.png" alt="expand" />
-                </button>
+                @*<button onclick="displayClientDetails()">*@
+                    <img src="~/Content/Images/Layout/Expand-green.png" alt="expand" role="button" onclick="displayClientDetails()"/>
+                @*</button>*@
 
             </td>
         </tr>
     }
 
 </table>
-<script>
-    function displayClientDetails() {
-        $.ajax({
-            url: '/Home/GetFicheClient',
-            contentType: 'application/html; charset=utf-8',
-            type: 'GET',
-            dataType: 'html',
-            success: function (result) {
-                //$('#clients').css("visibility","visible");
-                $('#dvClientDetails').html(result);
-               // $('#clients').toggle();
-            },
-            error: function (xhr, status) {
-                alert(status);
-            }
-        });
-    }
-</script>
+
+    <script>
+        function displayClientDetails() {
+            $.ajax({
+                url: '/Home/GetFicheClient',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    //$('#clients').css("visibility","visible");
+                    $('#dvClientDetails').html(result);
+                    var details = document.getElementById('detailsClient');
+
+                    $("#leftContent").css('width', '75%');
+                    $("#detailsClient").appendTo("#innerContent");
+                    $('#detailsClient').html(result);
+                    $('#detailsClient').toggle();
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+    </script>
+    
