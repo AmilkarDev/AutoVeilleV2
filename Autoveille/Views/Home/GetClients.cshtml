@@ -54,10 +54,7 @@
                 @Html.DisplayFor(modelItem => item.Mobile)
             </td>
             <td>
-                @*<button onclick="displayClientDetails()">*@
-                    <img src="~/Content/Images/Layout/Expand-green.png" alt="expand" role="button" onclick="displayClientDetails()"/>
-                @*</button>*@
-
+                <img src="~/Content/Images/Layout/Expand-green.png" alt="expand" role="button" onclick="displayClientDetails(@item.ClientId)"/>
             </td>
         </tr>
     }
@@ -65,26 +62,37 @@
 </table>
 
     <script>
-        function displayClientDetails() {
-            $.ajax({
-                url: '/Home/GetFicheClient',
-                contentType: 'application/html; charset=utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) {
-                    //$('#clients').css("visibility","visible");
-                    $('#dvClientDetails').html(result);
-                    var details = document.getElementById('detailsClient');
+        var currentClientId;
+        function displayClientDetails(clientId) {
+            
+            if (currentClientId && currentClientId == clientId) {
+                //console.log("if : " + currentClientId);
+                currentClientId = null;
+                $('#detailsClient').css('visibility', 'hidden');
+                $("#leftContent").css('width', '100%');
+            }
+            else {
+                
+                currentClientId = clientId;
+                //console.log("else : " + currentClientId);
 
-                    $("#leftContent").css('width', '75%');
-                    $("#detailsClient").appendTo("#innerContent");
-                    $('#detailsClient').html(result);
-                    $('#detailsClient').toggle();
-                },
-                error: function (xhr, status) {
-                    alert(status);
-                }
-            });
+                $.ajax({
+                    url: '/Home/GetFicheClient',
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (result) {
+                        $('#dvClientDetails').html(result);
+                        $("#leftContent").css('width', '75%');
+                        $("#detailsClient").appendTo("#innerContent");
+                        $('#detailsClient').html(result);
+                        $('#detailsClient').css('visibility', 'visible');
+                    },
+                    error: function (xhr, status) {
+                        alert(status);
+                    }
+                });
+            }            
         }
     </script>
     

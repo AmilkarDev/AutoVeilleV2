@@ -2,20 +2,37 @@
 @{
     ViewBag.Title = "InfoConcession";
 }
-<div id="eventDiv" class="alert alert-heading" style="height:60px;font-weight:bold;background-color:white;">
+<div id="eventDiv" class="alert alert-heading" style="height:60px;font-weight:bold;background-color:white;border-top:1px solid;border-right:1px solid;">
     <div style="float:left;">
-        <p style="color:black;font-stretch:expanded;font-size:25px;font-weight:normal;">EVENEMENT
+        <p style="color:black;font-stretch:expanded;font-size:25px;font-weight:normal;">
+            EVENEMENT
             <span style="font:bold;font-size:25px;font-weight:bold;"> A VENIR </span>
         </p>
     </div>
-    <div class="input-group" style="float:right;width:25%;">
-        <button type="button" class="btn btn-primary" style="background-color:white;color:black;">
-            <i class="fas fa-search"></i>
-        </button>
-        <div class="form-inline">
-            <input type="search" id="searchInput" class="form-control" placeholder="Recherche par nom"/>
+    
+        <div  style="float:right;width:25%">
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <span class="input-group-text search-icon" id="basic-addon2">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+                <input id="SearchTerm" type="text" class="form-control" placeholder="Search"
+                       aria-label="Search" aria-describedby="basic-addon2">
+
+                <div class="dropdown-menu suggestions" hidden>
+                </div>
+            </div>
         </div>
-    </div>
+    
+    @*<div class="input-group" style="float:right;width:25%;">
+            <button type="button" class="btn btn-primary" style="background-color:white;color:black;">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="form-inline">
+                <input type="search" id="searchInput" class="form-control" placeholder="Recherche par nom"/>
+            </div>
+        </div>*@
 </div>
     <div class="alert alert-dark" style="height:60px;font-weight:bold;background-color:black">
         <p style="float:left;color:white;font-weight:bold;">NOM CONCESSIONNAIRE</p>
@@ -35,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="detailsClient" style="width:25%;display:none;float:right;margin:0;padding-left:30px;font-size:20px;">
+    <div id="detailsClient" style="visibility:hidden;width:25%;float:right;margin:0;padding-left:30px;font-size:20px;">
 
     </div>
     <div style="clear: both;"> </div>

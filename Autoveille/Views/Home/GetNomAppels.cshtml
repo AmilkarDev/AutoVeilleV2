@@ -3,9 +3,12 @@
 <table class="table appelsTable" style="width:100%;">
     @foreach (var item in Model)
     {
-        <tr style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;">
+        var rowId = "row" + item.Id;
+        var clientsId = "clients" + item.Id;
+        var imgId = "img" + item.Id;
+        <tr id="@rowId" style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;">
             <td>
-                    <img src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayClients()" role="button">
+                <img id="@imgId" src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayClients(@item.Id)" role="button">
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nom)
@@ -33,7 +36,7 @@
             </td>
         </tr>
         <tr>
-            <td id="clients" colspan="9" style="display:none;">
+            <td id="@clientsId" colspan="9" style="display:none;">
             </td>
         </tr>
     }
@@ -41,20 +44,32 @@
 </table>
 
     <script>
-        function displayClients() {
+        function displayClients(CampaignId) {
             $.ajax({
                 url: '/Home/GetClients',
                 contentType: 'application/html; charset=utf-8',
                 type: 'GET',
                 dataType: 'html',
                 success: function (result) {
-                    $('#clients').html(result);
-                    $('#clients').toggle();
+                    var clientsId = "clients" + CampaignId;
+                    var imgId = "img" + CampaignId;
+                    $('#' + clientsId).html(result);
+                    $('#' + clientsId).toggle();
+                    $('#' + imgId).attr('onclick', 'hideClients(' + CampaignId + ')');
+                    $('#' + imgId).attr('src', '/Content/Images/Layout/Moins.png');
                 },
                 error: function (xhr, status) {
                     alert(status);
                 }
             });
+        }
+
+        function hideClients(CampaignId) {
+            var clientsId = "clients" + CampaignId;
+            var imgId = "img" + CampaignId;
+            $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');
+            $('#' + imgId).attr('src', '/Content/Images/Layout/Plus.png');
+            $('#' + clientsId).toggle();
         }
     </script>
     
