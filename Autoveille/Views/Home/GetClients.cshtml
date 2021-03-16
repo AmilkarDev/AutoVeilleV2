@@ -3,9 +3,8 @@
 <table class="table">
     <tr style="color:white;background-color:black;height:40px;">
         <th>
-            @Html.DisplayNameFor(model => model.ClientId)
+            
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.NomClient)
         </th>
@@ -31,8 +30,8 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
+        <tr style="height:15px;">
+            <td class="clientId">
                 @Html.DisplayFor(modelItem => item.ClientId)
             </td>
             <td>
@@ -46,9 +45,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phone1)
+                <img id="callImg" src="~/Content/Images/Layout/Call-green.png" width="30" height="30" alt="Call Green">
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phone2)
+                <img id="callImg" src="~/Content/Images/Layout/Call-grey.png" width="30" height="30" alt="Call Grey">
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Mobile)

@@ -198,6 +198,10 @@
     <Content Include="Content\Images\glyphicons-41-stats.png" />
     <Content Include="Content\Images\inLogo_2016.png" />
     <Content Include="Content\Images\Layout\AutoVeille_Hor.png" />
+    <Content Include="Content\Images\Layout\Call-green.png" />
+    <Content Include="Content\Images\Layout\Call-grey.png" />
+    <Content Include="Content\Images\Layout\Check-blue.png" />
+    <Content Include="Content\Images\Layout\Check-grey.png" />
     <Content Include="Content\Images\Layout\Expand-green.png" />
     <Content Include="Content\Images\Layout\Expand-grey.png" />
     <Content Include="Content\Images\Layout\Moins.png" />
