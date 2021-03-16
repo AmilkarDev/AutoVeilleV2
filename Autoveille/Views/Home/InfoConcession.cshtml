@@ -2,15 +2,15 @@
 @{
     ViewBag.Title = "InfoConcession";
 }
-<div id="eventDiv" class="alert alert-heading" style="height:60px;font-weight:bold;background-color:white;border-top:1px solid;border-right:1px solid;">
+<div id="eventDiv" class="alert alert-heading">
     <div style="float:left;">
-        <p style="color:black;font-stretch:expanded;font-size:25px;font-weight:normal;">
+        <p id="eventText">
             EVENEMENT
-            <span style="font:bold;font-size:25px;font-weight:bold;"> A VENIR </span>
+            <span id="eventState"> A VENIR </span>
         </p>
     </div>
     
-        <div  style="float:right;width:25%">
+        <div id="searchInput">
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text search-icon" id="basic-addon2">
@@ -34,17 +34,17 @@
             </div>
         </div>*@
 </div>
-<div style="padding:15px;">
-    <div class="alert alert-dark" style="height:60px;font-weight:bold;background-color:black">
-        <p style="float:left;color:white;font-weight:bold;">NOM CONCESSIONNAIRE</p>
-        <p style="float:right;color:white;font-weight:bold;">12 AVRIL AU 15 AVRIL 2021</p>
+<div id="mainDiv">
+    <div class="alert alert-dark" id="filterDiv">
+        <p style="float:left;">NOM CONCESSIONNAIRE</p>
+        <p style="float:right;">12 AVRIL AU 15 AVRIL 2021</p>
     </div>
-    <div id="innerContent" style="width:100%">
-        <div id="leftContent" style="float:left;padding-left:15px;padding-right:15px;width:100%">
-            <div class="alert alert-dark row" style="height:60px;font-weight:bold;background-color:white;margin-top:-15px;margin-left:0px;margin-right:0px;">
-                <p class="col-md-4" style="float: left; color: black; font-weight: bold;">PROSPECTS TOTAL</p>
-                <p class="col-md-4" style="text-align:center;color:black;font-weight:bold;">PROSPECTS REJOINTS</p>
-                <p class="col-md-4 pull-right" style="text-align:right;float: right; color: black; font-weight: bold;">PROSPECTS A REJOINDRE</p>
+    <div id="innerContent">
+        <div id="leftContent">
+            <div class="alert alert-dark row" id="prospects">
+                <p class="col-md-4" id="prospectsText" style="float: left; ">PROSPECTS TOTAL</p>
+                <p class="col-md-4" id="prospectsText" style="text-align:center;">PROSPECTS REJOINTS</p>
+                <p class="col-md-4 pull-right" id="prospectsText" style="text-align:right;float: right;">PROSPECTS A REJOINDRE</p>
             </div>
 
 
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="detailsClient" style="visibility:hidden;width:25%;float:right;margin:0;padding-left:30px;font-size:20px;">
+    <div id="detailsClient">
 
     </div>
     <div style="clear: both;"> </div>
