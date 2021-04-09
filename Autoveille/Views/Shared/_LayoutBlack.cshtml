@@ -5,42 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - AutoVeille Technologies</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js" />
     <script src="~/Scripts/Chart.roundedBarCharts.min.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/css/Layout.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/LayoutBlack.css" rel="stylesheet" />
+    <link href="~/Content/css/Dashboard.css" rel="stylesheet" />
+    <script src="~/Scripts/flip.min.js"></script>
+    <link href="~/Content/flip.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <style>
-        .downMenu {
-                text-align:right;
-                margin-right:55px;
-        }
+        /*.downMenu {
+            text-align: right;
+            margin-right: 55px;
+        }*/
+
         .downMenu li {
             display: inline;
-            color: black;
+            color: white;
         }
 
         .downMenu li a {
-            color: black;
+            color: white;
         }
-
 
         .downMenu li a:hover {
-            font-size: medium;
+            font-size: 25px;
             font-weight: bold;
+            color: #fbd72b;
         }
-        #eventDiv  {
-            margin-right:35px;
-            text-align:center;
-            font-size:15px;
-            font-family:Arial;
-            font-stretch:extra-expanded;
+
+        #eventDiv {
+            margin-right: 35px;
+            text-align: center;
+            font-size: 15px;
+            font-family: Arial;
+            font-stretch: extra-expanded;
         }
 
         .clientId {
             color: #fbbb29;
             font-size: 20px;
-            font-weight:bold;
+            font-weight: bold;
         }
 
         .clientsTableHeader {
@@ -48,12 +56,14 @@
             background-color: black;
             height: 40px;
         }
-        .clientsTable th{
-            text-align:center;
+
+        .clientsTable th {
+            text-align: center;
         }
-        .clientsTable td{
-            padding :0;
-            text-align:center;
+
+        .clientsTable td {
+            padding: 0;
+            text-align: center;
         }
     </style>
 </head>
@@ -65,10 +75,10 @@
             <img src="~/Content/Images/Layout/AutoVeille_Hor.png" height="40" width="300" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" ></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto" style="vertical-align:central;">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">English <span class="sr-only">(current)</span></a>
                 </li>
@@ -76,7 +86,7 @@
                     <a class="nav-link" href="~/Home/dashboard/">Nom d'utilisateur  </a>
                 </li>
                 <li class="nav-item" id="hamIcon" style="border-left-width:0px;border-left-style: none;padding-bottom:16px;">
-                    <a class="nav-link"  onclick="displayMenu()">
+                    <a class="nav-link" onclick="displayMenu()">
                         <i class="fas fa-bars"></i>
                     </a>
                 </li>
@@ -85,29 +95,30 @@
     </nav>
 
 
-    <div id="menu" style="display:none;">
-        <ul class="downMenu" style="border-top: 1px solid; padding-top: 10px;margin-right:46px;">
+    <div id="menu" class="row">
+        <ul class="downMenu" style=" padding-top: 10px;">
             <li>
-                <a href="#">Tableau de Bord <span class="sr-only">(current)</span></a> |
+                <a href="Dashboard">Tableau de Bord <span class="sr-only">(current)</span></a>
             </li>
             <li>
-                <a href="#">Rappel </a>  |
+                <a href="#">Rappel </a>
             </li>
             <li>
-                <a href="#"> Gestionnaire d'appels</a> |
+                <a href="InfoConcession/10"> Gestionnaire d'appels</a>
             </li>
             <li>
-                <a href="#"> Gestionnaire de rendez vous</a> |
+                <a href="#"> Gestionnaire de rendez vous</a>
             </li>
-            <li>
-                <a href="#"> Fermer la session</a>
+            <li style="float:right;margin-right:-15px;">
+                <a href="#"> Fermer la session  X</a>
             </li>
         </ul>
+
     </div>
 
 
 
-    <div class="body-content">
+    <div class="">
         @RenderBody()
         <hr />
         <footer>
@@ -115,35 +126,34 @@
         </footer>
     </div>
 
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
+
     <script src="~/Scripts/jquery-3.5.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     @RenderSection("scripts", required: false)
 
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 
-            function displayMenu() {
-                var border = $('#hamIcon').css("border-left-width");
-                if (border == "0px") {
-                    
-                    $('#hamIcon').css("border-left-width", "1px");
-                    $('#hamIcon').css("border-left-style", "solid");
+        function displayMenu() {
+            var border = $('#hamIcon').css("border-left-width");
+            if (border == "0px") {
 
-                    $('#eventDiv').css("border-top-width", "0px");
-                    $('#eventDiv').css("border-right-width", "0px");
-                }
-                else {
-                    $('#hamIcon').css("border-left-style", "none");
-                    $('#hamIcon').css("border-left-width", "0px");
-                    $('#eventDiv').css("border-top-width", "1px");
-                    $('#eventDiv').css("border-right-width", "1px");
-                }
-                $('#menu').toggle();
+                $('#hamIcon').css("border-left-width", "1px");
+                $('#hamIcon').css("border-left-style", "solid");
+
+                $('#eventDiv').css("border-top-width", "0px");
+                $('#eventDiv').css("border-right-width", "0px");
             }
-        </script>
-       
-</body >
-</html >
+            else {
+                $('#hamIcon').css("border-left-style", "none");
+                $('#hamIcon').css("border-left-width", "0px");
+                $('#eventDiv').css("border-top-width", "1px");
+                $('#eventDiv').css("border-right-width", "1px");
+            }
+            $('#menu').toggle();
+        }
+    </script>
+
+</body>
+</html>

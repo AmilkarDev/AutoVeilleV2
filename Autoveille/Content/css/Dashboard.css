@@ -1,0 +1,501 @@
+﻿.tick {
+    background-color: black;
+    height:250px;
+    
+}
+
+.tick-flip, .tick-text-inline {
+    font-size: 5em;
+    margin-top: 35px;
+}
+
+.tick-label {
+    margin-top: 1em;
+    font-size: 1em;
+}
+
+.tick-char {
+    width: 1.5em;
+}
+
+.tick-text-inline {
+    display: inline-block;
+    text-align: center;
+    min-width: 1em;
+}
+
+.tick-text-inline + .tick-text-inline {
+    margin-left: -.325em;
+}
+
+.tick-group {
+    margin: 0 .5em;
+    text-align: center;
+}
+
+
+
+
+
+.tick-text-inline {
+    color: white !important;
+}
+
+.tick-label {
+    color: white !important;
+}
+
+.tick-flip-panel {
+    color: #fff !important;
+}
+
+.tick-flip {
+    font-family: Roboto !important;
+}
+
+.tick-flip-panel-text-wrapper {
+    line-height: 1.45 !important;
+}
+
+.tick-flip-panel {
+    background-color: #E7183C !important;
+}
+
+.tick-flip {
+    border-radius: 0.12em !important;
+}
+
+.tick-flip-shadow {
+    box-shadow: 0 0 1em red !important;
+}
+
+
+.mainRow{
+    width:100%;
+}
+
+
+
+
+#eventDiv {
+    height: 40px;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+    margin-right: 15px;
+    margin-left: 35px;
+    vertical-align: middle;
+}
+
+.eventText {
+    color: black;
+    font-stretch: expanded;
+    font-size: 25px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+#eventState {
+    font: bold;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.mainSecondColumn {
+    width: 50%;
+    height: 800px;
+    float: right;
+    margin-left: 35px;
+    width: 710px;
+}
+
+
+#calendar-Label {
+    color: #E7183C;
+    font-size: 25px;
+    font-family: Roboto;
+    margin-left: 15px;
+}
+
+.text {
+    color: green;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.number {
+    font-size: 130px;
+    font-weight: bold;
+    color: white;
+}
+
+.circlee {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -250px;
+}
+
+
+.stats {
+    margin-top: 15px;
+    display: inline;
+}
+
+#content {
+    margin-top: 10px;
+    display: flex;
+    float: right;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: black;
+}
+
+#canvaContent {
+    /*font-size: 100px;
+    font-weight: bold;*/
+    height:55px;
+    width :55px;
+}
+
+
+.flip-date {
+    padding: 25px;
+    background-color: black;
+    border-radius: 20px;
+    width: 710px;
+    height: 420px;
+}
+
+.flip-date-inside {
+    padding: 25px;
+    height: 420px;
+}
+
+.flip-date-container {
+
+    background-color: black;
+    border-radius: 20px;
+    width: 710px;
+    /*background-color: black;
+    border-radius: 20px;
+    width: 710px;*/
+}
+
+body {
+    background-color: grey !important;
+}
+
+/*@media only screen and (max-width: 1400px) {
+
+    .flip-date {
+        width : auto;
+        margin-right:35px;
+    }
+}*/
+
+
+/*@media only screen and (max-width: 768px) {
+    .tick-flip, .tick-text-inline {
+        font-size: 3em;
+        margin-top: 10px;
+    }
+}*/
+
+@media only screen and (max-width: 1500px) {
+    .tick-flip, .tick-text-inline {
+        font-size: 4em;
+    }
+
+    .number {
+        font-size: 55px;
+    }
+
+    .text {
+        font-size: 30px;
+        font-weight: bolder;
+    }
+
+    .flip-date {
+        width: 600px;
+        justify-content: center;
+        vertical-align: middle;
+    }
+
+    .stats {
+        vertical-align: middle;
+        justify-content: center;
+        overflow-wrap: normal;
+    }
+
+    #content {
+        width: 200px;
+    }
+
+    .circlee {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+
+    #canvaContent {
+        position: absolute;
+        margin-top: -50px;
+    }
+
+    img#radarImg {
+        width: 350px;
+        height: 350px;
+        position: absolute;
+        /*margin-left: 15px;*/
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+
+    .flip-date-container {
+        width: 600px;
+        margin-left :-15px;
+    }
+}
+
+
+
+@media only screen and (max-width: 1250px) {
+    .tick-flip, .tick-text-inline {
+        font-size: 2em;
+    }
+
+    .number {
+        font-size: 55px;
+    }
+
+    .text {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .flip-date {
+        width: 460px;
+        justify-content: center;
+        vertical-align: middle;
+    }
+
+    .stats {
+        vertical-align: middle;
+        justify-content: center;
+        overflow-wrap: normal;
+    }
+
+    #content {
+        width: 200px;
+    }
+
+    .circlee {
+        width: 350px;
+        height: 350px;
+        position: absolute;
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+
+    #canvaContent {
+        position: absolute;
+        margin-top: -50px;
+    }
+
+    img#radarImg {
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        /*margin-left: 15px;*/
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+
+    .flip-date-container {
+        width: 460px;
+        margin-left: -15px;
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .tick-flip, .tick-text-inline {
+        font-size: 2em;
+    }
+    .number {
+        font-size: 55px;
+    }
+
+    .text {
+        font-size : 20px;
+        font-weight : bold;
+    }
+    .flip-date {
+        width: 400px;
+        justify-content:center;
+        vertical-align:middle;
+    }
+    .stats{
+        vertical-align:middle;
+        justify-content:center;
+        overflow-wrap:normal;
+    }
+    #content {
+        width: 200px;
+    }
+
+    .circlee {
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+
+    #canvaContent {
+        position: absolute;
+        margin-top: -50px;
+    }
+
+    img#radarImg {
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        /*margin-left: 15px;*/
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+
+    .flip-date-container{
+        width : 400px;
+    }
+}
+
+
+
+
+
+@media only screen and (max-width: 770px) {
+    .number {
+        font-size: 45px;
+    }
+
+    .stats{
+        text-align:center;
+    }
+
+    .flip-date {
+        width: auto;
+    }
+    .flip-date-container {
+        width: auto;
+    }
+
+    /*#content {
+        margin-left: 50%;
+        margin-right: 50%;
+    }*/
+
+    img#radarImg {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        /*margin-left: 15px;*/
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+    .flip-date-inside#content{
+        margin-left:0px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .mainRow {
+        margin-top:100px;
+    }
+    .mainSecondColumn{
+        margin-top:10px;
+    }
+    .tick-flip, .tick-text-inline {
+        font-size: 2em;
+    }
+    
+    .flip-date {
+        width: auto;
+    }
+    .flip-date-container {
+        width: auto;
+        
+        margin-left:-15px;
+        background-color:black;
+        border-radius : 20px;
+    }
+    #content {
+        width: 200px;
+    }
+
+    .circlee {
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+
+    #canvaContent {
+
+        position: absolute;
+        margin-top: -50px;
+    }
+
+    .stats {
+        text-align: center;
+    }
+
+    #content {
+        margin-left: 50%;
+        margin-right: 50%;
+    }
+
+    img#radarImg {
+        width: 250px;
+        height: 250px;
+        position:absolute;
+        /*margin-left: 15px;*/
+        margin-top: -50px;
+        margin-left: 0px;
+        top: auto;
+        left: auto;
+        float: left;
+    }
+}

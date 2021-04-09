@@ -11,7 +11,10 @@ namespace Autoveille.Controllers
     {
         //
         // GET: /Home/
-
+        public ActionResult newDashboard()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             if (Session["Commerces"] == null)
@@ -32,6 +35,11 @@ namespace Autoveille.Controllers
             return Json(commerces, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Dashboard()
+        {
+
+            return View();
+        }
         public ActionResult InfoConcession(int aNoCommerce)
         {
             int noCommerce;

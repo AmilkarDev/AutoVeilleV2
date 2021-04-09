@@ -2,65 +2,73 @@
 @{
     ViewBag.Title = "InfoConcession";
 }
-<div id="eventDiv" class="alert alert-heading">
-    <div style="float:left;">
-        <p id="eventText">
-            EVENEMENT
-            <span id="eventState"> A VENIR </span>
-        </p>
-    </div>
-    
-        <div id="searchInput">
-            <div class="input-group mb-3">
-                <div class="input-group-append">
-                    <span class="input-group-text search-icon" id="basic-addon2">
-                        <i class="fas fa-search"></i>
-                    </span>
-                </div>
-                <input id="SearchTerm" type="text" class="form-control" placeholder="Search"
-                       aria-label="Search" aria-describedby="basic-addon2">
+<div id="infoConcessionContent">
+    <div id="eventDiv" class="alert alert-heading">
+        <div style="float:left;">
+            <p class="eventText">
+                EVENEMENT
+                <span id="eventState"> A VENIR </span>
+            </p>
+        </div>
 
-                <div class="dropdown-menu suggestions" hidden>
+        <div id="searchInput" class="eventText">
+            NOM DU CONCESSIONNAIRE
+            @*<div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text search-icon" id="basic-addon2">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                    <input id="SearchTerm" type="text" class="form-control" placeholder="Search"
+                           aria-label="Search" aria-describedby="basic-addon2">
+
+                    <div class="dropdown-menu suggestions" hidden>
+                    </div>
+                </div>*@
+        </div>
+
+        @*<div class="input-group" style="float:right;width:25%;">
+                <button type="button" class="btn btn-primary" style="background-color:white;color:black;">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="form-inline">
+                    <input type="search" id="searchInput" class="form-control" placeholder="Recherche par nom"/>
+                </div>
+            </div>*@
+    </div>
+    <div id="mainDiv">
+        <div class="alert alert-dark" id="filterDiv">
+            <p style="float:left;">NOM CONCESSIONNAIRE</p>
+            <p style="float:right;">12 AVRIL AU 15 AVRIL 2021</p>
+        </div>
+        <div id="innerContent">
+            <div id="leftContent">
+                <div class="alert alert-dark row" id="prospects">
+                    <p class="col-md-4" id="prospectsText" style="float: left; ">PROSPECTS TOTAL</p>
+                    <p class="col-md-4" id="prospectsText" style="text-align:center;">PROSPECTS REJOINTS</p>
+                    <p class="col-md-4 pull-right" id="prospectsText" style="text-align:right;float: right;">PROSPECTS A REJOINDRE</p>
+                </div>
+
+
+                <div id="dvCampaignDetails">
+
                 </div>
             </div>
         </div>
-    
-    @*<div class="input-group" style="float:right;width:25%;">
-            <button type="button" class="btn btn-primary" style="background-color:white;color:black;">
-                <i class="fas fa-search"></i>
-            </button>
-            <div class="form-inline">
-                <input type="search" id="searchInput" class="form-control" placeholder="Recherche par nom"/>
-            </div>
-        </div>*@
-</div>
-<div id="mainDiv">
-    <div class="alert alert-dark" id="filterDiv">
-        <p style="float:left;">NOM CONCESSIONNAIRE</p>
-        <p style="float:right;">12 AVRIL AU 15 AVRIL 2021</p>
-    </div>
-    <div id="innerContent">
-        <div id="leftContent">
-            <div class="alert alert-dark row" id="prospects">
-                <p class="col-md-4" id="prospectsText" style="float: left; ">PROSPECTS TOTAL</p>
-                <p class="col-md-4" id="prospectsText" style="text-align:center;">PROSPECTS REJOINTS</p>
-                <p class="col-md-4 pull-right" id="prospectsText" style="text-align:right;float: right;">PROSPECTS A REJOINDRE</p>
-            </div>
+        <div id="detailsClient">
 
-
-            <div id="dvCampaignDetails">
-
-            </div>
         </div>
+        <div style="clear: both;"> </div>
     </div>
-    <div id="detailsClient">
-
-    </div>
-    <div style="clear: both;"> </div>
 </div>
     @section Scripts{
         <script type="text/javascript">
             $(document).ready(function () {
+
+
+
+
+
                 $.ajax({
                     url: '/Home/GetNomAppels',
                     contentType: 'application/html; charset=utf-8',
