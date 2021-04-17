@@ -1,124 +1,152 @@
 ﻿@model Autoveille.TestingModels.FicheClient
 
-<text class="titreFiche">
-    OUVRIR FICHE DE TRAVAIL
-    <img src="~/Content/Images/Layout/Expand-green.png" />
-</text>
-<br />
-<br />
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.NomClient) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.NomClient)
-    </text>
-    <br />
+
+
+<div class="row">
+    <div class="col-md-2">
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.NomClient)
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.NomClient)
+        </text>
+        <br />
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.Langue)
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Langue)
+        </text>
+        <br />
+
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.Courriel) 
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Courriel)
+        </text>
+    </div>
+
+    <div class="col-md-2">
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.Ville)
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Ville)
+        </text>
+        <br />
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.NoClient)
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.NoClient)
+        </text>
+        <br />
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.Niv) 
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Niv)
+        </text>
+    </div>
+
+    <div class="col-md-2">
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.TypeAchat)
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.TypeAchat)
+        </text>
+        <br />
+
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.DateAchat) 
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.DateAchat)
+        </text>
+        <br />
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.Terme) 
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Terme)
+        </text>
+    </div>
+
+    <div class="col-md-2">
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.VehiculeDesire) 
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.VehiculeDesire)
+        </text>
+        <br />
+        <text class="labell">
+            @Html.DisplayNameFor(model => model.ValeurVehicule)
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.ValeurVehicule)
+        </text>
+    </div>
+
+    <div class="col-md-3">
+        @*<text class="labell">
+            
+        </text>
+        <br />*@
+        <textarea id="AppelsPrecedents" name="Note" rows="4" cols="20" class="info">
+            
+                @Html.DisplayNameFor(model => model.NoteAppelsPrecedents) :
+            
+           @Html.DisplayFor(model => model.NoteAppelsPrecedents)
+        </textarea>
+
+    </div>
+    <div class="col-md-1" style="display:flex;flex-direction:column;justify-content:start;">
+        <div class="row" style="display:flex;justify-content:center;">
+            <text class="titreFiche" style="font-size:30px">
+                &#10006;
+            </text>
+        </div>
+        <div class="row" style="display:flex;justify-content:center;">
+            
+                <img src="~/Content/Images/expand.svg" height="35" width="35" onclick="displayMainDetails()" />
+            
+        </div>
+    </div>
+
 </div>
 
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.Langue) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.Langue)
-    </text>
-</div>
+<script>
+    function displayMainDetails() {
 
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.Courriel) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.Courriel)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.Ville) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.Ville)
-    </text>
-</div>
-
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.NoClient) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.NoClient)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.Niv) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.Niv)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.TypeAchat) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.TypeAchat)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.DateAchat) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.DateAchat)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.Terme) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.Terme)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.VehiculeDesire) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.VehiculeDesire)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.ValeurVehicule) :
-    </text>
-    <text>
-        @Html.DisplayFor(model => model.ValeurVehicule)
-    </text>
-</div>
-
-<div class="clientInfo">
-    <text class="labell">
-        @Html.DisplayNameFor(model => model.NoteAppelsPrecedents) :
-    </text>
-    <br /><br />
-    <textarea id="AppelsPrecedents" name="Note" rows="4" cols="20">
-    @Html.DisplayFor(model => model.NoteAppelsPrecedents)
-    </textarea>
-</div>
-
-
-
-
-
-    <br />
+        console.log(row);
+            $.ajax({
+                url: '/Home/GetMainClient',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('#' + row).html(result);
+                    $('#' + row).css('visibility', 'visible');
+                    $('#' + row).css('display', '');
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+                
+</script>

@@ -1,0 +1,107 @@
+﻿@model Autoveille.TestingModels.FicheClient
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vehicule</title>
+</head>
+<body>
+    <fieldset>
+        <legend>FicheClient</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.NomClient)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NomClient)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Langue)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Langue)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Courriel)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Courriel)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Ville)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Ville)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.NoClient)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NoClient)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Niv)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Niv)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.TypeAchat)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TypeAchat)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DateAchat)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateAchat)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Terme)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Terme)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.ValeurVehicule)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ValeurVehicule)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.VehiculeDesire)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.VehiculeDesire)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.NoteAppelsPrecedents)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NoteAppelsPrecedents)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

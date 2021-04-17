@@ -1,0 +1,142 @@
+﻿@model Autoveille.Models.Vehicule
+
+<div class="row">
+    <div class="col-md-6">
+        <text class="labell">
+            Marque
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Marque)
+        </text>
+
+        <br />
+
+        <text class="labell">
+            Modele
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Modele)
+        </text>
+
+        <br />
+
+
+        <text class="labell">
+            Annee
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Annee)
+        </text>
+
+        <br />
+
+        <text class="labell">
+            Valeur de vehicule
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.ValeurVehicule)
+        </text>
+
+        <br />
+
+
+        <text class="labell">
+            Vehicule actuel
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.ValeurActuel)
+        </text>
+
+        <br />
+    </div>
+
+    <div class="col-md-6">
+        <text class="labell">
+            NIV
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Niv)
+        </text>
+
+        <br />
+
+        <text class="labell">
+            Etat de vente
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.EtatVente)
+        </text>
+
+        <br />
+
+
+        <text class="labell">
+            Type d'achat
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.TypeAchat)
+        </text>
+
+        <br />
+
+        <text class="labell">
+            Date acquisition
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.DateAcquisition)
+        </text>
+
+        <br />
+
+
+        <text class="labell">
+            Terme
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.Terme)
+        </text>
+
+        <br />
+
+        <text class="labell">
+            Fin Terme
+        </text>
+        <br />
+        <text class="info">
+            @Html.DisplayFor(model => model.FinTerme)
+        </text>
+
+        <br />
+    </div>
+
+</div>
+
+<div class="row">
+    <text class="labell">
+        Vehicule Désiré <br /> Marque/Modele/Annee
+    </text>
+    <br />
+    <text class="info">
+        @Html.DisplayFor(model => model.VehiculeDesire)
+    </text>
+
+    <br />
+</div>
+
+<div class="row">
+    <textarea id="AppelsPrecedents" name="Note" rows="4" cols="20" class="info">          
+           @Html.DisplayFor(model => model.ModifVehicule);
+    </textarea>
+</div>
+
+    

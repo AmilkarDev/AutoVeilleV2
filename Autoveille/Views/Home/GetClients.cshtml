@@ -1,36 +1,38 @@
 ﻿@model IEnumerable<Autoveille.TestingModels.Client>
 
-<table class="table table-bordered clientsTable">
-    <tr class="clientsTableHeader">
-        <th>
-            
+<table class="table table-striped table-bordered clientsTable">
+    <tr>
+        <th class="clientsTableHeader">
+
         </th>
-        <th>
+        <th class="clientsTableHeader">
             @Html.DisplayNameFor(model => model.NomClient)
         </th>
-        <th>
+        <th class="clientsTableHeader">
             @Html.DisplayNameFor(model => model.ModeleVehicule)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FinTerme )
+        <th class="clientsTableHeader">
+            @Html.DisplayNameFor(model => model.FinTerme)
         </th>
-        <th>
+        <th class="clientsTableHeader">
             @Html.DisplayNameFor(model => model.Phone1)
         </th>
-        <th>
+        <th class="clientsTableHeader">
             @Html.DisplayNameFor(model => model.Phone2)
         </th>
-        <th>
+        <th class="clientsTableHeader">
             @Html.DisplayNameFor(model => model.Mobile)
         </th>
-        <th>
+        <th class="clientsTableHeader">
 
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr style="height:15px;">
+        
+        var clientId = "client" + item.ClientId;
+        <tr style="height:55px;">
             <td class="clientId">
                 @Html.DisplayFor(modelItem => item.ClientId)
             </td>
@@ -55,7 +57,11 @@
                 @Html.DisplayFor(modelItem => item.Mobile)
             </td>
             <td>
-                <img src="~/Content/Images/Layout/Expand-green.png" alt="expand" role="button" onclick="displayClientDetails(@item.ClientId)"/>
+                <img src="~/Content/Images/Layout/Expand-green.png" alt="expand" role="button" onclick="displayClientDetails(@item.ClientId)" />
+            </td>
+        </tr>
+        <tr>
+            <td class="detailsClient" id="@clientId" colspan="8" style="display:none;padding:10px;border-radius:15px;">
             </td>
         </tr>
     }
@@ -64,36 +70,36 @@
 
     <script>
         var currentClientId;
+        var row;
         function displayClientDetails(clientId) {
-            
-            if (currentClientId && currentClientId == clientId) {
-                //console.log("if : " + currentClientId);
-                currentClientId = null;
-                $('#detailsClient').css('visibility', 'hidden');
-                $("#leftContent").css('width', '100%');
-            }
-            else {
-                
-                currentClientId = clientId;
-                //console.log("else : " + currentClientId);
 
+            row = "client" + clientId;
+            //console.log($('#' + row).css('visibility'));
+            //console.log(row);
+            if ($('#' + row).css('visibility') == 'visible') {
+                //console.log('first case');
+                $('#' + row).css('visibility', 'hidden');
+                $('#' + row).css('display', 'none');
+                }
+            else {
+
+                
                 $.ajax({
                     url: '/Home/GetFicheClient',
                     contentType: 'application/html; charset=utf-8',
                     type: 'GET',
                     dataType: 'html',
                     success: function (result) {
-                        $('#dvClientDetails').html(result);
-                        $("#leftContent").css('width', '75%');
-                        $("#detailsClient").appendTo("#innerContent");
-                        $('#detailsClient').html(result);
-                        $('#detailsClient').css('visibility', 'visible');
+                        $('#'+row).html(result);
+                        $('#'+row).css('visibility', 'visible');
+                        $('#'+row).css('display', '');
                     },
                     error: function (xhr, status) {
                         alert(status);
                     }
                 });
-            }            
-        }
+            }
+        }            
+        
     </script>
     

@@ -117,5 +117,70 @@ namespace Autoveille.Controllers
             return PartialView(client);
         }
 
+
+        public ActionResult GetMainClient()
+        {
+            Vehicule vehicule = new Vehicule()
+            {
+                Annee = "2019",
+                DateAcquisition = new System.DateTime(2015, 12, 15),
+                TypeAchat = "Financement",
+                EtatVente = "Neuf",
+                FinTerme = new System.DateTime(2015, 12, 15),
+                Marque = "Genesis",
+                Modele = "Genesis G70",
+                Niv = "alalalalalalalalalllalalalalall",
+                Terme = "48 mois",
+                ValeurVehicule = "45 0000",
+                VehiculeDesire = "Honda",
+                ValeurActuel = "25 000"
+
+            };
+
+            Client client = new Client()
+            {
+                ClientId = 1,
+                NomClient = "sergio makrov",
+                Adresse = "Lyon 2501 rue des elites",
+                Compagnie = "MaCompagnie",
+                Courriel = "Sergio.Makrov",
+                FinTerme = new System.DateTime(2012, 10, 15),
+                Langue = "Anglais",
+                Mobile = "1407 32814 5647",
+                ModeleVehicule= "Genesis G70",
+                NumClient= 45872 ,
+                Phone1="4078562 1547",
+                Phone2= "741 2589 6325",
+                PrenomClient="vebrfol",
+                Ville="Lyon",
+                ModifClient = "Aucune modification n'a été apporté à ce client"
+            };
+
+            return PartialView(client);
+        }
+
+
+        public ActionResult GetVehicule()
+        {
+            Vehicule vehicule = new Vehicule()
+            {
+                Annee = "2019",
+                DateAcquisition = new System.DateTime(2015, 12, 15),
+                TypeAchat = "Financement",
+                EtatVente = "Neuf",
+                FinTerme = new System.DateTime(2015, 12, 15),
+                Marque = "Genesis",
+                Modele = "Genesis G70",
+                Niv = "alalalalalalalalalllalalalalall",
+                Terme = "48 mois",
+                ValeurVehicule = "45 0000",
+                VehiculeDesire = "Honda",
+                ValeurActuel = "25 000"
+
+            };
+
+            return PartialView(vehicule);
+        }
+
     }
 }

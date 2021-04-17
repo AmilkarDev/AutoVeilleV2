@@ -10,28 +10,28 @@
             <td>
                 <img id="@imgId" src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayClients(@item.Id)" role="button">
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.Nom)
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.NbrProspects) prospects
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.NbrRejoints) rejoints
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.NbrArejoindre) a rejoindre
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.NbrRDV) RDV
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.NbrDesactivee) desactivées
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.NbrRelances) relances futures
             </td>
-            <td>
+            <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.NbrLitiges) litiges
             </td>
         </tr>
@@ -66,7 +66,7 @@
 
         function hideClients(CampaignId) {
             $('#detailsClient').css('visibility', 'hidden');
-            $("#leftContent").css('width', '100%');
+            //$("#leftContent").css('width', '100%');
             var clientsId = "clients" + CampaignId;
             var imgId = "img" + CampaignId;
             $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');

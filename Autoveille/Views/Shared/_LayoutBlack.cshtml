@@ -10,7 +10,8 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/css/LayoutBlack.css" rel="stylesheet" />
-    <link href="~/Content/css/Dashboard.css" rel="stylesheet" />
+    <link href="~/Content/css/Dashboard.css" rel="stylesheet"/>
+    <link href="~/Content/css/InfoConcession.css" rel="stylesheet" />
     <script src="~/Scripts/flip.min.js"></script>
     <link href="~/Content/flip.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,15 +28,15 @@
             color: white;
         }
 
-        .downMenu li a {
-            color: white;
-        }
+            .downMenu li a {
+                color: white;
+            }
 
-        .downMenu li a:hover {
-            font-size: 25px;
-            font-weight: bold;
-            color: #fbd72b;
-        }
+                .downMenu li a:hover {
+                    font-size: 25px;
+                    font-weight: bold;
+                    color: #fbd72b;
+                }
 
         #eventDiv {
             margin-right: 35px;
@@ -95,8 +96,8 @@
     </nav>
 
 
-    <div id="menu" class="row">
-        <ul class="downMenu" style=" padding-top: 10px;">
+    <div id="menu">
+        <ul class="downMenu" style="padding-top: 10px;">
             <li>
                 <a href="Dashboard">Tableau de Bord <span class="sr-only">(current)</span></a>
             </li>
@@ -118,7 +119,7 @@
 
 
 
-    <div class="">
+    <div>
         @RenderBody()
         <hr />
         <footer>
@@ -152,6 +153,7 @@
                 $('#eventDiv').css("border-right-width", "1px");
             }
             $('#menu').toggle();
+            //$('#menu').css("display","inline");
         }
     </script>
 
