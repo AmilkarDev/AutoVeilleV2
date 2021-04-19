@@ -7,6 +7,7 @@ namespace Autoveille.TestingModels
 {
     public class FicheClient
     {
+        public int IdFiche { get; set; }
         public int Id { get; set; }
         public string NomClient { get; set; }
         public string Langue { get; set; }

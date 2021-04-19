@@ -7,6 +7,7 @@ namespace Autoveille.TestingModels
 {
     public class Client
     {
+        public int IdFiche { get; set; }
         public int ClientId { get; set; }
         public string NomClient { get; set; }
         public string  PrenomClient { get; set; }

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Concessions.cs" />
+    <Compile Include="Models\ListeAppels.cs" />
     <Compile Include="Models\Evenement.cs" />
     <Compile Include="Models\Concession.cs" />
     <Compile Include="Models\Enumerations\TypeProgramme.cs" />
@@ -71,6 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <EmbeddedResource Include="Templates\SQL\GetEvenement.sql" />
+    <EmbeddedResource Include="Templates\SQL\GetEvenementDetailsById.sql" />
+    <EmbeddedResource Include="Templates\SQL\GetAppelsConsultantById.sql" />
+    <EmbeddedResource Include="Templates\SQL\GetEvenementsByConsultant.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

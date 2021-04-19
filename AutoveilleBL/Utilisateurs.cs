@@ -52,6 +52,42 @@ namespace AutoveilleBL
 
         }
 
+        public static int GetRoles(string aUserName)
+        {
+            string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
+            var role = 0;
+            try
+            {
+                using (var conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    string sql =
+                        "SELECT id,  role" +
+                          "  FROM  dbo.UsersGroupe " +
+                          "  WHERE	UserName=@username  " +
+                          "   AND role & 1>0 " ;
+
+                    var cmd = new SqlCommand(sql, conn);
+                    cmd.AddParameterWithValue("@username", aUserName);
+                    var u = new UtilisateurSite();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                             role = reader.GetInt32(1);
+                        }
+                    }
+                    return role;
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                throw new ReadableException("Une erreure est survenue à la génération de la liste des concessions", ex);
+            }
+        }
 
         public static UtilisateurSite GetRoles(string aUserName, int aNoCommerce)
         {
@@ -162,10 +198,10 @@ namespace AutoveilleBL
                     conn.Open();
 
                     string sql =
-                        "SELECT ug.id, cm.nocommerce, cm.nomcommerce, role, typeusager  " +
+                        "SELECT ug.id, cm.nocommerce, cm.nomcommerce, ugc.role, typeusager  " +
                         " FROM usersgroupe ug  INNER JOIN usersgroupecommerce ugc ON ug.id=ugc.idusergroupe  " +
                         " INNER JOIN tbcommerces cm ON cm.nocommerce=ugc.nocommerce  OR ugc.nocommerce=0 " +
-                        " WHERE ug.username=@user  AND role & 1>0   ";
+                        " WHERE ug.username=@user  AND ugc.role & 1>0   ";
 
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@user", aUserName);

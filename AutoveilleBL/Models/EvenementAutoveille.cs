@@ -9,6 +9,7 @@ namespace AutoveilleBL.Models
     public class EvenementAutoveille
     {
         public int IdEvenement { get; set; }
+
         public DateTime DateEvenementDebut { get; set; }
         public DateTime DateEvenementFin { get; set; }
         public int AppelsPrevusDirEv { get; set; }

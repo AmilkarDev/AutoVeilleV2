@@ -9,7 +9,7 @@ namespace AutoveilleBL.Models
     public class Evenement
     {
         public int IdEvenement { get; set; }
-	    public DateTime? DateEvenementDebut {get;set;}
+		public DateTime? DateEvenementDebut {get;set;}
 	    public DateTime? DateEvenementFin {get;set;}
 	    public int TotalEvenements {get;set;}
 	    public DateTime DateCreation  {get;set;}
@@ -20,5 +20,6 @@ namespace AutoveilleBL.Models
 	    public DateTime? DateModification  {get;set;}
 	    public string UtilisateurModification {get;set;}
 	    public int DatesConfirmer {get;set;}
+		public List<ListeAppels> ListeAppels { get; set; }
     }
 }

@@ -131,6 +131,39 @@ namespace AutoveilleBL
                 Trace.TraceError(ex.ToString());
                 throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
             }
+        }       
+     public static string GetNomCommerce(int aNoCommerce)
+        {
+            string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
+            try
+            {
+                var res = "";
+                using (var conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    string sql = "SELECT NomCommerce FROM tbcommerces  " +
+                        " WHERE nocommerce=@noCommerce";
+
+                    var cmd = new SqlCommand(sql, conn);
+                    cmd.AddParameterWithValue("@noCommerce", aNoCommerce);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        if (reader.Read())
+                        {
+                            res = reader.GetString(0);
+                        }
+                        return res;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                throw new ReadableException("Une erreures c'est produite lors de la recherche de nom du commerce.");
+            }
         }
+
     }
 }

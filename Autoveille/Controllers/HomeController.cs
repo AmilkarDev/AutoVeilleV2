@@ -3,6 +3,7 @@ using Autoveille.TestingModels;
 using AutoveilleBL;
 using AutoveilleBL.Models.Web;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Autoveille.Controllers
@@ -40,30 +41,69 @@ namespace Autoveille.Controllers
 
             return View();
         }
-        public ActionResult InfoConcession(int aNoCommerce)
+        public ActionResult InfoConcession()
         {
-            int noCommerce;
-            if (Session["User"] != null )
+            var role = 0;
+            if (Session["User"]!=null)
             {
-                var role= Utilisateurs.GetRoles(Session["User"].ToString(), aNoCommerce);
-                if (role != null)
-                {
-                    Session["NoCommerce"] = aNoCommerce;
-                    Session["Role"] = role.Role;
-                }
-                else
-                {
-                    return RedirectToAction("Connexion", "Compte");
-                }
+                role = Utilisateurs.GetRoles(Session["User"].ToString());
             }
-            else
+            if (role==1)
             {
-                return RedirectToAction("Connexion", "Compte");
+                int userId = -1;
+                bool resParse;
+
+                //to do : a verifier role : consultant
+
+                resParse = int.TryParse(Session["UserId"].ToString(), out userId);
+                //to do
+                if (!resParse)
+                {
+                    //return "error user id pas bon";
+                }
+                var evenements = Ventes.GetEvenementsByConsultant(userId);
+                if (evenements == null || evenements.Count == 0)
+                {
+                    //return "aucune evenement n'est pas associé à l'utilisateur";
+                }
+                //to do
+                if (evenements.Count >= 2)
+                {
+                    //return "il y a plus d'un evenement associé à l'utilisateur";
+                }
+                var evenement = evenements.FirstOrDefault();
+                evenement = Ventes.GetEvenement(evenement.IdEvenement, evenement.NoCommerce); ;
+                var nomCommerce = Concessions.GetNomCommerce(evenement.NoCommerce);
+                var evenementUI = new EvenementModel()
+                {
+                    NoCommerce = evenement.NoCommerce,
+                    NomCommerce = nomCommerce,
+                    DateDebut=evenement.DateEvenementDebut,
+                    DateFin=evenement.DateEvenementFin,
+                };
+                return View(evenementUI);
             }
+            //if (Session["User"] != null )
+            //{
+            //    var role= Utilisateurs.GetRoles(Session["User"].ToString(), aNoCommerce);
+            //    if (role != null)
+            //    {
+            //        Session["NoCommerce"] = aNoCommerce;
+            //        Session["Role"] = role.Role;
+            //    }
+            //    else
+            //    {
+            //        return RedirectToAction("Connexion", "Compte");
+            //    }
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Connexion", "Compte");
+            //}
             //var ventes = Ventes.GetVentes(aNoCommerce);
-            var appels = new Appels();
-            appels.Evenement = Ventes.GetProchaineEvenement(aNoCommerce);
-            appels.Relances = Ventes.GetRelances(appels.Evenement.IdEvenement, aNoCommerce);
+            ////var appels = new Appels();
+            ////appels.Evenement = Ventes.GetProchaineEvenement(aNoCommerce);
+            ////appels.Relances = Ventes.GetRelances(appels.Evenement.IdEvenement, aNoCommerce);
             return View();
         }
 
@@ -73,13 +113,49 @@ namespace Autoveille.Controllers
 
         public ActionResult GetNomAppels()
         {
-            List<NomAppel> nomAppels = new List<NomAppel>
-            {
-                new NomAppel{Id=1,Nom="Denis Tardiff",NbrArejoindre=1,NbrDesactivee=5,NbrLitiges=2,NbrProspects=6,NbrRDV=8,NbrRejoints=1,NbrRelances=6},
-                new NomAppel{Id=2,Nom="Second Example",NbrArejoindre=1,NbrDesactivee=5,NbrLitiges=2,NbrProspects=6,NbrRDV=8,NbrRejoints=1,NbrRelances=6},
-                new NomAppel{Id=3,Nom="Third Example",NbrArejoindre=1,NbrDesactivee=5,NbrLitiges=2,NbrProspects=6,NbrRDV=8,NbrRejoints=1,NbrRelances=6}
-            };
+            int userId=-1;
+            bool resParse;
 
+            //to do : a verifier role : consultant
+
+            resParse = int.TryParse(Session["UserId"].ToString(), out userId);
+            //to do
+            if (!resParse)
+            {
+                //return "error user id pas bon";
+            }
+
+            var evenements = Ventes.GetEvenementsByConsultant(userId);
+            //to do
+            if (evenements == null || evenements.Count==0)
+            {
+                //return "aucune evenement n'est pas associé à l'utilisateur";
+            }
+            //to do
+            if (evenements.Count >= 2)
+            {
+                //return "il y a plus d'un evenement associé à l'utilisateur";
+            }
+            List<NomAppel> nomAppels = new List<NomAppel>();
+            //List<NomAppel> nomAppels = new List<NomAppel>
+            //{
+            //    new NomAppel{Id=1,Nom="Denis Tardiff",NbrArejoindre=1,NbrDesactivee=5,NbrLitiges=2,NbrProspects=6,NbrRDV=8,NbrRejoints=1,NbrRelances=6},
+            //    new NomAppel{Id=2,Nom="Second Example",NbrArejoindre=1,NbrDesactivee=5,NbrLitiges=2,NbrProspects=6,NbrRDV=8,NbrRejoints=1,NbrRelances=6},
+            //    new NomAppel{Id=3,Nom="Third Example",NbrArejoindre=1,NbrDesactivee=5,NbrLitiges=2,NbrProspects=6,NbrRDV=8,NbrRejoints=1,NbrRelances=6}
+            //};
+
+            var evenement = evenements.FirstOrDefault();
+            var listesAppels = Ventes.GetAppelsConsultantById(evenement.IdEvenement, evenement.NoCommerce);
+            foreach(var liste in listesAppels.OrderBy(o=>o.OrdreAfichagePortail))
+            {
+                var nomAppel = new NomAppel()
+                {
+                    Id= liste.TypeAppel,
+                    Nom=liste.DescriptionListe,
+                    NbrProspects=liste.NbreAppels
+                };
+                nomAppels.Add(nomAppel);
+            }
             return PartialView(nomAppels);
         }
 

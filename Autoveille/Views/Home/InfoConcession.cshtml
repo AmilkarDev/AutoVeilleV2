@@ -1,4 +1,4 @@
-﻿@model  Autoveille.Models.Appels
+﻿@model  Autoveille.Models.EvenementModel
 @{
     ViewBag.Title = "InfoConcession";
 }
@@ -6,14 +6,14 @@
     <div id="eventDiv" class="alert alert-heading">
         <div style="float:left;">
             <p class="eventText">
-                EVENEMENT
-                <span id="eventState"> A VENIR </span>
+                
+                <span id="eventState"> @Model.TypeEvenement </span>
             </p>
         </div>
 
         <div id="searchInput" class="eventText">
-            NOM DU CONCESSIONNAIRE<br />
-            <span id="eventPeriod">15  au 21 juin 2021</span>
+            @Model.NomCommerce<br />
+            <span id="eventPeriod">@Model.DatesEvenementsFr </span>
 
 
 

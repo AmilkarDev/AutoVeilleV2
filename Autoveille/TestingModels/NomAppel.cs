@@ -7,6 +7,7 @@ namespace Autoveille.TestingModels
 {
     public class NomAppel
     {
+        public int IdTypeEvenement { get; set; }
         public int Id { get; set; }
         public string Nom { get; set; }
         public int NbrProspects { get; set; }
