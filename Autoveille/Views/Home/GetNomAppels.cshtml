@@ -6,9 +6,10 @@
         var rowId = "row" + item.Id;
         var clientsId = "clients" + item.Id;
         var imgId = "img" + item.Id;
+
         <tr id="@rowId" style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;">
             <td>
-                <img id="@imgId" src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayClients(@item.Id)" role="button">
+                <img id="@imgId" src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayClients(@item.Id )" role="button">
             </td>
             <td class="appels-td">
                 @Html.DisplayFor(modelItem => item.Nom)
@@ -49,6 +50,7 @@
                 url: '/Home/GetClients',
                 contentType: 'application/html; charset=utf-8',
                 type: 'GET',
+                data: { aIdTypeEvenement: CampaignId},
                 dataType: 'html',
                 success: function (result) {
                     var clientsId = "clients" + CampaignId;

@@ -21,12 +21,12 @@ namespace AutoveilleBL.Models
         public string ExtTravail { get; set; }
         public string Marque { get; set; }
         public string Modele { get; set; }
-        public int Annee { get; set; }
+        public int? Annee { get; set; }
         public string Email { get; set; }
         public string NomSignataire { get; set; }
-        public DateTime DateAchat { get; set; }
+        public DateTime? DateAchat { get; set; }
         public int NbreMois { get; set; }
-        public DateTime FinDuTerme { get; set; }
+        public DateTime? FinDuTerme { get; set; }
         public string AchatLocation { get; set; }
         public string EtatVehicule { get; set; }
         public int IdEvenement { get; set; }

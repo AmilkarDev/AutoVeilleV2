@@ -2,6 +2,7 @@
 using Autoveille.TestingModels;
 using AutoveilleBL;
 using AutoveilleBL.Models.Web;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -146,6 +147,8 @@ namespace Autoveille.Controllers
 
             var evenement = evenements.FirstOrDefault();
             var listesAppels = Ventes.GetAppelsConsultantById(evenement.IdEvenement, evenement.NoCommerce);
+            Session["IdEvenement"] = evenement.IdEvenement;
+            Session["NoCommerce"] = evenement.NoCommerce;
             foreach(var liste in listesAppels.OrderBy(o=>o.OrdreAfichagePortail))
             {
                 var nomAppel = new NomAppel()
@@ -159,15 +162,31 @@ namespace Autoveille.Controllers
             return PartialView(nomAppels);
         }
 
-        public ActionResult GetClients()
+        public ActionResult GetClients(int aIdTypeEvenement)
         {
-            List<Client> clients = new List<Client>()
+            var idEvenement = int.Parse(Session["IdEvenement"].ToString());
+            var noCommerce = int.Parse(Session["NoCommerce"].ToString());
+            var relances = Ventes.GetRelances(noCommerce, idEvenement, aIdTypeEvenement);
+            List<Client> clients = new List<Client>();
+            foreach (var r in relances)
             {
-                new Client{ClientId=1,NomClient="ABCD3",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"},
-                new Client{ClientId=2,NomClient="NEWCLIENT",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"},
-                new Client{ClientId=3,NomClient="Example",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"},
-                new Client{ClientId=4,NomClient="Alpha",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"}
-            };
+                var client = new Client();
+                client.ClientId = r.Id;
+                client.NomClient = ((r.Prenom ?? "") + " " + (r.Nom ?? "") + " " + (r.Compagnie ?? "")).Trim();
+                client.ModeleVehicule = (r.Modele + " " + (r.Annee==null?"":r.Annee.ToString())).Trim();
+                client.Phone1 = r.TelephoneResidence??"";
+                client.Phone2 = (r.TelephoneTravail ?? "" + " " + r.ExtTravail ?? "").Trim();
+                client.Mobile = r.Cellulaire ?? "";
+                client.FinTermeText = r.FinDuTerme==null?"":((DateTime) r.FinDuTerme).ToString("dd-mm-yyyy");
+                clients.Add(client);
+            }
+            //List<Client> clients = new List<Client>()
+            //{
+            //    new Client{ClientId=1,NomClient="ABCD3",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"},
+            //    new Client{ClientId=2,NomClient="NEWCLIENT",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"},
+            //    new Client{ClientId=3,NomClient="Example",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"},
+            //    new Client{ClientId=4,NomClient="Alpha",FinTerme=new System.DateTime(2010,01,15),Mobile="407 3254 1478",ModeleVehicule="Model vhi 1",Phone1="407 412 145",Phone2="458745 123"}
+            //};
 
             return PartialView(clients);
         }

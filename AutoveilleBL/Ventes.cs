@@ -55,7 +55,7 @@ namespace AutoveilleBL
             }
         }
 
-        public static List<Relance> GetRelances(int aIdEvenement, int aNoCommerce)
+        public static List<Relance> GetRelances(int aNoCommerce,int aIdEvenement,int aIdTypeEvenement )
         {
             try
             {
@@ -67,6 +67,7 @@ namespace AutoveilleBL
                     var cmd = new SqlCommand(sql, conn, trans);
                     cmd.AddParameterWithValue("@IdEvenement", aIdEvenement);
                     cmd.AddParameterWithValue("@noCommerce", aNoCommerce);
+                    cmd.AddParameterWithValue("@TypeRelanceAffichage", aIdTypeEvenement);
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -74,7 +75,17 @@ namespace AutoveilleBL
                         {
                             var relance = new Relance()
                             {
-
+                                Id = reader.GetInt32(0),
+                                Nom = reader.GetNullableString(3),
+                                Prenom = reader.GetNullableString(4),
+                                Compagnie = reader.GetNullableString(5),
+                                TelephoneResidence = reader.GetNullableString(7),
+                                TelephoneTravail = reader.GetNullableString(8),
+                                Cellulaire = reader.GetNullableString(9),
+                                ExtTravail = reader.GetNullableString(10),
+                                FinDuTerme = reader.GetNullableDate(18),
+                                Modele = reader.GetNullableString(12),
+                                Annee = reader.GetNullableInt(13),
                             };
                             res.Add(relance);
                         }

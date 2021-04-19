@@ -1,4 +1,5 @@
-﻿SELECT Id
+﻿SELECT
+        Id
       ,NoClient
       ,NoSerie
       ,Nom
@@ -22,7 +23,8 @@
       ,IdEvenement
       ,Resultat
       ,DateResultat
-      ,Type
+	  ,TypeRelance
+      ,TypeRelanceAffichage
       ,Provenance
       ,IdRelanceCASuly
       ,RaisonDesactivation
@@ -55,3 +57,4 @@
   FROM atv.TbRelanceAutoveille
   WHERE IdEvenement=@IdEvenement
   AND nocommerce=@nocommerce
+  AND  TypeRelanceAffichage=@TypeRelanceAffichage
