@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Autoveille.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Autoveille.TestingModels;
 
 namespace Autoveille.TestingModels
 {
@@ -24,5 +26,7 @@ namespace Autoveille.TestingModels
         public string Ville { get; set; }
         public int NumClient { get; set; }
         public string ModifClient { get; set; }
+
+        public Vehicule Vehicule { get; set; }
     }
 }

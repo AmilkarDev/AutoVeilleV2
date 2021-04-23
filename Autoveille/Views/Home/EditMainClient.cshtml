@@ -4,9 +4,8 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-6">
-                <div style="display:inline;">
-                    <text onclick="EditClientDetails()" style="font-size:25px;font-weight:bolder;">Editer     </text>
-                    <i class="fas fa-edit"></i>
+                <div>
+                    <text style="font-size:25px;font-weight:bolder;">Editer     </text>
                 </div>
                 <br />
                 <text class="labell">
@@ -14,7 +13,7 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.PrenomClient)
+                    <input value="@Model.PrenomClient" class="inputField" />
                 </text>
 
                 <br />
@@ -24,7 +23,7 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.NomClient)
+                    <input value="@Model.NomClient" class="inputField" />
                 </text>
 
                 <br />
@@ -34,7 +33,7 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.Compagnie)
+                    <input value="@Model.Compagnie" class="inputField" />
                 </text>
 
                 <br />
@@ -44,7 +43,7 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.Langue)
+                    <input value="@Model.Langue" class="inputField" />
                 </text>
 
             </div>
@@ -61,7 +60,7 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.Courriel)
+                    <input value="@Model.Courriel" class="inputField" />
                 </text>
 
                 <br />
@@ -71,7 +70,7 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.Adresse)
+                    <input value="@Model.Adresse" class="inputField" />
                 </text>
 
                 <br />
@@ -81,7 +80,7 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.Ville)
+                    <input value="@Model.Ville" class="inputField" />
                 </text>
 
                 <br />
@@ -91,11 +90,12 @@
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.NumClient)
+                    <input value="@Model.NumClient" class="inputField" />
                 </text>
             </div>
         </div>
 
+        <br />
         <div class="row" style="margin-left:0px;">
             <div>
                 <div class="labell">
@@ -106,7 +106,7 @@
                     <i class="fas fa-phone inputImg" style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
                     <i class="fas fa-trash-alt" style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
                 </div>
-                
+
             </div>
 
             <div>
@@ -118,7 +118,7 @@
                     <i class="fas fa-phone inputImg" style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
                     <i class="fas fa-trash-alt" style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
                 </div>
-                
+
             </div>
 
             <div>
@@ -127,8 +127,8 @@
                 </div>
                 <div id="input-container">
                     <input value="@Model.Mobile" class="phoneInput" id="IdphoneInput" />
-                    <i class="fas fa-phone inputImg"  style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
-                    <i class="fas fa-trash-alt"   style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
+                    <i class="fas fa-phone inputImg" style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
+                    <i class="fas fa-trash-alt" style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
                 </div>
                 <br />
             </div>
@@ -136,16 +136,21 @@
 
         <div class="row saveButtonDiv">
             <br />
-           <button class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
+            <button class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
             <br />
         </div>
         <br />
         <div class="row" style="margin-left:0px;margin-top:10px;">
-             <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
+            <textarea id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
                 @Html.DisplayFor(model => model.ModifClient);
              </textarea>
         </div>
     </div>
+
+
+    <!---Modifier : Champs du vheicule -->
+
+
 
 
 
@@ -160,9 +165,7 @@
                         Marque
                     </text>
                     <br />
-                    <text class="info">
-                        @Model.Vehicule.Marque
-                    </text>
+                    <input value="Marque Auto" class="inputField" />
 
                     <br />
 
@@ -170,9 +173,7 @@
                         Modele
                     </text>
                     <br />
-                    <text class="info">
-                        @Model.Vehicule.Modele
-                    </text>
+                    <input value="Modele Auto" class="inputField" />
 
                     <br />
 
@@ -181,9 +182,7 @@
                         Annee
                     </text>
                     <br />
-                    <text class="info">
-                        @Model.Vehicule.Annee
-                    </text>
+                    <input value="2020" class="inputField" />
 
                     <br />
 
@@ -191,9 +190,7 @@
                         Valeur de vehicule
                     </text>
                     <br />
-                    <text class="info">
-                        @Model.Vehicule.ValeurVehicule
-                    </text>
+                    <input value="35 000 £" class="inputField" />
 
                     <br />
 
@@ -202,9 +199,7 @@
                         Vehicule actuel
                     </text>
                     <br />
-                    <text class="info">
-                        @Model.Vehicule.ValeurActuel
-                    </text>
+                    <input value="V28 00000$" class="inputField" />
 
                     <br />
                 </div>
@@ -216,9 +211,7 @@
                         NIV
                     </text>
                     <br />
-                    <text class="info">
-                        @Model.Vehicule.Niv
-                    </text>
+                    <input value="Niv 0000" class="inputField" />
 
                     <br />
 
@@ -226,9 +219,7 @@
                         Etat de vente
                     </text>
                     <br />
-                    <text class="info">
-                        Neuf
-                    </text>
+                    <input value="Neuf" class="inputField" />
 
                     <br />
 
@@ -237,9 +228,7 @@
                         Type d'achat
                     </text>
                     <br />
-                    <text class="info">
-                        Financement
-                    </text>
+                    <input value="Financement" class="inputField" />
 
                     <br />
 
@@ -247,9 +236,7 @@
                         Date acquisition
                     </text>
                     <br />
-                    <text class="info">
-                        15/05/2015
-                    </text>
+                    <input value="15/05/2019" class="inputField" />
 
                     <br />
 
@@ -258,9 +245,7 @@
                         Terme
                     </text>
                     <br />
-                    <text class="info">
-                        Term 2019 2020
-                    </text>
+                    <input value="Term 2019-2020" class="inputField" />
 
                     <br />
 
@@ -268,9 +253,7 @@
                         Fin Terme
                     </text>
                     <br />
-                    <text class="info">
-                        20 Janvier 2019
-                    </text>
+                    <input value="20 Janvier 2015" class="inputField" />
 
                     <br />
                 </div>
@@ -278,6 +261,7 @@
 
         </div>
 
+        
         <div class="row">
             <div style="margin-left:0px;">
                 <p class="labell">
@@ -285,9 +269,7 @@
                     Marque/Modele/Annee
                 </p>
                 <br />
-                <text class="info">
-                    Marque/Modele/Annee
-                </text>
+                <input value="Marque/Modele/Annee" class="inputField" />
             </div>
             <br />
         </div>
@@ -302,7 +284,7 @@
         <br />
 
         <div class="row">
-            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
+            <textarea id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
            Les modifs sur le modele du vehicule
             Les modifs sur le modele du vehicule
     </textarea>
@@ -311,10 +293,20 @@
 
     </div>
 
+
+
+
+
+
+
+
+
+    <!---Troisieme colonne -->
+
     <div class="col-md-4">
         <br />
         <div class="row">
-            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info"> 
+            <textarea id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info"> 
             Notes d'appels précédents 
 
    
@@ -323,15 +315,14 @@
         </div>
         <br />
         <div class="row checkMarksDiv">
-
             <div class="col-md-6">
-                <label class="checkContainer" style="font-size:15px">
-                    RÉSULTAT
-                </label>
+
+                Resultat
+
 
                 <label class="checkContainer">
                     Retour d'appel
-                    <input class="checkmark" type="checkbox"  >
+                    <input type="checkbox" checked="checked">
                     <span class="checkmark"></span>
                 </label>
 
@@ -376,10 +367,10 @@
         </div>
 
 
-        
+
         <div class="row">
-            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="36" class="info"> 
-                <b>Notes d'appels    </b>
+            <textarea id="AppelsPrecedents" name="Note" rows="4" cols="36" class="info"> 
+            Notes d'appels    
 
       
 @Html.DisplayFor(model => model.ModifClient);
@@ -392,24 +383,3 @@
 </div>
 
 
-<script>
-    function EditClientDetails() {
-
-        console.log(row);
-            $.ajax({
-                url: '/Home/EditMainClient',
-                contentType: 'application/html; charset=utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) {
-                    $('#' + row).html(result);
-                    $('#' + row).css('visibility', 'visible');
-                    $('#' + row).css('display', '');
-                },
-                error: function (xhr, status) {
-                    alert(status);
-                }
-            });
-        }
-
-</script>

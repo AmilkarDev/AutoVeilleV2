@@ -1,13 +1,16 @@
 ﻿body {
     background-color: white;
     overflow-x: hidden;
+    font-family: proxima-nova;
 }
 
 .labell {
     font-weight: bold;
-    color:white;
-    float:left;
+    color: white;
+    float: left;
+    font-size:15px;
 }
+
 
 .clientInfo {
     margin-bottom: 7px;
@@ -22,6 +25,11 @@
 
 .appelsTable td {
     vertical-align: middle !important;
+}
+
+.phoneInput {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #searchInput {

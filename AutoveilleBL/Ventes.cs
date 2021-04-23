@@ -54,6 +54,98 @@ namespace AutoveilleBL
                 throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
             }
         }
+        public static Relance GetRelance(int aNoCommerce, int aIdEvenement, int aIdFiche)
+        {
+            try
+            {
+                var res = new Relance();
+                var nameConnStr = Concessions.GetConnectionString(aNoCommerce);
+                SqlExecFramework.Execute(nameConnStr, null, (conn, trans) =>
+                {
+                    var sql = new StringTemplate(".sql").LoadAndFill("GetRelance", StringTemplateOptions.TrimBlanks, new { });
+                    var cmd = new SqlCommand(sql, conn, trans);
+                    cmd.AddParameterWithValue("@IdEvenement", aIdEvenement);
+                    cmd.AddParameterWithValue("@noCommerce", aNoCommerce);
+                    cmd.AddParameterWithValue("@IdFiche", aIdFiche);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            res = new Relance()
+                            {
+                                Id = reader.GetInt32(0),
+                                NoClient = reader.GetInt32(1),
+                                NoSerie = reader.GetNullableString(2),
+                                Nom = reader.GetNullableString(3),
+                                Prenom = reader.GetNullableString(4),
+                                Compagnie = reader.GetNullableString(5),
+                                Langue=reader.GetNullableString(6),
+                                TelephoneResidence = reader.GetNullableString(7),
+                                TelephoneTravail = reader.GetNullableString(8),
+                                Cellulaire = reader.GetNullableString(9),
+                                ExtTravail = reader.GetNullableString(10),
+                                Marque=reader.GetNullableString(11),
+                                Modele = reader.GetNullableString(12),
+                                Annee = reader.GetNullableInt(13),
+                                Email=reader.GetNullableString(14),
+                                NomSignataire=reader.GetNullableString(15),
+                                DateAchat=reader.GetNullableDate(16),
+                                NbreMois=reader.GetNullableInt(17),
+                                FinDuTerme = reader.GetNullableDate(18),
+                                AchatLocation=reader.GetNullableString(19) ,
+                                EtatVehicule=reader.GetNullableString(20),
+                                IdEvenement=reader.GetInt32(21),
+                                Resultat=reader.GetNullableInt(22),
+                                DateResultat=reader.GetNullableDate(23),
+                                TypeRelance=reader.GetInt32(24),
+                                TypeRelanceAffichage = reader.GetInt32(25),
+                                Provenance=reader.GetNullableString(26),
+                                IdRelanceCASuly=reader.GetNullableInt(27),
+                                RaisonDesactivation=reader.GetNullableString(28),
+                                NoteSulyService = reader.GetNullableString(29),
+                                NoteSulyVente=reader.GetNullableString(30),
+                                NoteAppel = reader.GetNullableString(31),
+                                ValeurVehiculeCBB = reader.GetNullableDecimal(32),
+                                //DateCalculeValeurVehiculeCBB = reader.GetNullableDate(33),
+                                //ProchaineRelance = reader.GetNullableDate(34),
+                                //DateRDVService = reader.GetNullableDate(35),
+                                //HeureRDVService=reader.GetNullableString(36),
+                                //DateRDV = reader.GetNullableDate(37),
+                                //HeureRDV = reader.GetNullableString(38),
+                                //DateRDVAnt = reader.GetNullableDate(39),
+                                //HeureRDVAnt = reader.GetNullableString(40),
+                                //RelanceCASuly = reader.GetInt32(41),
+                                //DateEquite = reader.GetNullableDate(42),
+                                //Date60Terme = reader.GetNullableDate(43),
+                                //IsCASuly=reader.GetInt32(44),
+                                //LeadMarqueDes = reader.GetNullableString(45),
+                                //LeadModeleDes = reader.GetNullableString(46),
+                                //LeadAnneeDes = reader.GetNullableInt(47),
+                                //Km = reader.GetNullableInt(48),
+                                //LeadDateRDVDes = reader.GetNullableDate(49),
+                                //LeadHleureRDVDes = reader.GetNullableString(50),
+                                //LeadNote = reader.GetNullableString(51),
+                                //LeadAgent = reader.GetNullableString(52),
+                                //DateProchaineRelance = reader.GetNullableDate(53),
+                                //noCommerce = reader.GetInt32(54),                           
+                                //EstAfficherCentreAAppel=reader.GetNullableInt(55),
+                                //Ville= reader.GetNullableString(56),
+                                //Adresse= reader.GetNullableString(57),
+                            };
+              
+                        }
+                    }
+
+                });
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
+            }
+        }
 
         public static List<Relance> GetRelances(int aNoCommerce,int aIdEvenement,int aIdTypeEvenement )
         {

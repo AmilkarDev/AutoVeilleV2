@@ -30,8 +30,9 @@
 
     @foreach (var item in Model)
     {
-        
+
         var clientId = "client" + item.ClientId;
+
         <tr style="height:55px;">
             <td class="clientId">
                 @Html.DisplayFor(modelItem => item.ClientId)
@@ -47,11 +48,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phone1)
-                <img id="callImg" src="~/Content/Images/Layout/Call-green.png" width="30" height="30" alt="Call Green">
+                @*<img id="callImg" src="~/Content/Images/Layout/Call-green.png" width="30" height="30" alt="Call Green">*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phone2)
-                <img id="callImg" src="~/Content/Images/Layout/Call-grey.png" width="30" height="30" alt="Call Grey">
+                @*<img id="callImg" src="~/Content/Images/Layout/Call-grey.png" width="30" height="30" alt="Call Grey">*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Mobile)
@@ -63,6 +64,7 @@
         <tr>
             <td class="detailsClient" id="@clientId" colspan="8" style="display:none;padding:10px;border-radius:15px;">
             </td>
+
         </tr>
     }
 
@@ -85,9 +87,11 @@
 
                 
                 $.ajax({
-                    url: '/Home/GetFicheClient',
+                    //url: '/Home/GetFicheClient',
+                    url: '/Home/GetMainClient',
                     contentType: 'application/html; charset=utf-8',
                     type: 'GET',
+                    data: { aIdFiche: clientId },
                     dataType: 'html',
                     success: function (result) {
                         $('#'+row).html(result);

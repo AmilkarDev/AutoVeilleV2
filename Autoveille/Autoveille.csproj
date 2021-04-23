@@ -265,6 +265,7 @@
     <Content Include="Views\Home\Vehicule.cshtml" />
     <Content Include="Views\Home\GetMainClient.cshtml" />
     <Content Include="Views\Home\GetVehicule.cshtml" />
+    <Content Include="Views\Home\EditMainClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

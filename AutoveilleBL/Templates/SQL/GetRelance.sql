@@ -1,0 +1,63 @@
+﻿SELECT
+        Id
+      ,NoClient
+      ,NoSerie
+      ,Nom
+      ,Prenom
+      ,Compagnie
+      ,Langue
+      ,TelephoneResidence
+      ,TelephoneTravail
+      ,Cellulaire
+      ,ExtTravail
+      ,Marque
+      ,Modele
+      ,Annee
+      ,Email
+      ,NomSignataire
+      ,DateAchat
+      ,NbreMois
+      ,FinDuTerme
+      ,AchatLocation
+      ,EtatVehicule
+      ,IdEvenement
+      ,Resultat
+      ,DateResultat
+	  ,TypeRelance
+      ,TypeRelanceAffichage
+      ,Provenance
+      ,IdRelanceCASuly
+      ,RaisonDesactivation
+      ,NoteSulyService
+      ,NoteSulyVente
+      ,NoteAppel
+      ,ValeurVehiculeCBB
+      ,DateCalculeValeurVehiculeCBB
+      ,ProchaineRelance
+      ,DateRDVService
+      ,HeureRDVService
+      ,DateRDV
+      ,HleureRDV
+      ,DateRDVAnt
+      ,HeureRDVAnt
+      ,RelanceCASuly
+      ,DateEquite
+      ,Date60Terme
+      ,IsCASuly
+      ,LeadMarqueDes
+      ,LeadModeleDes
+      ,LeadAnneeDes
+      ,Km
+      ,LeadDateRDVDes
+      ,LeadHleureRDVDes
+      ,LeadNote
+      ,LeadAgent
+      ,DateProchaineRelance
+	  ,noCommerce
+      ,EstAfficherCentreAAppel
+      ,Ville
+      ,Adresse
+  FROM atv.TbRelanceAutoveille
+  WHERE IdEvenement=@IdEvenement
+  AND nocommerce=@nocommerce
+  AND  id=@idFiche

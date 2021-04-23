@@ -63,14 +63,15 @@
 
 .info {
     float:left;
+    font-size:12px;
 }
 
 td .detailsClient {
     visibility: hidden;
     width: 100%;
     margin: 0;
-    font-size: 20px;
-    background-color: #2DB784;
+    font-size: 15px;
+    background-color: #2DB785;
     border-bottom: 1rem solid grey;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -79,8 +80,10 @@ td .detailsClient {
 .phoneInput{
     height:40px;
     border:1px black solid;
-    border-radius:20px;
-    width:350px;
+    border-radius:10px;
+    width:200px;
+    padding-left:20px;
+    padding-right:20px;
 }
  /** css of checkbox inputs */
 
@@ -88,17 +91,36 @@ td .detailsClient {
 .checkContainer {
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left: 0px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 12px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
+.checkMarksDiv {
+    color: white;
+    background-color: #30a6dc;
+    margin-bottom: 0px;
+    margin-right: 25px;
+    padding: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.saveButtonDiv {
+    display: flex;
+    justify-content: center;
+}
+.inputField {
+    width: 220px;
+    border: 1px black solid;
+    border-radius: 20px;
+    background-color: #cdf3f3;
+}
 
-    /* Hide the browser's default checkbox */
+/* Hide the browser's default checkbox */
 .checkContainer input {
     position: absolute;
     opacity: 0;
@@ -112,8 +134,8 @@ td .detailsClient {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
     background-color: #eee;
 }
 
@@ -141,7 +163,7 @@ td .detailsClient {
 
 /* Style the checkmark/indicator */
 .checkContainer .checkmark:after {
-    left: 9px;
+    left: 5px;
     top: 5px;
     width: 5px;
     height: 10px;
