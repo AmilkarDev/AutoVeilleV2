@@ -4652,7 +4652,7 @@ input[type="button"].btn-block {
   display: none;
 }
 
-.navbar-light .navbar-brand {
+ .navbar-brand {
   color: rgba(0, 0, 0, 0.9);
 }
 

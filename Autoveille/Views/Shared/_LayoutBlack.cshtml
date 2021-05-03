@@ -12,11 +12,22 @@
     <link href="~/Content/css/LayoutBlack.css" rel="stylesheet" />
     <link href="~/Content/css/Dashboard.css" rel="stylesheet" />
     <link href="~/Content/css/InfoConcession.css" rel="stylesheet" />
+    <link href="~/Content/css/Connexion.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery.yacal.css" rel="stylesheet" />
+
     <script src="~/Scripts/flip.min.js"></script>
     <link href="~/Content/flip.min.css" rel="stylesheet" />
+
+
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/unq0nxl.css">
+    @*Jquery date picker styles*@
+    @*<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" />*@
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css" rel="stylesheet" />
+
     <style>
         /*.downMenu {
             text-align: right;
@@ -48,32 +59,40 @@
 
         .clientId {
             color: #fbbb29;
-            font-size: 20px;
+            font-size: 12px;
             font-weight: bold;
         }
+
+        .rowClients {
+            font-size: 12px;
+        }
+
 
         .clientsTableHeader {
             color: white;
             background-color: black;
             height: 40px;
+            font-size: 15px;
+            font-weight: bold;
         }
 
         .clientsTable th {
-            text-align: center;
+            padding: 10px;
+            text-align: left;
         }
 
         .clientsTable td {
-            padding: 0;
-            text-align: center;
+            padding: 10px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-bottom:0px;">
+    <nav class="navbar navbar-expand-lg navbar-dark " style="padding-bottom: 0px;">
         <a class="navbar-brand" href="#" style="vertical-align:central;">
-            <img src="~/Content/Images/Layout/AutoVeille_Hor.png" height="40" width="300" />
+            <img src="~/Content/Images/Layout/LogoAutoVeille_NEG.svg" height="40" width="300" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -131,11 +150,19 @@
     <script src="~/Scripts/jquery-3.5.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.yacal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/fr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.min.js"></script>
+    @*Jquery datepicker plugin *@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
     @RenderSection("scripts", required: false)
+    @RenderSection("css", required: false)
 
 
     <script type="text/javascript">
-
         function displayMenu() {
             var border = $('#hamIcon').css("border-left-width");
             if (border == "0px") {

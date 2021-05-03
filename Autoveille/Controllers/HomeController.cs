@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Outils;
+using AutoveilleBL.Models;
 
 namespace Autoveille.Controllers
 {
@@ -39,8 +41,16 @@ namespace Autoveille.Controllers
 
         public ActionResult Dashboard()
         {
+            var dashboard = new Dashboard()
+            {
+                RDV = 24,
+                Ventes = 15,
+                Oportunites = 94,
+                Potentiels =300,
+                WalkIn=32,
+            };
 
-            return View();
+            return View(dashboard);
         }
         public ActionResult InfoConcession()
         {
@@ -164,6 +174,10 @@ namespace Autoveille.Controllers
 
         public ActionResult GetClients(int aIdTypeEvenement)
         {
+            if (Session["Commerces"] == null || Session["IdEvenement"]==null)
+            {
+                return RedirectToAction("Connexion", "Compte");
+            }
             var idEvenement = int.Parse(Session["IdEvenement"].ToString());
             var noCommerce = int.Parse(Session["NoCommerce"].ToString());
             var relances = Ventes.GetRelances(noCommerce, idEvenement, aIdTypeEvenement);
@@ -171,13 +185,31 @@ namespace Autoveille.Controllers
             foreach (var r in relances)
             {
                 var client = new Client();
+                client.Vehicule = new Vehicule();
                 client.ClientId = r.Id;
                 client.NomClient = ((r.Prenom ?? "") + " " + (r.Nom ?? "") + " " + (r.Compagnie ?? "")).Trim();
                 client.ModeleVehicule = (r.Modele + " " + (r.Annee==null?"":r.Annee.ToString())).Trim();
-                client.Phone1 = r.TelephoneResidence??"";
-                client.Phone2 = (r.TelephoneTravail ?? "" + " " + r.ExtTravail ?? "").Trim();
-                client.Mobile = r.Cellulaire ?? "";
-                client.FinTermeText = r.FinDuTerme==null?"":((DateTime) r.FinDuTerme).ToString("dd-mm-yyyy");
+                client.Phone1 = PhoneNumberUtils.FormatPhoneNumber( r.TelephoneResidence??"");
+                client.Phone2 = (PhoneNumberUtils.FormatPhoneNumber(r.TelephoneTravail ?? "" )+ " " + r.ExtTravail ?? "").Trim();
+                client.Mobile = PhoneNumberUtils.FormatPhoneNumber(r.Cellulaire ?? "");
+                //client.FinTermeText = r.FinDuTerme==null?"":((DateTime) r.FinDuTerme).ToString("dd-mm-yyyy");
+                client.Vehicule.TypeAchat=r.AchatLocation ?? "";
+                client.Vehicule.Terme = (r.NbreMois == null ? 0 : ((int)r.NbreMois)).ToString();
+                client.Vehicule.Marque = r.Marque ?? "";
+                client.Vehicule.Modele = r.Modele ?? "";
+                client.Vehicule.Annee = (r.Annee==null || r.Annee==0) ? "":r.Annee.ToString();
+                client.Vehicule.FinTerme= r.FinDuTerme == null ? "" : ((DateTime)r.FinDuTerme).ToString("dd-MM-yyyy");
+                client.Vehicule.DateAcquisition= r.DateAchat == null ? "" : ((DateTime)r.DateAchat).ToString("dd-MM-yyy"); ;
+
+                //var noClient = r.NoClient;
+                //if (noClient!=null && noClient>0)
+                //{
+                //    var notes = Ventes.GetNotesPrecedente(noCommerce, r.Id,(int) noClient);
+                //    var noteGeneral = Ventes.GetNotesGeneral(noCommerce,(int) noClient);
+                //    client.NotesAppelsPrecedentes = new List<NoteAppel>();
+                //    client.NotesAppelsPrecedentes = notes;
+                //    client.NotesGenerals = noteGeneral;
+                //}
                 clients.Add(client);
             }
             //List<Client> clients = new List<Client>()
@@ -229,13 +261,13 @@ namespace Autoveille.Controllers
                 Adresse = r.Adresse,
                 Compagnie = r.Compagnie ?? "",
                 Courriel = r.Email,
-                FinTermeText = r.FinDuTerme == null ? "" : ((DateTime)r.FinDuTerme).ToString("dd-mm-yyyy"),
+                //FinTermeText = r.FinDuTerme == null ? "" : ((DateTime)r.FinDuTerme).ToString("dd-mm-yyyy"),
                 Langue = r.Langue == "A" ? "Anglais" : "Français",
-                Mobile = r.Cellulaire,
+                Mobile = PhoneNumberUtils.FormatPhoneNumber(r.Cellulaire??""),
                 ModeleVehicule = r.Modele,
-                NumClient = r.NoClient,
-                Phone1 = r.TelephoneResidence,
-                Phone2 = r.TelephoneTravail,
+                NumClient = r.NoClient??0,
+                Phone1 = PhoneNumberUtils.FormatPhoneNumber(r.TelephoneResidence??""),
+                Phone2 = PhoneNumberUtils.FormatPhoneNumber(r.TelephoneTravail??""),
                 PrenomClient = r.Prenom ?? "",
                 Ville = r.Ville,
 
@@ -244,6 +276,22 @@ namespace Autoveille.Controllers
             client.Vehicule = new Vehicule();
 
             client.Vehicule.Niv = r.NoSerie;
+            client.Vehicule.Marque = r.Marque;
+            client.Vehicule.Modele = r.Modele;
+            client.Vehicule.Annee = r.Annee==null?"":(r.Annee.ToString());
+            client.Vehicule.EtatVente = r.EtatVehicule;
+            client.Vehicule.DateAcquisition = r.DateAchat==null?"":((DateTime) r.DateAchat).ToString("dd-MM-yyy");
+            client.Vehicule.FinTerme = r.FinDuTerme == null ? "" : ((DateTime)r.FinDuTerme).ToString("dd-MM-yyy");
+
+            var noClient = r.NoClient;
+            if (noClient != null && noClient > 0)
+            {
+                var notes = Ventes.GetNotesPrecedente(noCommerce, r.Id, (int)noClient);
+                var noteGeneral = Ventes.GetNotesGeneral(noCommerce, (int)noClient);
+                client.NotesAppelsPrecedentes = new List<NoteAppel>();
+                client.NotesAppelsPrecedentes = notes;
+                client.NotesGenerals = noteGeneral;
+            }
 
             //Vehicule vehicule = new Vehicule()
             //{
@@ -290,10 +338,10 @@ namespace Autoveille.Controllers
             Vehicule vehicule = new Vehicule()
             {
                 Annee = "2019",
-                DateAcquisition = new System.DateTime(2015, 12, 15),
+                DateAcquisition = "15-12-2015",
                 TypeAchat = "Financement",
                 EtatVente = "Neuf",
-                FinTerme = new System.DateTime(2015, 12, 15),
+                FinTerme = "15-12-2015",
                 Marque = "Genesis",
                 Modele = "Genesis G70",
                 Niv = "alalalalalalalalalllalalalalall",
@@ -331,6 +379,12 @@ namespace Autoveille.Controllers
             };
 
             return PartialView(client);
+        }
+    
+        [HttpGet]
+        public ActionResult GetCalendar()
+        {
+            return PartialView();
         }
     }
 }

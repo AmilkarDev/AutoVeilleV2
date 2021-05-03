@@ -3,96 +3,117 @@
     ViewBag.Title = "Connexion";
 }
 
-@*<h2>Connexion</h2>*@
-
-@*<div class="col-md-8">*@
 <style>
+    body {
+        background-color: #fbbb29;
+    }
     .btn-submit
-    {border:none; background:#840102; color:#fff; text-transform: uppercase; 
-	border-radius:8px; font-size: 18px; font-family:tahoma; text-align: center; padding: 8px 0; width:100%; 
-	margin: 15px 0 20px 0; cursor: pointer;}
+    {border:none; background:#EE1D29; color:#fff; text-transform: uppercase; 
+	border-radius:5px; font-size: 12px; font-family:proxima-nova; text-align: center; padding: 0px 0; width:100%; 
+	height:28px;margin: 0px 0 0px 0; cursor: pointer;}
+
+
     .form-text
-    {padding: 10px 10px 10px 50px; 
+    {
+      padding: 1px 1px 1px 1px; 
      border-radius: 5px; 
      border:1px solid #e6e6e6; 
-     width: 270px;
-      margin: 10px 0; 
+     width: 100%;
+     height:25px;
+      margin: 3px 0; 
       font-size: 12px;
       font-weight: bold; 
-      color:#c2c2c2;
-      
-      background: url('../Content/Images/bonhomme.png') no-repeat  22px center #fff
-         }
+      color:black;
+      background-color:white;
+      padding-left:10px;
+    }
+
+
     .form-pass
     {
-      background: url('../Content/Images/cadenas.png') no-repeat  22px center #fff
-     }
-    .form-text:focus 
-        {background-color:#FFFEE6; color:#cccccc; border: 2px solid #840102;}
+      background-color:white;
+      /*width:200px;*/
+    }
+
+
+    /*.form-text:focus 
+        {background-color:#FFFEE6; color:#cccccc; border: 2px solid #8C151B;}
     section#loginForm {width: 310px; margin: 0 auto;}
-
- a.basFieldset {color:#840102; text-decoration: none; font-weight: bold;font-size: 12px}
-a.basFieldset:hover {color:#3F3F40; text-decoration: none; font-weight: bold;font-size: 12px}   
+    
+        a.basFieldset {color:#8C151B; text-decoration: none; font-weight: bold;font-size: 12px}
+        a.basFieldset:hover {color:#3F3F40; text-decoration: none; font-weight: bold;font-size: 12px} */  
 </style>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-1 col-lg-3">
+    </div>
+    <div class="col-12 col-sm-12 col-md-10 col-lg-6">
+        <div  style="background-color:#fbbb29;padding-top:10px;padding-left:60px;
+            padding-right:60px; height:100%">
+
+            <section id="loginForm" style="margin: 0 auto;height:347px;">
+
+                @using (Html.BeginForm("Connexion", "Compte", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new {  role = "form" }))
+                {
+
+                <div class="boxe" style="padding:30px;text-align: center;">
+                    <div>
+                        <div>
+                            <span style="text-align: center;color:white;font-size:19px;text-align:center">Bienvenue sur le portail autoveille,</span>
+                            <br />
+                            <span style="text-align: center;color:white;font-size:19px;text-align:center">votre gestionnaire d'opportunités</span>
+                        </div>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div style="display:flex;flex-direction:column;">
+                
+                            <b style="text-align:center;font-size:14px;padding-top:15px;padding-bottom:5px">Identifiez-vous!</b>
+                            <div  class="center">
+                                @Html.TextBoxFor(m => m.UserName, new
+                                {
+                                    @class = "form-text",
+                                    placeholder = "Votre nom d'utilisateur"
+
+                                })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div>
+                            @*@Html.LabelFor(m => m.Password, new {@class = "control-label"})*@
+                            <div class="center">
+                                @Html.PasswordFor(m => m.Password, new
+                                {
+                                    @class = "form-text form-pass",
+                                    placeholder = "Votre mot de passe"
+                                })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div>
+                            <div style="text-align:center;" class="btn-center">
+                                <input style="padding-bottom:5px;padding-top:5px;" type="submit" value="S'identifier" class="btn btn-info btn-submit " />
+                                <div style="padding-top:10px;margin-bottom:0px">
+                                    <input type="checkbox" id="checkSouviensDeMoi" name="connexionCheckBox" value="true"
+                                           style="display:inline-block;padding-top:10px;vertical-align:top">
+                                    <label style="font-size:12px;vertical-align:top;padding-top:0px" for="checkSouviensDeMoi">Se souvenir de moi </label>
+                                </div>
 
 
-<div class="div-center" style="width: 310px">
-
-    <section id="loginForm">
-        
-        @using (Html.BeginForm("Connexion", "Compte", new {ReturnUrl = Request.QueryString["ReturnUrl"]}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-        {
-
-
-            <div class="boxe" style="padding: 20px; border-radius: 5px; border: solid; border-width: 1px; border-color: #840102; z-index: -20">
-            <div >
-            <div >
-                <h3 style="text-align: center;color:#840102;">OUVRIR UNE SESSION</h3>
-            </div>
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-            <div >
-                @Html.LabelFor(m => m.UserName, new {@class = "control-label"})
-                <div >
-                    @Html.TextBoxFor(m => m.UserName, new
-                    {
-                        @class = "form-text", placeholder = "Votre nom d'utilisateur"
-
-                    })
-                    @Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger"})
+                                <a href="#">
+                                    <p style="font-size:12px;margin-top:-10px">Mot de passe oublié ?</p>
+                                </a>
+                                <a href="#">
+                                    <p style="font-size:12px;margin-top:-14px">Modifir mon mot de passe</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div >
-                @Html.LabelFor(m => m.Password, new {@class = "control-label"})
-                <div >
-                    @Html.PasswordFor(m => m.Password, new
-                    {
-                        @class = "form-text form-pass", placeholder = "Votre mot de passe"
-                    })
-                    @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
-                </div>
-            </div>
-            <div >
-
-                <div >
-                    <input type="submit" value="SE CONNECTER" class="btn btn-info btn-submit"/>
-                </div>
-            </div>
-          
-                </div>
-                <div >
-                    
-                       
-                    
-                </div>
-
-            </div>
-
-            
-        }
-    </section>
+                }
+            </section>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-1 col-lg-3"></div>
 </div>
-
   
 @section scripts{
     <script src="~/Scripts/jquery.validate.js"></script>

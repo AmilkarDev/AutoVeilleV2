@@ -1,401 +1,447 @@
 ﻿@model Autoveille.TestingModels.Client
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 col-lg-4">
+
         <div class="row">
-            <div class="col-md-6">
-                <div style="display:inline;">
-                    <text onclick="EditClientDetails()" style="font-size:25px;font-weight:bolder;">Editer     </text>
-                    <i class="fas fa-edit"></i>
+            <div class="col-md-6 col-lg-6">
+
+                <br class="brClient" />
+                <div style="display:inline;text-align:left">
+                    <text onclick="displayCalendar()" data-toggle="modal"  data-backdrop="false" data-target="#myModal" style="font-size:15px;font-weight:bolder;">RETOUR D'APPEL</text>
+                    <img src="~/Content/Images/retourAppel.svg" height="20" width="20" style="margin-left:3px;" />
+
                 </div>
                 <br />
-                <text class="labell">
-                    Prenom
+                <br />
+                <text class="labell pleftClient">
+                    Prénom
                 </text>
                 <br />
-                <text class="info">
+                <text class="info pleftClient">
                     @Html.DisplayFor(model => model.PrenomClient)
                 </text>
-
-                <br />
-
-                <text class="labell">
+                <br class="brClient" />
+                <text class="labell  pleftClient">
                     Nom
                 </text>
                 <br />
-                <text class="info">
+                <text class="info   pleftClient">
                     @Html.DisplayFor(model => model.NomClient)
                 </text>
-
-                <br />
-
-                <text class="labell">
+                <br class="brClient" />
+                <text class="labell pleftClient ">
                     Compagnie
                 </text>
                 <br />
-                <text class="info">
+                <text class="info  pleftClient">
                     @Html.DisplayFor(model => model.Compagnie)
                 </text>
+                <br class="brClient" />
+            </div>
+            <div class="col-md-6 col-lg-6">
 
+                <br class="brClient" />
+                <div class="float-left" style="display:inline;text-align:left">
+                    <text class="info pleftClient" onclick="displayCalendar()" data-toggle="modal" data-target="#myModal" style="font-size:15px;font-weight:bolder;">FIXER UN R.-V.</text>
+                    <img src="~/Content/Images/ICONES_SVG_NB_Base_RDV.svg" height="20" width="20" style="margin-left:3px;" />
+                </div>
                 <br />
-
-                <text class="labell">
+                <br />
+                <text class="labell pleftClient">
                     Langue
                 </text>
                 <br />
-                <text class="info">
+                <text class="info pleftClient">
                     @Html.DisplayFor(model => model.Langue)
                 </text>
-
-            </div>
-            <div class="col-md-6">
-                <div style="display:inline-flex;">
-                    <p style="font-size:25px;font-weight:bolder;">
-                        Retour d'appel
-                    </p>
-                    <img src="~/Content/Images/retourAppel.svg" height="35" width="35" style="margin-left:3px;" />
-                </div>
-                <br />
-                <text class="labell">
-                    Courriel
-                </text>
-                <br />
-                <text class="info">
-                    @Html.DisplayFor(model => model.Courriel)
-                </text>
-
-                <br />
-
-                <text class="labell">
-                    Adresse
-                </text>
-                <br />
-                <text class="info">
-                    @Html.DisplayFor(model => model.Adresse)
-                </text>
-
-                <br />
-
-                <text class="labell">
+                <br class="brClient" />
+                <text class="labell pleftClient">
                     Ville
                 </text>
                 <br />
                 <text class="info">
                     @Html.DisplayFor(model => model.Ville)
                 </text>
+                <br class="brClient" />
+                <text class="labell pleftClient">
+                    No de fiche
+                </text>
+                <br />
+                <text class="info pleftClient">
+                    @Html.DisplayFor(model => model.ClientId)
+                </text>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+
+                <div class="labell pleftClient">
+                    Courriel
+                </div>
+                <br />
+                <div id="input-container">
+                    <input value="@Model.Courriel" class="phoneInput float-left" id="IdphoneInput" style="display:block;"/>
+                </div>
+                <br class="brClientPhone" />
+
+                <div class="labell pleftClient float-left">
+                    Téléphone residence
+                </div>
+                <br />
+                <div id="input-container">
+                    <input value="@Model.Phone1" class="phoneInput float-left" id="IdphoneInput1" style="display:block;" />
+                    <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
+                    <a href="#">
+                        <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
+                    </a>
+                </div>
+                <br class="brClientPhone" />
+
+                <div class="labell pleftClient float-left">
+                    Téléphone travail
+                </div>
+                <br />
+                <div id="input-container">
+                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput2" style="display:block;"/>
+                    <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
+                    <a href="#">
+                        <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
+                    </a>
+                </div>
+                <br class="brClientPhone" />
+
+                <div class="labell pleftClient float-left">
+                    Cellulaire
+                </div>
+                <br />
+                <div id="input-container">
+                    <input value="@Model.Mobile" class="phoneInput float-left" id="IdphoneInput3" style="display:block;"/>
+                    <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
+                    <a href="#">
+                        <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="messageDiv">
+                <div class="labell pleftClient" style="color:black;">
+                    Cellulaire pour envoi sms
+                </div>
+                <br />
+                <div id="input-container">
+    
+                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput" style="width:80%;"/>
+                </div>
+                <br class="brClientPhone" />
+
+
+                <div class="labell pleftClient" style="color:black;">
+                    Message Texte à envoyer
+                </div>
+                <br />
+                <div id="input-container">
+                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput" style="width:95%;" />
+                </div>
+                <br class="brClientPhone" />
+                <div class="saveDiv">
+                    <button value="sauvegarder" class="btn  saveButton">Sauvegarder</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="box box-content" style="margin-left: 15px;height:150px;">
+                <b>  Messages textes antesieurs</b>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4 col-lg-4">
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <br class="brClient" />
+                <br />
+                <div class="labell">
+                    VÉHICULE ACTUEL
+                </div>
+                <br />
+                <text class="labell">
+                    Marque
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.Marque
+                </text>
+
+                <br class="brClient" />
+
+                <text class="labell">
+                    Modele
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.Modele
+                </text>
+
+                <br class="brClient" />
+
+
+                <text class="labell">
+                    Annee
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.Annee
+                </text>
 
                 <br />
 
                 <text class="labell">
-                    Numéro du client
+                    Valeur de vehicule
                 </text>
                 <br />
                 <text class="info">
-                    @Html.DisplayFor(model => model.NumClient)
+                    @Model.Vehicule.ValeurVehicule
+                </text>
+
+                <br class="brClient" />
+
+
+                <text class="labell">
+                    Sold à payer
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.SoldAPayer
+                </text>
+
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <br class="brClient" />
+                <br />
+                <br />
+                <text class="labell">
+                    No série
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.Niv
+                </text>
+
+                <br class="brClient" />
+
+                <text class="labell">
+                    Date d'achat
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.DateAcquisition
+                </text>
+
+                <br class="brClient" />
+
+
+                <text class="labell">
+                    Terme
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.Terme
+                </text>
+
+                <br />
+
+                <text class="labell">
+                    Date de fin du terme
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.FinTerme
+                </text>
+
+                <br class="brClient" />
+
+
+                <text class="labell">
+                    État de vente
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.EtatVente
+                </text>
+                <br class="brClient" />
+
+
+                <text class="labell">
+                    Type d'achat
+                </text>
+                <br />
+                <text class="info">
+                    @Model.Vehicule.TypeAchat
                 </text>
             </div>
         </div>
 
-        <div class="row" style="margin-left:0px;">
-            <div>
-                <div class="labell">
-                    Téléphone 1
-                </div>
-                <div id="input-container">
-                    <input value="@Model.Phone1" class="phoneInput" id="IdphoneInput" />
-                    <i class="fas fa-phone inputImg" style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
-                    <i class="fas fa-trash-alt" style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
-                </div>
-                
-            </div>
 
-            <div>
-                <div class="labell">
-                    Téléphone 2
-                </div>
-                <div id="input-container">
-                    <input value="@Model.Phone2" class="phoneInput" id="IdphoneInput" />
-                    <i class="fas fa-phone inputImg" style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
-                    <i class="fas fa-trash-alt" style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
-                </div>
-                
-            </div>
 
-            <div>
-                <div class="labell">
-                    Cellulaire
+        <div class="row">
+            <div class="col-md-12 col-lg-12" style="display:flex;flex-direction:column;">
+               <div style="height:35px"></div>
+                <div class="labell pleftClient" style="padding-left:0px;">
+                    vehicule désiré <br />
+                    Marque/Modèle/Année
+                    <br />
                 </div>
+
                 <div id="input-container">
-                    <input value="@Model.Mobile" class="phoneInput" id="IdphoneInput" />
-                    <i class="fas fa-phone inputImg"  style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
-                    <i class="fas fa-trash-alt"   style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
+                   
+                    <input type="text" value="@Model.Vehicule.VehiculeDesire" class="phoneInput float-left" id="IdphoneInput" />
                 </div>
+                <br class="brClientPhone" />
+
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="box box-content" style="height:180px;margin-left: 15px;margin-bottom:15px;">
+                <b><label>  Données d'avant modifications :</label> </b>
+                <br />
+                <label > Téléphone residence : </label>
+                <br />
+                <label> Téléphone travail : </label>
+                <br />
+                <label> Téléphone cellulaire : </label>
+                <br />
+                <label>  Courriel : </label>
                 <br />
             </div>
-        </div>
 
-        <div class="row saveButtonDiv">
-            <br />
-           <button class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
-            <br />
-        </div>
-        <br />
-        <div class="row" style="margin-left:0px;margin-top:10px;">
-             <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
-                @Html.DisplayFor(model => model.ModifClient);
-             </textarea>
+            <div class="box box-content" style="height:160px;margin-left: 15px;margin-bottom:15px;">
+                <b>  Notes générales</b>
+            </div>
+
+            @*<div class="box box-content" style="margin-left: 15px;">
+                <b>  Note du centre d'appels</b>
+            </div>*@
         </div>
     </div>
 
 
+    <div class="col-md-4 col-lg-4">
+            <br />
 
-    <div class="col-md-4">
-        <br />
-        <br />
-
-        <div class="row">
-            <div class="col-md-6">
-                <div>
-                    <text class="labell">
-                        Marque
-                    </text>
-                    <br />
-                    <text class="info">
-                        @Model.Vehicule.Marque
-                    </text>
-
-                    <br />
-
-                    <text class="labell">
-                        Modele
-                    </text>
-                    <br />
-                    <text class="info">
-                        @Model.Vehicule.Modele
-                    </text>
-
-                    <br />
+            <div class="row">
+                <div class="box box-content">
+                    <b>Notes d'appels précédents </b>
+                </div>
+            </div>
+            <br />
+            <div class="row checkMarksDiv " style="width:105%">
+                
+                <div class="col-md-6">
+                    <label class="checkContainer" style="font-size:15px">
+                        RÉSULTAT
+                    </label>
 
 
-                    <text class="labell">
-                        Annee
-                    </text>
-                    <br />
-                    <text class="info">
-                        @Model.Vehicule.Annee
-                    </text>
+                    <label>
+                        <input type="radio" name="radio">
+                        <span>Retour D'appel</span>
+                    </label>
 
-                    <br />
+                    <label>
+                        <input type="radio" name="radio">
+                        <span>Non Intèrressé</span>
+                    </label>
 
-                    <text class="labell">
-                        Valeur de vehicule
-                    </text>
-                    <br />
-                    <text class="info">
-                        @Model.Vehicule.ValeurVehicule
-                    </text>
+                    <label>
+                        <input type="radio" name="radio">
+                        <span>Relance Future</span>
+                    </label>
+                </div>
+                <div class="col-md-6 rbColumn">
+                    <label class="topRadio">
+                        <input type="radio" name="radio">
+                        <span>Liste Noire</span>
+                    </label>
 
-                    <br />
+                    <label>
+                        <input type="radio" name="radio">
+                        <span>Désactivé</span>
+                    </label>
 
 
-                    <text class="labell">
-                        Vehicule actuel
-                    </text>
-                    <br />
-                    <text class="info">
-                        @Model.Vehicule.ValeurActuel
-                    </text>
+                    <label>
+                        <input type="radio" name="radio">
+                        <span>Cas de Litige</span>
+                    </label>
 
-                    <br />
+                    <label>
+                        <input type="radio" name="radio">
+                        <span>R-V fixé</span>
+                    </label>
+                    
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div>
-                    <text class="labell">
-                        NIV
-                    </text>
-                    <br />
-                    <text class="info">
-                        @Model.Vehicule.Niv
-                    </text>
+            <div class="row" ">
+                <div class="box box-content"  >
+                    @*<div class="float-left" ><b>Note d'appel :</b></div>*@
 
-                    <br />
+                    <textarea class="float-left "  
+                              placeholder="Écrire la note d'appel ici" 
+                              id="AppelsPrecedents"
+                              
+                              name="Note" rows="5" >@Html.DisplayFor(model => model.NoteAppel)</textarea>
 
-                    <text class="labell">
-                        Etat de vente
-                    </text>
-                    <br />
-                    <text class="info">
-                        Neuf
-                    </text>
-
-                    <br />
-
-
-                    <text class="labell">
-                        Type d'achat
-                    </text>
-                    <br />
-                    <text class="info">
-                        Financement
-                    </text>
-
-                    <br />
-
-                    <text class="labell">
-                        Date acquisition
-                    </text>
-                    <br />
-                    <text class="info">
-                        15/05/2015
-                    </text>
-
-                    <br />
-
-
-                    <text class="labell">
-                        Terme
-                    </text>
-                    <br />
-                    <text class="info">
-                        Term 2019 2020
-                    </text>
-
-                    <br />
-
-                    <text class="labell">
-                        Fin Terme
-                    </text>
-                    <br />
-                    <text class="info">
-                        20 Janvier 2019
-                    </text>
-
-                    <br />
                 </div>
-            </div>
 
-        </div>
-
-        <div class="row">
-            <div style="margin-left:0px;">
-                <p class="labell">
-                    Vehicule Désiré <br />
-                    Marque/Modele/Annee
-                </p>
-                <br />
-                <text class="info">
-                    Marque/Modele/Annee
-                </text>
             </div>
             <br />
+            <button value="sauvegarder" class="btn btn-danger" disabled style="color:white;width:200px;border-radius:15px;">Sauvegarder</button>
+
         </div>
+</div>
 
 
-        <br />
-        <div class="row saveButtonDiv">
-            <br />
-            <button class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
-            <br />
-        </div>
-        <br />
-
-        <div class="row">
-            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
-           Les modifs sur le modele du vehicule
-            Les modifs sur le modele du vehicule
-    </textarea>
-        </div>
 
 
-    </div>
+<!--Calendar Modal -->
+<div id="myModal" class="modal modal-wide fade" role="dialog">
+    <div class="modal-dialog modal-xl">
 
-    <div class="col-md-4">
-        <br />
-        <div class="row">
-            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info"> 
-            Notes d'appels précédents 
-
-   
-@Html.DisplayFor(model => model.ModifClient);
-             </textarea>
-        </div>
-        <br />
-        <div class="row checkMarksDiv">
-
-            <div class="col-md-6">
-                <label class="checkContainer" style="font-size:15px">
-                    RÉSULTAT
-                </label>
-
-                <label class="checkContainer">
-                    Retour d'appel
-                    <input class="checkmark" type="checkbox"  >
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkContainer">
-                    Non interressé
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkContainer">
-                    Relance Future
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                <h4 class="modal-title">Calendrier des rendez Vous</h4>
             </div>
-            <div class="col-md-6">
-                <label class="checkContainer">
-                    Liste Noire
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkContainer">
-                    Désactivé
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkContainer">
-                    Cas de Litige
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-
-                <label class="checkContainer">
-                    R-V fixé
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
             </div>
         </div>
-
-
-        
-        <div class="row">
-            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="36" class="info"> 
-                <b>Notes d'appels    </b>
-
-      
-@Html.DisplayFor(model => model.ModifClient);
-             </textarea>
-        </div>
-        <br />
-        <button value="sauvegarder" class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
 
     </div>
 </div>
 
 
 <script>
-    function EditClientDetails() {
-
-        console.log(row);
+    function removeBackdrop() {
+        $('.modal-backdrop').remove();
+    }
+    function EditClientDetails() {        
             $.ajax({
                 url: '/Home/EditMainClient',
                 contentType: 'application/html; charset=utf-8',
@@ -411,5 +457,190 @@
                 }
             });
         }
+
+
+    function displayCalendar() {
+        
+
+        $.ajax({
+            url: '/Home/GetCalendar',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                $('.modal-body').html(result);
+                onCalendarDisplay();
+                monthsCalendarDisplay();
+
+
+                //$('#monthsCalendar').yacal({
+                //    date: '2001/4/28',
+                //    nearMonths: 1,
+                //});
+
+
+
+            /**************** months calendar ********/
+                //$(function () {
+                    //'use strict';
+
+                    //var checkIn, checkOut, numberOfMonths = [3, 1],
+                    //    $calendar = $('#monthsCalendar').datepicker({
+                    //        numberOfMonths: numberOfMonths,
+                    //        prevText: '',
+                    //        nextText: '',
+                    //        beforeShowDay: function (date) {
+                    //            date = moment(date);
+
+                    //            var now = moment(),
+                    //                show = date.isAfter(now),
+                    //                css = '';
+
+                    //            if (checkIn && checkOut
+                    //                && date.isSameOrAfter(checkIn)
+                    //                && date.isSameOrBefore(checkOut)) {
+                    //                css = 'ui-datepicker-reserved';
+
+                    //                if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
+                    //                if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
+                    //            }
+
+                    //            return [show, css];
+                    //        },
+                    //        onSelect: function (value) {
+                    //            var date = moment($calendar.datepicker('getDate'));
+
+                    //            if (checkIn && !checkOut
+                    //                && date.isSameOrAfter(checkIn))
+                    //                checkOut = date;
+                    //            else {
+                    //                checkIn = date;
+                    //                checkOut = null;
+                    //            }
+
+                    //            $('#check-in-date').text(checkIn ? checkIn.format('DD/MM/YYYY') : 'Choose a date');
+                    //            $('#check-out-date').text(checkOut ? checkOut.format('DD/MM/YYYY') : 'Choose a date');
+                    //        },
+                    //        onChangeMonthYear: function () {
+                    //            $calendar.addClass('fade-in');
+                    //        }
+                    //    }).on('animationend webkitAnimationEnd', function () {
+                    //        $calendar.removeClass('fade-in');
+                    //    });
+                //});
+                   
+
+                    
+
+                    //resize();
+                
+                /**************months calendar ******/
+
+                $('.modal-body').modal("show");
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    }
+
+    //$(window).on('resize', resize);
+
+
+     //function resize() {
+     //                   var element = $('.ui-datepicker').get(0),
+     //                       style = window.getComputedStyle(element).getPropertyValue('min-width'),
+     //                       value;
+
+     //                   switch (style) {
+     //                       case '765px': value = [2, 3]; break;
+     //                       case '510px': value = [2, 2]; break;
+     //                       default: value = [2, 1]; break;
+     //                   }
+
+     //                   if (numberOfMonths !== value) {
+     //                       if (checkIn) $calendar.datepicker('setDate', checkIn.toDate());
+
+     //                       $calendar.datepicker('option', 'numberOfMonths', numberOfMonths = value);
+     //                   }
+     //               }
+
+    function onCalendarDisplay() {
+    var calendarEl = document.getElementById('calendarfc');
+    //var monthsCalendar = document.getElementById('monthsCalendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: 'fr',
+        timeZone: 'UTC',
+        initialView: 'timeGridFourDay',
+        headerToolbar: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'timeGridDay,timeGridFourDay'
+        },
+        views: {
+            timeGridFourDay: {
+                type: 'timeGrid',
+                duration: { days: 4 },
+                buttonText: '4 day'
+            }
+        },
+        events: 'https://fullcalendar.io/demo-events.json'
+    });
+
+    
+    calendar.render();
+    };
+
+
+    function monthsCalendarDisplay() {
+        //'use strict';
+
+        var checkIn, checkOut, numberOfMonths = [3, 1],
+            $calendar = $('#monthsCalendar').datepicker({
+                numberOfMonths: numberOfMonths,
+                prevText: '',
+                nextText: '',
+                beforeShowDay: function (date) {
+                    date = moment(date);
+
+                    var now = moment(),
+                        show = date.isAfter(now),
+                        css = '';
+
+                    if (checkIn && checkOut
+                        && date.isSameOrAfter(checkIn)
+                        && date.isSameOrBefore(checkOut)) {
+                        css = 'ui-datepicker-reserved';
+
+                        if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
+                        if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
+                    }
+
+                    return [show, css];
+                },
+                onSelect: function (value) {
+                    var date = moment($calendar.datepicker('getDate'));
+
+                    if (checkIn && !checkOut
+                        && date.isSameOrAfter(checkIn))
+                        checkOut = date;
+                    else {
+                        checkIn = date;
+                        checkOut = null;
+                    }
+
+                    $('#check-in-date').text(checkIn ? checkIn.format('DD/MM/YYYY') : 'Choose a date');
+                    $('#check-out-date').text(checkOut ? checkOut.format('DD/MM/YYYY') : 'Choose a date');
+                },
+                onChangeMonthYear: function () {
+                    $calendar.addClass('fade-in');
+                }
+            }).on('animationend webkitAnimationEnd', function () {
+                $calendar.removeClass('fade-in');
+            });
+
+       // resize();
+
+    }
 
 </script>

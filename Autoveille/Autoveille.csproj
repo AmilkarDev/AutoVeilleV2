@@ -164,6 +164,7 @@
     <Compile Include="Models\Appels.cs" />
     <Compile Include="Models\ConcessionsModel.cs" />
     <Compile Include="Models\EvenementModel.cs" />
+    <Compile Include="TestingModels\Dashboard.cs" />
     <Compile Include="TestingModels\Vehicule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -179,15 +180,52 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\css\Connexion.css" />
     <Content Include="Content\css\Dashboard.css" />
     <Content Include="Content\css\InfoConcession.css" />
     <Content Include="Content\css\LayoutBlack.css" />
     <Content Include="Content\flip.min.css" />
+    <Content Include="Content\Images\AutoVeille_Hor_Positif.png" />
     <Content Include="Content\Images\expand.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Agrandissement.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Appel_Gris.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Appel_Vert.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Check_Bleu.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Check_Gris.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_De╠üsactive╠ü.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Liste.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Litige.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Non_Inte╠üresse╠ü.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Opportunite╠ü.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Pointeur.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_RDV.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Relance.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Base_Couleurs_Retour_Appel.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Appels.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Compte_Rebours.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Date.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_De╠ücompte.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_De╠ücompte_Date.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Graphique_Appels.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Graphique_Opportunite╠üs.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Graphique_Vente.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Graphique_WaklIn.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Opportunite╠üs.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Potentiel.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Potentiel_ONT.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Potentiel_QC.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_RDV.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_Vente.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_WaklIn_Blue.svg" />
+    <Content Include="Content\Images\ICONES_SVG_Couleurs_WaklIn_Vert.svg" />
+    <Content Include="Content\Images\ICONES_SVG_NB_Base_RDV.svg" />
     <Content Include="Content\Images\Layout\Calendar.png" />
+    <Content Include="Content\Images\Layout\LogoAutoVeille_NEG.svg" />
     <Content Include="Content\Images\Layout\radar.png" />
     <Content Include="Content\Images\OpportunityOrange.svg" />
+    <Content Include="Content\Images\Poubelle_Active.svg" />
     <Content Include="Content\Images\retourAppel.svg" />
+    <Content Include="Content\jquery.yacal.css" />
     <Content Include="Scripts\Chart.roundedBarCharts.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -241,6 +279,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.yacal.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -266,6 +305,9 @@
     <Content Include="Views\Home\GetMainClient.cshtml" />
     <Content Include="Views\Home\GetVehicule.cshtml" />
     <Content Include="Views\Home\EditMainClient.cshtml" />
+    <Content Include="Views\Home\GetMainClientOld.cshtml" />
+    <Content Include="Views\Home\GetCalendar.cshtml" />
+    <Content Include="Views\Shared\_InitialLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -290,6 +332,10 @@
     <ProjectReference Include="..\AutoveilleBL\AutoveilleBL.csproj">
       <Project>{b2f57466-1c00-4612-8bcd-32dd3985fc7e}</Project>
       <Name>AutoveilleBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Outils\Outils.csproj">
+      <Project>{423d7c49-9fce-4e71-8d69-6f528863fbd0}</Project>
+      <Name>Outils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

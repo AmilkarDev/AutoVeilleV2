@@ -46,6 +46,7 @@
     <Compile Include="Models\Concession.cs" />
     <Compile Include="Models\Enumerations\TypeProgramme.cs" />
     <Compile Include="Models\EvenementAutoveille.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Relance.cs" />
     <Compile Include="Models\Web\UtilisateurSite.cs" />
     <Compile Include="Models\Web\UtilisateurSiteCommerces.cs" />
@@ -72,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <EmbeddedResource Include="Templates\SQL\GetNotesGenerales.sql" />
+    <EmbeddedResource Include="Templates\SQL\GetNotesPrecedentes.sql" />
     <EmbeddedResource Include="Templates\SQL\GetRelance.sql" />
     <EmbeddedResource Include="Templates\SQL\GetEvenement.sql" />
     <EmbeddedResource Include="Templates\SQL\GetEvenementDetailsById.sql" />

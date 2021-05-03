@@ -34,6 +34,7 @@
             this.dgvEvents = new System.Windows.Forms.DataGridView();
             this.lbEvenements = new System.Windows.Forms.Label();
             this.lbNomCommerce = new System.Windows.Forms.Label();
+            this.DateTimeMinEvent = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEvents)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,11 +92,19 @@
             this.lbNomCommerce.Size = new System.Drawing.Size(0, 18);
             this.lbNomCommerce.TabIndex = 6;
             // 
+            // DateTimeMinEvent
+            // 
+            this.DateTimeMinEvent.Location = new System.Drawing.Point(288, 215);
+            this.DateTimeMinEvent.Name = "DateTimeMinEvent";
+            this.DateTimeMinEvent.Size = new System.Drawing.Size(200, 20);
+            this.DateTimeMinEvent.TabIndex = 7;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1068, 449);
+            this.Controls.Add(this.DateTimeMinEvent);
             this.Controls.Add(this.lbNomCommerce);
             this.Controls.Add(this.lbEvenements);
             this.Controls.Add(this.dgvEvents);
@@ -118,5 +127,6 @@
         private System.Windows.Forms.DataGridView dgvEvents;
         private System.Windows.Forms.Label lbEvenements;
         private System.Windows.Forms.Label lbNomCommerce;
+        private System.Windows.Forms.DateTimePicker DateTimeMinEvent;
     }
 }

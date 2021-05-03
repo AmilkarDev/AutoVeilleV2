@@ -1,0 +1,415 @@
+﻿@model Autoveille.TestingModels.Client
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div style="display:inline;">
+                    <text onclick="EditClientDetails()" style="font-size:15px;font-weight:bolder;">Editer     </text>
+                    <i class="fas fa-edit"></i>
+                </div>
+                <br />
+                <text class="labell">
+                    Prenom
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.PrenomClient)
+                </text>
+
+                <br />
+
+                <text class="labell">
+                    Nom
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.NomClient)
+                </text>
+
+                <br />
+
+                <text class="labell">
+                    Compagnie
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.Compagnie)
+                </text>
+
+                <br />
+
+                <text class="labell">
+                    Langue
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.Langue)
+                </text>
+
+            </div>
+            <div class="col-md-6">
+                <div style="display:inline-flex;">
+                    <p style="font-size:25px;font-weight:bolder;">
+                        Retour d'appel
+                    </p>
+                    <img src="~/Content/Images/retourAppel.svg" height="35" width="35" style="margin-left:3px;" />
+                </div>
+                <br />
+                <text class="labell">
+                    Courriel
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.Courriel)
+                </text>
+
+                <br />
+
+                <text class="labell">
+                    Adresse
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.Adresse)
+                </text>
+
+                <br />
+
+                <text class="labell">
+                    Ville
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.Ville)
+                </text>
+
+                <br />
+
+                <text class="labell">
+                    Numéro du client
+                </text>
+                <br />
+                <text class="info">
+                    @Html.DisplayFor(model => model.NumClient)
+                </text>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:0px;">
+            <div>
+                <div class="labell">
+                    Téléphone 1
+                </div>
+                <div id="input-container1">
+                    <input value="@Model.Phone1" class="phoneInput" id="IdphoneInput" />
+                    <i class="fas fa-phone inputImg" style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
+                    <i class="fas fa-trash-alt" style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
+                </div>
+                
+            </div>
+
+            <div>
+                <div class="labell">
+                    Téléphone 2
+                </div>
+                <div id="input-container2">
+                    <input value="@Model.Phone2" class="phoneInput" id="IdphoneInput" />
+                    <i class="fas fa-phone inputImg" style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
+                    <i class="fas fa-trash-alt" style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
+                </div>
+                
+            </div>
+
+            <div>
+                <div class="labell">
+                    Cellulaire
+                </div>
+                <div id="input-container">
+                    <input value="@Model.Mobile" class="phoneInput" id="IdphoneInput" />
+                    <i class="fas fa-phone inputImg"  style="position:absolute;margin-left:-65px;margin-top:10px;width:35px;color:green;"></i>
+                    <i class="fas fa-trash-alt"   style="position:absolute;margin-left:145px;margin-top:-30px;width:35px;color:black;"></i>
+                </div>
+                <br />
+            </div>
+        </div>
+
+        <div class="row saveButtonDiv">
+            <br />
+           <button class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
+            <br />
+        </div>
+        <br />
+        <div class="row" style="margin-left:0px;margin-top:10px;">
+             <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
+                @Html.DisplayFor(model => model.ModifClient);
+             </textarea>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-4">
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <text class="labell">
+                        Marque
+                    </text>
+                    <br />
+                    <text class="info">
+                        @Model.Vehicule.Marque
+                    </text>
+
+                    <br />
+
+                    <text class="labell">
+                        Modele
+                    </text>
+                    <br />
+                    <text class="info">
+                        @Model.Vehicule.Modele
+                    </text>
+
+                    <br />
+
+
+                    <text class="labell">
+                        Annee
+                    </text>
+                    <br />
+                    <text class="info">
+                        @Model.Vehicule.Annee
+                    </text>
+
+                    <br />
+
+                    <text class="labell">
+                        Valeur de vehicule
+                    </text>
+                    <br />
+                    <text class="info">
+                        @Model.Vehicule.ValeurVehicule
+                    </text>
+
+                    <br />
+
+
+                    <text class="labell">
+                        Vehicule actuel
+                    </text>
+                    <br />
+                    <text class="info">
+                        @Model.Vehicule.ValeurActuel
+                    </text>
+
+                    <br />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    <text class="labell">
+                        NIV
+                    </text>
+                    <br />
+                    <text class="info">
+                        @Model.Vehicule.Niv
+                    </text>
+
+                    <br />
+
+                    <text class="labell">
+                        Etat de vente
+                    </text>
+                    <br />
+                    <text class="info">
+                        Neuf
+                    </text>
+
+                    <br />
+
+
+                    <text class="labell">
+                        Type d'achat
+                    </text>
+                    <br />
+                    <text class="info">
+                        Financement
+                    </text>
+
+                    <br />
+
+                    <text class="labell">
+                        Date acquisition
+                    </text>
+                    <br />
+                    <text class="info">
+                        15/05/2015
+                    </text>
+
+                    <br />
+
+
+                    <text class="labell">
+                        Terme
+                    </text>
+                    <br />
+                    <text class="info">
+                        Term 2019 2020
+                    </text>
+
+                    <br />
+
+                    <text class="labell">
+                        Fin Terme
+                    </text>
+                    <br />
+                    <text class="info">
+                        20 Janvier 2019
+                    </text>
+
+                    <br />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div style="margin-left:0px;">
+                <p class="labell">
+                    Vehicule Désiré <br />
+                    Marque/Modele/Annee
+                </p>
+                <br />
+                <text class="info">
+                    Marque/Modele/Annee
+                </text>
+            </div>
+            <br />
+        </div>
+
+
+        <br />
+        <div class="row saveButtonDiv">
+            <br />
+            <button class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
+            <br />
+        </div>
+        <br />
+
+        <div class="row">
+            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info">          
+           Les modifs sur le modele du vehicule
+            Les modifs sur le modele du vehicule
+    </textarea>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-4">
+        <br />
+        <div class="row">
+            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="35" class="info"> 
+            Notes d'appels précédents 
+
+   
+@Html.DisplayFor(model => model.ModifClient);
+             </textarea>
+        </div>
+        <br />
+        <div class="row checkMarksDiv">
+
+            <div class="col-md-6">
+                <label class="checkContainer" style="font-size:15px">
+                    RÉSULTAT
+                </label>
+
+                <label class="checkContainer">
+                    Retour d'appel
+                    <input class="checkmark" type="checkbox"  >
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkContainer">
+                    Non interressé
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkContainer">
+                    Relance Future
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+
+            </div>
+            <div class="col-md-6">
+                <label class="checkContainer">
+                    Liste Noire
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkContainer">
+                    Désactivé
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkContainer">
+                    Cas de Litige
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkContainer">
+                    R-V fixé
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+
+
+        
+        <div class="row">
+            <textarea style="border-radius: 10px" id="AppelsPrecedents" name="Note" rows="4" cols="36" class="info"> 
+         
+
+      
+@Html.DisplayFor(model => model.ModifClient);
+             </textarea>
+        </div>
+        <br />
+        <button value="sauvegarder" class="btn btn-danger" disabled style="color:white;width:200px;border-radius:20px;">Sauvegarder</button>
+
+    </div>
+</div>
+
+
+<script>
+    function EditClientDetails() {
+
+        console.log(row);
+            $.ajax({
+                url: '/Home/EditMainClient',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('#' + row).html(result);
+                    $('#' + row).css('visibility', 'visible');
+                    $('#' + row).css('display', '');
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+
+</script>

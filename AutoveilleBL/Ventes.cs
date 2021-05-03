@@ -130,7 +130,7 @@ namespace AutoveilleBL
                                 //DateProchaineRelance = reader.GetNullableDate(53),
                                 //noCommerce = reader.GetInt32(54),                           
                                 //EstAfficherCentreAAppel=reader.GetNullableInt(55),
-                                //Ville= reader.GetNullableString(56),
+                                Ville = reader.GetNullableString(56),
                                 //Adresse= reader.GetNullableString(57),
                             };
               
@@ -146,7 +146,68 @@ namespace AutoveilleBL
                 throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
             }
         }
+        public static string GetNotesGeneral(int aNoCommerce,  int aNoClient)
+        {
+            var res = "";
+            try
+            {
+                var nameConnStr = Concessions.GetConnectionString(aNoCommerce);
+                SqlExecFramework.Execute(nameConnStr, null, (conn, trans) =>
+                {
+                    var sql = new StringTemplate(".sql").LoadAndFill("GetNotesGenerales", StringTemplateOptions.TrimBlanks, new { });
+                    var cmd = new SqlCommand(sql, conn, trans);                   
+                    cmd.AddParameterWithValue("@noclient", aNoClient);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            res= reader.GetString(0);                          
+                        }
+                    }
+                });
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
+            }
+        }
+        public static List<NoteAppel> GetNotesPrecedente(int aNoCommerce, int aIdFiche, int aNoClient)
+        {
+            var res = new List<NoteAppel>();
+            try
+            {
+                var nameConnStr = Concessions.GetConnectionString(aNoCommerce);
+                SqlExecFramework.Execute(nameConnStr, null, (conn, trans) =>
+                {
+                    var sql = new StringTemplate(".sql").LoadAndFill("GetNotesPrecedentes", StringTemplateOptions.TrimBlanks, new { });
+                    var cmd = new SqlCommand(sql, conn, trans);
+                    cmd.AddParameterWithValue("@id", aIdFiche);
+                    cmd.AddParameterWithValue("@noclient", aNoClient);
 
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var note = new NoteAppel()
+                            {
+                                Date=reader.GetDateTime(1),
+                                Note= reader.GetString(0),
+                            };
+                            res.Add(note);
+                        }
+                    }
+                   
+                });
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
+            }
+        }
         public static List<Relance> GetRelances(int aNoCommerce,int aIdEvenement,int aIdTypeEvenement )
         {
             try
@@ -168,6 +229,7 @@ namespace AutoveilleBL
                             var relance = new Relance()
                             {
                                 Id = reader.GetInt32(0),
+                                NoClient = reader.GetNullableInt(1),
                                 Nom = reader.GetNullableString(3),
                                 Prenom = reader.GetNullableString(4),
                                 Compagnie = reader.GetNullableString(5),
@@ -175,9 +237,13 @@ namespace AutoveilleBL
                                 TelephoneTravail = reader.GetNullableString(8),
                                 Cellulaire = reader.GetNullableString(9),
                                 ExtTravail = reader.GetNullableString(10),
-                                FinDuTerme = reader.GetNullableDate(18),
+                                Marque = reader.GetNullableString(11),                              
                                 Modele = reader.GetNullableString(12),
                                 Annee = reader.GetNullableInt(13),
+                                DateAchat=reader.GetNullableDate(16),
+                                NbreMois=reader.GetNullableInt(17),
+                                FinDuTerme = reader.GetNullableDate(18),
+                                AchatLocation=reader.GetNullableString(19),
                             };
                             res.Add(relance);
                         }

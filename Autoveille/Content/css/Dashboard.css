@@ -1,7 +1,7 @@
 ﻿.tick {
     background-color: black;
     height:250px;
-    
+    margin-top:100px;
 }
 
 .tick-flip, .tick-text-inline {
@@ -130,13 +130,13 @@
     color: white;
 }
 
-.circlee {
+/*.circlee {
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -250px;
     margin-left: -250px;
-}
+}*/
 
 
 .stats {
@@ -157,8 +157,9 @@
 #canvaContent {
     /*font-size: 100px;
     font-weight: bold;*/
-    height:55px;
-    width :55px;
+    height:90px;
+    width :90px;
+    position:absolute;
 }
 
 
@@ -166,7 +167,7 @@
     padding: 25px;
     background-color: black;
     border-radius: 20px;
-    width: 710px;
+    width: 100%;
     height: 420px;
 }
 
@@ -186,7 +187,9 @@
 }
 
 body {
-    background-color: grey !important;
+    /*    background-color: grey !important;*/
+    /* background-color: #262626 !important;*/
+    background-color: #262626 ;
 }
 
 /*@media only screen and (max-width: 1400px) {
@@ -211,16 +214,16 @@ body {
     }
 
     .number {
-        font-size: 55px;
+        font-size: 77px;
     }
 
     .text {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bolder;
     }
 
     .flip-date {
-        width: 600px;
+        width: 100%;
         justify-content: center;
         vertical-align: middle;
     }
@@ -235,7 +238,7 @@ body {
         width: 200px;
     }
 
-    .circlee {
+    /*.circlee {
         width: 400px;
         height: 400px;
         position: absolute;
@@ -244,7 +247,7 @@ body {
         top: auto;
         left: auto;
         float: left;
-    }
+    }*/
 
     #canvaContent {
         position: absolute;
@@ -286,7 +289,7 @@ body {
     }
 
     .flip-date {
-        width: 460px;
+        width: 100%;
         justify-content: center;
         vertical-align: middle;
     }
@@ -330,7 +333,7 @@ body {
     }
 
     .flip-date-container {
-        width: 460px;
+        width: 100%;
         margin-left: -15px;
     }
 }
@@ -349,7 +352,7 @@ body {
         font-weight : bold;
     }
     .flip-date {
-        width: 400px;
+        width: 100%;
         justify-content:center;
         vertical-align:middle;
     }

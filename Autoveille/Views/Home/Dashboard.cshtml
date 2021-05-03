@@ -1,18 +1,18 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
 }
-
+@model Autoveille.TestingModels.Dashboard
 <div class="row alertRow" id="eventDiv">
-        <div style="float:left;" class="col-md-6 col-sm-12 col-xs-12">
-            <p class="eventText" style="color: white;">
-                EVENEMENT
-                <span id="eventState"> EN COURS </span>
-            </p>
-        </div>
+    <div style="float:left;" class="col-md-6 col-sm-12 col-xs-12">
+        <p class="eventText" style="color: white;">
+            EVENEMENT
+            <span id="eventState"> EN COURS </span>
+        </p>
+    </div>
 
-        <div id="searchInput" class="eventText col-md-6 col-sm-12 col-xs-12" style="color:white;">
-            NOM DU CONCESSIONNAIRE
-        </div>
+    <div id="searchInput" class="eventText col-md-6 col-sm-12 col-xs-12" style="color:white;">
+        NOM DU CONCESSIONNAIRE
+    </div>
 
 </div>
 <br />
@@ -41,7 +41,7 @@
     </div>*@
 
 <div class="row mainRow">
-    <div  class="col" style="margin-left:35px;width:50%;">
+    <div class="col" style="margin-left:35px;width:50%;">
         <div class="row flip-date">
             <div id="calendar-Label">
                 <img src="~/Content/Images/Layout/Calendar.png" />
@@ -64,12 +64,12 @@
         <div class="row flip-date">
             <div class="col-md-4 col-sm-12 col-xs-12 stats">
                 <text class="text"> Rendez-vous </text><br />
-                <text class="number"> 49</text>
+                <text class="number"> @Model.RDV</text>
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12" id="content">
-                <canvas class="circlee" id="rendezVous-circle" width="500" height="500"></canvas>
+                <canvas class="circlee" id="rendezVous-circle" width="350" height="350"></canvas>
                 @*<div class="description" style="text-align: center; font-size: 30px; font-weight: 200; position: relative; color: #fff;">*@
-                    <img id="canvaContent" src="~/Content/Images/Layout/green calendar.png" />
+                <img id="canvaContent" src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" />
                 @*</div>*@
             </div>
         </div>
@@ -77,14 +77,14 @@
         <br />
 
         <div class="row flip-date">
-            <div class="col-md-4 stats">
+            <div class="col-md-4 col-sm-12 col-xs-12 stats">
                 <text class="text" style="color:green;"> Walk-IN </text><br />
-                <text class="number"> 15</text>
+                <text class="number"> @Model.WalkIn</text>
             </div>
             <div class="col-md-8  col-sm-12 col-xs-12" id="content">
-                <canvas class="circlee" id="walkIn-circle" width="500" height="500"></canvas>
+                <canvas class="circlee" id="walkIn-circle" width="350" height="350"></canvas>
                 @*<div class="description" style="text-align: center; font-size: 30px; font-weight: 200; position: relative; color: #fff;">*@
-                    <img id="canvaContent" src="~/Content/Images/Layout/green calendar.png" />
+                <img id="canvaContent" src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Blue.svg" />
                 @*</div>*@
             </div>
         </div>
@@ -92,13 +92,13 @@
 
 
     <div class="col mainSecondColumn">
-        <div class="flip-date-container">
+        <div class="flip-date-container" style="width:100%;margin-left:-20px;">
             <div class="row flip-date-inside">
-                <div class="col-md-4 stats" >
+                <div class="col-md-4 col-sm-12 col-xs-12 stats">
                     <text class="text" style="color:red;"> Potentiel </text><br /><br />
-                    <text class="number"> 187</text>
+                    <text class="number"> @Model.Potentiels</text>
                 </div>
-                <div  class="col-md-8" id="content">
+                <div class="col-md-8 col-sm-12 col-xs-12" id="content">
                     <img id="radarImg" src="~/Content/Images/Layout/radar.png" />
                 </div>
             </div>
@@ -106,261 +106,262 @@
             <br />
 
             <div class="row flip-date-inside">
-                <div class="col-md-4 col-sm-12 stats">
+                <div class="col-md-4 col-sm-12 col-xs-12 stats">
                     <text class="text" style="color:yellow;"> Opportunités </text><br />
-                    <text class="number">94</text>
+                    <text class="number">@Model.Oportunites</text>
                 </div>
-                <div class="col-md-8 col-sm-12" id="content">
-                    <canvas class="circlee" id="oppo-circle" width="500" height="500" ></canvas>
+                <div class="col-md-8 col-sm-12 col-xs-12" id="content">
+                    <canvas class="circlee" id="oppo-circle" width="350" height="350"></canvas>
                     @*<div class="description" style="text-align: center; font-size: 30px; font-weight: 200; position: relative; color: #fff;">*@
-                        <img id="canvaContent" src="~/Content/Images/Layout/green calendar.png" />
+                    <img id="canvaContent" src="~/Content/Images/ICONES_SVG_Couleurs_Opportunite╠üs.svg" />
                     @*</div>*@
                 </div>
             </div>
         </div>
         <br />
 
-        <div class="row flip-date">
-            <div class="col-md-4 stats">
-                <text class="text" style="color:green;"> Vente </text><br />
-                <text class="number" > 49</text>
+        <div class="row flip-date" style="width:100%;">
+            <div class="col-md-4 col-sm-12 col-xs-12 stats">
+                <text class="text" style="color:green;"> Ventes </text><br />
+                <text class="number"> @Model.Ventes</text>
             </div>
-            <div class="col-md-8" id="content">
-                <canvas class="circlee" id="vente-circle" width="500" height="500" ></canvas>
+            <div class="col-md-8 col-sm-12 col-xs-12" id="content">
+                <canvas class="circlee" id="vente-circle" width="350" height="350"></canvas>
                 @*<div class="description" style="text-align: center; font-size: 30px; font-weight: 200; position: relative; color: #fff;">*@
-                    <img id="canvaContent" src="~/Content/Images/Layout/green calendar.png" />
+                <img id="canvaContent" src="~/Content/Images/ICONES_SVG_Couleurs_Vente.svg" />
                 @*</div>*@
             </div>
         </div>
 
     </div>
 
-    
+
 </div>
 
 
-        <script>
-            var canvas = document.getElementById('rendezVous-circle');
-            var ctx = canvas.getContext('2d');
+<script>
+    var canvas = document.getElementById('rendezVous-circle');
+    var ctx = canvas.getContext('2d');
 
-            var x = 250,
-                y = 250,
-                radius = 150,
-                // 0deg   - 1.5 * Pi,
-                // 90deg  - 0   * Pi,
-                // 180deg - 0.5 * Pi,
-                // 270deg - 1   * Pi
-                angleStart = 1.5 * Math.PI,
-                angleEnd = 0.7 * Math.PI;
+    var x = 170,
+        y = 170,
+        radius = 100,
+        // 0deg   - 1.5 * Pi,
+        // 90deg  - 0   * Pi,
+        // 180deg - 0.5 * Pi,
+        // 270deg - 1   * Pi
+        angleStart = 1.5 * Math.PI,
+        angleEnd = 0.7 * Math.PI;
 
-            //Create gradient
-            var gradient = ctx.createLinearGradient(0, 500, 0, 0);
-            gradient.addColorStop(0, '#c0e674');
-            gradient.addColorStop(1, '#40d6a5');
-
-
-            //Draw circle
-            ctx.beginPath();
-            ctx.arc(x, x, radius, 0, 2 * Math.PI, false);
-            ctx.lineWidth = 30;
-            ctx.shadowColor = 'green';
-            ctx.shadowBlur = 50;
-            ctx.shadowOffsetY = 3;
-            ctx.stroke();
+    //Create gradient
+    var gradient = ctx.createLinearGradient(0, 500, 0, 0);
+    gradient.addColorStop(0, '#c0e674');
+    gradient.addColorStop(1, '#40d6a5');
 
 
-
-            ctx.stroke();
-
-            //Draw arc
-            ctx.beginPath();
-            ctx.arc(x, y, radius, angleStart, angleEnd);
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = 30;
-            ctx.lineCap = 'round';
-            ctx.stroke();
-
-            /****************** Opportunities circle canvas ******************* */
-            var canvas = document.getElementById('oppo-circle');
-            var oppoCtx = canvas.getContext('2d');
-            //Create gradient
-            var yellowGradient = ctx.createLinearGradient(0, 500, 0, 0);
-            yellowGradient.addColorStop(0, '#f5df2e');
-            yellowGradient.addColorStop(1, '#f07654');
-
-
-            //Draw circle
-            oppoCtx.beginPath();
-            oppoCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
-            oppoCtx.lineWidth = 30;
-            oppoCtx.shadowColor = '#f39f86';
-            oppoCtx.shadowBlur = 50;
-            oppoCtx.shadowOffsetY = 3;
-            oppoCtx.stroke();
-
-
-            //Draw arc
-            oppoCtx.beginPath();
-            oppoCtx.arc(x, y, radius, angleStart, angleEnd);
-            oppoCtx.strokeStyle = yellowGradient;
-            oppoCtx.lineWidth = 30;
-            oppoCtx.lineCap = 'round';
-            oppoCtx.stroke();
+    //Draw circle
+    ctx.beginPath();
+    ctx.arc(x, x, radius, 0, 2 * Math.PI, false);
+    ctx.lineWidth = 40;
+    ctx.shadowColor = 'green';
+    ctx.shadowBlur = 50;
+    ctx.shadowOffsetY = 2;
+    ctx.stroke();
 
 
 
-            var canvas = document.getElementById('walkIn-circle');
+    ctx.stroke();
 
-            var walkInCtx = canvas.getContext('2d');
-            //Create gradient
-            var blueGradient = ctx.createLinearGradient(0, 500, 0, 0);
-            blueGradient.addColorStop(0, '#32B9A9');
-            blueGradient.addColorStop(1, '#32B9A9');
+    //Draw arc
+    ctx.beginPath();
 
+    ctx.arc(x, y, radius, angleStart, angleEnd);
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 40;
+    ctx.lineCap = 'round';
+    ctx.stroke();
 
-            //Draw circle
-            walkInCtx.beginPath();
-            walkInCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
-            walkInCtx.lineWidth = 30;
-            walkInCtx.shadowColor = '#09c6f9';
-            walkInCtx.shadowBlur = 50;
-            walkInCtx.shadowOffsetY = 3;
-            walkInCtx.stroke();
-
-
-            //Draw arc
-            walkInCtx.beginPath();
-            walkInCtx.arc(x, y, radius, angleStart, angleEnd);
-            walkInCtx.strokeStyle = blueGradient;
-            walkInCtx.lineWidth = 30;
-            walkInCtx.lineCap = 'round';
-            walkInCtx.stroke();
+    /****************** Opportunities circle canvas ******************* */
+    var canvas = document.getElementById('oppo-circle');
+    var oppoCtx = canvas.getContext('2d');
+    //Create gradient
+    var yellowGradient = ctx.createLinearGradient(0, 500, 0, 0);
+    yellowGradient.addColorStop(0, '#f5df2e');
+    yellowGradient.addColorStop(1, '#f07654');
 
 
-            /******************sales circle **********/
-            var canvas = document.getElementById('vente-circle');
-
-            var venteCtx = canvas.getContext('2d');
-            //Create gradient
-            var purpleGradient = ctx.createLinearGradient(0, 500, 0, 0);
-            purpleGradient.addColorStop(0, '#ffa69e');
-            purpleGradient.addColorStop(1, '#861657');
-
-
-            //Draw circle
-            venteCtx.beginPath();
-            venteCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
-            venteCtx.lineWidth = 30;
-            venteCtx.shadowColor = '#a4508b';
-            venteCtx.shadowBlur = 50;
-            venteCtx.shadowOffsetY = 3;
-            venteCtx.stroke();
+    //Draw circle
+    oppoCtx.beginPath();
+    oppoCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
+    oppoCtx.lineWidth = 40;
+    oppoCtx.shadowColor = '#f39f86';
+    oppoCtx.shadowBlur = 50;
+    oppoCtx.shadowOffsetY = 3;
+    oppoCtx.stroke();
 
 
-            //Draw arc
-            venteCtx.beginPath();
-            venteCtx.arc(x, y, radius, angleStart, angleEnd);
-            venteCtx.strokeStyle = purpleGradient;
-            venteCtx.lineWidth = 30;
-            venteCtx.lineCap = 'round';
-            venteCtx.stroke();
+    //Draw arc
+    oppoCtx.beginPath();
+    oppoCtx.arc(x, y, radius, angleStart, angleEnd);
+    oppoCtx.strokeStyle = yellowGradient;
+    oppoCtx.lineWidth = 40;
+    oppoCtx.lineCap = 'round';
+    oppoCtx.stroke();
 
 
+    /**********WALK iN CIRCLE  */
+    var canvas = document.getElementById('walkIn-circle');
+
+    var walkInCtx = canvas.getContext('2d');
+    //Create gradient
+    var blueGradient = ctx.createLinearGradient(0, 500, 0, 0);
+    blueGradient.addColorStop(0, '#32B9A9');
+    blueGradient.addColorStop(1, '#32B9A9');
 
 
+    //Draw circle
+    walkInCtx.beginPath();
+    walkInCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
+    walkInCtx.lineWidth = 40;
+    walkInCtx.shadowColor = '#09c6f9';
+    walkInCtx.shadowBlur = 50;
+    walkInCtx.shadowOffsetY = 3;
+    walkInCtx.stroke();
 
 
+    //Draw arc
+    walkInCtx.beginPath();
+    walkInCtx.arc(x, y, radius, angleStart, angleEnd);
+    walkInCtx.strokeStyle = blueGradient;
+    walkInCtx.lineWidth = 40;
+    walkInCtx.lineCap = 'round';
+    walkInCtx.stroke();
 
-            var canvaas = document.getElementById("barChart");
-            var cttx = canvaas.getContext('2d');
 
-            // Global Options:
-            Chart.defaults.global.defaultFontColor = 'dodgerblue';
-            Chart.defaults.global.defaultFontSize = 16;
+    /******************sales circle **********/
+    var canvas = document.getElementById('vente-circle');
 
-            // Data with datasets options
-            var data = {
-                labels: ["Vanilla", "Chocolate", "Strawberry"],
-                datasets: [
-                    {
-                        label: "Ice Cream Prices ",
-                        fill: true,
-                        backgroundColor: [
-                            'moccasin',
-                            'saddlebrown',
-                            'lightpink'],
-                        data: [11, 9, 4]
-                    }
-                ]
-            };
+    var venteCtx = canvas.getContext('2d');
+    //Create gradient
+    var purpleGradient = ctx.createLinearGradient(0, 500, 0, 0);
+    purpleGradient.addColorStop(0, '#ffa69e');
+    purpleGradient.addColorStop(1, '#861657');
 
-            var options = {
-                tooltips: {
-                    callbacks: {
-                        label: function (tooltipItem) {
-                            return "$" + Number(tooltipItem.yLabel) + " and so worth it !";
-                        }
-                    }
-                },
-                title: {
-                    display: true,
-                    text: 'Ice Cream Truck',
-                    position: 'bottom'
-                },
 
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            };
+    //Draw circle
+    venteCtx.beginPath();
+    venteCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
+    venteCtx.lineWidth = 40;
+    venteCtx.shadowColor = '#a4508b';
+    venteCtx.shadowBlur = 50;
+    venteCtx.shadowOffsetY = 3;
+    venteCtx.stroke();
 
-            // Chart declaration:
-            var myBarChart = new Chart(cttx, {
-                type: 'bar',
-                data: data,
-                options: options
-            });
+
+    //Draw arc
+    venteCtx.beginPath();
+    venteCtx.arc(x, y, radius, angleStart, angleEnd);
+    venteCtx.strokeStyle = purpleGradient;
+    venteCtx.lineWidth = 40;
+    venteCtx.lineCap = 'round';
+    venteCtx.stroke();
 
 
 
 
 
-            //Flip Date script
-            function handleTickInit(tick) {
-                // set language
-                var locale = {
-                    YEAR_PLURAL: 'ANNEES',
-                    YEAR_SINGULAR: 'Ans',
-                    MONTH_PLURAL: 'Mois',
-                    MONTH_SINGULAR: 'MOIS',
-                    WEEK_PLURAL: 'Semaines',
-                    WEEK_SINGULAR: 'Semaine',
-                    DAY_PLURAL: 'JOURS',
-                    DAY_SINGULAR: 'Jour',
-                    HOUR_PLURAL: 'Heures',
-                    HOUR_SINGULAR: 'Heure',
-                    MINUTE_PLURAL: 'Minutes',
-                    MINUTE_SINGULAR: 'Minute',
-                    SECOND_PLURAL: 'Secondes',
-                    SECOND_SINGULAR: 'Seconde',
-                    MILLISECOND_PLURAL: 'Millisecondes',
-                    MILLISECOND_SINGULAR: 'Milliseconde'
-                };
-
-                for (var key in locale) {
-                    if (!locale.hasOwnProperty(key)) { continue; }
-                    tick.setConstant(key, locale[key]);
-                }
 
 
+    var canvaas = document.getElementById("barChart");
+    var cttx = canvaas.getContext('2d');
 
-                var dd = Tick.helper.date();
-                console.log(dd);
-                tick.value = [dd.getDate(), dd.getMonth() + 1, dd.getFullYear()];
-                // console.log(tick.value);
+    // Global Options:
+    Chart.defaults.global.defaultFontColor = 'dodgerblue';
+    Chart.defaults.global.defaultFontSize = 16;
 
+    // Data with datasets options
+    var data = {
+        labels: ["Vanilla", "Chocolate", "Strawberry"],
+        datasets: [
+            {
+                label: "Ice Cream Prices ",
+                fill: true,
+                backgroundColor: [
+                    'moccasin',
+                    'saddlebrown',
+                    'lightpink'],
+                data: [11, 9, 4]
             }
-        </script>
+        ]
+    };
+
+    var options = {
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItem) {
+                    return "$" + Number(tooltipItem.yLabel) + " and so worth it !";
+                }
+            }
+        },
+        title: {
+            display: true,
+            text: 'Ice Cream Truck',
+            position: 'bottom'
+        },
+
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+    // Chart declaration:
+    var myBarChart = new Chart(cttx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });
+
+
+
+
+
+    //Flip Date script
+    function handleTickInit(tick) {
+        // set language
+        var locale = {
+            YEAR_PLURAL: 'ANNEES',
+            YEAR_SINGULAR: 'Ans',
+            MONTH_PLURAL: 'Mois',
+            MONTH_SINGULAR: 'MOIS',
+            WEEK_PLURAL: 'Semaines',
+            WEEK_SINGULAR: 'Semaine',
+            DAY_PLURAL: 'JOURS',
+            DAY_SINGULAR: 'Jour',
+            HOUR_PLURAL: 'Heures',
+            HOUR_SINGULAR: 'Heure',
+            MINUTE_PLURAL: 'Minutes',
+            MINUTE_SINGULAR: 'Minute',
+            SECOND_PLURAL: 'Secondes',
+            SECOND_SINGULAR: 'Seconde',
+            MILLISECOND_PLURAL: 'Millisecondes',
+            MILLISECOND_SINGULAR: 'Milliseconde'
+        };
+
+        for (var key in locale) {
+            if (!locale.hasOwnProperty(key)) { continue; }
+            tick.setConstant(key, locale[key]);
+        }
+
+
+
+        var dd = Tick.helper.date();
+        console.log(dd);
+        tick.value = [dd.getDate(), dd.getMonth() + 1, dd.getFullYear()];
+        // console.log(tick.value);
+
+    }
+</script>

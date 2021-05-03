@@ -15,6 +15,7 @@ namespace AutoveilleSegmentation
 {
     public partial class frmMain : Form
     {
+        private int _intervalMin = -200;
         private List<Concession> _concessions=new List<Concession>() ;
         public frmMain()
         {
@@ -54,9 +55,10 @@ namespace AutoveilleSegmentation
             
          if (liBDealer.SelectedIndex >= 0)
             {
+                var dateMinEvent = DateTime.Now.AddDays(_intervalMin);
                 var dealers = (Concession)liBDealer.SelectedItem;
                 lbNomCommerce.Text = dealers.NomCommerce;
-                var ventes = Concessions.GetEvenements(dealers.NoCommerce, DateTime.Now);
+                var ventes = Concessions.GetEvenements(dealers.NoCommerce, dateMinEvent);
                 dgvEvents.DataSource = ventes;
             }
         }

@@ -1,14 +1,30 @@
 ﻿body {
-    background-color: white;
+    background-color: black;
     overflow-x: hidden;
     font-family: proxima-nova;
+}
+
+.center {
+    margin: auto;
+    padding: 0px;
+    width:50%;
+}
+
+.btn-center {
+    margin: auto;
+    padding: 4px;
+    width: 40%;
+}
+
+.form-horizontal {
+    text-align: center;
 }
 
 .labell {
     font-weight: bold;
     color: white;
     float: left;
-    font-size:15px;
+    font-size: 15px;
 }
 
 
@@ -30,7 +46,20 @@
 .phoneInput {
     padding-left: 10px;
     padding-right: 10px;
+    width:360px;
 }
+
+.pleftClient {
+    padding-left: 20px;
+}
+
+.brClient{
+    line-height:25px;
+}
+.brClientPhone {
+    line-height: 40px;
+}
+
 
 #searchInput {
     float: right;
@@ -108,13 +137,17 @@
     background-color: white;
 }
 
+.navbar-dark{
+    background-color:black;
+}
+
 .navbar-nav {
     /*vertical-align: central;
     text-align: center;
     justify-content: center;*/
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 

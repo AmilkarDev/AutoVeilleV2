@@ -1,5 +1,5 @@
-﻿#infoConcessionContent{
-    background-color:grey;
+﻿#infoConcessionContent {
+    background-color: #262626;
 }
 
 .eventText {
@@ -48,18 +48,26 @@
     font-weight : bold;
 }
 
-.clientsTable{
+/*.clientsTable{
      background:white;   
- }
+ }*/
 
 .clientsTable td{
-    background: white;
+/*    background: white;*/
     padding: 10px;
 }
 
-    .clientsTableHeader {
-        background-color: black;
-    }
+.clientsTableTd  {
+    background: #ccc;
+}
+
+.clientsTableTd  {
+    background: #fff;
+}
+
+.clientsTableHeader {
+    background-color: black;
+}
 
 .info {
     float:left;
@@ -78,15 +86,161 @@ td .detailsClient {
 }
 
 .phoneInput{
-    height:40px;
-    border:1px black solid;
-    border-radius:10px;
-    width:200px;
+    height:30px;
+    border:0px ;
+    border-radius:13px;
+    width:260px;
     padding-left:20px;
     padding-right:20px;
+    font-size:12px;
 }
  /** css of checkbox inputs */
 
+
+
+
+.box {
+    height: 120px;
+    border-radius: 15px;
+    padding: 15px;
+    background: white;
+    overflow: auto;
+    width:95%;
+}
+
+.box::-webkit-scrollbar {
+    width:15px;
+    background-color: #F5F5F5;
+}
+
+.box::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #4285F4;
+}
+
+.box::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.box::-webkit-scrollbar {
+        width: 25px;
+        background-color: #F5F5F5;
+    }
+
+.box::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #555;
+    }
+
+
+/*.box-content {
+    height: 120px;
+    width: 350px;
+    border-radius: 15px;
+    padding: 15px;
+}*/
+
+textarea {
+    border: none;
+    border-collapse: collapse;
+    border-radius: 15px;
+    resize: none;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    padding-top: 20px;
+}
+textarea:focus, input:focus {
+    outline: 0;
+}
+#input-container {
+    margin-bottom : 15px;
+}
+
+.labell {
+    font-weight: bold;
+    color: white;
+    float: left;
+    font-size: 15px;
+}
+
+
+.clientInfo {
+    margin-bottom: 7px;
+}
+
+.titreFiche {
+    color: green;
+    float: right;
+    font-size: 15px;
+}
+
+
+.appelsTable td {
+    vertical-align: middle !important;
+}
+
+.phoneInput {
+    padding-left: 10px;
+    padding-right: 10px;
+    width:60%;
+}
+.messageDiv {
+    margin-left: 15px;
+    width: 95%;
+    padding: 25px;
+    background-color: #bfbfbf !important;
+    border-radius: 15px;
+}
+.saveDiv {
+    display: flex;
+    justify-content: space-around;
+}
+.saveButton {
+    display: flex;
+    justify-content: space-around;
+    background-color: #c8c6c6;
+    color: white;
+    width: 200px;
+    border-radius: 15px;
+}
+/*.pleftClient {
+    padding-left: 20px;
+}*/
+
+.brClient {
+    line-height: 25px;
+}
+
+.brClientPhone {
+    line-height: 20px;
+}
+
+
+.checkMarksDiv {
+    color: white;
+    background-color: #30a6dc;
+    margin-bottom: 0px;
+    margin-right: 25px;
+    padding: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width:435px;
+}
+.saveButtonDiv {
+    display: flex;
+    justify-content: center;
+}
+.inputField {
+    width: 220px;
+    border: 1px black solid;
+    border-radius: 20px;
+    background-color: #cdf3f3;
+}
 /* The container */
 .checkContainer {
     display: block;
@@ -100,26 +254,10 @@ td .detailsClient {
     -ms-user-select: none;
     user-select: none;
 }
-.checkMarksDiv {
-    color: white;
-    background-color: #30a6dc;
-    margin-bottom: 0px;
-    margin-right: 25px;
-    padding: 5px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.check-labeel{
+    margin-left : 25px;
+    font-size : 15px;
 }
-.saveButtonDiv {
-    display: flex;
-    justify-content: center;
-}
-.inputField {
-    width: 220px;
-    border: 1px black solid;
-    border-radius: 20px;
-    background-color: #cdf3f3;
-}
-
 /* Hide the browser's default checkbox */
 .checkContainer input {
     position: absolute;
@@ -134,8 +272,8 @@ td .detailsClient {
     position: absolute;
     top: 0;
     left: 0;
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     background-color: #eee;
 }
 
@@ -173,3 +311,311 @@ td .detailsClient {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+
+
+
+
+/* Styling Radio Buttons */
+input[type='radio'] {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+label span {
+position: relative;
+line-height: 22px;
+}
+
+label span:before,
+label span:after {
+    content: '';
+}
+label span:before {
+    border: 1px solid #222021;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    background-color:white;
+}
+label span:after {
+    background: #222021;
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    transition: 300ms;
+    opacity: 0;
+}
+label input:checked + span:after {
+    opacity: 1;
+}
+.rbColumn{
+    display:flex;
+    flex-direction:column;
+
+}
+.topRadio{
+    margin-top:10px;
+}
+/* end styling radio buttons */
+
+
+
+
+
+
+
+
+
+/**Calendaar csss start***************************/
+/*#calendar {
+     max-width: 1100px;
+    height: 750px;
+    width: 700px;
+    margin: 40px auto;
+}
+
+#monthsCalendar {
+    height: 750px;
+    width: 500px;
+}*/
+
+.out-of-range {
+    opacity: .4;
+}
+
+.text-weight-bold {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bg-grey {
+    background-color: #f5f6fa;
+}
+
+/**********  Calendaar csss ending   ***************************/
+.modal.modal-wide .modal-dialog {
+    width: 90%;
+    height:1000px;
+}
+
+.wrap{
+    display:flex;
+    flex-direction:column;
+}
+
+
+.calendText{
+    font-size:35px;
+    color:red;
+    font-weight:bold;
+}
+.calendHeader{
+    display:flex;
+    flex-direction:row;
+}
+/* start Calendar csss , Jquery Date picker */
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,300,600');
+
+
+table.ui-datepicker-calendar th {
+    text-align: center;
+}
+table.ui-datepicker-calendar td {
+    text-align: center;
+}
+.ui-datepicker td span, .ui-datepicker td a{
+    text-align:center !important;
+}
+#calendar-details .check-in, #calendar-details .check-out, #calendar-details .arrow {
+    float: left;
+    white-space: nowrap;
+    width: 39.3333333333%;
+    margin-left: 4%;
+}
+
+#calendar-details h5 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+}
+
+#calendar-details .check-in {
+    text-align: right;
+    margin-left: 0;
+}
+
+#calendar-details .arrow {
+    width: 13.3333333333%;
+    margin-top: 0.5em;
+    font-size: 2em;
+    line-height: 1em;
+    text-align: center;
+}
+
+    #calendar-details .arrow:before {
+        display: inline-block;
+        content: '→';
+    }
+
+.ui-datepicker * {
+    user-select: none;
+    outline: 0;
+}
+
+.ui-datepicker.ui-datepicker-multi {
+    width: 100% !important;
+    max-width: 24em;
+/*   margin: 0 auto;
+*/}
+
+    .ui-datepicker.ui-datepicker-multi .ui-datepicker-group {
+        /*width: 100%;*/
+    }
+
+    .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 {
+        max-width: 50em;
+    }
+
+        .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group {
+            width: 45%;
+        }
+
+            .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group.ui-datepicker-group-first {
+                padding-right: 5%;
+            }
+
+            .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group.ui-datepicker-group-last {
+                padding-left: 5%;
+            }
+
+    .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 {
+        max-width: 70em;
+    }
+
+        .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 .ui-datepicker-group {
+            width: 30%;
+        }
+
+            .ui-datepicker.ui-datepicker-multi.ui-datepicker-multi-3 .ui-datepicker-group.ui-datepicker-group-middle {
+                padding: 0 3.33%;
+            }
+
+.ui-datepicker td a, .ui-datepicker td span {
+    border: 1px solid #fff;
+    border-radius: 0.5em;
+    text-align: center;
+    width: 2em;
+}
+
+    .ui-datepicker td a.ui-state-active, .ui-datepicker td span.ui-state-active {
+        background-color: #1EAEDB;
+        color: #fff;
+    }
+
+    .ui-datepicker td a.ui-state-hover, .ui-datepicker td span.ui-state-hover {
+        border-color: #1EAEDB;
+    }
+
+.ui-datepicker td.ui-datepicker-reserved a, .ui-datepicker td.ui-datepicker-reserved span {
+    background-color: #1EAEDB;
+    color: #fff;
+    text-align:center;
+}
+
+.ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkin a, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout a, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkin span, .ui-datepicker td.ui-datepicker-reserved.ui-datepicker-checkout span {
+    background-color: #fff;
+    border-color: #1EAEDB;
+    color: #1EAEDB;
+}
+
+.ui-datepicker .ui-datepicker-today a:not(.ui-state-hover), .ui-datepicker .ui-datepicker-today span:not(.ui-state-hover) {
+    border-color: #11DFC7;
+    color: #11DFC7;
+}
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    border: 1px solid #fff;
+    border-radius: 0.5em;
+    text-align: center;
+    text-indent: 0;
+}
+
+    .ui-datepicker .ui-datepicker-prev:before, .ui-datepicker .ui-datepicker-next:before, .ui-datepicker .ui-datepicker-prev:after, .ui-datepicker .ui-datepicker-next:after {
+        display: inline-block;
+    }
+
+    .ui-datepicker .ui-datepicker-prev.ui-state-hover, .ui-datepicker .ui-datepicker-next.ui-state-hover {
+        border-color: #1EAEDB;
+        top: 2px;
+    }
+
+    .ui-datepicker .ui-datepicker-prev:before {
+        content: '←';
+    }
+
+    .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-prev.ui-state-hover {
+        left: 10px;
+    }
+
+    .ui-datepicker .ui-datepicker-next:after {
+        content: '→';
+    }
+
+    .ui-datepicker .ui-datepicker-next, .ui-datepicker .ui-datepicker-next.ui-state-hover {
+        right: 10px;
+    }
+
+hide {
+    opacity: 0;
+}
+
+show {
+    opacity: 1;
+}
+
+.fade-in {
+    animation-duration: 1s;
+    animation-name: fade-in;
+}
+
+@media (min-width: 400px) {
+    .ui-datepicker {
+        min-width: 18em;
+    }
+}
+
+@media (min-width: 750px) {
+    /*.ui-datepicker {
+        min-width: 34em;
+    }*/
+
+    .arrow {
+        margin-top: 0;
+        font-size: 3em;
+    }
+}
+
+@media (min-width: 1000px) {
+    /*.ui-datepicker {
+        min-width: 51em;
+    }*/
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+/* end Calendar csss , Jquery Date picker */

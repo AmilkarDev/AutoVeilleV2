@@ -9,7 +9,7 @@ namespace AutoveilleBL.Models
     public class Relance
     {
         public int Id { get; set; }
-        public int NoClient { get; set; }
+        public int? NoClient { get; set; }
         public string NoSerie { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
@@ -67,5 +67,6 @@ namespace AutoveilleBL.Models
         public int? EstAfficherCentreAAppel { get; set; }
         public string Ville { get; set; }
         public string Adresse { get; set; }
+        public string NotesGenerals { get; set; }
     }
 }
