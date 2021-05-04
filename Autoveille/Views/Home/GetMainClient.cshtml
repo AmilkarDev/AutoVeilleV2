@@ -337,79 +337,106 @@
 
 
     <div class="col-md-4 col-lg-4">
-            <br />
+        <br />
 
-            <div class="row">
-                <div class="box box-content">
-                    <b>Notes d'appels précédents </b>
-                </div>
+        <div class="row">
+            <div class="box box-content">
+                <b>Notes d'appels précédents </b>
             </div>
-            <br />
-            <div class="row checkMarksDiv " style="width:105%">
-                
-                <div class="col-md-6">
-                    <label class="checkContainer" style="font-size:15px">
-                        RÉSULTAT
-                    </label>
+        </div>
+        <br />
+        <div class="row checkMarksDiv " style="width:100%">
+
+            <div class="col-md-6">
+                <label class="checkContainer" style="font-size:15px">
+                    RÉSULTAT
+                </label>
 
 
-                    <label>
-                        <input type="radio" name="radio">
-                        <span>Retour D'appel</span>
-                    </label>
+                <label>
+                    <input type="radio" name="resultat" value="retourAppel">
+                    <span>Retour D'appel</span>
+                </label>
 
-                    <label>
-                        <input type="radio" name="radio">
-                        <span>Non Intèrressé</span>
-                    </label>
+                <label>
+                    <input type="radio" name="resultat" value="nonInterresse">
+                    <span>Non Intèrressé</span>
+                </label>
 
-                    <label>
-                        <input type="radio" name="radio">
-                        <span>Relance Future</span>
-                    </label>
-                </div>
-                <div class="col-md-6 rbColumn">
-                    <label class="topRadio">
-                        <input type="radio" name="radio">
-                        <span>Liste Noire</span>
-                    </label>
-
-                    <label>
-                        <input type="radio" name="radio">
-                        <span>Désactivé</span>
-                    </label>
-
-
-                    <label>
-                        <input type="radio" name="radio">
-                        <span>Cas de Litige</span>
-                    </label>
-
-                    <label>
-                        <input type="radio" name="radio">
-                        <span>R-V fixé</span>
-                    </label>
-                    
-                </div>
+                <label>
+                    <input type="radio" name="resultat" value="relanceFuture">
+                    <span>Relance Future</span>
+                </label>
             </div>
+            <div class="col-md-6 rbColumn">
+                <label class="topRadio">
+                    <input type="radio" name="resultat" value="listeNoire">
+                    <span>Liste Noire</span>
+                </label>
 
-            <div class="row" ">
-                <div class="box box-content"  >
-                    @*<div class="float-left" ><b>Note d'appel :</b></div>*@
+                <label>
+                    <input type="radio" name="resultat" value="desactivee">
+                    <span>Désactivé</span>
+                </label>
 
-                    <textarea class="float-left "  
-                              placeholder="Écrire la note d'appel ici" 
-                              id="AppelsPrecedents"
-                              
-                              name="Note" rows="5" >@Html.DisplayFor(model => model.NoteAppel)</textarea>
 
-                </div>
+                <label>
+                    <input type="radio" name="resultat" value="casLitige">
+                    <span>Cas de Litige</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="resultat" value="rvFixee">
+                    <span>R-V fixé</span>
+                </label>
 
             </div>
-            <br />
-            <button value="sauvegarder" class="btn btn-danger" disabled style="color:white;width:200px;border-radius:15px;">Sauvegarder</button>
+        </div>
+        <div style="position: relative;margin-left: -15px;width: 100%;display:none;">
+            <span class="dropdown-desactivee" style="position: absolute;top: 100%;left: 0;width: 100%;">
+                <input type="radio" name="resultatDesactivee" value="décédé" checked="checked" id="decede">
+                <label for="decede">Décédé</label>
+                <input type="radio" name="resultatDesactivee" value="déménagé" id="demenage">
+                <label for="demenage">Déménagé</label>
+                <input type="radio" name="resultatDesactivee" value="incapacité" id="incapacite">
+                <label for="incapacite">Incapacité de conduire un véhicule</label>
+                <input type="radio" name="resultatDesactivee" value="pasDePermis" id="pasDePermis">
+                <label for="pasDePermis">N'a plus de pemis de conduire</label>
+            </span>
+        </div>
+        <span class="dropdown-relanceFutur" style="display:none;">
+            <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance">
+            <label for="sort-relevance">1 mois</label>
+            <input type="radio" name="sortType" value="Popularity" id="sort-best">
+            <label for="sort-best">2 mois</label>
+            <input type="radio" name="sortType" value="PriceIncreasing" id="sort-low">
+            <label for="sort-low">3 mois</label>
+            <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high">
+            <label for="sort-high">4 mois</label>
+            <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high">
+            <label for="sort-high">5 mois</label>
+            <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high">
+            <label for="sort-high">6 mois</label>
+        </span>
+
+
+        <div class="row">
+            <div class="box box-content" style="height:250px;">
+                @*<div class="float-left" ><b>Note d'appel :</b></div>*@
+
+                <textarea class="float-left "
+                          placeholder="Écrire la note d'appel ici"
+                          id="AppelsPrecedents"
+                          name="Note" rows="55">@Html.DisplayFor(model => model.NoteAppel)</textarea>
+
+            </div>
 
         </div>
+        <br />
+        <div style="display:flex;justify-content:center;">
+            <button value="sauvegarder" class="btn btn-danger" disabled style="color:white;width:200px;border-radius:15px;">Sauvegarder</button>
+        </div>
+    </div>
 </div>
 
 
@@ -441,7 +468,7 @@
     function removeBackdrop() {
         $('.modal-backdrop').remove();
     }
-    function EditClientDetails() {        
+    function EditClientDetails() {
             $.ajax({
                 url: '/Home/EditMainClient',
                 contentType: 'application/html; charset=utf-8',
@@ -456,12 +483,10 @@
                     alert(status);
                 }
             });
-        }
+    }
 
 
     function displayCalendar() {
-        
-
         $.ajax({
             url: '/Home/GetCalendar',
             contentType: 'application/html; charset=utf-8',
@@ -469,73 +494,8 @@
             dataType: 'html',
             success: function (result) {
                 $('.modal-body').html(result);
-                onCalendarDisplay();
+                daysCalendarDisplay();
                 monthsCalendarDisplay();
-
-
-                //$('#monthsCalendar').yacal({
-                //    date: '2001/4/28',
-                //    nearMonths: 1,
-                //});
-
-
-
-            /**************** months calendar ********/
-                //$(function () {
-                    //'use strict';
-
-                    //var checkIn, checkOut, numberOfMonths = [3, 1],
-                    //    $calendar = $('#monthsCalendar').datepicker({
-                    //        numberOfMonths: numberOfMonths,
-                    //        prevText: '',
-                    //        nextText: '',
-                    //        beforeShowDay: function (date) {
-                    //            date = moment(date);
-
-                    //            var now = moment(),
-                    //                show = date.isAfter(now),
-                    //                css = '';
-
-                    //            if (checkIn && checkOut
-                    //                && date.isSameOrAfter(checkIn)
-                    //                && date.isSameOrBefore(checkOut)) {
-                    //                css = 'ui-datepicker-reserved';
-
-                    //                if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
-                    //                if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
-                    //            }
-
-                    //            return [show, css];
-                    //        },
-                    //        onSelect: function (value) {
-                    //            var date = moment($calendar.datepicker('getDate'));
-
-                    //            if (checkIn && !checkOut
-                    //                && date.isSameOrAfter(checkIn))
-                    //                checkOut = date;
-                    //            else {
-                    //                checkIn = date;
-                    //                checkOut = null;
-                    //            }
-
-                    //            $('#check-in-date').text(checkIn ? checkIn.format('DD/MM/YYYY') : 'Choose a date');
-                    //            $('#check-out-date').text(checkOut ? checkOut.format('DD/MM/YYYY') : 'Choose a date');
-                    //        },
-                    //        onChangeMonthYear: function () {
-                    //            $calendar.addClass('fade-in');
-                    //        }
-                    //    }).on('animationend webkitAnimationEnd', function () {
-                    //        $calendar.removeClass('fade-in');
-                    //    });
-                //});
-                   
-
-                    
-
-                    //resize();
-                
-                /**************months calendar ******/
-
                 $('.modal-body').modal("show");
             },
             error: function (xhr, status) {
@@ -544,30 +504,10 @@
         });
     }
 
-    //$(window).on('resize', resize);
 
 
-     //function resize() {
-     //                   var element = $('.ui-datepicker').get(0),
-     //                       style = window.getComputedStyle(element).getPropertyValue('min-width'),
-     //                       value;
-
-     //                   switch (style) {
-     //                       case '765px': value = [2, 3]; break;
-     //                       case '510px': value = [2, 2]; break;
-     //                       default: value = [2, 1]; break;
-     //                   }
-
-     //                   if (numberOfMonths !== value) {
-     //                       if (checkIn) $calendar.datepicker('setDate', checkIn.toDate());
-
-     //                       $calendar.datepicker('option', 'numberOfMonths', numberOfMonths = value);
-     //                   }
-     //               }
-
-    function onCalendarDisplay() {
+    function daysCalendarDisplay() {
     var calendarEl = document.getElementById('calendarfc');
-    //var monthsCalendar = document.getElementById('monthsCalendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'fr',
         timeZone: 'UTC',
@@ -587,16 +527,20 @@
         events: 'https://fullcalendar.io/demo-events.json'
     });
 
-    
+
     calendar.render();
     };
 
-
+    
     function monthsCalendarDisplay() {
         //'use strict';
-
+        $.datepicker.setDefaults($.datepicker.regional["fr"]);
         var checkIn, checkOut, numberOfMonths = [3, 1],
             $calendar = $('#monthsCalendar').datepicker({
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+                dayNamesMin: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
                 numberOfMonths: numberOfMonths,
                 prevText: '',
                 nextText: '',
@@ -643,4 +587,23 @@
 
     }
 
+    $('.checkMarksDiv input:radio').click(function (e) {
+        console.log(e.target.defaultValue);
+        //console.log($(this));
+        //if ($(this).val() === '1') {
+        //    myFunction();
+        //} else if ($(this).val() === '2') {
+        //    myOtherFunction();
+        //}
+    });
+
+    $('.dropdown-desactivee').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).toggleClass('expanded');
+        $('#' + $(e.target).attr('for')).prop('checked', true);
+    });
+    $(document).click(function () {
+        $('.dropdown-desactivee').removeClass('expanded');
+    });
 </script>
