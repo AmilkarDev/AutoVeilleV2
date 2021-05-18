@@ -8,7 +8,7 @@
 
                 <br class="brClient" />
                 <div style="display:inline;text-align:left">
-                    <text onclick="displayCalendar()" data-toggle="modal"  data-backdrop="false" data-target="#myModal" style="font-size:15px;font-weight:bolder;">RETOUR D'APPEL</text>
+                    <text onclick="displayCalendar()" style="font-size:15px;font-weight:bolder;" data-toggle="modal" data-target="#myModal">RETOUR D'APPEL</text>
                     <img src="~/Content/Images/retourAppel.svg" height="20" width="20" style="margin-left:3px;" />
 
                 </div>
@@ -81,7 +81,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Courriel" class="phoneInput float-left" id="IdphoneInput" style="display:block;"/>
+                    <input value="@Model.Courriel" class="phoneInput float-left" id="IdphoneInput" style="display:block;" />
                 </div>
                 <br class="brClientPhone" />
 
@@ -103,7 +103,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput2" style="display:block;"/>
+                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput2" style="display:block;" />
                     <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
                     <a href="#">
                         <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
@@ -116,7 +116,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Mobile" class="phoneInput float-left" id="IdphoneInput3" style="display:block;"/>
+                    <input value="@Model.Mobile" class="phoneInput float-left" id="IdphoneInput3" style="display:block;" />
                     <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
                     <a href="#">
                         <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
@@ -132,8 +132,8 @@
                 </div>
                 <br />
                 <div id="input-container">
-    
-                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput" style="width:80%;"/>
+
+                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput" style="width:80%;" />
                 </div>
                 <br class="brClientPhone" />
 
@@ -293,7 +293,7 @@
 
         <div class="row">
             <div class="col-md-12 col-lg-12" style="display:flex;flex-direction:column;">
-               <div style="height:35px"></div>
+                <div style="height:35px"></div>
                 <div class="labell pleftClient" style="padding-left:0px;">
                     vehicule désiré <br />
                     Marque/Modèle/Année
@@ -301,7 +301,7 @@
                 </div>
 
                 <div id="input-container">
-                   
+
                     <input type="text" value="@Model.Vehicule.VehiculeDesire" class="phoneInput float-left" id="IdphoneInput" />
                 </div>
                 <br class="brClientPhone" />
@@ -315,7 +315,7 @@
             <div class="box box-content" style="height:180px;margin-left: 15px;margin-bottom:15px;">
                 <b><label>  Données d'avant modifications :</label> </b>
                 <br />
-                <label > Téléphone residence : </label>
+                <label> Téléphone residence : </label>
                 <br />
                 <label> Téléphone travail : </label>
                 <br />
@@ -330,8 +330,8 @@
             </div>
 
             @*<div class="box box-content" style="margin-left: 15px;">
-                <b>  Note du centre d'appels</b>
-            </div>*@
+                    <b>  Note du centre d'appels</b>
+                </div>*@
         </div>
     </div>
 
@@ -354,71 +354,73 @@
 
 
                 <label>
-                    <input type="radio" name="resultat" value="retourAppel">
-                    <span>Retour D'appel</span>
+                    <input type="checkbox" name="resultat" value="retourAppel">
+                    <span onclick="displayCalendar()" data-toggle="modal" data-target="#myModal">Retour D'appel</span>
                 </label>
 
                 <label>
-                    <input type="radio" name="resultat" value="nonInterresse">
+                    <input type="checkbox" name="resultat" value="nonInterresse">
                     <span>Non Intèrressé</span>
                 </label>
 
                 <label>
-                    <input type="radio" name="resultat" value="relanceFuture">
+                    <input type="checkbox" name="resultat" value="relanceFuture">
                     <span>Relance Future</span>
                 </label>
             </div>
             <div class="col-md-6 rbColumn">
                 <label class="topRadio">
-                    <input type="radio" name="resultat" value="listeNoire">
+                    <input type="checkbox" name="resultat" value="listeNoire">
                     <span>Liste Noire</span>
                 </label>
 
                 <label>
-                    <input type="radio" name="resultat" value="desactivee">
+                    <input type="checkbox" name="resultat" value="desactivee">
                     <span>Désactivé</span>
                 </label>
 
 
                 <label>
-                    <input type="radio" name="resultat" value="casLitige">
+                    <input type="checkbox" name="resultat" value="casLitige">
                     <span>Cas de Litige</span>
                 </label>
 
                 <label>
-                    <input type="radio" name="resultat" value="rvFixee">
-                    <span>R-V fixé</span>
+                    <input type="checkbox" name="resultat" value="rvFixee">
+                    <span onclick="displayCalendar()" data-toggle="modal" data-target="#myModal">R-V fixé</span>
                 </label>
 
             </div>
         </div>
-        <div style="position: relative;margin-left: -15px;width: 100%;display:none;">
-            <span class="dropdown-desactivee" style="position: absolute;top: 100%;left: 0;width: 100%;">
-                <input type="radio" name="resultatDesactivee" value="décédé" checked="checked" id="decede">
+        <div style="position: relative;margin-left: -15px;width: 100%;">
+            <span id="dropdown" class="dropdown dropdown-desactivee" style="position: absolute;top: 100%;left: 0;width: 100%;border-radius: 15px;display: none;">
+                <input type="radio" name="resultatDesactivee" value="décédé" id="decede" class="desa">
                 <label for="decede">Décédé</label>
-                <input type="radio" name="resultatDesactivee" value="déménagé" id="demenage">
+                <input type="radio" name="resultatDesactivee" value="déménagé" id="demenage" class="desa">
                 <label for="demenage">Déménagé</label>
-                <input type="radio" name="resultatDesactivee" value="incapacité" id="incapacite">
+                <input type="radio" name="resultatDesactivee" value="incapacité" id="incapacite" class="desa">
                 <label for="incapacite">Incapacité de conduire un véhicule</label>
-                <input type="radio" name="resultatDesactivee" value="pasDePermis" id="pasDePermis">
+                <input type="radio" name="resultatDesactivee" value="pasDePermis" id="pasDePermis" checked="checked" class="desa">
                 <label for="pasDePermis">N'a plus de pemis de conduire</label>
             </span>
         </div>
-        <span class="dropdown-relanceFutur" style="display:none;">
-            <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance">
-            <label for="sort-relevance">1 mois</label>
-            <input type="radio" name="sortType" value="Popularity" id="sort-best">
-            <label for="sort-best">2 mois</label>
-            <input type="radio" name="sortType" value="PriceIncreasing" id="sort-low">
-            <label for="sort-low">3 mois</label>
-            <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high">
-            <label for="sort-high">4 mois</label>
-            <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high">
-            <label for="sort-high">5 mois</label>
-            <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high">
-            <label for="sort-high">6 mois</label>
-        </span>
 
+        <div style="position: relative;margin-left: -15px;width: 100%;">
+            <span id="dropdown" class="dropdown dropdown-relanceFuture" style="position: absolute; top: 100%; left: 0; width: 100%; border-radius: 15px; display: none;">
+                <input type="radio" name="resultatRelanceFuture" value="1" checked="checked" id="unMois">
+                <label for="unMois">1 mois</label>
+                <input type="radio" name="resultatRelanceFuture" value="2" id="deuxMois">
+                <label for="deuxMois">2 mois</label>
+                <input type="radio" name="resultatRelanceFuture" value="3" id="troisMois">
+                <label for="troisMois">3 mois</label>
+                <input type="radio" name="resultatRelanceFuture" value="4" id="quatreMois">
+                <label for="quatreMois">4 mois</label>
+                <input type="radio" name="resultatRelanceFuture" value="5" id="cinqMois">
+                <label for="cinqMois">5 mois</label>
+                <input type="radio" name="resultatRelanceFuture" value="6" id="sixMois">
+                <label for="sixMois">6 mois</label>
+            </span>
+        </div>
 
         <div class="row">
             <div class="box box-content" style="height:250px;">
@@ -436,10 +438,20 @@
         <div style="display:flex;justify-content:center;">
             <button value="sauvegarder" class="btn btn-danger" disabled style="color:white;width:200px;border-radius:15px;">Sauvegarder</button>
         </div>
+        <div class="row resultCall" style="margin-top:10px;width:100%;background-color:black;border-radius:15px;height:200px;border-radius:15px;">
+            <div class="col-md-6" style="display:flex;flex-direction:column;justify-content:center;">
+                <img src="~/Content/Images/ICONES_SVG_Base_Couleurs_Litige.svg" height="150" width="150" />
+            </div>
+            <div class="col-md-6" id="resultDate" style="display:flex;flex-direction:column;justify-content:center;">
+                <p id="resultText" style="color:white;font-size:15px;text-align:center;">liste Noire</p>
+                <br />
+                <p id="Datenow" style="color:white;font-size:15px;text-align:center;"></p>
+            </div>
+        </div>
+        @*</div>*@
     </div>
+
 </div>
-
-
 
 
 <!--Calendar Modal -->
@@ -448,12 +460,12 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="display:none;">
                 @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
                 <h4 class="modal-title">Calendrier des rendez Vous</h4>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
@@ -464,29 +476,34 @@
 </div>
 
 
+
 <script>
     function removeBackdrop() {
         $('.modal-backdrop').remove();
+        if ($('.checkMarksDiv input:checkbox').is(":checked")){
+            $('.checkMarksDiv input:checkbox').prop("checked", false);
+        }
     }
     function EditClientDetails() {
-            $.ajax({
-                url: '/Home/EditMainClient',
-                contentType: 'application/html; charset=utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) {
-                    $('#' + row).html(result);
-                    $('#' + row).css('visibility', 'visible');
-                    $('#' + row).css('display', '');
-                },
-                error: function (xhr, status) {
-                    alert(status);
-                }
-            });
+        $.ajax({
+            url: '/Home/EditMainClient',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                $('#' + row).html(result);
+                $('#' + row).css('visibility', 'visible');
+                $('#' + row).css('display', '');
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
     }
 
 
-    function displayCalendar() {
+    function displayCalendar(str) {
+       // console.log(str);
         $.ajax({
             url: '/Home/GetCalendar',
             contentType: 'application/html; charset=utf-8',
@@ -504,34 +521,115 @@
         });
     }
 
+    function getRVevents() {
+        $.ajax({
+            url: '../Home/GetReservations',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
 
+                console.log(result);
+                return result;
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    }
 
     function daysCalendarDisplay() {
-    var calendarEl = document.getElementById('calendarfc');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'fr',
-        timeZone: 'UTC',
-        initialView: 'timeGridFourDay',
-        headerToolbar: {
-            left: 'prev,next',
-            center: 'title',
-            right: 'timeGridDay,timeGridFourDay'
-        },
-        views: {
-            timeGridFourDay: {
-                type: 'timeGrid',
-                duration: { days: 4 },
-                buttonText: '4 day'
-            }
-        },
-        events: 'https://fullcalendar.io/demo-events.json'
-    });
+        //var events = getRVevents();
+       // console.log($("#eventStartDate").text());
+        //console.log($("#eventEndDate").text());
+        var calendarEl = document.getElementById('calendarfc');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            themeSystem: 'bootstrap',
+            allDaySlot: false,
+            locale: 'fr',
+            timeZone: 'UTC',
+            initialView: 'timeGridFourDay',
+            eventMaxStack: 3,
+            headerToolbar : false,
+            //headerToolbar: {
+            //    left: 'prev,next',
+            //    center: 'title',
+            //    right: 'timeGridDay,timeGridFourDay,timeGridWeek,dayGridMonth'
+            //},
+            views: {
+                timeGridFourDay: {
+                    type: 'timeGrid',
+                    duration: { days: 4 },
+                    buttonText: '4 Jours',
+                    dayMaxEventRows: 3,
+                },
+                timeGridDay: {
+                    dayMaxEventRows: 5
+                }
+            },
+            events: '../Home/GetReservations',
+            selectable: true,
+            expandRows: true,
+
+            slotMinTime: "09:00:00",
+
+            slotMaxTime: "20:00:00",
+
+            slotDuration: '00:30:00',
+
+            slotLabelInterval: 30,
+
+            //slotMinutes: 15,
+
+            snapDuration: '00:30:00',
+            select: function (info) {
+                //console.log(info);
+
+                //alert('selected ' + info.startStr + ' to ' + info.endStr);
+                var newEvent = new Object();
+                //var title = prompt('Enter Title');
+                newEvent.title = 'abc';
+                newEvent.start = moment(info.startStr).format();
+                newEvent.end = moment(info.endStr).format();
+                var midnight = "0:00:00";
+                end = moment(info.endStr).format("H:mm:ss");
+                if (end === midnight) {
+                    newEvent.allDay = true;
+                }
+                else newEvent.allDay = false;
+                saveNewRV(newEvent);
+                console.log(newEvent);
+                calendar.addEvent(newEvent);
+                calendar.unselect();
+            },
+            editable: true,
+            dayMaxEventRows: true,
+            
+            // events: 'https://fullcalendar.io/demo-events.json'
+        });
 
 
-    calendar.render();
+        calendar.render();
     };
 
-    
+
+    function saveNewRV(newRV) {
+        $.ajax({
+            url: '../Home/SaveRendezVous',
+            type: 'POST',
+            data: JSON.stringify(newRV),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+
+                console.log(result);
+                return result;
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    }
+
     function monthsCalendarDisplay() {
         //'use strict';
         $.datepicker.setDefaults($.datepicker.regional["fr"]);
@@ -540,7 +638,7 @@
                 monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
                 dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
                 dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
-                dayNamesMin: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
                 numberOfMonths: numberOfMonths,
                 prevText: '',
                 nextText: '',
@@ -583,27 +681,101 @@
                 $calendar.removeClass('fade-in');
             });
 
-       // resize();
+        // resize();
 
     }
 
-    $('.checkMarksDiv input:radio').click(function (e) {
-        console.log(e.target.defaultValue);
-        //console.log($(this));
-        //if ($(this).val() === '1') {
-        //    myFunction();
-        //} else if ($(this).val() === '2') {
-        //    myOtherFunction();
-        //}
+    $('.checkMarksDiv input:checkbox').click(function (e) {
+
+
+        
+        var $box = $(this);
+        console.log($box.is(":checked"));
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+
+            if ($(this).val() != 'desactivee' && $(this).val() != 'relanceFuture') {
+                $('.dropdown-relanceFuture').css('display', 'none');
+                $('.dropdown-desactivee').css('display', 'none');
+            }
+            if ($(this).val() === 'desactivee') {
+                $('.dropdown-relanceFuture').css('display', 'none');
+                $('.dropdown-desactivee').css('display', '');
+                $('.dropdown-desactivee').css('visibility', 'visible');
+            } else if ($(this).val() === 'relanceFuture') {
+                $('.dropdown-desactivee').css('display', 'none');
+                $('.dropdown-relanceFuture').css('display', '');
+                $('.dropdown-relanceFuture').css('visibility', 'visible');
+            } else if ($(this).val() === 'rvFixee') {
+                displayCalendar();
+            }
+            else if ($(this).val() === 'retourAppel') {
+                displayCalendar();
+            }
+
+
+        } else {
+            $box.prop("checked", false);
+
+            if ($(this).val() === 'desactivee') {
+                $('.dropdown-desactivee').css('display', 'none');
+                //$('.dropdown-desactivee').css('visibility', 'visible');
+            } else if ($(this).val() === 'relanceFuture') {
+                $('.dropdown-relanceFuture').css('display', 'none');
+                // $('.dropdown-relanceFuture').css('visibility', 'visible');
+            }
+        }
+
+
+
     });
 
     $('.dropdown-desactivee').click(function (e) {
         e.preventDefault();
         e.stopPropagation();
+
+        if ($('.dropdown-desactivee').hasClass("expanded")) {
+            if ($(e.target).attr('for') != undefined) {
+                $('.dropdown-desactivee').css('display', 'none');
+            }
+            console.log($(e.target).attr('for'));
+            var dateTimeNow = moment().format('YYYY-MM-DD HH-MM-SS')
+            console.log(dateTimeNow);
+            $('#Datenow').html(dateTimeNow);
+        }
+
+
         $(this).toggleClass('expanded');
         $('#' + $(e.target).attr('for')).prop('checked', true);
     });
+
+
+    $('.dropdown-relanceFuture').click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if ($('.dropdown-relanceFuture').hasClass("expanded")) {
+            if ($(e.target).attr('for') != undefined) {
+                $('.dropdown-relanceFuture').css('display', 'none');
+            }
+            console.log($(e.target).attr('for'));
+            var dateTimeNow = moment().format('YYYY-MM-DD HH-MM-SS')
+            //console.log(dateTimeNow);
+            $('#Datenow').html(dateTimeNow);
+        }
+
+
+        $(this).toggleClass('expanded');
+        $('#' + $(e.target).attr('for')).prop('checked', true);
+    });
+
+
+
     $(document).click(function () {
         $('.dropdown-desactivee').removeClass('expanded');
     });
+
+
 </script>

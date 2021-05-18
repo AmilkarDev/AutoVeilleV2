@@ -44,36 +44,39 @@
 
 </table>
 
-    <script>
-        function displayClients(CampaignId) {
-            $.ajax({
-                url: '/Home/GetClients',
-                contentType: 'application/html; charset=utf-8',
-                type: 'GET',
-                data: { aIdTypeEvenement: CampaignId},
-                dataType: 'html',
-                success: function (result) {
-                    var clientsId = "clients" + CampaignId;
-                    var imgId = "img" + CampaignId;
-                    $('#' + clientsId).html(result);
-                    $('#' + clientsId).toggle();
-                    $('#' + imgId).attr('onclick', 'hideClients(' + CampaignId + ')');
-                    $('#' + imgId).attr('src', '/Content/Images/Layout/Moins.png');
-                },
-                error: function (xhr, status) {
-                    alert(status);
-                }
-            });
-        }
 
-        function hideClients(CampaignId) {
-            $('#detailsClient').css('visibility', 'hidden');
-            //$("#leftContent").css('width', '100%');
-            var clientsId = "clients" + CampaignId;
-            var imgId = "img" + CampaignId;
-            $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');
-            $('#' + imgId).attr('src', '/Content/Images/Layout/Plus.png');
-            $('#' + clientsId).toggle();
-        }
-    </script>
-    
+
+
+
+<script>
+    function displayClients(CampaignId) {
+        $.ajax({
+            url: '/Home/GetClients',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            data: { aIdTypeEvenement: CampaignId },
+            dataType: 'html',
+            success: function (result) {
+                var clientsId = "clients" + CampaignId;
+                var imgId = "img" + CampaignId;
+                $('#' + clientsId).html(result);
+                $('#' + clientsId).toggle();
+                $('#' + imgId).attr('onclick', 'hideClients(' + CampaignId + ')');
+                $('#' + imgId).attr('src', '/Content/Images/Layout/Moins.png');
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    }
+
+    function hideClients(CampaignId) {
+        $('#detailsClient').css('visibility', 'hidden');
+        //$("#leftContent").css('width', '100%');
+        var clientsId = "clients" + CampaignId;
+        var imgId = "img" + CampaignId;
+        $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');
+        $('#' + imgId).attr('src', '/Content/Images/Layout/Plus.png');
+        $('#' + clientsId).toggle();
+    }
+</script>

@@ -317,7 +317,7 @@ textarea:focus, input:focus {
 
 
 /* Styling Radio Buttons */
-input[type='radio'] {
+input[type='checkbox'] {
     display: none;
 }
 
@@ -618,10 +618,18 @@ show {
         opacity: 1;
     }
 }
-/* end Calendar csss , Jquery Date picker */
 
+
+
+.ui-datepicker-month {
+    font-weight:bold;
+}
+.ui-datepicker-year{
+    display : none;
+}
+/* end Calendar csss , Jquery Date picker */
 /******Start Dropdown List CSS *****/
-.dropdown-desactivee {
+.dropdown {
     /*margin-top: 20vh;
     min-width: 12em;*/
     position: relative;
@@ -642,11 +650,11 @@ show {
     transition: 0.3s all ease-in-out;
 }
 
-    .dropdown-desactivee input:focus + label {
+    .dropdown input:focus + label {
         background: #def;
     }
 
-    .dropdown-desactivee input {
+    .dropdown input {
         width: 1px;
         height: 1px;
         display: inline-block;
@@ -654,7 +662,7 @@ show {
         opacity: 0.01;
     }
 
-    .dropdown-desactivee label {
+    .dropdown label {
         border-top: 0.06em solid #d9d9d9;
         display: block;
         height: 2em;
@@ -666,12 +674,12 @@ show {
         transition: 0.3s color ease-in-out;
     }
 
-        .dropdown-desactivee label:nth-child(2) {
+        .dropdown label:nth-child(2) {
             margin-top: 2em;
             border-top: 0.06em solid #d9d9d9;
         }
 
-    .dropdown-desactivee input:checked + label {
+    .dropdown input:checked + label {
         display: block;
         border-top: none;
         position: absolute;
@@ -679,12 +687,12 @@ show {
         width: 100%;
     }
 
-        .dropdown-desactivee input:checked + label:nth-child(2) {
+        .dropdown input:checked + label:nth-child(2) {
             margin-top: 0;
             position: relative;
         }
 
-    .dropdown-desactivee::after {
+    .dropdown::after {
         content: "";
         position: absolute;
         right: 0.8em;
@@ -694,7 +702,7 @@ show {
         transition: 0.4s all ease-in-out;
     }
 
-    .dropdown-desactivee.expanded {
+    .dropdown.expanded {
         border: 0.06em solid #3694d7;
         background: #fff;
         border-radius: 0.25em;
@@ -703,21 +711,45 @@ show {
         max-height: 15em;
     }
 
-        .dropdown-desactivee.expanded label {
+        .dropdown.expanded label {
             border-top: 0.06em solid #d9d9d9;
         }
 
-            .dropdown-desactivee.expanded label:hover {
+            .dropdown.expanded label:hover {
                 color: #3694d7;
             }
 
-        .dropdown-desactivee.expanded input:checked + label {
+        .dropdown.expanded input:checked + label {
             color: #3694d7;
         }
 
-        .dropdown-desactivee.expanded::after {
+        .dropdown.expanded::after {
             transform: rotate(-180deg);
             top: 0.55em;
         }
 
 /******End Dropdown List CSS *****/
+
+/*******Start customized css for FullCalendar */
+
+.fc-media-screen .fc-timegrid-event {
+    top: -7px;
+    bottom: 12px;
+}
+
+.fc .fc-scrollgrid-section>td {
+    padding:0px;
+}
+.fc-timegrid {
+    border-radius:15px;
+    background-color: lightgrey;
+}
+.fc .fc-timegrid-col.fc-day-today{
+    background-color:lightgrey;
+}
+.fc-timegrid-slots .table-bordered tr:nth-of-type(odd) td:first-child {
+    border-bottom: 2px transparent solid;
+}
+.fc-col-header tr th:nth-child(2), .fc-col-header tr th:nth-child(3), .fc-col-header tr th:nth-child(4) {
+    background-color: red;
+}

@@ -3,10 +3,11 @@
     ViewBag.Title = "InfoConcession";
 }
 <div id="infoConcessionContent">
+    <p id="eventStartDate" style="display:none;"> @Model.DateDebut</p>
+    <p id="eventEndDate" style="display:none;"> @Model.DateFin</p>
     <div id="eventDiv" class="alert alert-heading">
         <div style="float:left;">
-            <p class="eventText">
-                
+            <p class="eventText">   
                 <span id="eventState"> @Model.TypeEvenement </span>
             </p>
         </div>
@@ -14,39 +15,13 @@
         <div id="searchInput" class="eventText">
             @Model.NomCommerce<br />
             <span id="eventPeriod">@Model.DatesEvenementsFr </span>
-
-
-
-
-            @*<div class="input-group mb-3">
-                    <div class="input-group-append">
-                        <span class="input-group-text search-icon" id="basic-addon2">
-                            <i class="fas fa-search"></i>
-                        </span>
-                    </div>
-                    <input id="SearchTerm" type="text" class="form-control" placeholder="Search"
-                           aria-label="Search" aria-describedby="basic-addon2">
-
-                    <div class="dropdown-menu suggestions" hidden>
-                    </div>
-                </div>*@
         </div>
-
-        @*<div class="input-group" style="float:right;width:25%;">
-                <button type="button" class="btn btn-primary" style="background-color:white;color:black;">
-                    <i class="fas fa-search"></i>
-                </button>
-                <div class="form-inline">
-                    <input type="search" id="searchInput" class="form-control" placeholder="Recherche par nom"/>
-                </div>
-            </div>*@
     </div>
     <div id="mainDiv">
         <div id="innerContent">
             <div id="leftContent">
-                <div id="prospects">
-                    
-                    <p id="prospectsText" style="float: left; "><img src="~/Content/Images/OpportunityOrange.svg" height="55" width="55" />OPPORTUNITEE TOTALE <span id="nbrstat">00</span></p>
+                <div id="prospects">                
+                    <p id="prospectsText" style="float: left;"><img src="~/Content/Images/OpportunityOrange.svg" height="55" width="55" />OPPORTUNITEE TOTALE <span id="nbrstat">00</span></p>
                     <p id="prospectsText" style="text-align:center;"> REJOINTES <span id="nbrstat">0000</span></p>
                     <p class="pull-right" id="prospectsText" style="text-align:right;float: right;">A REJOINDRE <span id="nbrstat">0000</span></p>
                 </div>
@@ -64,13 +39,8 @@
     @section Scripts{
         <script type="text/javascript">
             $(document).ready(function () {
-
-
-
-
-
                 $.ajax({
-                    url: '/Home/GetNomAppels',
+                    url: '../Home/GetNomAppels',
                     contentType: 'application/html; charset=utf-8',
                     type: 'GET',
                     dataType: 'html',
