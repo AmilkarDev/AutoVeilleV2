@@ -317,6 +317,7 @@
     <Content Include="Views\Home\GetCalendar.cshtml" />
     <Content Include="Views\Shared\_InitialLayout.cshtml" />
     <Content Include="Views\Home\GetCalendarRendezVous.cshtml" />
+    <Content Include="Views\Home\RendezVous.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

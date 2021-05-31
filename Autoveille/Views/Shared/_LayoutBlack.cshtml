@@ -19,22 +19,13 @@
 
     <script src="~/Scripts/flip.min.js"></script>
     <link href="~/Content/flip.min.css" rel="stylesheet" />
-    @*<link rel="stylesheet"  href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />*@
 
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/unq0nxl.css">
-    @*Jquery date picker styles*@
-    @*<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" />*@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css" rel="stylesheet" />
-    <link href="~/Content/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
     <style>
-        /*.downMenu {
-            text-align: right;
-            margin-right: 55px;
-        }*/
-
         .downMenu li {
             display: inline;
             color: white;
@@ -133,7 +124,7 @@
                 @Html.ActionLink("Gestionnaire d'appels", "InfoConcession", "Home", null, null)
             </li>
             <li>
-                <a href="#"> Gestionnaire de rendez vous</a>
+                @Html.ActionLink("Gestionnaire de rendez vous", "RendezVous", "Home", null, null)
             </li>
             <li style="float:right;margin-right:-15px;">
                 <a href="#"> Fermer la session  X</a>

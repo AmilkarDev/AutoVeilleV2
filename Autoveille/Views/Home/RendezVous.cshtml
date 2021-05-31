@@ -1,0 +1,66 @@
+﻿@*@{
+        ViewBag.Title = "RendezVous";
+        Layout = "~/Views/Shared/_LayoutBlack.cshtml";
+    }
+
+    <h2>RendezVous</h2>*@
+@model  Autoveille.Models.EvenementModel
+@{
+    ViewBag.Title = "InfoConcession";
+}
+<div id="infoConcessionContent">
+    <p id="eventStartDate" style="display:none;"> @Model.DateDebut</p>
+    <p id="eventEndDate" style="display:none;"> @Model.DateFin</p>
+    <div id="eventDiv" class="alert alert-heading">
+        <div style="float:left;">
+            <p class="eventText">
+                <span id="eventState"> @Model.TypeEvenement </span>
+            </p>
+        </div>
+
+        <div id="searchInput" class="eventText">
+            @Model.NomCommerce<br />
+            <span id="eventPeriod">@Model.DatesEvenementsFr </span>
+        </div>
+    </div>
+    <div id="mainDiv">
+        <div id="innerContent">
+            <div id="leftContent">
+                <div id="prospects">
+                    <p id="prospectsText" style="float: left;"><img src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" height="55" width="55" />Rendez-Vous fixés <span id="nbrstat">000</span></p>
+                    <p id="prospectsText" style="text-align:center;"> Walk-In <span id="nbrstat">000</span></p>
+                    <p class="pull-right" id="prospectsText" style="text-align:right;float: right;">Ventes <span id="nbrstat">000</span></p>
+                    <p>Ajouter un walk-In</p>
+                </div>
+
+
+                <div id="rdvClientDetails">
+
+                </div>
+            </div>
+        </div>
+
+        <div style="clear: both;"> </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    url: '../Home/GetNomAppels',
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (result) {
+                        $('#dvCampaignDetails').html(result);
+                    },
+                    error: function (xhr, status) {
+                        alert(status);
+                    }
+                });
+            });
+
+
+
+    </script>
+}

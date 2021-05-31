@@ -119,6 +119,72 @@ namespace Autoveille.Controllers
         }
 
 
+        public ActionResult RendezVous()
+        {
+            var role = 0;
+            if (Session["User"] != null)
+            {
+                role = Utilisateurs.GetRoles(Session["User"].ToString());
+            }
+            if (role == 1)
+            {
+                int userId = -1;
+                bool resParse;
+
+                //to do : a verifier role : consultant
+
+                resParse = int.TryParse(Session["UserId"].ToString(), out userId);
+                //to do
+                if (!resParse)
+                {
+                    //return "error user id pas bon";
+                }
+                var evenements = Ventes.GetEvenementsByConsultant(userId);
+                if (evenements == null || evenements.Count == 0)
+                {
+                    //return "aucune evenement n'est pas associé à l'utilisateur";
+                }
+                //to do
+                if (evenements.Count >= 2)
+                {
+                    //return "il y a plus d'un evenement associé à l'utilisateur";
+                }
+                var evenement = evenements.FirstOrDefault();
+                evenement = Ventes.GetEvenement(evenement.IdEvenement, evenement.NoCommerce);
+                var nomCommerce = Concessions.GetNomCommerce(evenement.NoCommerce);
+                var evenementUI = new EvenementModel()
+                {
+                    NoCommerce = evenement.NoCommerce,
+                    NomCommerce = nomCommerce,
+                    DateDebut = evenement.DateEvenementDebut,
+                    DateFin = evenement.DateEvenementFin,
+                };
+                return View(evenementUI);
+            }
+            //if (Session["User"] != null )
+            //{
+            //    var role= Utilisateurs.GetRoles(Session["User"].ToString(), aNoCommerce);
+            //    if (role != null)
+            //    {
+            //        Session["NoCommerce"] = aNoCommerce;
+            //        Session["Role"] = role.Role;
+            //    }
+            //    else
+            //    {
+            //        return RedirectToAction("Connexion", "Compte");
+            //    }
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Connexion", "Compte");
+            //}
+            //var ventes = Ventes.GetVentes(aNoCommerce);
+            ////var appels = new Appels();
+            ////appels.Evenement = Ventes.GetProchaineEvenement(aNoCommerce);
+            ////appels.Relances = Ventes.GetRelances(appels.Evenement.IdEvenement, aNoCommerce);
+            return View();
+        }
+
 
         //Data testing methods 
 
