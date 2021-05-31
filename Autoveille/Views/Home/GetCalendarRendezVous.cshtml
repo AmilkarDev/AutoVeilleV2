@@ -1,0 +1,48 @@
+﻿@*@{
+        Layout = "";
+    }
+    @section css {
+        <link href="@Url.Content("~/css/special_style.css")" rel="stylesheet" />
+    }*@
+@*<div class="container">
+        <div class="row">
+
+            <div id="monthsCalendar" class="yacal" data-date="2021/04/28" data-near-months="1" data-min-date="2021/3/15" data-max-date="2021/6/15">
+                </div>
+
+    <div id='calendar' style="width:70%;"></div>
+
+
+
+
+        </div>
+    </div>*@
+<button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()" style="height:50px;font-size:50px;font-weight:bolder;">&times;</button>
+<br />
+<div class="row" style="height:auto;">
+    <div class="col-md-4" style="position:relative;">
+        <div class="calendHeader">
+            <img src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" height="100" width="100" style="fill:green;" />
+            <p class="calendText" style="color:green;">Calendrier Rendez Vous</p>
+        </div>
+        <div id="monthsCalendar">
+
+        </div>
+        <div style="display: flex;justify-content:center;">
+            <button class="btn btn-danger" style="border-radius:15px;width:200px;">Sauvegarder</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div id='calendarfc' class="col-md-8 calendarRendezVous"></div>
+
+
+
+
+</div>
+

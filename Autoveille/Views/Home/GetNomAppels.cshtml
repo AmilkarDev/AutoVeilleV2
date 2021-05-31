@@ -51,7 +51,7 @@
 <script>
     function displayClients(CampaignId) {
         $.ajax({
-            url: '/Home/GetClients',
+            url: '../Home/GetClients',
             contentType: 'application/html; charset=utf-8',
             type: 'GET',
             data: { aIdTypeEvenement: CampaignId },
@@ -62,7 +62,7 @@
                 $('#' + clientsId).html(result);
                 $('#' + clientsId).toggle();
                 $('#' + imgId).attr('onclick', 'hideClients(' + CampaignId + ')');
-                $('#' + imgId).attr('src', '/Content/Images/Layout/Moins.png');
+                $('#' + imgId).attr('src', '../Content/Images/Layout/Moins.png');
             },
             error: function (xhr, status) {
                 alert(status);
@@ -76,7 +76,7 @@
         var clientsId = "clients" + CampaignId;
         var imgId = "img" + CampaignId;
         $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');
-        $('#' + imgId).attr('src', '/Content/Images/Layout/Plus.png');
+        $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
         $('#' + clientsId).toggle();
     }
 </script>

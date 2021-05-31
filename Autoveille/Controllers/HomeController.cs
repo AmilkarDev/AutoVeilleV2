@@ -388,31 +388,54 @@ namespace Autoveille.Controllers
         }
 
 
-        public List<Reservation> eventsList = new List<Reservation>
+        [HttpGet]
+        public ActionResult GetCalendarRendezVous()
         {
-                new Reservation {title="R-V 1", color="green", start = new DateTime(2021,05,21,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,15,12,59,00).ToString("yyyy-MM-ddTHH:mm:ss")},
-                new Reservation {title="R-V 2", color="green", start = new DateTime(2021,05,21,12,00,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,15,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss")},
-                new Reservation {title="R-V 3", color="green", start = new DateTime(2021,05,21,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,15,13,00,00).ToString("yyyy-MM-ddTHH:mm:ss")},
-                new Reservation {title="R-V 4", color="green", start = new DateTime(2021,05,21,10,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,15,11,00,00).ToString("yyyy-MM-ddTHH:mm:ss")},
-            new Reservation {title="R-V 1", allDay = true,color="blue", start = new DateTime(2021,05,15).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,15).ToString("yyyy-MM-ddTHH:mm:ss")}
+            return PartialView();
+        }
+
+        public List<Reservation> retourAppelsList = new List<Reservation>
+        {
+                new Reservation {title="R-A 1", color="red", start = new DateTime(2021,05,22,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,13,30,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+                new Reservation {title="R-A 2", color="red", start = new DateTime(2021,05,22,12,00,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+                new Reservation {title="R-A 3", color="red", start = new DateTime(2021,05,22,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,13,00,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+                new Reservation {title="R-A 4", color="red", start = new DateTime(2021,05,22,10,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,11,00,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+            new Reservation {title="R-V 1", allDay = true,color="red", start = new DateTime(2021,05,22).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22).ToString("yyyy-MM-ddTHH:mm:ss")}
+        };
+
+        public List<Reservation> rendezVousList = new List<Reservation>
+        {
+                new Reservation {title="R-V 1", color="green", start = new DateTime(2021,05,22,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,13,30,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+                new Reservation {title="R-V 2", color="green", start = new DateTime(2021,05,22,12,00,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+                new Reservation {title="R-V 3", color="green", start = new DateTime(2021,05,22,12,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,13,00,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+                new Reservation {title="R-V 4", color="green", start = new DateTime(2021,05,22,10,30,00).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22,11,00,00).ToString("yyyy-MM-ddTHH:mm:ss")},
+            new Reservation {title="R-V 1", allDay = true,color="green", start = new DateTime(2021,05,22).ToString("yyyy-MM-ddTHH:mm:ss"), end= new DateTime(2021,05,22).ToString("yyyy-MM-ddTHH:mm:ss")}
         };
 
 
         [HttpGet]
-        public ActionResult GetReservations()
+        public ActionResult GetRendezVousReservations()
         {
             
 
-            return Json(eventsList,JsonRequestBehavior.AllowGet);
+            return Json(rendezVousList,JsonRequestBehavior.AllowGet);
 
         }
 
+        [HttpGet]
+        public ActionResult GetRetourAppelReservations()
+        {
+
+
+            return Json(retourAppelsList, JsonRequestBehavior.AllowGet);
+
+        }
 
         [HttpPost]
         public ActionResult SaveRendezVous(Reservation rendezVous)
         {
             rendezVous.color = "green";
-            eventsList.Add(rendezVous);
+            rendezVousList.Add(rendezVous);
             return Json("success", JsonRequestBehavior.AllowGet);
         }
     }

@@ -2,6 +2,7 @@
     background-color: black;
     height:250px;
     margin-top:100px;
+    margin:auto;
 }
 
 .tick-flip, .tick-text-inline {
@@ -70,9 +71,9 @@
 }
 
 
-.mainRow{
+/*.mainRow{
     width:100%;
-}
+}*/
 
 
 
@@ -125,7 +126,7 @@
 }
 
 .number {
-    font-size: 130px;
+    font-size: 60px;
     font-weight: bold;
     color: white;
 }
@@ -192,6 +193,100 @@ body {
     background-color: #262626 ;
 }
 
+
+#circleBorder {
+    background-image: linear-gradient(to bottom, #E11B23 0%, #D13660 50%, #C2509B 100%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px 25px #410707;
+}
+
+.radar {
+    position: absolute;
+    margin: 10px;
+    padding: 0;
+    height: 280px;
+    width: 280px;
+    background: #ee3520 url(../Content/Images/QuebecGrey.svg);
+    background-size: 250px 270px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+
+.radar:after {
+    content: '';
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    width: 10px;
+    height: 10px;
+    background: #d98324;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: glow 1s linear infinite;
+}
+    .radar li:nth-child(1),
+    .radar li:nth-child(2) {
+        list-style: none;
+        position: absolute;
+        top: 50%;
+        height: 1px;
+        width: 100%;
+        border-radius: 50%;
+        background: #ec9f05
+    }
+
+    .radar li:nth-child(2) {
+        transform: rotate(90deg);
+    }
+
+    .radar li:nth-child(3) {
+        list-style: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 250px;
+        height: 250px;
+        transform-origin: top left;
+        background: linear-gradient(45deg,#98407C 0%, transparent 50%);
+        animation: rotation 2s linear infinite;
+    }
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    0% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
 /*@media only screen and (max-width: 1400px) {
 
     .flip-date {
@@ -251,7 +346,7 @@ body {
 
     #canvaContent {
         position: absolute;
-        margin-top: -50px;
+        /*margin-top: -50px;*/
     }
 
     img#radarImg {
@@ -280,7 +375,7 @@ body {
     }
 
     .number {
-        font-size: 55px;
+        font-size: 45px;
     }
 
     .text {
@@ -336,6 +431,15 @@ body {
         width: 100%;
         margin-left: -15px;
     }
+    #circleBorder {
+        width: 240px;
+        height: 240px;
+    }
+
+    .radar {
+        width: 220px;
+        height: 220px;
+    }
 }
 
 
@@ -344,11 +448,11 @@ body {
         font-size: 2em;
     }
     .number {
-        font-size: 55px;
+        font-size: 30px;
     }
 
     .text {
-        font-size : 20px;
+        font-size : 15px;
         font-weight : bold;
     }
     .flip-date {
@@ -362,7 +466,7 @@ body {
         overflow-wrap:normal;
     }
     #content {
-        width: 200px;
+        width: auto;
     }
 
     .circlee {
@@ -396,6 +500,16 @@ body {
     .flip-date-container{
         width : 400px;
     }
+
+    #circleBorder {
+        width: 160px;
+        height: 160px;
+    }
+
+    .radar {
+        width: 140px;
+        height: 140px;
+    }
 }
 
 
@@ -418,24 +532,21 @@ body {
         width: auto;
     }
 
-    /*#content {
-        margin-left: 50%;
-        margin-right: 50%;
-    }*/
-
-    img#radarImg {
-        width: 150px;
-        height: 150px;
-        position: absolute;
-        /*margin-left: 15px;*/
-        margin-top: -50px;
-        margin-left: 0px;
-        top: auto;
-        left: auto;
-        float: left;
+    #content {
+        margin:auto;
     }
     .flip-date-inside#content{
         margin-left:0px;
+    }
+
+    #circleBorder {
+        width: 150px;
+        height: 150px;
+    }
+
+    .radar {
+        width: 130px;
+        height: 130px;
     }
 }
 
@@ -451,17 +562,25 @@ body {
     }
     
     .flip-date {
-        width: auto;
+        width: 100%;
     }
+    .mainSecondColumn .flip-date{
+        width : 93%;
+    }
+    .mainSecondColumn .flip-date-container {
+        width: 93%;
+    }
+
     .flip-date-container {
-        width: auto;
+        width: 90%;
         
         margin-left:-15px;
         background-color:black;
         border-radius : 20px;
     }
     #content {
-        width: 200px;
+        width: 350px;
+        margin: auto;
     }
 
     .circlee {
@@ -485,20 +604,29 @@ body {
         text-align: center;
     }
 
-    #content {
+    /*#content {
         margin-left: 50%;
         margin-right: 50%;
-    }
+    }*/
 
-    img#radarImg {
+    /*img#radarImg {
         width: 250px;
         height: 250px;
-        position:absolute;
+        position:absolute;*/
         /*margin-left: 15px;*/
-        margin-top: -50px;
+        /*margin-top: -50px;
         margin-left: 0px;
         top: auto;
         left: auto;
         float: left;
-    }
+    }*/
+
+        #circleBorder {
+            width : 240px;
+            height : 240px;
+        }
+        .radar{
+            width: 220px;
+            height:220px;
+        }
 }

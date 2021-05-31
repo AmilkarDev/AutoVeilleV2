@@ -414,7 +414,7 @@ label input:checked + span:after {
 
 
 .calendText{
-    font-size:35px;
+    font-size:30px;
     color:red;
     font-weight:bold;
 }
@@ -628,6 +628,10 @@ show {
     display : none;
 }
 /* end Calendar csss , Jquery Date picker */
+
+#monthsCalendar {
+    width : 285px;
+}
 /******Start Dropdown List CSS *****/
 .dropdown {
     /*margin-top: 20vh;
@@ -737,19 +741,58 @@ show {
     bottom: 12px;
 }
 
-.fc .fc-scrollgrid-section>td {
-    padding:0px;
+
+@-moz-document url-prefix() {
+    .fc-media-screen .fc-timegrid-event {
+        top: 0;
+        bottom: 0;
+    }
 }
-.fc-timegrid {
-    border-radius:15px;
-    background-color: lightgrey;
-}
-.fc .fc-timegrid-col.fc-day-today{
-    background-color:lightgrey;
-}
-.fc-timegrid-slots .table-bordered tr:nth-of-type(odd) td:first-child {
-    border-bottom: 2px transparent solid;
-}
-.fc-col-header tr th:nth-child(2), .fc-col-header tr th:nth-child(3), .fc-col-header tr th:nth-child(4) {
+
+
+    .fc .fc-scrollgrid-section > td {
+        padding: 0px;
+    }
+
+    .fc-timegrid {
+        border-radius: 15px;
+        background-color: lightgrey;
+    }
+
+    .fc .fc-timegrid-col.fc-day-today {
+        background-color: lightgrey;
+        border-right: 2px solid #dee2e6;
+    }
+
+    .fc-timegrid-slots .table-bordered tr:nth-of-type(odd) td:first-child {
+        border-bottom: 2px transparent solid;
+    }
+    .calendarRetourAppel .coloredBackground {
+        background-color: red;
+    }
+
+    .calendarRendezVous .coloredBackground {
+        background-color: green;
+    }
+   /* .calendarRetourAppel .fc-col-header tr th:nth-child(2), .calendarRetourAppel .fc-col-header tr th:nth-child(3), .calendarRetourAppel .fc-col-header tr th:nth-child(4) {
+        background-color: red;
+    }
+
+    .calendarRendezVous .fc-col-header tr th:nth-child(2), .fc-col-header tr th:nth-child(3), .fc-col-header tr th:nth-child(4) {
+        background-color: green;
+    }*/
+
+    .fc-col-header-cell   {
+        border:5px solid green;
+    }
+
+
+    .fc-timegrid-slots .table-bordered td {
+        height: 10px !important;
+    }
+
+
+.simplebar-scrollbar::before {
     background-color: red;
+    width: 25px;
 }

@@ -43,7 +43,7 @@
 
                 <br class="brClient" />
                 <div class="float-left" style="display:inline;text-align:left">
-                    <text class="info pleftClient" onclick="displayCalendar()" data-toggle="modal" data-target="#myModal" style="font-size:15px;font-weight:bolder;">FIXER UN R.-V.</text>
+                    <text class="info pleftClient" onclick="displayCalendarRendezVous('rendezVous')" data-toggle="modal" data-target="#myModal" style="font-size:15px;font-weight:bolder;">FIXER UN R.-V.</text>
                     <img src="~/Content/Images/ICONES_SVG_NB_Base_RDV.svg" height="20" width="20" style="margin-left:3px;" />
                 </div>
                 <br />
@@ -81,7 +81,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Courriel" class="phoneInput float-left" id="IdphoneInput" style="display:block;" />
+                    <input value="@Model.Courriel" class="phoneInput float-left"  style="display:block;" />
                 </div>
                 <br class="brClientPhone" />
 
@@ -90,7 +90,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Phone1" class="phoneInput float-left" id="IdphoneInput1" style="display:block;" />
+                    <input value="@Model.Phone1" class="phoneInput float-left" style="display:block;" />
                     <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
                     <a href="#">
                         <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
@@ -103,7 +103,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput2" style="display:block;" />
+                    <input value="@Model.Phone2" class="phoneInput float-left" style="display:block;" />
                     <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
                     <a href="#">
                         <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
@@ -116,7 +116,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Mobile" class="phoneInput float-left" id="IdphoneInput3" style="display:block;" />
+                    <input value="@Model.Mobile" class="phoneInput float-left" style="display:block;" />
                     <img class="float-left" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Appel_Vert.svg" style=" margin-left: -63px; margin-top: 3px; width: 22px; height:22px" />
                     <a href="#">
                         <i class="fas fa-trash-alt float-left" style=" margin-left: -40px; margin-top: 6px; width: 30px;height:30px; color: black;"></i>
@@ -133,7 +133,7 @@
                 <br />
                 <div id="input-container">
 
-                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput" style="width:80%;" />
+                    <input value="@Model.Phone2" class="phoneInput float-left" style="width:80%;" />
                 </div>
                 <br class="brClientPhone" />
 
@@ -143,7 +143,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Phone2" class="phoneInput float-left" id="IdphoneInput" style="width:95%;" />
+                    <input value="@Model.Phone2" class="phoneInput float-left" style="width:95%;" />
                 </div>
                 <br class="brClientPhone" />
                 <div class="saveDiv">
@@ -155,7 +155,7 @@
 
         <div class="row">
 
-            <div class="box box-content" style="margin-left: 15px;height:150px;">
+            <div class="box box-content" style="margin-left: 15px;height:215px;">
                 <b>  Messages textes antesieurs</b>
             </div>
         </div>
@@ -302,7 +302,7 @@
 
                 <div id="input-container">
 
-                    <input type="text" value="@Model.Vehicule.VehiculeDesire" class="phoneInput float-left" id="IdphoneInput" />
+                    <input type="text" value="@Model.Vehicule.VehiculeDesire" class="phoneInput float-left" />
                 </div>
                 <br class="brClientPhone" />
 
@@ -325,8 +325,23 @@
                 <br />
             </div>
 
-            <div class="box box-content" style="height:160px;margin-left: 15px;margin-bottom:15px;">
+            <div class="box box-content mCustomScrollbar" data-mcs-theme="3d-thick" data-mcs-axis="y" style="height:225px;margin-left: 15px;margin-bottom:15px;">
                 <b>  Notes générales</b>
+
+
+                What is Lorem Ipsum?
+
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Why do we use it?
+
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+                Where does it come from?
+
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+
             </div>
 
             @*<div class="box box-content" style="margin-left: 15px;">
@@ -355,7 +370,7 @@
 
                 <label>
                     <input type="checkbox" name="resultat" value="retourAppel">
-                    <span onclick="displayCalendar()" data-toggle="modal" data-target="#myModal">Retour D'appel</span>
+                    <span onclick="displayCalendar('retourAppel')" data-toggle="modal" data-target="#myModal">Retour D'appel</span>
                 </label>
 
                 <label>
@@ -387,38 +402,38 @@
 
                 <label>
                     <input type="checkbox" name="resultat" value="rvFixee">
-                    <span onclick="displayCalendar()" data-toggle="modal" data-target="#myModal">R-V fixé</span>
+                    <span onclick="displayCalendar('rendezVous')" data-toggle="modal" data-target="#myModal">R-V fixé</span>
                 </label>
 
             </div>
         </div>
         <div style="position: relative;margin-left: -15px;width: 100%;">
             <span id="dropdown" class="dropdown dropdown-desactivee" style="position: absolute;top: 100%;left: 0;width: 100%;border-radius: 15px;display: none;">
-                <input type="radio" name="resultatDesactivee" value="décédé" id="decede" class="desa">
-                <label for="decede">Décédé</label>
+                <input type="radio" name="resultatDesactivee" value="décédé" id="decede" class="desa" checked="checked">
+                <label for="décédé">Décédé</label>
                 <input type="radio" name="resultatDesactivee" value="déménagé" id="demenage" class="desa">
-                <label for="demenage">Déménagé</label>
+                <label for="déménagé">Déménagé</label>
                 <input type="radio" name="resultatDesactivee" value="incapacité" id="incapacite" class="desa">
-                <label for="incapacite">Incapacité de conduire un véhicule</label>
-                <input type="radio" name="resultatDesactivee" value="pasDePermis" id="pasDePermis" checked="checked" class="desa">
-                <label for="pasDePermis">N'a plus de pemis de conduire</label>
+                <label for="Incapacité de conduire un véhicule">Incapacité de conduire un véhicule</label>
+                <input type="radio" name="resultatDesactivee" value="pasDePermis" id="pasDePermis"  class="desa">
+                <label for="Pas de permis de conduire">N'a plus de pemis de conduire</label>
             </span>
         </div>
 
         <div style="position: relative;margin-left: -15px;width: 100%;">
             <span id="dropdown" class="dropdown dropdown-relanceFuture" style="position: absolute; top: 100%; left: 0; width: 100%; border-radius: 15px; display: none;">
                 <input type="radio" name="resultatRelanceFuture" value="1" checked="checked" id="unMois">
-                <label for="unMois">1 mois</label>
+                <label for="1 Mois">1 mois</label>
                 <input type="radio" name="resultatRelanceFuture" value="2" id="deuxMois">
-                <label for="deuxMois">2 mois</label>
+                <label for="2 Mois">2 mois</label>
                 <input type="radio" name="resultatRelanceFuture" value="3" id="troisMois">
-                <label for="troisMois">3 mois</label>
+                <label for="3 Mois">3 mois</label>
                 <input type="radio" name="resultatRelanceFuture" value="4" id="quatreMois">
-                <label for="quatreMois">4 mois</label>
+                <label for="4 Mois">4 mois</label>
                 <input type="radio" name="resultatRelanceFuture" value="5" id="cinqMois">
-                <label for="cinqMois">5 mois</label>
+                <label for="5 Mois">5 mois</label>
                 <input type="radio" name="resultatRelanceFuture" value="6" id="sixMois">
-                <label for="sixMois">6 mois</label>
+                <label for="6 Mois">6 mois</label>
             </span>
         </div>
 
@@ -438,12 +453,13 @@
         <div style="display:flex;justify-content:center;">
             <button value="sauvegarder" class="btn btn-danger" disabled style="color:white;width:200px;border-radius:15px;">Sauvegarder</button>
         </div>
-        <div class="row resultCall" style="margin-top:10px;width:100%;background-color:black;border-radius:15px;height:200px;border-radius:15px;">
+        <div class="row resultCall" style="display: none;margin-top:10px;width:100%;background-color:black;border-radius:15px;height:200px;border-radius:15px;">
             <div class="col-md-6" style="display:flex;flex-direction:column;justify-content:center;">
-                <img src="~/Content/Images/ICONES_SVG_Base_Couleurs_Litige.svg" height="150" width="150" />
+                <img class="resultCallImg" src="~/Content/Images/ICONES_SVG_Base_Couleurs_Litige.svg" height="150" width="150" />
             </div>
             <div class="col-md-6" id="resultDate" style="display:flex;flex-direction:column;justify-content:center;">
                 <p id="resultText" style="color:white;font-size:15px;text-align:center;">liste Noire</p>
+                <p id="selectedChoice" style="color:white;font-size:15px;text-align:center;"></p>
                 <br />
                 <p id="Datenow" style="color:white;font-size:15px;text-align:center;"></p>
             </div>
@@ -461,13 +477,13 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header" style="display:none;">
-                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                <button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()">&times;</button>
                 <h4 class="modal-title">Calendrier des rendez Vous</h4>
             </div>
             <div class="modal-body">
 
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer"  style="display:none;">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
             </div>
         </div>
@@ -486,7 +502,7 @@
     }
     function EditClientDetails() {
         $.ajax({
-            url: '/Home/EditMainClient',
+            url: '../Home/EditMainClient',
             contentType: 'application/html; charset=utf-8',
             type: 'GET',
             dataType: 'html',
@@ -501,17 +517,15 @@
         });
     }
 
-
-    function displayCalendar(str) {
-       // console.log(str);
+    function displayCalendar(reservationType) {
         $.ajax({
-            url: '/Home/GetCalendar',
+            url: '../Home/GetCalendar',
             contentType: 'application/html; charset=utf-8',
             type: 'GET',
             dataType: 'html',
             success: function (result) {
                 $('.modal-body').html(result);
-                daysCalendarDisplay();
+                daysCalendarDisplay(reservationType);
                 monthsCalendarDisplay();
                 $('.modal-body').modal("show");
             },
@@ -521,6 +535,23 @@
         });
     }
 
+    function displayCalendarRendezVous(reservationType) {
+        $.ajax({
+            url: '../Home/GetCalendarRendezVous',
+            contentType: 'application/html; charset=utf-8',
+            type: 'GET',
+            dataType: 'html',
+            success: function (result) {
+                $('.modal-body').html(result);
+                daysCalendarDisplay(reservationType);
+                monthsCalendarDisplay();
+                $('.modal-body').modal("show");
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    }
     function getRVevents() {
         $.ajax({
             url: '../Home/GetReservations',
@@ -529,7 +560,7 @@
             dataType: 'html',
             success: function (result) {
 
-                console.log(result);
+                //console.log(result);
                 return result;
             },
             error: function (xhr, status) {
@@ -538,80 +569,128 @@
         });
     }
 
-    function daysCalendarDisplay() {
-        //var events = getRVevents();
-       // console.log($("#eventStartDate").text());
-        //console.log($("#eventEndDate").text());
+    var calendar;
+
+    function daysCalendarDisplay(str) {
+
         var calendarEl = document.getElementById('calendarfc');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            themeSystem: 'bootstrap',
-            allDaySlot: false,
-            locale: 'fr',
-            timeZone: 'UTC',
-            initialView: 'timeGridFourDay',
-            eventMaxStack: 3,
-            headerToolbar : false,
-            //headerToolbar: {
-            //    left: 'prev,next',
-            //    center: 'title',
-            //    right: 'timeGridDay,timeGridFourDay,timeGridWeek,dayGridMonth'
-            //},
-            views: {
-                timeGridFourDay: {
-                    type: 'timeGrid',
-                    duration: { days: 4 },
-                    buttonText: '4 Jours',
-                    dayMaxEventRows: 3,
+        setTimeout(function () {
+            var eventSource = str == "rendezVous" ? '../Home/GetRendezVousReservations' : '../Home/GetRetourAppelReservations'
+
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                themeSystem: 'bootstrap',
+                contentHeight: 200,
+                allDaySlot: false,
+                locale: 'fr',
+                timeZone: 'UTC',
+                initialView: 'timeGridFourDay',
+                eventMaxStack: 3,
+                headerToolbar: false,
+                views: {
+                    timeGridFourDay: {
+                        type: 'timeGrid',
+                        duration: { days: 4 },
+                        buttonText: '4 Jours',
+                        dayMaxEventRows: 3,
+                    },
+                    timeGridDay: {
+                        dayMaxEventRows: 5
+                    }
                 },
-                timeGridDay: {
-                    dayMaxEventRows: 5
-                }
-            },
-            events: '../Home/GetReservations',
-            selectable: true,
-            expandRows: true,
+                events: eventSource,
+                selectable: true,
+                expandRows: true,
+                slotMinTime: "09:00:00",
+                slotMaxTime: "20:00:00",
+                slotDuration: '00:15:00',
+                slotLabelInterval: 15,
+                snapDuration: '00:15:00',
+                select: function (info) {
 
-            slotMinTime: "09:00:00",
+                    var newEvent = new Object();
+                    newEvent.title = 'abc';
+                    newEvent.start = moment(info.startStr).format();
+                    newEvent.end = moment(info.endStr).format();
+                    var midnight = "0:00:00";
+                    end = moment(info.endStr).format("H:mm:ss");
+                    if (end === midnight) {
+                        newEvent.allDay = true;
+                    }
+                    else newEvent.allDay = false;
+                    saveNewRV(newEvent);
+                    calendar.addEvent(newEvent);
+                    var rdvDateTime = moment(info.startStr).format('YYYY-MM-DD') + " à " + moment.utc(info.startStr).format('hh:mm');
+                    $('#selectedChoice').html(rdvDateTime);
+                    calendar.unselect();
+                },
+                editable: true,
+                dayMaxEventRows: true,
+                eventDidMount: customEventRender,
+                dayHeaderDidMount: customDayHeaderRender,
+            });
+            calendar.render();
 
-            slotMaxTime: "20:00:00",
+        } , 300)
+    
 
-            slotDuration: '00:30:00',
-
-            slotLabelInterval: 30,
-
-            //slotMinutes: 15,
-
-            snapDuration: '00:30:00',
-            select: function (info) {
-                //console.log(info);
-
-                //alert('selected ' + info.startStr + ' to ' + info.endStr);
-                var newEvent = new Object();
-                //var title = prompt('Enter Title');
-                newEvent.title = 'abc';
-                newEvent.start = moment(info.startStr).format();
-                newEvent.end = moment(info.endStr).format();
-                var midnight = "0:00:00";
-                end = moment(info.endStr).format("H:mm:ss");
-                if (end === midnight) {
-                    newEvent.allDay = true;
-                }
-                else newEvent.allDay = false;
-                saveNewRV(newEvent);
-                console.log(newEvent);
-                calendar.addEvent(newEvent);
-                calendar.unselect();
-            },
-            editable: true,
-            dayMaxEventRows: true,
-            
-            // events: 'https://fullcalendar.io/demo-events.json'
-        });
-
-
-        calendar.render();
     };
+    var clickCnt = 0;
+    function customEventRender(info) {
+        //console.log(info);
+        
+        info.el.addEventListener('click', function () {
+            clickCnt++;
+            var newEvent;
+            if (clickCnt === 1) {
+                oneClickTimer = setTimeout(function () {
+                    clickCnt = 0;
+                     newEvent = new Object();
+                    newEvent.title = info.event.title;
+                    newEvent.start = info.event.start;;
+                    newEvent.end = info.event.end;;
+                    newEvent.allday = false;
+                    
+                    info.view.calendar.addEvent(newEvent);
+                    //console.log(moment(newEvent.start).format('YYYY'));
+                    //console.log(moment.utc(newEvent.start).format('HH:mm'));
+                    var rdvDateTime = moment(newEvent.startStr).format('YYYY-MM-DD') + " à " + moment.utc(newEvent.startStr).format('hh:mm');
+                    //console.log(rdvDateTime);
+                    $('#slectedChoice').html(rdvDateTime);
+                }, 400);
+            } else if (clickCnt === 2) {
+                clearTimeout(oneClickTimer);
+                clickCnt = 0;
+                info.event.remove();
+            }
 
+            //console.log(newEvent);
+        });
+    }
+
+    function customDayHeaderRender(info) {
+        
+        //console.log(moment(info.date).format());
+        var startDate = new Date();
+        var endDate = new Date();
+        var numberOfDaysToAdd = 2;
+        endDate = endDate.setDate(startDate.getDate() + numberOfDaysToAdd); 
+        startDate = startDate.setDate(startDate.getDate() - 1);
+        //console.log(info.date <= endDate);
+        //console.log(info.date <= endDate);
+        //console.log(info.date >= startDate);
+
+        if (startDate <= info.date && info.date <= endDate) { 
+            //console.log(moment(startDate).format());
+            //console.log(moment(endDate).format());
+            //console.log("**************here we start ********");
+            //console.log(startDate);
+            //console.log(info.date);
+            //console.log(moment(endDate).format()); 
+            //console.log("*************here we end************ \n \n \n");
+            info.el.classList.add("coloredBackground");
+            //console.log(info.el);
+        }
+    }
 
     function saveNewRV(newRV) {
         $.ajax({
@@ -621,7 +700,7 @@
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
 
-                console.log(result);
+                //console.log(result);
                 return result;
             },
             error: function (xhr, status) {
@@ -630,72 +709,64 @@
         });
     }
 
-    function monthsCalendarDisplay() {
-        //'use strict';
-        $.datepicker.setDefaults($.datepicker.regional["fr"]);
-        var checkIn, checkOut, numberOfMonths = [3, 1],
-            $calendar = $('#monthsCalendar').datepicker({
-                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-                dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
-                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-                numberOfMonths: numberOfMonths,
-                prevText: '',
-                nextText: '',
-                beforeShowDay: function (date) {
-                    date = moment(date);
-
-                    var now = moment(),
-                        show = date.isAfter(now),
-                        css = '';
-
-                    if (checkIn && checkOut
-                        && date.isSameOrAfter(checkIn)
-                        && date.isSameOrBefore(checkOut)) {
-                        css = 'ui-datepicker-reserved';
-
-                        if (date.isSame(checkIn)) css += ' ui-datepicker-checkin';
-                        if (date.isSame(checkOut)) css += ' ui-datepicker-checkout';
-                    }
-
-                    return [show, css];
-                },
-                onSelect: function (value) {
-                    var date = moment($calendar.datepicker('getDate'));
-
-                    if (checkIn && !checkOut
-                        && date.isSameOrAfter(checkIn))
-                        checkOut = date;
-                    else {
-                        checkIn = date;
-                        checkOut = null;
-                    }
-
-                    $('#check-in-date').text(checkIn ? checkIn.format('DD/MM/YYYY') : 'Choose a date');
-                    $('#check-out-date').text(checkOut ? checkOut.format('DD/MM/YYYY') : 'Choose a date');
-                },
-                onChangeMonthYear: function () {
-                    $calendar.addClass('fade-in');
-                }
-            }).on('animationend webkitAnimationEnd', function () {
-                $calendar.removeClass('fade-in');
-            });
-
-        // resize();
-
+    function addNewEvent(info) {
+        var newEvent = new Object();
+        //var title = prompt('Enter Title');
+        newEvent.title = 'abc';
+        newEvent.start = moment(info.startStr).format();
+        newEvent.end = moment(info.endStr).format();
+        var midnight = "0:00:00";
+        end = moment(info.endStr).format("H:mm:ss");
+        if (end === midnight) {
+            newEvent.allDay = true;
+        }
+        else newEvent.allDay = false;
+        saveNewRV(newEvent);
+        console.log(newEvent);
+        calendar.addEvent(newEvent);
+        calendar.unselect();
     }
 
-    $('.checkMarksDiv input:checkbox').click(function (e) {
+    function monthsCalendarDisplay() {
+
+        $('#monthsCalendar').yacal({
+            date: '2021/05/20',
+            minDate: '2021/01/01',
+            maxDate: '2030/01/01',
+            nearMonths: 1,
+            i18n: {
+                weekdays: ['D', 'L', 'M', 'M', 'j', 'V', 'S',],
+                months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            },
+            tpl: {
+                weekday: '<strong class="wday wd#weekday#">#weekdayName#<\/strong>'
+            }
+        });
+    }
 
 
-        
+    $(document).on('click', '.day.active', function () {
+        var selectedDate = new Date($(this).data('time'));
+        var dd  =moment(selectedDate).format();
+        var first = selectedDate.getDate() - selectedDate.getDay(); // First day is the day of the month - the day of the week
+        var last = first + 6; // last day is the first day + 6
+
+        var firstday = new Date(selectedDate.setDate(first)).toUTCString();
+        var lastday = new Date(selectedDate.setDate(last)).toUTCString();
+        calendar.changeView('timeGridWeek');
+        calendar.gotoDate(dd);
+        $('.fc-col-header-cell').css('background-color', '');
+    });
+
+    $('.checkMarksDiv input:checkbox').click(function (e) {     
         var $box = $(this);
-        console.log($box.is(":checked"));
+        //console.log($box.is(":checked"));
         if ($box.is(":checked")) {
             var group = "input:checkbox[name='" + $box.attr("name") + "']";
             $(group).prop("checked", false);
             $box.prop("checked", true);
 
+           
             if ($(this).val() != 'desactivee' && $(this).val() != 'relanceFuture') {
                 $('.dropdown-relanceFuture').css('display', 'none');
                 $('.dropdown-desactivee').css('display', 'none');
@@ -709,12 +780,53 @@
                 $('.dropdown-relanceFuture').css('display', '');
                 $('.dropdown-relanceFuture').css('visibility', 'visible');
             } else if ($(this).val() === 'rvFixee') {
-                displayCalendar();
+                
+                $('.resultCall').css('display', '');
+                var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+                $('#Datenow').html(dateTimeNow);
+                $('#resultText').html('Rendez-vous fixé');
+                $('#resultText').css('color', 'green');
+                $('#selectedChoice').css('display', '');
+                $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg');
+                displayCalendarRendezVous('rendezVous');
             }
             else if ($(this).val() === 'retourAppel') {
-                displayCalendar();
+                $('.resultCall').css('display', '');
+                var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+                $('#Datenow').html(dateTimeNow);
+                $('#resultText').html('Retour d\'appel fixé');
+                $('#resultText').css('color', 'red');
+                $('#selectedChoice').css('display', '');
+                $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_Retour_Appel.svg');
+                displayCalendar('retourAppel');
             }
-
+            else if ($(this).val() == 'nonInterresse') {
+                $('.resultCall').css('display', '');
+                $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_Non_Inte╠üresse╠ü.svg');
+                var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+                $('#Datenow').html(dateTimeNow);
+                $('#resultText').html('Non Intérressée');
+                $('#resultText').css('color', 'white');
+                $('#selectedChoice').css('display', 'none');
+            }
+            else if ($(this).val() == 'casLitige') {
+                $('.resultCall').css('display', '');
+                $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_Litige.svg');
+                var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+                $('#selectedChoice').css('display', 'none');
+                $('#Datenow').html(dateTimeNow);
+                $('#resultText').html('Cas de litige');
+                $('#resultText').css('color', 'white');
+            }
+            else if ($(this).val() == 'listeNoire') {
+                $('.resultCall').css('display', '');
+                $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_Liste.svg');
+                var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+                $('#selectedChoice').css('display', 'none');
+                $('#Datenow').html(dateTimeNow);
+                $('#resultText').html('Liste noire');
+                $('#resultText').css('color', 'white');
+            }
 
         } else {
             $box.prop("checked", false);
@@ -740,15 +852,32 @@
             if ($(e.target).attr('for') != undefined) {
                 $('.dropdown-desactivee').css('display', 'none');
             }
-            console.log($(e.target).attr('for'));
-            var dateTimeNow = moment().format('YYYY-MM-DD HH-MM-SS')
-            console.log(dateTimeNow);
-            $('#Datenow').html(dateTimeNow);
+            //console.log($(e.target).attr('for'));
+            //var dateTimeNow = moment().format('YYYY-MM-DD HH-MM-SS')
+            //console.log(dateTimeNow);
+            //$('#Datenow').html(dateTimeNow);   
         }
 
 
         $(this).toggleClass('expanded');
         $('#' + $(e.target).attr('for')).prop('checked', true);
+
+        //$(this).toggleClass('expanded');
+        //$('#' + $(e.target).attr('for')).prop('checked', true);
+        var causeDesactivation = $(e.target).attr('for');
+        $('.resultCall').css('display', '');
+        $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_De╠üsactive╠ü.svg');
+        var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+        //console.log(dateTimeNow);
+        $('#Datenow').html(dateTimeNow);
+        $('#resultText').html('Désactivée');
+        $('#resultText').css('color', 'white');
+        $('#selectedChoice').css('display', '');
+        // causeDesactivation.replace("'", "\\\'");
+        if (causeDesactivation == 'Pas de permis de conduire') {
+            $('#selectedChoice').html('N\'a plus de permis de conduire');
+        }else
+        $('#selectedChoice').html(causeDesactivation);
     });
 
 
@@ -760,15 +889,25 @@
             if ($(e.target).attr('for') != undefined) {
                 $('.dropdown-relanceFuture').css('display', 'none');
             }
-            console.log($(e.target).attr('for'));
-            var dateTimeNow = moment().format('YYYY-MM-DD HH-MM-SS')
+            //console.log($(e.target).attr('for'));
+            //var dateTimeNow = moment().format('YYYY-MM-DD HH-mm-ss')
             //console.log(dateTimeNow);
-            $('#Datenow').html(dateTimeNow);
+           // $('#Datenow').html(dateTimeNow);
         }
 
 
         $(this).toggleClass('expanded');
         $('#' + $(e.target).attr('for')).prop('checked', true);
+
+        $('.resultCall').css('display', '');
+        $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_Relance.svg');
+        var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+        //console.log(dateTimeNow);
+        $('#Datenow').html(dateTimeNow);
+        $('#resultText').html('Relance future');
+        $('#resultText').css('color', 'yellow');
+        $('#selectedChoice').css('display', '');
+        $('#selectedChoice').html($(e.target).attr('for'));
     });
 
 

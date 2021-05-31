@@ -43,11 +43,11 @@
 <div class="row mainRow">
     <div class="col" style="margin-left:35px;width:50%;">
         <div class="row flip-date">
-            <div id="calendar-Label">
+            <div id="calendar-Label" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <img src="~/Content/Images/Layout/Calendar.png" />
-                Date
+                <text style="color: #ed145b"> Date </text>
             </div>
-            <div class="tick flipContainer" data-did-init="handleTickInit">
+            <div class="tick flipContainer col-lg-8 col-md-12 col-sm-12 col-xs-12" data-did-init="handleTickInit">
                 <div data-repeat="true" data-layout="horizontal fit" data-transform="preset( d, M,y) -> delay">
                     <div class="tick-group">
                         <div data-key="value" data-transform="pad(00)">
@@ -63,8 +63,8 @@
 
         <div class="row flip-date">
             <div class="col-md-4 col-sm-12 col-xs-12 stats">
-                <text class="text"> Rendez-vous </text><br />
-                <text class="number"> @Model.RDV</text>
+                <text class="text" style="color: #25b34b;"> Rendez-vous </text><br />
+                <text class="number rdvPercent"> @Model.RDV</text><text class="number"> %</text>
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12" id="content">
                 <canvas class="circlee" id="rendezVous-circle" width="350" height="350"></canvas>
@@ -78,8 +78,8 @@
 
         <div class="row flip-date">
             <div class="col-md-4 col-sm-12 col-xs-12 stats">
-                <text class="text" style="color:green;"> Walk-IN </text><br />
-                <text class="number"> @Model.WalkIn</text>
+                <text class="text" style="color: #32b9a9;"> Walk-IN </text><br />
+                <text class="number walkInPercent"> @Model.WalkIn</text><text class="number"> %</text>
             </div>
             <div class="col-md-8  col-sm-12 col-xs-12" id="content">
                 <canvas class="circlee" id="walkIn-circle" width="350" height="350"></canvas>
@@ -95,20 +95,33 @@
         <div class="flip-date-container" style="width:100%;margin-left:-20px;">
             <div class="row flip-date-inside">
                 <div class="col-md-4 col-sm-12 col-xs-12 stats">
-                    <text class="text" style="color:red;"> Potentiel </text><br /><br />
+                    <text class="text" style="color: #e11b22;"> Potentiel </text><br /><br />
                     <text class="number"> @Model.Potentiels</text>
                 </div>
                 <div class="col-md-8 col-sm-12 col-xs-12" id="content">
-                    <img id="radarImg" src="~/Content/Images/Layout/radar.png" />
+                    @*<img id="radarImg" src="~/Content/Images/Layout/radar.png" />*@
+                    <div id="circleBorder">
+                        <ul class="radar">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div id="point0"></div>
+                        <div id="point1"></div>
+                        <div id="point2"></div>
+                        <div id="point3"></div>
+                        <div id="point4"></div>
+                    </div>
+
                 </div>
-            </div>
+                </div>
 
             <br />
 
             <div class="row flip-date-inside">
                 <div class="col-md-4 col-sm-12 col-xs-12 stats">
-                    <text class="text" style="color:yellow;"> Opportunités </text><br />
-                    <text class="number">@Model.Oportunites</text>
+                    <text class="text" style="color: #fbbb29;"> Opportunités </text><br />
+                    <text class="number opportunitiesPercent">@Model.Oportunites</text><text class="number"> %</text>
                 </div>
                 <div class="col-md-8 col-sm-12 col-xs-12" id="content">
                     <canvas class="circlee" id="oppo-circle" width="350" height="350"></canvas>
@@ -122,8 +135,8 @@
 
         <div class="row flip-date" style="width:100%;">
             <div class="col-md-4 col-sm-12 col-xs-12 stats">
-                <text class="text" style="color:green;"> Ventes </text><br />
-                <text class="number"> @Model.Ventes</text>
+                <text class="text" style="color: #c1529e;"> Ventes </text><br />
+                <text class="number ventePercent"> @Model.Ventes</text> <text class="number"> %</text>
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12" id="content">
                 <canvas class="circlee" id="vente-circle" width="350" height="350"></canvas>
@@ -140,77 +153,324 @@
 
 
 <script>
-    var canvas = document.getElementById('rendezVous-circle');
-    var ctx = canvas.getContext('2d');
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    window.requestAnimationFrame = raf;
 
-    var x = 170,
-        y = 170,
-        radius = 100,
-        // 0deg   - 1.5 * Pi,
-        // 90deg  - 0   * Pi,
-        // 180deg - 0.5 * Pi,
-        // 270deg - 1   * Pi
-        angleStart = 1.5 * Math.PI,
-        angleEnd = 0.7 * Math.PI;
+    function percentageToRadians(percentage) {
+        var degrees = (percentage/100) * 360;
+        console.log('for ' + percentage + 'equal ' + (degrees * (Math.PI / 180)));
+        var radians = degrees * (Math.PI / 180);
+        return radians;
+    }
+    $(document).ready(function () {
+        var vente = $(".ventePercent").text();
+        var opportunities = $('.opportunitiesPercent').text();
+        var walkIn = $('.walkInPercent').text();
+        var rdvs = $('.rdvPercent').text();
+        
+       /*****************animation task  */
+        var rdvCanvas = document.getElementById('rendezVous-circle'); 
+        var ctx = rdvCanvas.getContext('2d');
+        var $canvas = $("#rendezVous-circle");
+        var canvasOffset = $canvas.offset();
+        var offsetX = canvasOffset.left;
+        var offsetY = canvasOffset.top;
+        var scrollX = $canvas.scrollLeft();
+        var scrollY = $canvas.scrollTop();
+
+        //Create gradient
+        var gradienta = ctx.createLinearGradient(0, 500, 0, 0);
+        gradienta.addColorStop(0, '#31B8A5');
+        gradienta.addColorStop(1, '#24B24A');
+
+        //Create gradient
+        var gradient = ctx.createLinearGradient(0, 500, 0, 0);
+        gradient.addColorStop(0, '#24B24A');
+        gradient.addColorStop(1, '#31B8A5');
+
+        var rdvCircle = {
+            x: 170,
+            y: 170,
+            radius: 100,
+            // 0deg   - 1.5 * Pi,
+            // 90deg  - 0   * Pi, 
+            // 180deg - 0.5 * Pi, 
+            // 270deg - 1   * Pi
+            angleStartArc: 1.5 * Math.PI,
+            angleEndArc: 0 * Math.PI,
+            wasInside: false,
+            finish: parseInt(rdvs), // Finish (in %)
+            gradientColor: gradienta,
+            gradientaColor: gradient,
+            curr: 0, // Current position (in %)
+            circum: Math.PI * 2
+        }
+
+       
+        drawCircle(rdvCircle, false);
+
+        function drawCircle(circle, isInside, draw_to) {
+            var ctx = rdvCanvas.getContext('2d');
+            ctx.clearRect(0, 0, rdvCanvas.width, rdvCanvas.height);
+            //Draw circle
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 30;
+            ctx.strokeStyle = 'black';
+            ctx.shadowColor = 'green';
+            ctx.shadowBlur = 50;
+            ctx.shadowOffsetY = 3;
+            ctx.stroke();
+
+            ctx.stroke();
+
+            //Draw arc
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, circle.angleStartArc, draw_to);
+            ctx.strokeStyle = isInside ? circle.gradientColor : circle.gradientaColor;
+            // ctx.strokeStyle =circle.gradientaColor;
+            ctx.lineWidth = 30;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            circle.wasInside = isInside;
+
+            // Increment percent
+            circle.curr++;
+            // Animate until end
+            if (circle.curr < circle.finish + 1) {
+                // Recursive repeat this function until the end is reached
+                requestAnimationFrame(function () {
+                    drawCircle(circle, isInside, circle.circum * circle.curr / 100 + circle.angleStartArc);
+                });
+            }
+
+        }
+
+        function handleMouseMove(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var mouseX = parseInt(e.clientX - offsetX);
+            var mouseY = parseInt(e.clientY - offsetY);
+
+            var dx = mouseX - rdvCircle.x;
+            var dy = mouseY - rdvCircle.y;
+
+            var isInside = dx * dx + dy * dy <= rdvCircle.radius * rdvCircle.radius;
+
+            if (isInside && !rdvCircle.wasInside) {
+                ctx.clearRect(0, 0, rdvCanvas.width, rdvCanvas.height);
+                drawCircle(rdvCircle, isInside, rdvCircle.circum * rdvCircle.finish / 100 + rdvCircle.angleStartArc);
+            } else if (!isInside && rdvCircle.wasInside) {
+                ctx.clearRect(0, 0, rdvCanvas.width, rdvCanvas.height);
+                drawCircle(rdvCircle, isInside, rdvCircle.circum * rdvCircle.finish / 100 + rdvCircle.angleStartArc);
+            }
+        }
+
+        $("#rendezVous-circle").mousemove(function (e) {
+            handleMouseMove(e);
+        });
+
+        /*********** end animation task  */
+
+
+  
 
     //Create gradient
-    var gradient = ctx.createLinearGradient(0, 500, 0, 0);
+    /*var gradient = ctx.createLinearGradient(0, 500, 0, 0);
     gradient.addColorStop(0, '#c0e674');
-    gradient.addColorStop(1, '#40d6a5');
-
-
-    //Draw circle
-    ctx.beginPath();
-    ctx.arc(x, x, radius, 0, 2 * Math.PI, false);
-    ctx.lineWidth = 40;
-    ctx.shadowColor = 'green';
-    ctx.shadowBlur = 50;
-    ctx.shadowOffsetY = 2;
-    ctx.stroke();
-
-
-
-    ctx.stroke();
-
-    //Draw arc
-    ctx.beginPath();
-
-    ctx.arc(x, y, radius, angleStart, angleEnd);
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = 40;
-    ctx.lineCap = 'round';
-    ctx.stroke();
+    gradient.addColorStop(1, '#40d6a5');*/
 
     /****************** Opportunities circle canvas ******************* */
-    var canvas = document.getElementById('oppo-circle');
-    var oppoCtx = canvas.getContext('2d');
+    //var canvas = document.getElementById('oppo-circle');
+    //var oppoCtx = canvas.getContext('2d');
     //Create gradient
-    var yellowGradient = ctx.createLinearGradient(0, 500, 0, 0);
-    yellowGradient.addColorStop(0, '#f5df2e');
-    yellowGradient.addColorStop(1, '#f07654');
+ 
+
+
+
+        var oppoCanvas = document.getElementById('oppo-circle');
+        var ctx = oppoCanvas.getContext('2d');
+        var $canvas = $("#oppo-circle");
+        var canvasOffset = $canvas.offset();
+        var offsetX = canvasOffset.left;
+        var offsetY = canvasOffset.top;
+        var scrollX = $canvas.scrollLeft();
+        var scrollY = $canvas.scrollTop();
+
+        //Create gradient
+        var yellowGradienta = ctx.createLinearGradient(0, 500, 0, 0);
+        yellowGradienta.addColorStop(0, '#f5df2e');
+        yellowGradienta.addColorStop(1, '#f07654');
+
+        //Create gradient
+        var yellowGradient = ctx.createLinearGradient(0, 500, 0, 0);
+        yellowGradient.addColorStop(0, '#f07654');
+        yellowGradient.addColorStop(1, '#f5df2e');
+
+        var oppoCircle = {
+            x: 170,
+            y: 170,
+            radius: 100,
+            angleStartArc: 1.5 * Math.PI,
+            angleEndArc: 0 * Math.PI,
+            wasInside: false,
+            finish: parseInt(opportunities), // Finish (in %)
+            gradientColor: yellowGradienta,
+            gradientaColor: yellowGradient,
+            curr: 0, // Current position (in %)
+            circum: Math.PI * 2
+        }
+
+
+        drawOppoCircle(oppoCircle, false);
+
+        function drawOppoCircle(circle, isInside, draw_to) {
+            var ctx = oppoCanvas.getContext('2d');
+            ctx.clearRect(0, 0, oppoCanvas.width, oppoCanvas.height);
+            //Draw circle
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 30;
+            ctx.strokeStyle = 'black';
+            ctx.shadowColor = '#a57b0d';
+            ctx.shadowBlur = 50;
+            ctx.shadowOffsetY = 3;
+            ctx.stroke();
+
+            ctx.stroke();
+
+            //Draw arc
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, circle.angleStartArc, draw_to);
+            ctx.strokeStyle = isInside ? circle.gradientColor : circle.gradientaColor;
+            // ctx.strokeStyle =circle.gradientaColor;
+            ctx.lineWidth = 30;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            circle.wasInside = isInside;
+
+            // Increment percent
+            circle.curr++;
+            // Animate until end
+            if (circle.curr < circle.finish + 1) {
+                // Recursive repeat this function until the end is reached
+                requestAnimationFrame(function () {
+                    drawOppoCircle(circle, isInside, circle.circum * circle.curr / 100 + circle.angleStartArc);
+                });
+            }
+
+        }
+
+
+
+
+
+
+
+
+
 
 
     //Draw circle
-    oppoCtx.beginPath();
-    oppoCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
-    oppoCtx.lineWidth = 40;
-    oppoCtx.shadowColor = '#f39f86';
-    oppoCtx.shadowBlur = 50;
-    oppoCtx.shadowOffsetY = 3;
-    oppoCtx.stroke();
+    //oppoCtx.beginPath();
+    //oppoCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
+    //oppoCtx.lineWidth = 40;
+    //oppoCtx.shadowColor = '#f39f86';
+    //oppoCtx.shadowBlur = 50;
+    //oppoCtx.shadowOffsetY = 3;
+    //oppoCtx.stroke();
 
 
     //Draw arc
-    oppoCtx.beginPath();
-    oppoCtx.arc(x, y, radius, angleStart, angleEnd);
-    oppoCtx.strokeStyle = yellowGradient;
-    oppoCtx.lineWidth = 40;
-    oppoCtx.lineCap = 'round';
-    oppoCtx.stroke();
+    //oppoCtx.beginPath();
+    //    oppoCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(opportunities));
+    //oppoCtx.strokeStyle = yellowGradient;
+    //oppoCtx.lineWidth = 40;
+    //oppoCtx.lineCap = 'round';
+    //oppoCtx.stroke();
 
 
     /**********WALK iN CIRCLE  */
-    var canvas = document.getElementById('walkIn-circle');
+
+
+
+
+
+        var walkInCanvas = document.getElementById('walkIn-circle');
+        var ctx = walkInCanvas.getContext('2d');
+        var $canvas = $("#walkIn-circle");
+        var canvasOffset = $canvas.offset();
+        var offsetX = canvasOffset.left;
+        var offsetY = canvasOffset.top;
+
+        //Create gradient
+        var blueGradienta = ctx.createLinearGradient(0, 500, 0, 0);
+        blueGradienta.addColorStop(0, '#31B8A8');
+        blueGradienta.addColorStop(0.5, '#31B6B1');
+        blueGradienta.addColorStop(1, '#2DA6DB');
+        //Create gradient
+        var blueGradient = ctx.createLinearGradient(0, 500, 0, 0);
+        blueGradient.addColorStop(0, '#2DA6DB');
+        blueGradient.addColorStop(0.5, '#31B6B1');
+        blueGradient.addColorStop(1, '#31B8A8');
+
+        var oppoCircle = {
+            x: 170,
+            y: 170,
+            radius: 100,
+            angleStartArc: 1.5 * Math.PI,
+            angleEndArc: 0 * Math.PI,
+            wasInside: false,
+            finish: parseInt(walkIn), // Finish (in %)
+            gradientColor: blueGradient,
+            gradientaColor: blueGradient,
+            curr: 0, // Current position (in %)
+            circum: Math.PI * 2
+        }
+
+
+        drawWalkInCircle(oppoCircle, false);
+
+        function drawWalkInCircle(circle, isInside, draw_to) {
+            var ctx = walkInCanvas.getContext('2d');
+            ctx.clearRect(0, 0, walkInCanvas.width, walkInCanvas.height);
+            //Draw circle
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 30;
+            ctx.strokeStyle = 'black';
+            ctx.shadowColor = '#09c6f9';
+            ctx.shadowBlur = 50;
+            ctx.shadowOffsetY = 3;
+            ctx.stroke();
+
+            ctx.stroke();
+
+            //Draw arc
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, circle.angleStartArc, draw_to);
+            ctx.strokeStyle = isInside ? circle.gradientColor : circle.gradientaColor;
+            // ctx.strokeStyle =circle.gradientaColor;
+            ctx.lineWidth = 30;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            circle.wasInside = isInside;
+
+            // Increment percent
+            circle.curr++;
+            // Animate until end
+            if (circle.curr < circle.finish + 1) {
+                // Recursive repeat this function until the end is reached
+                requestAnimationFrame(function () {
+                    drawWalkInCircle(circle, isInside, circle.circum * circle.curr / 100 + circle.angleStartArc);
+                });
+            }
+
+        }
+
+
+
+   /* var canvas = document.getElementById('walkIn-circle');
 
     var walkInCtx = canvas.getContext('2d');
     //Create gradient
@@ -231,15 +491,112 @@
 
     //Draw arc
     walkInCtx.beginPath();
-    walkInCtx.arc(x, y, radius, angleStart, angleEnd);
+    walkInCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(walkIn));
     walkInCtx.strokeStyle = blueGradient;
     walkInCtx.lineWidth = 40;
     walkInCtx.lineCap = 'round';
-    walkInCtx.stroke();
+    walkInCtx.stroke();*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /******************sales circle **********/
-    var canvas = document.getElementById('vente-circle');
+
+        var venteCanvas = document.getElementById('vente-circle');
+        var ctx = venteCanvas.getContext('2d');
+        var $canvas = $("#vente-circle");
+        var canvasOffset = $canvas.offset();
+        var offsetX = canvasOffset.left;
+        var offsetY = canvasOffset.top;
+
+        //Create gradient
+        var purpleGradienta = ctx.createLinearGradient(0, 500, 0, 0);
+        purpleGradienta.addColorStop(0, '#861657');
+        purpleGradienta.addColorStop(1, '#ffa69e');
+
+        //Create gradient
+        var purpleGradient = ctx.createLinearGradient(0, 500, 0, 0);
+        purpleGradient.addColorStop(0, '#ffa69e');
+        purpleGradient.addColorStop(1, '#861657');
+
+        var venteCircle = {
+            x: 170,
+            y: 170,
+            radius: 100,
+            angleStartArc: 1.5 * Math.PI,
+            angleEndArc: 0 * Math.PI,
+            wasInside: false,
+            finish: parseInt(vente), // Finish (in %)
+            gradientColor: purpleGradient,
+            gradientaColor: purpleGradient,
+            curr: 0, // Current position (in %)
+            circum: Math.PI * 2
+        }
+
+
+        drawVenteCircle(venteCircle, false);
+
+        function drawVenteCircle(circle, isInside, draw_to) {
+            var ctx = venteCanvas.getContext('2d');
+            ctx.clearRect(0, 0, venteCanvas.width, venteCanvas.height);
+            //Draw circle
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 30;
+            ctx.strokeStyle = 'black';
+            ctx.shadowColor = '#a4508b';
+            ctx.shadowBlur = 50;
+            ctx.shadowOffsetY = 3;
+            ctx.stroke();
+
+            ctx.stroke();
+
+            //Draw arc
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.x, circle.radius, circle.angleStartArc, draw_to);
+            ctx.strokeStyle = isInside ? circle.gradientColor : circle.gradientaColor;
+            // ctx.strokeStyle =circle.gradientaColor;
+            ctx.lineWidth = 30;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            circle.wasInside = isInside;
+
+            // Increment percent
+            circle.curr++;
+            // Animate until end
+            if (circle.curr < circle.finish + 1) {
+                // Recursive repeat this function until the end is reached
+                requestAnimationFrame(function () {
+                    drawVenteCircle(circle, isInside, circle.circum * circle.curr / 100 + circle.angleStartArc);
+                });
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* var canvas = document.getElementById('vente-circle');
 
     var venteCtx = canvas.getContext('2d');
     //Create gradient
@@ -260,70 +617,76 @@
 
     //Draw arc
     venteCtx.beginPath();
-    venteCtx.arc(x, y, radius, angleStart, angleEnd);
+        venteCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(vente));
     venteCtx.strokeStyle = purpleGradient;
     venteCtx.lineWidth = 40;
     venteCtx.lineCap = 'round';
     venteCtx.stroke();
 
 
+*/
+
+        console.log(vente)
+        console.log(opportunities);
+        console.log(walkIn);
+        console.log(typeof(rdvs));
+    });
 
 
 
 
-
-    var canvaas = document.getElementById("barChart");
-    var cttx = canvaas.getContext('2d');
+    //var canvaas = document.getElementById("barChart");
+    //var cttx = canvaas.getContext('2d');
 
     // Global Options:
-    Chart.defaults.global.defaultFontColor = 'dodgerblue';
-    Chart.defaults.global.defaultFontSize = 16;
+    //Chart.defaults.global.defaultFontColor = 'dodgerblue';
+    //Chart.defaults.global.defaultFontSize = 16;
 
     // Data with datasets options
-    var data = {
-        labels: ["Vanilla", "Chocolate", "Strawberry"],
-        datasets: [
-            {
-                label: "Ice Cream Prices ",
-                fill: true,
-                backgroundColor: [
-                    'moccasin',
-                    'saddlebrown',
-                    'lightpink'],
-                data: [11, 9, 4]
-            }
-        ]
-    };
+    //var data = {
+    //    labels: ["Vanilla", "Chocolate", "Strawberry"],
+    //    datasets: [
+    //        {
+    //            label: "Ice Cream Prices ",
+    //            fill: true,
+    //            backgroundColor: [
+    //                'moccasin',
+    //                'saddlebrown',
+    //                'lightpink'],
+    //            data: [11, 9, 4]
+    //        }
+    //    ]
+    //};
 
-    var options = {
-        tooltips: {
-            callbacks: {
-                label: function (tooltipItem) {
-                    return "$" + Number(tooltipItem.yLabel) + " and so worth it !";
-                }
-            }
-        },
-        title: {
-            display: true,
-            text: 'Ice Cream Truck',
-            position: 'bottom'
-        },
+    //var options = {
+    //    tooltips: {
+    //        callbacks: {
+    //            label: function (tooltipItem) {
+    //                return "$" + Number(tooltipItem.yLabel) + " and so worth it !";
+    //            }
+    //        }
+    //    },
+    //    title: {
+    //        display: true,
+    //        text: 'Ice Cream Truck',
+    //        position: 'bottom'
+    //    },
 
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    };
+    //    scales: {
+    //        yAxes: [{
+    //            ticks: {
+    //                beginAtZero: true
+    //            }
+    //        }]
+    //    }
+    //};
 
     // Chart declaration:
-    var myBarChart = new Chart(cttx, {
-        type: 'bar',
-        data: data,
-        options: options
-    });
+    //var myBarChart = new Chart(cttx, {
+    //    type: 'bar',
+    //    data: data,
+    //    options: options
+    //});
 
 
 

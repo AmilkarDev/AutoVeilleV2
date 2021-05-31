@@ -106,7 +106,8 @@ namespace Autoveille.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("InfoConcession", "Home");
+               
             }
         }
 
