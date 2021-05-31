@@ -518,6 +518,14 @@
     }
 
     function displayCalendar(reservationType) {
+
+        $('.resultCall').css('display', '');
+        var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+        $('#Datenow').html(dateTimeNow);
+        $('#resultText').html('Retour d\'appel fixé');
+        $('#resultText').css('color', 'red');
+        $('#selectedChoice').css('display', '');
+        $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_Retour_Appel.svg');
         $.ajax({
             url: '../Home/GetCalendar',
             contentType: 'application/html; charset=utf-8',
@@ -536,6 +544,15 @@
     }
 
     function displayCalendarRendezVous(reservationType) {
+
+        $('.resultCall').css('display', '');
+        var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
+        $('#Datenow').html(dateTimeNow);
+        $('#resultText').html('Rendez-vous fixé');
+        $('#resultText').css('color', 'green');
+        $('#selectedChoice').css('display', '');
+        $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg');
+
         $.ajax({
             url: '../Home/GetCalendarRendezVous',
             contentType: 'application/html; charset=utf-8',
@@ -636,25 +653,19 @@
     };
     var clickCnt = 0;
     function customEventRender(info) {
-        //console.log(info);
-        
         info.el.addEventListener('click', function () {
             clickCnt++;
             var newEvent;
             if (clickCnt === 1) {
                 oneClickTimer = setTimeout(function () {
                     clickCnt = 0;
-                     newEvent = new Object();
+                    newEvent = new Object();
                     newEvent.title = info.event.title;
                     newEvent.start = info.event.start;;
                     newEvent.end = info.event.end;;
-                    newEvent.allday = false;
-                    
+                    newEvent.allday = false;                   
                     info.view.calendar.addEvent(newEvent);
-                    //console.log(moment(newEvent.start).format('YYYY'));
-                    //console.log(moment.utc(newEvent.start).format('HH:mm'));
                     var rdvDateTime = moment(newEvent.startStr).format('YYYY-MM-DD') + " à " + moment.utc(newEvent.startStr).format('hh:mm');
-                    //console.log(rdvDateTime);
                     $('#slectedChoice').html(rdvDateTime);
                 }, 400);
             } else if (clickCnt === 2) {
@@ -662,33 +673,17 @@
                 clickCnt = 0;
                 info.event.remove();
             }
-
-            //console.log(newEvent);
         });
     }
 
     function customDayHeaderRender(info) {
-        
-        //console.log(moment(info.date).format());
         var startDate = new Date();
         var endDate = new Date();
         var numberOfDaysToAdd = 2;
         endDate = endDate.setDate(startDate.getDate() + numberOfDaysToAdd); 
         startDate = startDate.setDate(startDate.getDate() - 1);
-        //console.log(info.date <= endDate);
-        //console.log(info.date <= endDate);
-        //console.log(info.date >= startDate);
-
         if (startDate <= info.date && info.date <= endDate) { 
-            //console.log(moment(startDate).format());
-            //console.log(moment(endDate).format());
-            //console.log("**************here we start ********");
-            //console.log(startDate);
-            //console.log(info.date);
-            //console.log(moment(endDate).format()); 
-            //console.log("*************here we end************ \n \n \n");
             info.el.classList.add("coloredBackground");
-            //console.log(info.el);
         }
     }
 
@@ -699,8 +694,6 @@
             data: JSON.stringify(newRV),
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-
-                //console.log(result);
                 return result;
             },
             error: function (xhr, status) {
@@ -781,23 +774,11 @@
                 $('.dropdown-relanceFuture').css('visibility', 'visible');
             } else if ($(this).val() === 'rvFixee') {
                 
-                $('.resultCall').css('display', '');
-                var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
-                $('#Datenow').html(dateTimeNow);
-                $('#resultText').html('Rendez-vous fixé');
-                $('#resultText').css('color', 'green');
-                $('#selectedChoice').css('display', '');
-                $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg');
+                
                 displayCalendarRendezVous('rendezVous');
             }
             else if ($(this).val() === 'retourAppel') {
-                $('.resultCall').css('display', '');
-                var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss')
-                $('#Datenow').html(dateTimeNow);
-                $('#resultText').html('Retour d\'appel fixé');
-                $('#resultText').css('color', 'red');
-                $('#selectedChoice').css('display', '');
-                $('.resultCallImg').attr('src', '../Content/Images/ICONES_SVG_Base_Couleurs_Retour_Appel.svg');
+                
                 displayCalendar('retourAppel');
             }
             else if ($(this).val() == 'nonInterresse') {

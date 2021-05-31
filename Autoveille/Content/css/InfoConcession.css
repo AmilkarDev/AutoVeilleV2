@@ -643,7 +643,7 @@ show {
     max-height: 2em;
     overflow: hidden;
     top: 0.5em;
-    cursor: pointer;
+    /*cursor: pointer;*/
     text-align: left;
     white-space: nowrap;
     color: #444;

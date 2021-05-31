@@ -2,12 +2,16 @@
     background-color: black;
     overflow-x: hidden;
     font-family: proxima-nova;
+    cursor: url(../Images/ICONES_SVG_Base_Couleurs_Pointeur.svg), auto;
+    
 }
-
+a [href], input[type='submit'], input[type='image'], label[for], select, button, .pointer ,img{
+    cursor: url(../Images/ICONES_SVG_Base_Couleurs_Pointeur.svg), auto;
+}
 .center {
     margin: auto;
     padding: 0px;
-    width:50%;
+    width: 50%;
 }
 
 .btn-center {
