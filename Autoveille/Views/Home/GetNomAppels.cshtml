@@ -72,7 +72,6 @@
 
     function hideClients(CampaignId) {
         $('#detailsClient').css('visibility', 'hidden');
-        //$("#leftContent").css('width', '100%');
         var clientsId = "clients" + CampaignId;
         var imgId = "img" + CampaignId;
         $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');
