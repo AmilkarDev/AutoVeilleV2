@@ -790,9 +790,3 @@ show {
     .fc-timegrid-slots .table-bordered td {
         height: 10px !important;
     }
-
-
-.simplebar-scrollbar::before {
-    background-color: red;
-    width: 25px;
-}

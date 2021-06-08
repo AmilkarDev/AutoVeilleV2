@@ -1,0 +1,186 @@
+﻿#infoConcessionContent {
+    background-color: #262626;
+}
+
+.eventText {
+    color: white;
+    font-size: 35px;
+}
+
+#eventState {
+    font-size: 40px;
+}
+
+#eventDiv {
+    height: 95px;
+    margin-bottom: 10px;
+}
+
+#eventPeriod {
+    font-size: 20px;
+    font-weight: bolder;
+    float: right;
+    color: #fbbb29;
+}
+
+#prospects {
+    height: 75px;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#RDVprospectsText {
+    color: #3aac4d;
+    font-size: 25px;
+}
+
+#nbrstat {
+    color: white;
+    font-size: 35px;
+}
+.newWalkIn {
+    color: #bfbfbf;
+    font-size:20px;
+    margin-top:15px;
+}
+
+
+
+
+
+.filter-table .quick {
+    margin-left: 0.5em;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+
+.fitler-table .quick:hover {
+    text-decoration: underline;
+}
+
+td.alt {
+    background-color: #ffc;
+    background-color: rgba(255, 255, 0, 0.2);
+}
+
+
+
+
+#rdvClientsTable th {
+    color: white;
+    background-color: green;
+    vertical-align: middle;
+    border-top: none;
+}
+
+#rdvClientsTable td {
+    /*background-color: white;*/
+    color: black;
+    vertical-align: middle;
+    text-align: center;
+}
+#rdvClientsTable {
+    border: none;
+}
+
+  /*  #rdvClientsTable tr:nth-child(odd) td {
+        background-color: white;
+    }
+
+#rdvClientsTable tr:nth-child(even) td {
+    background-color: #bfbfbf;
+}*/
+
+.tdFilter {
+    background-color: black !important;
+    color: white;
+}
+
+.listFilter {
+    border-radius : 10px ;
+}
+
+#rdvClientsTable{
+    display : block;
+    overflow-x : auto ;
+    white-space : nowrap;
+    overflow : scroll;
+}
+
+#orangeBox {
+    background: white;
+    color: #fff;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border: 1px #bfbfbf solid;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.labelName {
+    color: white;
+    font-weight:bolder;
+    font-size:20px;
+    text-align:left;
+    margin-left:45px;
+}
+.OptionsVente{
+    margin-left:-50px;
+}
+.rdvInput {
+    height:35px;
+    width:80%;
+    border-radius:15px;
+    border-color: white;
+}
+.changeRdvBtn {
+    background-color: #3aac4d;
+    margin-top:60px;
+    width: 60%;
+    border-radius :15px;
+}
+.newWalkInLabelName {
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 45px;
+}
+.newWalkInInput {
+    height: 35px;
+    width: 80%;
+    border-radius: 15px;
+    border-color: white;
+}
+
+.newWalkInContainer {
+    background-color: #2ea6de;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.newWalkInText {
+    color: #2ea6de;
+    font-weight :bold;
+    font-size :30px;
+}
+.saveButton {
+    margin-top:15px;
+    border-radius : 15px;
+    height : 45px;
+    background-color : red ;
+    color : white;
+    display : inline-flex;
+    align-items :center;
+}
+/*** fc media customized style ***/
+.fc td , .fc th  {
+    padding:10px;
+}

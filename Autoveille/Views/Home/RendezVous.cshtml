@@ -27,10 +27,10 @@
         <div id="innerContent">
             <div id="leftContent">
                 <div id="prospects">
-                    <p id="prospectsText" style="float: left;"><img src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" height="55" width="55" />Rendez-Vous fixés <span id="nbrstat">000</span></p>
-                    <p id="prospectsText" style="text-align:center;"> Walk-In <span id="nbrstat">000</span></p>
-                    <p class="pull-right" id="prospectsText" style="text-align:right;float: right;">Ventes <span id="nbrstat">000</span></p>
-                    <p>Ajouter un walk-In</p>
+                    <p id="RDVprospectsText" style="float: left;"><img src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" height="55" width="55" />Rendez-Vous fixés <span id="nbrstat">000</span></p>
+                    <p id="RDVprospectsText" style="text-align:center;"> Walk-In <span id="nbrstat">000</span></p>
+                    <p class="pull-right" id="RDVprospectsText" style="text-align:right;float: right;">Ventes <span id="nbrstat">000</span></p>
+                    <p class="newWalkIn" data-toggle="modal" data-target="#myModal" onclick="NewWalkIn()">Ajouter un walk-In</p>
                 </div>
 
 
@@ -43,24 +43,234 @@
         <div style="clear: both;"> </div>
     </div>
 </div>
+
+<!--Calendar Modal -->
+<div id="myModal" class="modal modal-wide fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()">&times;</button>
+                <h4 class="modal-title" style="display:none;">Calendrier des rendez Vous</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer" style="display:none;">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 @section Scripts{
     <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajax({
-                    url: '../Home/GetNomAppels',
-                    contentType: 'application/html; charset=utf-8',
-                    type: 'GET',
-                    dataType: 'html',
-                    success: function (result) {
-                        $('#dvCampaignDetails').html(result);
-                    },
-                    error: function (xhr, status) {
-                        alert(status);
-                    }
-                });
+        $(document).ready(function () {
+            $.ajax({
+                url: '../Home/GetRdvClients',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('#rdvClientDetails').html(result);
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
             });
+        });
+
+        function removeBackdrop() {
+            $('.modal-backdrop').remove();
+        }
+
+        function NewWalkIn() {
+
+            $.ajax({
+                url: '../Home/newWalkIn',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('.modal-body').html(result);
+                    //daysCalendarDisplay(reservationType);
+                    //monthsCalendarDisplay();
+                    $('.modal-body').modal("show");
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+
+        function displayCalendar(reservationType) {
+
+            $.ajax({
+                url: '../Home/GetCalendarRendezVous',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('.modal-body').html(result);
+                    daysCalendarDisplay(reservationType);
+                    monthsCalendarDisplay();
+                    $('.modal-body').modal("show");
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+
+        function monthsCalendarDisplay() {
+
+            $('#monthsCalendar').yacal({
+                date: '2021/05/20',
+                minDate: '2021/01/01',
+                maxDate: '2030/01/01',
+                nearMonths: 1,
+                i18n: {
+                    weekdays: ['D', 'L', 'M', 'M', 'j', 'V', 'S',],
+                    months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                },
+                tpl: {
+                    weekday: '<strong class="wday wd#weekday#">#weekdayName#<\/strong>'
+                }
+            });
+        }
 
 
+        function daysCalendarDisplay(str) {
 
+            var calendarEl = document.getElementById('calendarfc');
+            setTimeout(function () {
+                var eventSource = str == "rendezVous" ? '../Home/GetRendezVousReservations' : '../Home/GetRetourAppelReservations'
+
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    themeSystem: 'bootstrap',
+                    contentHeight: 200,
+                    allDaySlot: false,
+                    locale: 'fr',
+                    timeZone: 'UTC',
+                    initialView: 'timeGridFourDay',
+                    eventMaxStack: 3,
+                    headerToolbar: false,
+                    views: {
+                        timeGridFourDay: {
+                            type: 'timeGrid',
+                            duration: { days: 4 },
+                            buttonText: '4 Jours',
+                            dayMaxEventRows: 3,
+                        },
+                        timeGridDay: {
+                            dayMaxEventRows: 5
+                        }
+                    },
+                    events: eventSource,
+                    selectable: true,
+                    expandRows: true,
+                    slotMinTime: "09:00:00",
+                    slotMaxTime: "20:00:00",
+                    slotDuration: '00:15:00',
+                    slotLabelInterval: 15,
+                    snapDuration: '00:15:00',
+                    select: function (info) {
+
+                        var newEvent = new Object();
+                        newEvent.title = 'abc';
+                        newEvent.start = moment(info.startStr).format();
+                        newEvent.end = moment(info.endStr).format();
+                        var midnight = "0:00:00";
+                        end = moment(info.endStr).format("H:mm:ss");
+                        if (end === midnight) {
+                            newEvent.allDay = true;
+                        }
+                        else newEvent.allDay = false;
+                        saveNewRV(newEvent);
+                        calendar.addEvent(newEvent);
+                        var rdvDateTime = moment(info.startStr).format('YYYY-MM-DD') + " à " + moment.utc(info.startStr).format('hh:mm');
+                        $('#selectedChoice').html(rdvDateTime);
+                        calendar.unselect();
+                    },
+                    editable: true,
+                    dayMaxEventRows: true,
+                    eventDidMount: customEventRender,
+                    dayHeaderDidMount: customDayHeaderRender,
+                });
+                calendar.render();
+
+            }, 300)
+
+
+        };
+
+
+        var clickCnt = 0;
+        function customEventRender(info) {
+            info.el.addEventListener('click', function () {
+                clickCnt++;
+                var newEvent;
+                if (clickCnt === 1) {
+                    oneClickTimer = setTimeout(function () {
+                        clickCnt = 0;
+                        newEvent = new Object();
+                        newEvent.title = info.event.title;
+                        newEvent.start = info.event.start;;
+                        newEvent.end = info.event.end;;
+                        newEvent.allday = false;
+                        info.view.calendar.addEvent(newEvent);
+                        var rdvDateTime = moment(newEvent.startStr).format('YYYY-MM-DD') + " à " + moment.utc(newEvent.startStr).format('hh:mm');
+                        $('#slectedChoice').html(rdvDateTime);
+                    }, 400);
+                } else if (clickCnt === 2) {
+                    clearTimeout(oneClickTimer);
+                    clickCnt = 0;
+                    info.event.remove();
+                }
+            });
+        }
+
+        function customDayHeaderRender(info) {
+            var startDate = new Date();
+            var endDate = new Date();
+            var numberOfDaysToAdd = 2;
+            endDate = endDate.setDate(startDate.getDate() + numberOfDaysToAdd);
+            startDate = startDate.setDate(startDate.getDate() - 1);
+            if (startDate <= info.date && info.date <= endDate) {
+                info.el.classList.add("coloredBackground");
+            }
+        }
+
+
+        function saveNewRV(newRV) {
+            $.ajax({
+                url: '../Home/SaveRendezVous',
+                type: 'POST',
+                data: JSON.stringify(newRV),
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    return result;
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+
+        $(document).on('click', '.day.active', function () {
+            var selectedDate = new Date($(this).data('time'));
+            var dd = moment(selectedDate).format();
+            var first = selectedDate.getDate() - selectedDate.getDay(); // First day is the day of the month - the day of the week
+            var last = first + 6; // last day is the first day + 6
+
+            var firstday = new Date(selectedDate.setDate(first)).toUTCString();
+            var lastday = new Date(selectedDate.setDate(last)).toUTCString();
+            calendar.changeView('timeGridWeek');
+            calendar.gotoDate(dd);
+            $('.fc-col-header-cell').css('background-color', '');
+        });
     </script>
 }

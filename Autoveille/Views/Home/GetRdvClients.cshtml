@@ -1,0 +1,449 @@
+﻿@model IEnumerable<Autoveille.TestingModels.RendezVous>
+
+<table class="table table-bordered" id="rdvClientsTable">
+    <thead>
+        <tr style="height:70px;vertical-align:middle;">
+            <th>
+                @Html.DisplayNameFor(model => model.Conf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WalkIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrenomClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRdv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRdv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vendeur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telephone2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cellulaire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeConsultant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotesTelInitiales)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotesTelConfirmation)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NotesConsultant)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CourrielClient)
+            </th>
+        </tr>
+
+
+
+
+        <tr>
+            <td class="tdFilter">
+                <select class="DdlConf listFilter" id="ddlConf">
+                    <option value="all">Tout </option>
+                    <option value="confVrai">Vrai</option>
+                    <option value="confFaux">Faux</option>
+                </select>
+            </td>
+            <td class="tdFilter">
+                <select class="DdlWalkIn listFilter" id="ddlWalkIn">
+                    <option value="all">Tout </option>
+                    <option value="walkInVrai">Vrai</option>
+                    <option value="walkInFaux">Faux </option>
+                </select>
+            </td>
+            <td class="tdFilter">
+                <select class="DdlVente listFilter" id="ddlVente">
+                    <option value="all">Tout </option>
+                    <option value="venteVrai">Vrai</option>
+                    <option value="venteFaux">Faux</option>
+                </select>
+            </td>
+            <td class="tdFilter">
+                <select class="DdlCategory listFilter" id="ddlCategory">
+                    <option value="all">Tout </option>
+                    <option value="Kaptaa">Kaptaa </option>
+                    <option value="Alberto">Alberto</option>
+                    <option value="Mirna">Mirna</option>
+                </select>
+            </td>
+            <td class="tdFilter">
+                <input type="search" size="15" id="PrenomClientFilter" class="listFilter" />
+            </td>
+            <td class="tdFilter">
+                <input type="search" size="15" id="NomClientFilter" class="listFilter" />
+            </td>
+            <td class="tdFilter">
+                <input type="search" size="15" id="DateFilter" class="listFilter" />
+            </td>
+            <td class="tdFilter">
+                <input type="search" size="15" id="TimeFilter" class="listFilter" />
+            </td>
+            <td class="tdFilter">
+                <input type="search" size="15" id="VendeurInputFilter" class="listFilter" />
+            </td>
+            <td colspan="3" class="tdFilter">
+                <input type="search" size="45" id="PhoneInputFilter" class="listFilter" />
+            </td>
+            <td class="tdFilter">
+                <select class="DdlCode listFilter" id="ddlCode">
+                    <option value="all">Tout </option>
+                    <option value="AA">AA </option>
+                    <option value="AB">AB</option>
+                    <option value="AC">AC</option>
+                </select>
+            </td>
+            <td class="tdFilter">
+            </td>
+            <td class="tdFilter">
+            </td>
+
+            <td class="tdFilter">
+            </td>
+
+            <td class="tdFilter">
+                <input type="search" size="15" id="CourrielInputFilter" class="listFilter" />
+            </td>
+        </tr>
+    </thead>
+    @{var i = 0;
+
+
+        foreach (var item in Model)
+        {
+
+            i++;
+            var color = "white";
+            if (i % 2 == 1)
+            {
+                color = "white";
+            }
+            else
+            {
+                color = "#bfbfbf";
+            }
+
+            var rdvId = "rdv" + item.RdvId;
+        <tr onclick="displayRdvDetails(@item.RdvId)" style="background-color:@color;">
+            <td>
+
+
+                @if (item.Conf.ToString() == "nonSpecifiee")
+                {
+                    <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
+                }
+                else if (item.Conf.ToString() == "vrai")
+                {
+                    <div style="background-color:green;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
+                }
+                else
+                {
+                    <div style="background-color:red;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
+                }
+            </td>
+            <td>
+                @if (item.WalkIn.ToString() == "nonSpecifiee")
+                {
+                    <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
+                }
+                else if (item.Conf.ToString() == "vrai")
+                {
+                    <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;">
+                        <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Blue.svg" />
+                    </div>
+                }
+                else
+                {
+                    <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
+                }
+            </td>
+            <td>
+                @if (item.Vente.ToString() == "nonSpecifiee")
+                {
+                    <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;">
+
+
+                    </div>
+                }
+                else if (item.Conf.ToString() == "vrai")
+                {
+                    <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;">
+                        <img src="~/Content/Images/ICONES_SVG_Couleurs_Vente.svg" />
+                    </div>
+                }
+                else
+                {
+                    <div id="orangeBox">
+                        <span style="color:black;"> X </span>
+                    </div>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomClient)
+            </td>
+            <td>
+                @item.DateRdv.ToString("dd-MM-yyyy")
+            </td>
+            <td>
+                @item.DateRdv.ToString("t")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendeur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cellulaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeConsultant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotesTelInitiales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotesTelConfirmation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotesConsultant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourrielClient)
+            </td>
+        </tr>
+
+
+        <tr class="EditRow">
+            <td class="detailsClient" id="@rdvId" colspan="17" style="display:none;padding:10px;border-radius:15px;background-color: #fbbb29">
+            </td>
+        </tr>
+            }
+        }
+</table>
+
+
+<!--Calendar Modal -->
+<div id="myModal" class="modal modal-wide fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="display:none;">
+                <button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()">&times;</button>
+                <h4 class="modal-title" style="display:none;">Calendrier des rendez Vous</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer" style="display:none;">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('table').filterTable({
+            minRows: 0,
+            ignoreColumns: [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+            inputSelector: '#VendeurInputFilter'
+        });
+
+        $('table').filterTable({
+            minRows: 0,
+            ignoreColumns: [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+            inputSelector: '#PrenomClientFilter'
+        });
+
+        $('table').filterTable({
+            minRows: 0,
+            ignoreColumns: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+            inputSelector: '#NomClientFilter'
+        });
+
+        $('table').filterTable({
+            minRows: 0,
+            ignoreColumns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 17],
+            inputSelector: '#PhoneInputFilter'
+        });
+
+        $('table').filterTable({
+            minRows: 0,
+            ignoreColumns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+            inputSelector: '#CourrielInputFilter'
+        });
+
+        $('table').filterTable({
+            minRows: 0,
+            ignoreColumns: [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+            inputSelector: '#DateFilter'
+        });
+
+        $('table').filterTable({
+            minRows: 0,
+            ignoreColumns: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+            inputSelector: '#TimeFilter'
+        });
+
+        $("#ddlCode,#ddlCategory,#ddlVente,#ddlWalkIn,#ddlConf").on("change", function () {
+            var code = $('#ddlCode').find("option:selected").val();
+            var category = $('#ddlCategory').find("option:selected").val();
+            var vente = $('#ddlVente').find("option:selected").val();
+            var walkIn = $('#ddlWalkIn').find("option:selected").val();
+            var conf = $('#ddlConf').find("option:selected").val();
+            SearchData(code, category, vente, walkIn, conf);
+        });
+
+
+        $(":checkbox").labelauty();
+    });
+
+
+
+    function SearchData(code, category, vente, walkIn, conf) {
+        if (code.toUpperCase() == 'ALL' && category.toUpperCase() == 'ALL' && vente.toUpperCase() == 'ALL' && walkIn.toUpperCase() == 'ALL' && conf.toUpperCase() == 'ALL') {
+            $('#rdvClientsTable tbody tr').show();
+        } else {
+            $('#rdvClientsTable tbody tr:has(td)').each(function () {
+                var rowCode = $.trim($(this).find('td:eq(12)').text());
+                var rowCategory = $.trim($(this).find('td:eq(3)').text());
+
+                var rowVente = $.trim($(this).find('td:eq(2)').text());
+                var rowWalkIn = $.trim($(this).find('td:eq(1)').text());
+                var rowConf = $.trim($(this).find('td:eq(0)').text());
+
+                if (code.toUpperCase() != 'ALL' && category.toUpperCase() != 'ALL' && vente.toUpperCase() != 'ALL' && walkIn.toUpperCase() != 'ALL' && conf.toUpperCase() != 'ALL') {
+                    if (rowCode.toUpperCase() == code.toUpperCase() && rowCategory == category && rowVente == vente && rowWalkIn == walkIn && rowConf == conf) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                } else { // if ($(this).find('td:eq(1)').text() != '' || $(this).find('td:eq(1)').text() != '')
+                    if (conf != 'all') {
+                        if (rowConf.toUpperCase() == conf.toUpperCase()) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    }
+                    if (walkIn != 'all') {
+                        if (rowWalkIn.toUpperCase() == walkIn.toUpperCase()) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    }
+                    if (vente != 'all') {
+                        if (rowVente.toUpperCase() == vente.toUpperCase()) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    }
+                    if (category != 'all') {
+                        if (rowCategory.toUpperCase() == category.toUpperCase()) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    }
+                    if (code != 'all') {
+                        if (rowCode.toUpperCase() == code.toUpperCase()) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    }
+                }
+
+            });
+        }
+    }
+
+
+
+
+
+    var currentRdvId;
+    var row;
+    function displayRdvDetails(rdvId) {
+
+        row = "rdv" + rdvId;
+        //console.log($('#' + row).css('visibility'));
+        console.log(row);
+        if ($('#' + row).css('visibility') == 'visible') {
+            //console.log('first case');
+            $('#' + row).css('visibility', 'hidden');
+            $('#' + row).css('display', 'none');
+        }
+        else {
+
+
+            $.ajax({
+                //url: '/Home/GetFicheClient',
+                url: '../Home/GetRdvDetails',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                data: { Idrdv: rdvId },
+                dataType: 'html',
+                success: function (result) {
+                    //console.log('#' + row);
+                    $('#' + row).html(result);
+                    $('#' + row).css('visibility', 'visible');
+                    $('#' + row).css('display', '');
+                },
+                error: function (xhr, status) {
+                    //console.log('bango');
+                    alert(status);
+                }
+            });
+        }
+    }
+
+
+
+
+    
+</script>

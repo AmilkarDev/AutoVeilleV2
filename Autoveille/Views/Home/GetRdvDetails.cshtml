@@ -1,0 +1,147 @@
+﻿@model Autoveille.TestingModels.RdvDetails
+
+<div class="row">
+    <div class="col-md-2">
+        <p class="labelName">Présence </p>
+        <div class="squareRadioButtons" style="display:inline-flex;">
+            <label>
+                <input type="checkbox" name="walkIn" value="WalkIn">
+                <span>Walk-In</span>
+            </label>
+            <label>
+                <input type="checkbox" name="walkIn" value="NoWalkIn">
+                <span>Ne s'est pas présenté</span>
+            </label>
+        </div>
+
+        <div>
+            <p  class="labelName">Vente </p>
+            <div class="squareRadioButtons OptionsVente">
+                <label>
+                    <input type="checkbox" name="vente" value="Vente">
+                    <span>Vente</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="vente" value="NonVente">
+                    <span>N'a pas acheté</span>
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <p  class="labelName">Vendeur </p>
+            <input class="rdvInput"/>
+
+            <p  class="labelName">Code du consultant </p>
+            <select class="DdlCode listFilter rdvInput" id="ddlCode">
+                <option value="all">Tout </option>
+                <option value="AA">AA </option>
+                <option value="AB">AB</option>
+                <option value="AC">AC</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="col-md-2">
+        <p class="labelName">Marque du véhicule désiré </p>
+        <input class="rdvInput" />
+
+        <p class="labelName">Modèle </p>
+        <input class="rdvInput" />
+
+        <p class="labelName">Année </p>
+        <input class="rdvInput" />
+        <br />
+        <button  onclick="displayCalendar('rendezVous')" data-toggle="modal" data-target="#myModal" class="btn btn-center changeRdvBtn">Déplacer le R.V.</button>
+    </div>
+
+
+
+
+    <div class="col-md-2">
+        <p class="labelName">Essai Routier </p>
+        <select class="DdlCode listFilter rdvInput" id="ddlCode">
+            <option value="AA">AA </option>
+            <option value="AB">AB</option>
+            <option value="AC">AC</option>
+        </select>
+
+        <p class="labelName">Approbation de crédit</p>
+        <select class="DdlCode listFilter rdvInput" id="ddlCode">
+            <option value="AA">AA </option>
+            <option value="AB">AB</option>
+            <option value="AC">AC</option>
+        </select>
+
+        <p class="labelName">Offre </p>
+        <select class="DdlCode listFilter rdvInput" id="ddlCode">
+            <option value="AA">AA </option>
+            <option value="AB">AB</option>
+            <option value="AC">AC</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <p class="labelName">Véhicule d'occasion</p>
+        <select class="DdlCode listFilter rdvInput" id="ddlCode">
+            <option value="AA">AA </option>
+            <option value="AB">AB</option>
+            <option value="AC">AC</option>
+        </select>
+
+        <p class="labelName">Liste Noire</p>
+        <select class="DdlCode listFilter rdvInput" id="ddlCode">
+            <option value="AA">AA </option>
+            <option value="AB">AB</option>
+            <option value="AC">AC</option>
+        </select>
+
+        <p class="labelName">Véhicule d'échange</p>
+        <select class="DdlCode listFilter rdvInput" id="ddlCode">
+            <option value="AA">AA </option>
+            <option value="AB">AB</option>
+            <option value="AC">AC</option>
+        </select>
+        <br />
+        <button class="btn btn-center changeRdvBtn" style="background-color:#bfbfbf">Sauvegarder</button>
+    </div>
+
+    <div class="col-md-4">
+        <div class="box box-content" style="height:160px;margin-left: 15px;margin-bottom:15px;">
+            <b>  Notes du Consultant</b>
+
+
+            
+        </div>
+        
+        <div class="box box-content" style="height:160px;margin-left: 15px;margin-bottom:15px;">
+            <b>  Notes du Centre d'appels</b>
+
+
+          
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+    $('.squareRadioButtons input:checkbox').click(function (e) {
+        var $box = $(this);
+        //console.log($box.is(":checked"));
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            //console.log("ssss");
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        }
+        else {
+            //console.log("rrrrr");
+            $box.prop("checked", false);
+        }
+
+    });
+
+</script>

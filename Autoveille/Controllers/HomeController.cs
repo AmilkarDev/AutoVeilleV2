@@ -186,6 +186,63 @@ namespace Autoveille.Controllers
         }
 
 
+        public ActionResult GetRdvClients()
+        {
+            List<RendezVous> RdvList = new List<RendezVous>
+            {
+                new RendezVous {RdvId=0,Conf = Situation.faux, WalkIn = Situation.vrai, Vente = Situation.nonSpecifiee, Categorie="Alberto",PrenomClient="marten", NomClient="Colzone", DateRdv = new DateTime(2019,01,24,15,30,00),
+                    Vendeur = "Monica",Telephone1="240-569-5827", Telephone2="500-526-3400",Cellulaire="478-256-8545",CodeConsultant="AA",
+                    NotesTelInitiales="",
+                    NotesTelConfirmation="",
+                    NotesConsultant="",
+                    CourrielClient="alpha@internet.ca", },
+
+
+                new RendezVous {RdvId=1,Conf = Situation.faux, WalkIn = Situation.vrai, Vente = Situation.vrai, Categorie="Kaptaa",PrenomClient="jinkez", NomClient="Alex", DateRdv = new DateTime(2021,12,20,12,15,00),
+                    Vendeur = "Andry",Telephone1="520-569-5827", Telephone2="477-222-5267",Cellulaire="478-300-8545",CodeConsultant="AA",
+                    NotesTelInitiales="",
+                    NotesTelConfirmation="",
+                    NotesConsultant="",
+                    CourrielClient="alpha@internet.ca", },
+
+
+
+                new RendezVous {RdvId=2,Conf = Situation.vrai, WalkIn = Situation.faux, Vente = Situation.faux, Categorie="kaptaa", PrenomClient="almore",NomClient="moliere", DateRdv = new DateTime(2020,09,15,13,30,00),
+                    Vendeur = "Chaima",Telephone1="360-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
+                    NotesTelInitiales="",
+                    NotesTelConfirmation="",
+                    NotesConsultant="",
+                    CourrielClient="alpha@internet.ca", },
+
+
+
+                new RendezVous {RdvId=3,Conf = Situation.nonSpecifiee, WalkIn = Situation.vrai, Vente = Situation.nonSpecifiee, Categorie="Alberto",PrenomClient="bistope", NomClient="Bolto", DateRdv = new DateTime(2021,11,15,13,30,00),
+                    Vendeur = "Monica",Telephone1="420-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
+                    NotesTelInitiales="",
+                    NotesTelConfirmation="",
+                    NotesConsultant="",
+                    CourrielClient="alpha@internet.ca", },
+
+
+
+                new RendezVous {RdvId=4,Conf = Situation.faux, WalkIn = Situation.vrai, Vente = Situation.vrai, Categorie="kaptaa",PrenomClient="astoli", NomClient="Colzone", DateRdv = new DateTime(2021,10,15,13,30,00),
+                    Vendeur = "Monica",Telephone1="200-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
+                    NotesTelInitiales="",
+                    NotesTelConfirmation="",
+                    NotesConsultant="",
+                    CourrielClient="alpha@internet.ca", },
+
+                new RendezVous {RdvId=5,  Conf = Situation.vrai, WalkIn = Situation.vrai, Vente = Situation.vrai, Categorie="Mirna", PrenomClient="binorta", NomClient="ALba", DateRdv = new DateTime(2021,10,15,13,30,00),
+                    Vendeur = "Manir",Telephone1="200-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
+                    NotesTelInitiales="",
+                    NotesTelConfirmation="",
+                    NotesConsultant="",
+                    CourrielClient="alpha@internet.ca", }
+            };
+
+            return PartialView(RdvList);
+        }
+
         //Data testing methods 
 
         public ActionResult GetNomAppels()
@@ -399,6 +456,30 @@ namespace Autoveille.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult GetRdvDetails(int Idrdv)
+        {
+            RdvDetails RdvDetail = new RdvDetails
+            {
+                Annee = "2015",
+                ApprobationCredit = "N/A",
+                EssaiRoutier = "Non",
+                CodeConsultant = "AA",
+                VehiculeEchange = "Alpha",
+                ListeNoire = "Non",
+                Modele = "Ford",
+                Offre = "1520",
+                Presence = true,
+                Vendeur = "Monica",
+                VehiculeOccasion = "Beta",
+                VegiculeDesire = "Porsche",
+                Vente = false,
+                NoteCentreAppel = "vfvcvcxvxvcbvcbxcvbcv",
+                NoteConsultant = "jhjhgjhgjhggjh"
+            };
+
+            return PartialView(RdvDetail);
+        }
         public ActionResult GetVehicule()
         {
             Vehicule vehicule = new Vehicule()
@@ -503,6 +584,12 @@ namespace Autoveille.Controllers
             rendezVous.color = "green";
             rendezVousList.Add(rendezVous);
             return Json("success", JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+
+        public ActionResult newWalkIn()
+        {
+            return PartialView();
         }
     }
 }
