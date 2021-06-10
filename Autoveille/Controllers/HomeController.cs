@@ -192,51 +192,51 @@ namespace Autoveille.Controllers
             {
                 new RendezVous {RdvId=0,Conf = Situation.faux, WalkIn = Situation.vrai, Vente = Situation.nonSpecifiee, Categorie="Alberto",PrenomClient="marten", NomClient="Colzone", DateRdv = new DateTime(2019,01,24,15,30,00),
                     Vendeur = "Monica",Telephone1="240-569-5827", Telephone2="500-526-3400",Cellulaire="478-256-8545",CodeConsultant="AA",
-                    NotesTelInitiales="",
-                    NotesTelConfirmation="",
-                    NotesConsultant="",
+                    NotesTelInitiales="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    NotesTelConfirmation="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    NotesConsultant="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                     CourrielClient="alpha@internet.ca", },
 
 
                 new RendezVous {RdvId=1,Conf = Situation.faux, WalkIn = Situation.vrai, Vente = Situation.vrai, Categorie="Kaptaa",PrenomClient="jinkez", NomClient="Alex", DateRdv = new DateTime(2021,12,20,12,15,00),
                     Vendeur = "Andry",Telephone1="520-569-5827", Telephone2="477-222-5267",Cellulaire="478-300-8545",CodeConsultant="AA",
-                    NotesTelInitiales="",
-                    NotesTelConfirmation="",
-                    NotesConsultant="",
+                    NotesTelInitiales="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    NotesTelConfirmation="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    NotesConsultant="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                     CourrielClient="alpha@internet.ca", },
 
 
 
                 new RendezVous {RdvId=2,Conf = Situation.vrai, WalkIn = Situation.faux, Vente = Situation.faux, Categorie="kaptaa", PrenomClient="almore",NomClient="moliere", DateRdv = new DateTime(2020,09,15,13,30,00),
                     Vendeur = "Chaima",Telephone1="360-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
-                    NotesTelInitiales="",
-                    NotesTelConfirmation="",
-                    NotesConsultant="",
+                    NotesTelInitiales="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    NotesTelConfirmation="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                    NotesConsultant="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                     CourrielClient="alpha@internet.ca", },
 
 
 
                 new RendezVous {RdvId=3,Conf = Situation.nonSpecifiee, WalkIn = Situation.vrai, Vente = Situation.nonSpecifiee, Categorie="Alberto",PrenomClient="bistope", NomClient="Bolto", DateRdv = new DateTime(2021,11,15,13,30,00),
                     Vendeur = "Monica",Telephone1="420-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
-                    NotesTelInitiales="",
-                    NotesTelConfirmation="",
-                    NotesConsultant="",
+                    NotesTelInitiales=" It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+                    NotesTelConfirmation="The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+                    NotesConsultant="The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
                     CourrielClient="alpha@internet.ca", },
 
 
 
                 new RendezVous {RdvId=4,Conf = Situation.faux, WalkIn = Situation.vrai, Vente = Situation.vrai, Categorie="kaptaa",PrenomClient="astoli", NomClient="Colzone", DateRdv = new DateTime(2021,10,15,13,30,00),
                     Vendeur = "Monica",Telephone1="200-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
-                    NotesTelInitiales="",
-                    NotesTelConfirmation="",
-                    NotesConsultant="",
+                    NotesTelInitiales=" It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+                    NotesTelConfirmation=" It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+                    NotesConsultant="The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
                     CourrielClient="alpha@internet.ca", },
 
                 new RendezVous {RdvId=5,  Conf = Situation.vrai, WalkIn = Situation.vrai, Vente = Situation.vrai, Categorie="Mirna", PrenomClient="binorta", NomClient="ALba", DateRdv = new DateTime(2021,10,15,13,30,00),
                     Vendeur = "Manir",Telephone1="200-569-5827", Telephone2="477-526-5267",Cellulaire="478-256-8545",CodeConsultant="AA",
-                    NotesTelInitiales="",
-                    NotesTelConfirmation="",
-                    NotesConsultant="",
+                    NotesTelInitiales=" In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted.",
+                    NotesTelConfirmation=" In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted.",
+                    NotesConsultant="The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
                     CourrielClient="alpha@internet.ca", }
             };
 

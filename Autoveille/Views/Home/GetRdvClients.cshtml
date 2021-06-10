@@ -4,57 +4,57 @@
     <thead>
         <tr style="height:70px;vertical-align:middle;">
             <th>
-                @Html.DisplayNameFor(model => model.Conf)
+               Conf.    
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WalkIn)
+                Walk-In
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Vente)
+                Vente
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Categorie)
+                Catégorie
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrenomClient)
+                Prénom du client 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NomClient)
+                Nom du Client
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateRdv)
+                Date du R.-V.
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateRdv)
+                Heure du R.-V
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Vendeur)
+                Vendeur 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telephone1)
+                Téléphone 1
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telephone2)
+                Téléphone 2
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cellulaire)
+                Cellulaire
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodeConsultant)
+                code de Consultant   
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NotesTelInitiales)
+                Notes de Tél initiales        
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NotesTelConfirmation)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.NotesConsultant)
+               Notes de Tèl. Confirmation
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.CourrielClient)
+                Notes de consultant
+            </th>
+
+            <th>
+                Courriel du client
             </th>
         </tr>
 
@@ -65,22 +65,22 @@
             <td class="tdFilter">
                 <select class="DdlConf listFilter" id="ddlConf">
                     <option value="all">Tout </option>
-                    <option value="confVrai">Vrai</option>
-                    <option value="confFaux">Faux</option>
+                    <option value="vrai">Vrai</option>
+                    <option value="X">Faux</option>
                 </select>
             </td>
             <td class="tdFilter">
                 <select class="DdlWalkIn listFilter" id="ddlWalkIn">
                     <option value="all">Tout </option>
-                    <option value="walkInVrai">Vrai</option>
-                    <option value="walkInFaux">Faux </option>
+                    <option value="vrai">Vrai</option>
+                    <option value="X">Faux </option>
                 </select>
             </td>
             <td class="tdFilter">
                 <select class="DdlVente listFilter" id="ddlVente">
                     <option value="all">Tout </option>
-                    <option value="venteVrai">Vrai</option>
-                    <option value="venteFaux">Faux</option>
+                    <option value="vrai">Vrai</option>
+                    <option value="X">Faux</option>
                 </select>
             </td>
             <td class="tdFilter">
@@ -154,43 +154,56 @@
 
                 @if (item.Conf.ToString() == "nonSpecifiee")
                 {
+                    <p style="display:none;">@item.Conf</p>
                     <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
                 }
                 else if (item.Conf.ToString() == "vrai")
                 {
+                    <p style="display:none;">@item.Conf</p>
                     <div style="background-color:green;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
                 }
                 else
                 {
-                    <div style="background-color:red;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
+                    @*<div style="background-color:red;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>*@
+                    <div id="orangeBox">
+                        <span style="color:black;">X</span>
+                    </div>
                 }
             </td>
             <td>
+
                 @if (item.WalkIn.ToString() == "nonSpecifiee")
                 {
+                    <p style="display:none;">@item.WalkIn</p>
                     <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
                 }
-                else if (item.Conf.ToString() == "vrai")
+                else if (item.WalkIn.ToString() == "vrai")
                 {
+                    <p style="display:none;">@item.WalkIn</p>
                     <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;">
                         <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Blue.svg" />
                     </div>
                 }
                 else
                 {
-                    <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;"></div>
+                    <div id="orangeBox">
+                        <span style="color:black;">X</span>
+                    </div>
                 }
             </td>
             <td>
+
                 @if (item.Vente.ToString() == "nonSpecifiee")
                 {
+                    <p style="display:none;">@item.Vente</p>
                     <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;">
 
 
                     </div>
                 }
-                else if (item.Conf.ToString() == "vrai")
+                else if (item.Vente.ToString() == "vrai")
                 {
+                    <p style="display:none;">@item.Vente</p>
                     <div style="background-color:white;border:1px #bfbfbf solid;height:40px;width:40px;margin:auto;">
                         <img src="~/Content/Images/ICONES_SVG_Couleurs_Vente.svg" />
                     </div>
@@ -198,7 +211,7 @@
                 else
                 {
                     <div id="orangeBox">
-                        <span style="color:black;"> X </span>
+                        <span style="color:black;">X</span>
                     </div>
                 }
             </td>
@@ -233,13 +246,29 @@
                 @Html.DisplayFor(modelItem => item.CodeConsultant)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NotesTelInitiales)
+                <div style="height:40px;line-height:30px;max-height:100px;white-space:normal;text-align:left;">
+                    <p style="overflow:hidden;height:50px;width:180px;">
+                        @Html.DisplayFor(modelItem => item.NotesTelInitiales)
+                    </p>
+                </div>
+                <button class="bttn" data-toggle="popover" title="Notes Tèl. Initiales" data-placement="bottom" data-content="@item.NotesTelInitiales"> + </button>
+            </td>
+            
+            <td>
+                <div style="height:40px;line-height:30px;max-height:100px;white-space:normal;text-align:left;">
+                    <p style="overflow:hidden;height:50px;width:180px;">
+                        @Html.DisplayFor(modelItem => item.NotesTelConfirmation)
+                    </p>
+                </div>
+                <button class="bttn" data-toggle="popover" title="Notes Tèl. Confirmation" data-placement="bottom" data-content="@item.NotesTelConfirmation"> + </button>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NotesTelConfirmation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NotesConsultant)
+                <div style="height:40px;line-height:30px;max-height:100px;white-space:normal;text-align:left;">
+                    <p style="overflow:hidden;height:50px;width:180px;">
+                        @Html.DisplayFor(modelItem => item.NotesConsultant)
+                    </p>
+                </div>
+                <button class="bttn" data-toggle="popover" title="Notes Consultant" data-placement="bottom" data-content="@item.NotesConsultant"> + </button>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CourrielClient)
@@ -248,7 +277,7 @@
 
 
         <tr class="EditRow">
-            <td class="detailsClient" id="@rdvId" colspan="17" style="display:none;padding:10px;border-radius:15px;background-color: #fbbb29">
+            <td class="detailsClient" id="@rdvId" colspan="17" onclick="handleClick()" style="display:none;padding:10px;border-radius:15px;background-color: #fbbb29">
             </td>
         </tr>
             }
@@ -329,11 +358,17 @@
             var vente = $('#ddlVente').find("option:selected").val();
             var walkIn = $('#ddlWalkIn').find("option:selected").val();
             var conf = $('#ddlConf').find("option:selected").val();
+            //console.log("select : " + vente);
             SearchData(code, category, vente, walkIn, conf);
         });
 
 
         $(":checkbox").labelauty();
+
+        $('[data-toggle="popover"]').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }).popover()
     });
 
 
@@ -349,7 +384,7 @@
                 var rowVente = $.trim($(this).find('td:eq(2)').text());
                 var rowWalkIn = $.trim($(this).find('td:eq(1)').text());
                 var rowConf = $.trim($(this).find('td:eq(0)').text());
-
+                //console.log("ttttt   :   " + rowWalkIn );
                 if (code.toUpperCase() != 'ALL' && category.toUpperCase() != 'ALL' && vente.toUpperCase() != 'ALL' && walkIn.toUpperCase() != 'ALL' && conf.toUpperCase() != 'ALL') {
                     if (rowCode.toUpperCase() == code.toUpperCase() && rowCategory == category && rowVente == vente && rowWalkIn == walkIn && rowConf == conf) {
                         $(this).show();
@@ -443,7 +478,9 @@
     }
 
 
-
+    function handleClick() {
+        event.stopPropagation();
+    }
 
     
 </script>
