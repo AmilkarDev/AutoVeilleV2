@@ -56,7 +56,7 @@
             <div class="donutsContainer">
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvJour1" width="220" height="220"></canvas>
+                        <canvas id="circleRdvJour1" width="160" height="160"></canvas>
                         <div class="description">
                             <span class="number">22</span>
                         </div>
@@ -72,7 +72,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvJour2" width="220" height="220"></canvas>
+                        <canvas id="circleRdvJour2" width="160" height="160"></canvas>
                         <div class="description">
                             <span class="number">22</span>
                         </div>
@@ -87,7 +87,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvJour3" width="220" height="220"></canvas>
+                        <canvas id="circleRdvJour3" width="160" height="160"></canvas>
                         <div class="description">
                             <span class="number">22</span>
                         </div>
@@ -104,7 +104,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvHorsEvt" width="220" height="220"></canvas>
+                        <canvas id="circleRdvHorsEvt" width="160" height="160"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number">22</span>
                         </div>
@@ -556,9 +556,9 @@
     gradient.addColorStop(1, '#31B8A5');
 
     var circleRdvJour1 = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -570,9 +570,9 @@
         circum: Math.PI * 2
     }
     var circleRdvJour2 = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -585,9 +585,9 @@
     }
 
     var circleRdvJour3 = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -600,9 +600,9 @@
     }
 
     var circleRdvHorsEvt = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -616,9 +616,9 @@
 
 
     var circleVenteJour1 = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -631,9 +631,9 @@
     }
 
     var circleVenteJour2 = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -646,9 +646,9 @@
     }
 
     var circleVenteJour3 = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -661,9 +661,9 @@
     }
 
     var circleVenteHorsEvt = {
-        x: 110,
-        y: 110,
-        radius: 80,
+        x: 80,
+        y: 80,
+        radius: 50,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
@@ -703,7 +703,7 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
         ctx.arc(circle.x, circle.x, circle.radius, 0, 2 * Math.PI, false);
-        ctx.lineWidth = 30;
+        ctx.lineWidth = 25;
         ctx.strokeStyle = 'black';
         ctx.shadowColor = circle.shadowColor;
         ctx.shadowBlur = 20;
@@ -717,7 +717,7 @@
         ctx.arc(circle.x, circle.x, circle.radius, circle.angleStartArc, draw_to);
         ctx.strokeStyle = isInside ? circle.gradientColor : circle.gradientaColor;
         //ctx.strokeStyle =circle.gradientaColor;
-        ctx.lineWidth = 30;
+        ctx.lineWidth = 25;
         ctx.lineCap = 'round';
         ctx.stroke();
         circle.wasInside = isInside;
