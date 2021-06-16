@@ -3,14 +3,19 @@
 }
 @model Autoveille.TestingModels.Dashboard
 <div class="row alertRow" id="eventDiv">
-    <div style="float:left;" class="col-md-6 col-sm-12 col-xs-12">
+    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
         <p class="eventText" style="color: white;">
             EVENEMENT
             <span id="eventState"> EN COURS </span>
         </p>
     </div>
-
-    <div id="searchInput" class="eventText col-md-6 col-sm-12 col-xs-12" style="color:white;">
+    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" style="color: white;" href="@Url.Action("CurrentEventDashboard", "Home")">
+            EVENEMENT
+            <span id="eventState"> EN COURS </span>
+        </a>
+    </div>
+    <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
         NOM DU CONCESSIONNAIRE
     </div>
 

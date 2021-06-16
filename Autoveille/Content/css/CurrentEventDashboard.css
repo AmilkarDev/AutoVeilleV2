@@ -1,0 +1,137 @@
+﻿body {
+}
+
+.mainCurrentRow {
+    display: flex;
+    flex-direction: row;
+}
+#barsContainer {
+    background-color: black;
+    border: 1px white solid;
+    width: 50%;
+    margin: 15px;
+    border-radius: 15px;
+    height: 905px;
+    position: relative;
+}
+.localTitle {
+    color: #f36d29;
+    font-size: 35px;
+    font-weight: bolder;
+    margin-left: 20px;
+}
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+}
+.graph {
+    width: 90%;
+    background-color: black;
+    position: absolute;
+}
+#legend-container {
+    display: flex;
+    margin-left: 100px;
+}
+/***Wheels div design */
+.wheelsContainer {
+    width: 50%;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.donutsDiv {
+    background-color: black;
+    border: 1px white solid;
+    width: 100%;
+    margin: 15px;
+    border-radius: 15px;
+    height: 450px;
+}
+.donutsTitle {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+.localTitle {
+    font-size: 35px;
+    font-weight: bolder;
+    margin-left: 20px;
+}
+.donutsText {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+}
+
+#content {
+    border-radius: 15px;
+}
+.description {
+    position: absolute;
+}
+.donutsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+.UniqueDonutContainer {
+    display: flex;
+    flex-direction: column;
+}
+.bottomRow {
+    background-color: black;
+    border: 1px white solid;
+    width: 100%;
+    margin: 30px;
+    border-radius: 15px;
+    height: 450px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pieContainer {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.rowFlex {
+    display:flex;
+    flex-direction:row;
+}
+.pieGraph {
+    margin: 15px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+.pieTextContainer {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    text-align: center;
+}
+
+.Total {
+    color: white;
+    font-size: 4.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pieLegends {
+    margin-top: 40px;
+}
+.linesChart {
+    width: 60%;
+    background-color: black;
+    margin: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

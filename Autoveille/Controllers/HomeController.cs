@@ -186,6 +186,11 @@ namespace Autoveille.Controllers
         }
 
 
+        public ActionResult CurrentEventDashboard()
+        {
+            return View();
+        }
+
         public ActionResult GetRdvClients()
         {
             List<RendezVous> RdvList = new List<RendezVous>

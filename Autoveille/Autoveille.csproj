@@ -184,9 +184,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\css\Connexion.css" />
+    <Content Include="Content\css\CurrentEventDashboard.css" />
     <Content Include="Content\css\Dashboard.css" />
     <Content Include="Content\css\InfoConcession.css" />
     <Content Include="Content\css\RendezVous.css" />
+    <Content Include="Content\Images\face bars.png" />
     <Content Include="Content\Images\ontario.svg" />
     <Content Include="Content\Images\QuebecGrey.svg" />
     <Content Include="Content\jquery-labelauty.css" />
@@ -327,6 +329,7 @@
     <Content Include="Views\Home\GetRdvClients.cshtml" />
     <Content Include="Views\Home\GetRdvDetails.cshtml" />
     <Content Include="Views\Home\newWalkIn.cshtml" />
+    <Content Include="Views\Home\CurrentEventDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
