@@ -56,7 +56,7 @@
             <div class="donutsContainer">
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvJour1" width="220" height="220"></canvas>
+                        <canvas class="donutCanvas" id="circleRdvJour1"></canvas>
                         <div class="description">
                             <span class="number">22</span>
                         </div>
@@ -72,7 +72,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvJour2" width="220" height="220"></canvas>
+                        <canvas class="donutCanvas" id="circleRdvJour2"></canvas>
                         <div class="description">
                             <span class="number">22</span>
                         </div>
@@ -87,7 +87,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvJour3" width="220" height="220"></canvas>
+                        <canvas class="donutCanvas" id="circleRdvJour3"></canvas>
                         <div class="description">
                             <span class="number">22</span>
                         </div>
@@ -104,7 +104,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleRdvHorsEvt" width="220" height="220"></canvas>
+                        <canvas class="donutCanvas" id="circleRdvHorsEvt"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number">22</span>
                         </div>
@@ -128,7 +128,7 @@
             <div class="donutsContainer">
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleVenteJour1" width="220" height="220"></canvas>
+                        <canvas class="donutCanvas" id="circleVenteJour1"></canvas>
                         <div class="description">
                             <span class="number">22</span>
                         </div>
@@ -138,10 +138,9 @@
                     </div>
                 </div>
 
-
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleVenteJour2" width="220" height="220"></canvas>
+                        <canvas id="circleVenteJour2"  class="donutCanvas"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number">22</span>
                         </div>
@@ -153,7 +152,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleVenteJour3" width="220" height="220"></canvas>
+                        <canvas id="circleVenteJour3"  class="donutCanvas"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number">22</span>
                         </div>
@@ -165,7 +164,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="content">
-                        <canvas id="circleVenteHorsEvt" width="220" height="220"></canvas>
+                        <canvas id="circleVenteHorsEvt"  class="donutCanvas"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number">22</span>
                         </div>
@@ -174,7 +173,7 @@
                         <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 
@@ -245,6 +244,10 @@
         grey: 'rgb(231,233,237)'
     };
 
+    const setUpCanvas = (c) => {
+        c.width = c.clientWidth;
+        c.height = c.clientHeight;
+    };
 
     var randomScalingFactor = function () {
         return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
@@ -558,10 +561,12 @@
     var circleRdvJour1 = {
         x: 110,
         y: 110,
-        radius: 80,
+        radius: 200,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur : 20,
         finish: 25, // Finish (in %)
         gradientaColor: gradienta,
         gradientColor: gradient,
@@ -572,10 +577,12 @@
     var circleRdvJour2 = {
         x: 110,
         y: 110,
-        radius: 80,
+        radius: 200,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: gradienta,
         gradientColor: gradient,
@@ -587,10 +594,12 @@
     var circleRdvJour3 = {
         x: 110,
         y: 110,
-        radius: 80,
+        radius: 200,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: gradienta,
         gradientColor: gradient,
@@ -602,10 +611,12 @@
     var circleRdvHorsEvt = {
         x: 110,
         y: 110,
-        radius: 80,
+        radius: 200,
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: gradienta,
         gradientColor: gradient,
@@ -622,6 +633,8 @@
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: purpleGradient,
         gradientColor: purpleGradient,
@@ -637,6 +650,8 @@
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: purpleGradient,
         gradientColor: purpleGradient,
@@ -652,6 +667,8 @@
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: purpleGradient,
         gradientColor: purpleGradient,
@@ -667,6 +684,8 @@
         angleStartArc: 1.5 * Math.PI,
         angleEndArc: 0 * Math.PI,
         wasInside: false,
+        lineWidth: 30,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: purpleGradient,
         gradientColor: purpleGradient,
@@ -698,15 +717,15 @@
 
         ctx = canvas.getContext('2d');
 
-
+        setUpCanvas(canvas);
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
-        ctx.arc(circle.x, circle.x, circle.radius, 0, 2 * Math.PI, false);
-        ctx.lineWidth = 30;
+        ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 3, 0, 2 * Math.PI, false);
+        ctx.lineWidth = circle.lineWidth;//30;
         ctx.strokeStyle = 'black';
         ctx.shadowColor = circle.shadowColor;
-        ctx.shadowBlur = 20;
+        ctx.shadowBlur = circle.shadowBlur//20;
         ctx.shadowOffsetY = 3;
         ctx.stroke();
 
@@ -714,10 +733,10 @@
 
         //Draw arc
         ctx.beginPath();
-        ctx.arc(circle.x, circle.x, circle.radius, circle.angleStartArc, draw_to);
+        ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 3, circle.angleStartArc, draw_to);
         ctx.strokeStyle = isInside ? circle.gradientColor : circle.gradientaColor;
         //ctx.strokeStyle =circle.gradientaColor;
-        ctx.lineWidth = 30;
+        ctx.lineWidth = circle.lineWidth;
         ctx.lineCap = 'round';
         ctx.stroke();
         circle.wasInside = isInside;
@@ -751,6 +770,101 @@
     drawCircle(circleVenteHorsEvt, 'circleVenteHorsEvt', false);
 
 
+
+    var rtime;
+    var timeout = false;
+    var delta = 200;
+
+    window.addEventListener('resize', () => {
+
+        rtime = new Date();
+        if (timeout === false) {
+            timeout = true;
+            setTimeout(resizeend, delta);
+        }
+
+    });
+
+
+
+    function resizeend() {
+        if (new Date() - rtime < delta) {
+            setTimeout(resizeend, delta);
+        } else {
+            //console.log($(window).width());
+            if ($(window).width() < 1000) {
+                circleRdvJour1.lineWidth = 20;
+                circleRdvJour2.lineWidth = 20;
+                circleRdvJour3.lineWidth = 20;
+                circleRdvHorsEvt.lineWidth = 20;
+
+
+                circleVenteJour1.lineWidth = 20;
+                circleVenteJour2.lineWidth = 20;
+                circleVenteJour3.lineWidth = 20;
+                circleVenteHorsEvt.lineWidth = 20; 
+
+
+                circleRdvJour1.shadowBlur = 20;
+                circleRdvJour2.shadowBlur = 20;
+                circleRdvJour3.shadowBlur = 20;
+                circleRdvHorsEvt.shadowBlur = 20;
+
+                circleVenteJour1.shadowBlur = 20;
+                circleVenteJour2.shadowBlur = 20;
+                circleVenteJour3.shadowBlur = 20;
+                circleVenteHorsEvt.shadowBlur = 20;
+            }
+            else {
+                circleRdvJour1.lineWidth = 30;
+                circleRdvJour2.lineWidth = 30;
+                circleRdvJour3.lineWidth = 30;
+                circleRdvHorsEvt.lineWidth = 30;
+
+
+                circleVenteJour1.lineWidth = 30;
+                circleVenteJour2.lineWidth = 30;
+                circleVenteJour3.lineWidth = 30;
+                circleVenteHorsEvt.lineWidth = 30;
+
+
+                circleRdvJour1.shadowBlur = 20;
+                circleRdvJour2.shadowBlur = 20;
+                circleRdvJour3.shadowBlur = 20;
+                circleRdvHorsEvt.shadowBlur = 20;
+
+                circleVenteJour1.shadowBlur = 20;
+                circleVenteJour2.shadowBlur = 20;
+                circleVenteJour3.shadowBlur = 20;
+                circleVenteHorsEvt.shadowBlur = 20;
+            }
+
+
+
+            timeout = false;
+            circleRdvJour1.curr = 0;
+            circleRdvJour2.curr = 0;
+            circleRdvJour3.curr = 0;
+            circleRdvHorsEvt.curr = 0;
+
+            circleVenteJour1.curr = 0;
+            circleVenteJour2.curr = 0;
+            circleVenteJour3.curr = 0;
+            circleVenteHorsEvt.curr = 0;
+
+
+            drawCircle(circleRdvJour1, 'circleRdvJour1', false);
+            drawCircle(circleRdvJour2, 'circleRdvJour2', false);
+            drawCircle(circleRdvJour3, 'circleRdvJour3', false);
+            drawCircle(circleRdvHorsEvt, 'circleRdvHorsEvt', false);
+
+            drawCircle(circleVenteJour1, 'circleVenteJour1', false);
+            drawCircle(circleVenteJour2, 'circleVenteJour2', false);
+            drawCircle(circleVenteJour3, 'circleVenteJour3', false);
+            drawCircle(circleVenteHorsEvt, 'circleVenteHorsEvt', false);
+
+        }
+    }
 
 
     
@@ -954,12 +1068,6 @@
                 }
             },
             plugins: {
-                //labels: {
-                //    render: 'value',
-                //    fontColor: 'white',
-                //    fontSize: 30,
-                //    fontStyle: 'bold'
-                //}
                 datalabels: {
                     display : true ,
                     color: 'white',

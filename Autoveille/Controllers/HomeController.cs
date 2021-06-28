@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Outils;
 using AutoveilleBL.Models;
+using Rotativa.MVC;
 
 namespace Autoveille.Controllers
 {
@@ -18,6 +19,20 @@ namespace Autoveille.Controllers
         public ActionResult newDashboard()
         {
             return View();
+        }
+
+        public ActionResult ExportToPdf()
+        {
+            var dashboard = new Dashboard()
+            {
+                RDV = 24,
+                Ventes = 15,
+                Oportunites = 94,
+                Potentiels = 300,
+                WalkIn = 32,
+            };
+            var report = new ViewAsPdf("Dashboard",dashboard);
+            return report;
         }
         public ActionResult Index()
         {
