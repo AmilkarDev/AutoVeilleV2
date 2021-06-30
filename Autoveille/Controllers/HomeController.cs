@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Outils;
-using AutoveilleBL.Models;
 using Rotativa.MVC;
+using AutoveilleBL.Models;
 
 namespace Autoveille.Controllers
 {
@@ -31,9 +31,57 @@ namespace Autoveille.Controllers
                 Potentiels = 300,
                 WalkIn = 32,
             };
-            var report = new ViewAsPdf("Dashboard",dashboard);
+
+            var report = new ViewAsPdf("Dashboard", dashboard);
             return report;
         }
+
+        //public static byte[] PDFForHtml(string html)
+        //{
+        //    // Create ABCpdf Doc object
+        //    var doc = new Doc();
+
+        //    // Add html to Doc
+        //    int theID = doc.AddImageHtml(html);
+
+        //    // Loop through document to create multi-page PDF
+        //    while (true)
+        //    {
+        //        if (!doc.Chainable(theID))
+        //            break;
+        //        doc.Page = doc.AddPage();
+        //        theID = doc.AddImageToChain(theID);
+        //    }
+
+        //    // Flatten the PDF
+        //    for (int i = 1; i <= doc.PageCount; i++)
+        //    {
+        //        doc.PageNumber = i;
+        //        doc.Flatten();
+        //    }
+
+        //    // Get PDF as byte array. Couls also use .Save() to save to disk
+        //    var pdfbytes = doc.GetData();
+
+        //    doc.Clear();
+
+        //    return pdfbytes;
+        //}
+
+        //public static string RenderViewToString(Controller controller, string viewName, object model, string masterName)
+        //{
+        //    controller.ViewData.Model = model;
+
+        //    using (StringWriter sw = new StringWriter())
+        //    {
+        //        ViewEngineResult viewResult = ViewEngines.Engines.FindView(controller.ControllerContext, viewName, masterName);
+        //        ViewContext viewContext = new ViewContext(controller.ControllerContext, viewResult.View, controller.ViewData, controller.TempData, sw);
+        //        viewResult.View.Render(viewContext, sw);
+
+        //        return sw.GetStringBuilder().ToString();
+        //    }
+        //}
+
         public ActionResult Index()
         {
             if (Session["Commerces"] == null)
