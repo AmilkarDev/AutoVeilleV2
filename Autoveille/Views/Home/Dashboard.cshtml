@@ -18,6 +18,9 @@
             <i class="fa fa-download" aria-hidden="true"></i>
             @*</span>*@
         </a>
+
+        <a href="#" class="screenshot">Preview screenshot</a>
+        <a id="b" href="#" download>Download Image</a>
     </div>
     <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
         NOM DU CONCESSIONNAIRE
@@ -626,7 +629,7 @@
 
     //Draw arc
     venteCtx.beginPath();
-        venteCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(vente));
+    venteCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(vente));
     venteCtx.strokeStyle = purpleGradient;
     venteCtx.lineWidth = 40;
     venteCtx.lineCap = 'round';
@@ -738,4 +741,24 @@
         // console.log(tick.value);
 
     }
+
+    //$('.screenshot').on('click', function () {
+    //    aelement = $('.mainRow');
+    //    //converting to canvas
+    //    html2canvas(aelement, {
+    //        onrendered: function (canvas) {
+    //            //$('#box').html("");
+    //            //$('#box').append(canvas);
+    //            getCanvas = canvas;
+    //            // convrting canvas to image and appening
+    //            var image = new Image();
+    //            image.src = canvas.toDataURL("image/png");
+    //            //$('#c').append(image);
+    //            // setting geneated img url as href of #b
+    //            var foo = canvas.toDataURL("image/png");
+    //            console.log("foo" + foo);
+    //            $('#b').attr("href", foo);
+    //        }
+    //    });
+    //});
 </script>

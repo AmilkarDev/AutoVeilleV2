@@ -7,8 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Outils;
-using Rotativa.MVC;
+using PuppeteerSharp;
 using AutoveilleBL.Models;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Autoveille.Controllers
 {
@@ -21,7 +23,7 @@ namespace Autoveille.Controllers
             return View();
         }
 
-        public ActionResult ExportToPdf()
+        public async  Task<bool> ExportToPdf()
         {
             var dashboard = new Dashboard()
             {
@@ -31,9 +33,43 @@ namespace Autoveille.Controllers
                 Potentiels = 300,
                 WalkIn = 32,
             };
+            //bool result = false;
+            //var report = new ViewAsPdf("Dashboard", dashboard);
+            //return report;
+            // await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
 
-            var report = new ViewAsPdf("Dashboard", dashboard);
-            return report;
+            return await TryScreenshot();
+        }
+
+        private async Task<bool> TryScreenshot()
+        {
+            //Download the Chromium revision if it does not already exist
+            await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
+
+
+            Browser browser = await PuppeteerSharp.Puppeteer.LaunchAsync(new PuppeteerSharp.LaunchOptions
+            {
+                Headless= true
+            });
+
+            Page page = await browser.NewPageAsync();
+            await page.GoToAsync("https://trello.com/b/9J1046Q3/autoveille");
+
+            await page.PdfAsync("C:\\Files\\document.pdf");
+
+            return true;
+        }
+
+        public static Byte[] PdfSharpConvert(String html)
+        {
+            Byte[] res = null;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var pdf = TheArtOfDev.HtmlRenderer.PdfSharp.PdfGenerator.GeneratePdf(html, PdfSharp.PageSize.A4);
+                pdf.Save(ms);
+                res = ms.ToArray();
+            }
+            return res;
         }
 
         //public static byte[] PDFForHtml(string html)
