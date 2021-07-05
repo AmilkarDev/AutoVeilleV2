@@ -9,3 +9,46 @@
     padding-right: 100px;*/
     border-radius: 15px;
 }
+
+.inputs {
+    height:60%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-left:150px;
+    padding-right:150px;
+}
+
+.emailInput{
+    height:45px;
+    border-radius:15px;
+}
+
+.submitInput{
+    height: 35px;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    text-overflow: clip;
+    border-radius:10px;
+
+}
+
+.modal.oublieMotDePasse {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 70%;
+}
+.oublieMotDePasse .modal-content {
+    padding  : 50px;
+}
+
+.oublieMotDePasse .modal-body {
+    text-align: center;
+}
+
+.changePwdInput{
+    height : 35px;
+    border-radius:10px;
+}

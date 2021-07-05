@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "ModifierMotDePasse";
+    Layout = "~/Views/Shared/_InitialLayout.cshtml";
+}
+<style>
+    body {
+        background-color: #fbbb29;
+    }
+</style>
+
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-1 col-lg-3">
+    </div>
+    <div class="col-12 col-sm-12 col-md-10 col-lg-6">
+
+        <div style="background-color:#fbbb29;padding-top:10px;padding-left:60px;padding-right:60px; height:350px">
+            <div id="loginForm" style="margin: 0 auto;height:347px;">
+                <div class="inputs" style="height:100%;">
+                    <input class="changePwdInput" type="email" placeholder="Usager(Courriel)">  <br />
+                    <input class="changePwdInput" type="password" placeholder="Ancien Mot de Passe">  <br />
+                    <input class="changePwdInput" type="password" placeholder="Nouveau Mot de passe">  <br />
+                    <input class="changePwdInput" type="password" placeholder="Confirmer nouveau mot de passe">  <br />
+                    <div style="text-align:center;">
+                        <input type="submit" class="btn btn-danger submitInput" value="Soumettre" data-toggle="modal" data-target="#annonceModal" onclick="changePassword()">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-1 col-lg-3"></div>
+
+
+</div>
+
+
+<div id="annonceModal" class="modal modal-wide fade" role="dialog">
+    <div class="modal-dialog oublieMotDePasse">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="display:none;">
+                <button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()">&times;</button>
+                <h4 class="modal-title">Calendrier des rendez Vous</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-weight:bold;font-size:1.5vw;">Votre mot de passe a été modifié </p>
+                @*<span style="font-weight:bold;font-size:1vw;">Nous avons reçu votre demande </span> <br />*@
+                <span>Tel que demandé , le mot de passe associé au compte prenomnom@sviceInternet.ca a été modifié </span> <br /> <br />
+                <a href="@Url.Action("Connexion", "Compte")">Revenir à la page d'identification </a>
+            </div>
+            <div class="modal-footer" style="display:none;">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    function changePassword(newPassword) {
+        $.ajax({
+            url: '../Compte/ModifierMotDePasse',
+            contentType: 'application/html; charset=utf-8',
+            type: 'POST',
+            data : json.stringify(newPassword)
+            dataType: 'html',
+            success: function (result) {
+                $('.modal-body').modal("show");
+            },
+            error: function (xhr, status) {
+                alert(status);
+            }
+        });
+    }
+</script>

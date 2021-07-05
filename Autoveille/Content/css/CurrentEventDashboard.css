@@ -67,7 +67,7 @@
     margin-top: 10px;
 }
 
-#content {
+#fullContent {
     height: 220px;
     width: 220px;
     display: flex;
@@ -151,7 +151,7 @@
 
 
 @media only screen and (max-width: 1800px) {
-    #content {
+    #fullContent {
         height: 170px;
         width: 170px;
     }
@@ -179,7 +179,7 @@
             font-size: 35px;
         }
 
-        #content {
+        #fullContent {
             height: 150px;
             width: 150px;
         }
@@ -205,14 +205,14 @@
 
 @media only screen and (max-width: 1200px) {
 
-    #content {
+    #fullContent {
         height: 130px;
         width: 130px;
     }
 }
     @media only screen and (max-width: 1000px) {
 
-        #content {
+        #fullContent {
             height: 100px;
             width: 100px;
         }

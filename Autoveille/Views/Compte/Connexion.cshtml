@@ -7,114 +7,129 @@
     body {
         background-color: #fbbb29;
     }
-    .btn-submit
-    {border:none; background:#EE1D29; color:#fff; text-transform: uppercase; 
-	border-radius:5px; font-size: 12px; font-family:proxima-nova; text-align: center; padding: 0px 0; width:100%; 
-	height:28px;margin: 0px 0 0px 0; cursor: pointer;}
 
-
-    .form-text
-    {
-      padding: 1px 1px 1px 1px; 
-     border-radius: 5px; 
-     border:1px solid #e6e6e6; 
-     width: 100%;
-     height:25px;
-      margin: 3px 0; 
-      font-size: 12px;
-      font-weight: bold; 
-      color:black;
-      background-color:white;
-      padding-left:10px;
+    .btn-submit {
+        border: none;
+        background: #EE1D29;
+        color: #fff;
+        text-transform: uppercase;
+        border-radius: 5px;
+        font-size: 12px;
+        font-family: proxima-nova;
+        text-align: center;
+        padding: 0px 0;
+        width: 100%;
+        height: 28px;
+        margin: 0px 0 0px 0;
+        cursor: pointer;
     }
 
 
-    .form-pass
-    {
-      background-color:white;
-      /*width:200px;*/
+    .form-text {
+        padding: 1px 1px 1px 1px;
+        border-radius: 5px;
+        border: 1px solid #e6e6e6;
+        width: 100%;
+        height: 25px;
+        margin: 3px 0;
+        font-size: 12px;
+        font-weight: bold;
+        color: black;
+        background-color: white;
+        padding-left: 10px;
     }
 
 
-    /*.form-text:focus 
+    .form-pass {
+        background-color: white;
+        /*width:200px;*/
+    }
+
+
+    /*.form-text:focus
         {background-color:#FFFEE6; color:#cccccc; border: 2px solid #8C151B;}
     section#loginForm {width: 310px; margin: 0 auto;}
-    
+
         a.basFieldset {color:#8C151B; text-decoration: none; font-weight: bold;font-size: 12px}
-        a.basFieldset:hover {color:#3F3F40; text-decoration: none; font-weight: bold;font-size: 12px} */  
+        a.basFieldset:hover {color:#3F3F40; text-decoration: none; font-weight: bold;font-size: 12px} */
 </style>
 <div class="row">
     <div class="col-12 col-sm-12 col-md-1 col-lg-3">
     </div>
     <div class="col-12 col-sm-12 col-md-10 col-lg-6">
-        <div  style="background-color:#fbbb29;padding-top:10px;padding-left:60px;
+        <div style="background-color:#fbbb29;padding-top:10px;padding-left:60px;
             padding-right:60px; height:350px">
 
             <section id="loginForm" style="margin: 0 auto;height:347px;">
 
-                @using (Html.BeginForm("Connexion", "Compte", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new {  role = "form" }))
+                @using (Html.BeginForm("Connexion", "Compte", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { role = "form" }))
                 {
 
-                <div class="boxe" style="padding:30px;text-align: center;">
-                    <div>
+                    <div class="boxe" style="padding:30px;text-align: center;">
                         <div>
-                            <span style="text-align: center;color:white;font-size:19px;text-align:center">Bienvenue sur le portail autoveille,</span>
-                            <br />
-                            <span style="text-align: center;color:white;font-size:19px;text-align:center">votre gestionnaire d'opportunités</span>
-                        </div>
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div style="display:flex;flex-direction:column;">
-                
-                            <b style="text-align:center;font-size:14px;padding-top:15px;padding-bottom:5px">Identifiez-vous!</b>
-                            <div  class="center">
-                                @Html.TextBoxFor(m => m.UserName, new
-                                {
-                                    @class = "form-text",
-                                    placeholder = "Votre nom d'utilisateur"
+                            <div>
+                                <span style="text-align: center;color:white;font-size:19px;text-align:center">Bienvenue sur le portail autoveille,</span>
+                                <br />
+                                <span style="text-align: center;color:white;font-size:19px;text-align:center">votre gestionnaire d'opportunités</span>
+                            </div>
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div style="display:flex;flex-direction:column;">
 
-                                })
-                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div>
-                            @*@Html.LabelFor(m => m.Password, new {@class = "control-label"})*@
-                            <div class="center">
-                                @Html.PasswordFor(m => m.Password, new
-                                {
-                                    @class = "form-text form-pass",
-                                    placeholder = "Votre mot de passe"
-                                })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div>
-                            <div style="text-align:center;" class="btn-center">
-                                <input style="padding-bottom:5px;padding-top:5px;" type="submit" value="S'identifier" class="btn btn-info btn-submit " />
-                                <div style="padding-top:10px;margin-bottom:0px">
-                                    <input type="checkbox" id="checkSouviensDeMoi" name="connexionCheckBox" value="true"
-                                           style="display:inline-block;padding-top:10px;vertical-align:top">
-                                    <label style="font-size:12px;vertical-align:top;padding-top:0px" for="checkSouviensDeMoi">Se souvenir de moi </label>
+                                <b style="text-align:center;font-size:14px;padding-top:15px;padding-bottom:5px">Identifiez-vous!</b>
+                                <div class="center">
+                                    @Html.TextBoxFor(m => m.UserName, new
+                                    {
+                                        @class = "form-text",
+                                        placeholder = "Votre nom d'utilisateur"
+
+                                    })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
+                            <div>
+                                @*@Html.LabelFor(m => m.Password, new {@class = "control-label"})*@
+                                <div class="center">
+                                    @Html.PasswordFor(m => m.Password, new
+                                    {
+                                        @class = "form-text form-pass",
+                                        placeholder = "Votre mot de passe"
+                                    })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div>
+                                <div style="text-align:center;" class="btn-center">
+                                    <input style="padding-bottom:5px;padding-top:5px;" type="submit" value="S'identifier" class="btn btn-info btn-submit " />
+                                    <div style="padding-top:10px;margin-bottom:0px">
+                                        <input type="checkbox" id="checkSouviensDeMoi" name="connexionCheckBox" value="true"
+                                               style="display:inline-block;padding-top:10px;vertical-align:top">
+                                        <label style="font-size:12px;vertical-align:top;padding-top:0px" for="checkSouviensDeMoi">Se souvenir de moi </label>
+                                    </div>
 
 
-                                <a href="#">
-                                    <p style="font-size:12px;margin-top:-10px">Mot de passe oublié ?</p>
-                                </a>
-                                <a href="#">
-                                    <p style="font-size:12px;margin-top:-14px">Modifir mon mot de passe</p>
-                                </a>
+
+                                    <a style="font-size:12px;margin-top:-10px" href="@Url.Action("MotDePasseOubliee", "Compte")">Mot de passe oublié ?</a>
+
+                                    <br />
+                                    <a style="font-size:12px;margin-top:-14px" href="@Url.Action("ModifierMotDePasse", "Compte")">Modifier mon mot de passe</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 }
             </section>
         </div>
     </div>
     <div class="col-12 col-sm-12 col-md-1 col-lg-3"></div>
 </div>
-  
+
+
+
+
+
+
 @section scripts{
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

@@ -38,6 +38,28 @@ namespace Autoveille.Controllers
             return View(model);
 
         }
+
+
+        public JsonResult sendPassword()
+        {
+            return Json("True", JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public ActionResult ModifierMotDePasse()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ModifierMotDePasse(string newPassword)
+        {
+            return View();
+        }
+        public ActionResult MotDePasseOubliee()
+        {
+            return View();
+        }
+
         #region LogOff
 
         //

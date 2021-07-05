@@ -10,13 +10,10 @@
         </p>
     </div>
     <div style="float:left;display:flex;justify-content:center" class="col-md-4 col-sm-12 col-xs-12">
-        @*<a class="eventText" style="color: white;" href="@Url.Action("CurrentEventDashboard", "Home")">*@
-        <a class="eventText" style="color: white;" href="@Url.Action("ExportToPdf", "Home")">
-            @*EVENEMENT
-            <span id="eventState"> EN COURS </span>*@
-            @*<span onclick="exportReport()">*@
-            <i class="fa fa-download" aria-hidden="true"></i>
-            @*</span>*@
+        <a class="eventText" style="color: white;" href="@Url.Action("CurrentEventDashboard", "Home")">
+        @*<a class="eventText" style="color: white;" href="@Url.Action("ExportToPdf", "Home")">*@
+            EVENEMENT
+            <span id="eventState"> EN COURS </span>
         </a>
     </div>
     <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
