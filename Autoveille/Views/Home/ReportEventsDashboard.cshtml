@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ReportCurrentEventDashboard";
+    Layout = "~/Views/Shared/_LayoutBlack.cshtml";
+}
+
+
+<div class="row alertRow" id="eventDiv">
+    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesEnCours()">
+            EVENEMENT
+            <span id="eventState"> EN COURS </span>
+        </a>
+    </div>
+    <div style="float:left;display:flex;justify-content:center" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesAvenir()">
+            EVENEMENT
+            <span id="eventState"> A VENIR </span>
+        </a>
+    </div>
+    <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
+        NOM DU FABRICANT
+    </div>
+</div>
+<br />
+
+<div id="RapportsEvenementsEnCours" style="margin:auto;width:95%;">
+
+</div>
+<div id="RapportsEvenementPassees" style="margin:auto;width:95%;display:none;">
+
+</div>
+

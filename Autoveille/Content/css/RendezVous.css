@@ -4,11 +4,11 @@
 
 .eventText {
     color: white;
-    font-size: 35px;
+    font-size: 1.8em;
 }
 
 #eventState {
-    font-size: 40px;
+    font-size: 1.2em;
 }
 
 #eventDiv {

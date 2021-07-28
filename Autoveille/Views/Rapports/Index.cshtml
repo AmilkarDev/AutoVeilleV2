@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBlack.cshtml";
+}
+
+
+
+@{
+    ViewBag.Title = "TableauDeBordDesFabicants";
+    Layout = "~/Views/Shared/_LayoutBlack.cshtml";
+}
+
+
+<div class="row alertRow" id="eventDiv">
+    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesEnCours()">
+            EVENEMENT
+            <span id="eventState"> EN COURS </span>
+        </a>
+    </div>
+    <div style="float:left;display:flex;justify-content:center" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesAvenir()">
+            EVENEMENT
+            <span id="eventState"> A VENIR </span>
+        </a>
+    </div>
+    <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
+        NOM DU FABRICANT
+    </div>
+</div>
+<br />
+
+<div id="AfficherConcessionnairesEnCours" style="margin:auto;width:95%;">
+
+</div>
+<div id="AfficherConcessionnairesAvenir" style="margin:auto;width:95%;display:none;">
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>   
+
+<script>
+    $(function () {
+        AfficherLesConcessionnairesEnCours();
+    });
+
+
+    function AfficherLesConcessionnairesEnCours() {
+        $('#AfficherConcessionnairesAvenir').css('display', 'none');
+        $('#AfficherConcessionnairesAvenir').empty();
+        $.ajax({
+            url: "/Rapports/EvenementParFabricant/"
+        }).done(function (data) {
+            $("#AfficherConcessionnairesEnCours").html(data);
+        });
+        $('#AfficherConcessionnairesEnCours').css('display', 'block');
+    }
+
+    function AfficherLesConcessionnairesAvenir() {
+        $('#AfficherConcessionnairesEnCours').css('display', 'none');
+        $('#AfficherConcessionnairesEnCours').empty();
+        $.ajax({
+            url: "/Rapports/EvenementAvenirParFabricant/"
+        }).done(function (data) {
+            $("#AfficherConcessionnairesAvenir").html(data);
+        });
+        $('#AfficherConcessionnairesAvenir').css('display', 'block');
+    }
+
+    //chartColors = {
+    //    red: 'rgb(255, 99, 132)',
+    //    orange: 'rgb(255, 159, 64)',
+    //    yellow: 'rgb(255, 205, 86)',
+    //    green: 'rgb(75, 192, 192)',
+    //    blue: 'rgb(54, 162, 235)',
+    //    purple: 'rgb(153, 102, 255)',
+    //    grey: 'rgb(231,233,237)'
+    //};
+
+     setUpCanvas = (c) => {
+        c.width = c.clientWidth;
+        c.height = c.clientHeight;
+    };
+</script>
+

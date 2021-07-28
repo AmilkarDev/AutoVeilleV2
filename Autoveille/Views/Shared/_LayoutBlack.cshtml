@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css" rel="stylesheet" />
     <link href="~/Content/css/InfoConcession.css" rel="stylesheet" />
     <link href="~/Content/css/RendezVous.css" rel="stylesheet" />
-
+    <link href="~/Content/css/RapportsEvenementsEnCours.css" rel="stylesheet" />
     <link href="~/Content/jquery.yacal.css" rel="stylesheet" />
 
     <script src="~/Scripts/flip.min.js"></script>
@@ -27,8 +27,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/unq0nxl.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css" rel="stylesheet" />
-
-
+    <link href="~/Content/css/CompteARebours.css" rel="stylesheet" />
+    <link href="~/Content/css/TableauDeBordDesFabricants.css" rel="stylesheet" />
     <style>
         .downMenu li {
             display: inline;
@@ -122,7 +122,7 @@
                 <a href="Dashboard">Tableau de Bord <span class="sr-only">(current)</span></a>
             </li>
             <li>
-                <a href="#">Rappel </a>
+                @Html.ActionLink("Rappels", "DisplayDashboard", "Home", null, null)
             </li>
             <li>
                 @Html.ActionLink("Gestionnaire d'appels", "InfoConcession", "Home", null, null)
@@ -184,6 +184,37 @@
             }
             $('#menu').toggle();
             //$('#menu').css("display","inline");
+        }
+
+
+        function TickInit(tick) {
+            // set language
+            var locale = {
+                YEAR_PLURAL: 'ANNEES',
+                YEAR_SINGULAR: 'Ans',
+                MONTH_PLURAL: 'Mois',
+                MONTH_SINGULAR: 'MOIS',
+                WEEK_PLURAL: 'Semaines',
+                WEEK_SINGULAR: 'Semaine',
+                DAY_PLURAL: 'JOURS',
+                DAY_SINGULAR: 'Jour',
+                HOUR_PLURAL: 'Heures',
+                HOUR_SINGULAR: 'Heure',
+                MINUTE_PLURAL: 'Minutes',
+                MINUTE_SINGULAR: 'Minute',
+                SECOND_PLURAL: 'Secondes',
+                SECOND_SINGULAR: 'Seconde',
+                MILLISECOND_PLURAL: 'Millisecondes',
+                MILLISECOND_SINGULAR: 'Milliseconde'
+            };
+
+            for (var key in locale) {
+                if (!locale.hasOwnProperty(key)) { continue; }
+                tick.setConstant(key, locale[key]);
+            }
+            var dd = Tick.helper.date();
+            console.log(dd);
+            tick.value = [dd.getDate(), dd.getMonth() + 1, dd.getFullYear()];
         }
     </script>
 

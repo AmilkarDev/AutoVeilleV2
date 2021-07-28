@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "DisplayDashboard";
+    Layout = "~/Views/Shared/_LayoutBlack.cshtml";
+}
+<style>
+
+
+</style>
+<div class="row alertRow" id="eventDiv">
+    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" style="color: white;" onclick="currentEventDashboard()">
+            EVENEMENT
+            <span id="eventState"> EN COURS </span>
+        </a>
+    </div>
+    <div style="float:left;display:flex;justify-content:center" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" style="color: white;" onclick="futureEventDashboard()">
+            EVENEMENT
+            <span id="eventState"> A VENIR </span>
+        </a>
+    </div>
+    <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
+        NOM DU CONCESSIONNAIRE
+    </div>
+</div>
+<br />
+<br />
+
+<div id="currentEventDisplay">
+
+</div>
+
+<div id="futureEventDisplay" style="display:none;">
+
+</div>
+
+
+
+<script>
+
+    $(function () {
+
+        currentEventDashboard();
+
+    });
+        function futureEventDashboard() {
+            $('#currentEventDisplay').css('display', 'none');
+            $.ajax({
+                url: "/Home/FutureEventDashboard/"
+            }).done(function (data) {
+                //handleTickInit(tick);
+                $("#futureEventDisplay").html(data);
+            });
+            $('#futureEventDisplay').css('display', 'block');
+            //console.log("ttttttttttttt");
+
+        }
+  
+        function currentEventDashboard() {
+            $('#futureEventDisplay').css('display', 'none');
+            $.ajax({
+                url: "/Home/EvenementEnCours/"
+            }).done(function (data) {
+                //handleTickInit(tick);
+                $("#currentEventDisplay").html(data);
+            });
+            $('#currentEventDisplay').css('display', 'block');
+        }
+
+    
+</script>

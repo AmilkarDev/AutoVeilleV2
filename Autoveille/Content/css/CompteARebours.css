@@ -1,0 +1,205 @@
+﻿/*html {
+    height: 100%;
+}*/
+.countdownContainer{
+width : 100%;
+}
+#flipContainer {
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+.flip-clock {
+    text-align: center;
+    perspective: 400px;
+    margin: 20px auto;
+}
+
+    .flip-clock *,
+    .flip-clock *:before,
+    .flip-clock *:after {
+        box-sizing: border-box;
+    }
+
+.flip-clock__piece {
+    display: inline-block;
+    margin: 0 5px;
+
+    width:8em;
+}
+
+.flip-clock__slot {
+    /*font-size: 2.8vw;*/
+    font-size : 1.5em;
+    color: white;
+}
+
+.card {
+    display: block;
+    position: relative;
+    padding-bottom: 0.72em;
+    /*font-size: 10vw;*/
+    line-height: 0.95;
+
+    font-size : 4em;
+    width : 1.8em;
+    background:black;
+}
+
+.card__top,
+.card__bottom,
+.card__back::before,
+.card__back::after {
+    display: block;
+    height: 0.72em;
+    color: #ccc;
+    background: #30b8a5;
+    padding: 0.25em 0.25em;
+    border-radius: 0.15em 0.15em 0 0;
+    backface-visiblity: hidden;
+    transform-style: preserve-3d;
+    width: 1.8em;
+}
+
+.card__bottom {
+    color: #FFF;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-top: solid 1px #000;
+    background: #30b8a5;
+    border-radius: 0 0 0.15em 0.15em;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+    .card__bottom::after {
+        display: block;
+        margin-top: -0.72em;
+    }
+
+    .card__back::before,
+    .card__bottom::after {
+        content: attr(data-value);
+    }
+
+
+.card__back {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0%;
+    pointer-events: none;
+}
+
+    .card__back::before {
+        position: relative;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+.flip .card__back::before {
+    animation: flipTop 0.3s cubic-bezier(0.37, 0.01, 0.94, 0.35);
+    animation-fill-mode: both;
+    transform-origin: center bottom;
+}
+
+.flip .card__back .card__bottom {
+    transform-origin: center top;
+    animation-fill-mode: both;
+    animation: flipBottom 0.6s cubic-bezier(0.15, 0.45, 0.28, 1);
+}
+
+
+
+/*.flip-clock:nth-child(1)  .card__top {
+  background-color: red;
+}
+
+.flip-clock:nth-child(1)  .card__bottom {
+  background-color: red;
+}*/
+.days {
+    background: #30b8a5;
+}
+
+.hours {
+    background-color: #2db88f;
+}
+
+.minutes {
+    background-color: #2bb890;
+    /* background-color :#43C6AC;  */
+}
+
+.seconds {
+    background-color: #25c481;
+}
+
+.card {
+  /*  border-radius: 25px;
+    box-shadow: #43C6AC 0px 0px 15px 5px;*/
+}
+
+@keyframes flipTop {
+    0% {
+        transform: rotateX(0deg);
+        z-index: 2;
+    }
+
+    0%, 99% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes flipBottom {
+    0%, 50% {
+        z-index: -1;
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+
+    51% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
+        z-index: 5;
+    }
+}
+
+@media only screen and (min-width:1000px) and (max-width: 1500px) {
+    .flip-clock{
+        margin-left:-25vw
+    }
+
+    .flip-clock__piece {
+        /* width: 8em; */
+        width: 6em;
+    }
+
+    .card {
+        /* font-size: 4em; */
+        /* width: 1.8em; */
+        font-size: 3em;
+        width: 1em;
+    }
+
+    .flip-clock {
+        margin-left: -25vw;
+    }
+
+
+}

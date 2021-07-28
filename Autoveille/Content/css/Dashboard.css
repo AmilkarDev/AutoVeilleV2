@@ -58,16 +58,29 @@
     line-height: 1.45 !important;
 }
 
-.tick-flip-panel {
-    background-color: #E7183C !important;
+.flipContainer .tick-flip-panel {
+    background-color: #E7183C;
+}
+.flipCcontainer .tick-flip-panel {
+    background-color: #E7183C;
+}
+
+.countdownContainer .tick-flip-panel {
+    background-color: #30b8a5;
 }
 
 .tick-flip {
     border-radius: 0.12em !important;
 }
 
-.tick-flip-shadow {
-    box-shadow: 0 0 1em red !important;
+.flipContainer .tick-flip-shadow {
+    box-shadow: 0 0 1em red ;
+}
+.flipCcontainer .tick-flip-shadow {
+    box-shadow: 0 0 1em red;
+}
+.countdownContainer .tick-flip-shadow {
+    box-shadow: 0 0 1em #20bf55;
 }
 
 

@@ -102,6 +102,116 @@ namespace Autoveille.Controllers
             return Json(commerces, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult EvenementEnCours(int? IdConcessionnaire)
+        {
+            var dashboard = new Dashboard()
+            {
+                RDV = 24,
+                Ventes = 15,
+                Oportunites = 94,
+                Potentiels = 300,
+                WalkIn = 32,
+            };
+
+            return PartialView(dashboard);
+        }
+        // Page 17 du maquette
+        public ActionResult ReportEventsDashboard()
+        {
+            return View();
+        
+        }
+
+        public ActionResult RapportsEvenementEnCours()
+        {
+            return View();
+        }
+
+        public ActionResult EvenementParFabricant()
+        {
+            List<ConcessionnaireParFabricant> concessions = new List<ConcessionnaireParFabricant>
+            {
+                new ConcessionnaireParFabricant
+                {
+                    Id=0,
+                    NomConcessionnaire="Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+                new ConcessionnaireParFabricant
+                {
+                    Id=1,
+                    NomConcessionnaire="Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+
+                new ConcessionnaireParFabricant
+                {
+                    Id = 2,
+                    NomConcessionnaire = "Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+
+                new ConcessionnaireParFabricant
+                {
+                    Id=3,
+                    NomConcessionnaire="Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+                new ConcessionnaireParFabricant
+                {
+                    Id = 4,
+                    NomConcessionnaire = "Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+            };
+            return PartialView(concessions);
+        }
+
+
+        public ActionResult EvenementAvenirParFabricant()
+        {
+            List<ConcessionnaireParFabricant> concessions = new List<ConcessionnaireParFabricant>
+            {
+                new ConcessionnaireParFabricant
+                {
+                    Id=0,
+                    NomConcessionnaire="Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+                new ConcessionnaireParFabricant
+                {
+                    Id=1,
+                    NomConcessionnaire="Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+
+                new ConcessionnaireParFabricant
+                {
+                    Id = 2,
+                    NomConcessionnaire = "Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+
+                new ConcessionnaireParFabricant
+                {
+                    Id=3,
+                    NomConcessionnaire="Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+                new ConcessionnaireParFabricant
+                {
+                    Id = 4,
+                    NomConcessionnaire = "Nom Concessionnaire",
+                    DateEvenement = "du 00 au 00 mois 2021"
+                },
+            };
+            return PartialView(concessions);
+        }
+        public ActionResult TableauDeBordDesFabicants()
+        {
+            return View();
+        }
+
         public ActionResult Dashboard()
         {
             var dashboard = new Dashboard()
@@ -113,6 +223,37 @@ namespace Autoveille.Controllers
                 WalkIn=32,
             };
 
+            return View(dashboard);
+        }
+
+        public ActionResult DisplayDashboard()
+        {
+            return View();
+        }
+
+        public ActionResult FutureEventDashboard()
+        {
+            var dashboard = new Dashboard()
+            {
+                RDV = 24,
+                Ventes = 15,
+                Oportunites = 94,
+                Potentiels = 300,
+                WalkIn = 32,
+            };
+            return PartialView(dashboard);
+        }
+
+        public ActionResult ExampleFutureEventDashboard()
+        {
+            var dashboard = new Dashboard()
+            {
+                RDV = 24,
+                Ventes = 15,
+                Oportunites = 94,
+                Potentiels = 300,
+                WalkIn = 32,
+            };
             return View(dashboard);
         }
         public ActionResult InfoConcession()

@@ -1,0 +1,92 @@
+﻿
+@model IEnumerable<Autoveille.TestingModels.ConcessionnaireParFabricant>
+
+    <div id="searchDiv" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+        <div style="width: 50%;display:flex;">
+            <i class="fas fa-search fa-3x iconSearch"></i>
+            <input class="InputRecherche" type="search" placeholder="| Recherche par nom du concessionnaire" />
+        </div>
+        <div style="width:50%;display:flex;flex-direction:row;">
+            <i class="fas fa-search fa-3x iconSearch"></i>
+            <input class="InputRecherche" type="search" placeholder="| Recherche par nom du date" />
+        </div>
+    </div>
+
+    <table class="table appelsTable" style="width:100%;">
+        @foreach (var item in Model)
+        {
+            var rowId = "row" + item.Id;
+            var dashboardsId = "dashboards" + item.Id;
+            var imgId = "img" + item.Id;
+
+            <tr id="@rowId" style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;">
+                <td>
+                    <img id="@imgId" src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayDashboard(@item.Id )" role="button">
+                </td>
+                <td class="appels-td">
+                    @Html.DisplayFor(modelItem => item.NomConcessionnaire)
+                </td>
+                <td class="appels-td">
+                    @Html.DisplayFor(modelItem => item.DateEvenement)
+                </td>
+
+            </tr>
+            <tr>
+                <td id="@dashboardsId" colspan="3" style="display:none;padding:0;">
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+    <script>
+        var idConcession;
+
+
+        function displayDashboard(IdConcessionnaire) {
+            if (idConcession === undefined) {
+                idConcession = IdConcessionnaire;
+            }
+            else if (idConcession != IdConcessionnaire) {
+                hideDashboard(idConcession);
+                idConcession = IdConcessionnaire;
+            }
+
+
+            $.ajax({
+                url: '../Rapports/RapportsEvenementEnCours/',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                data: { IdConcessionnaire: IdConcessionnaire },
+                dataType: 'html',
+                success: function (result) {
+                    var dashboardsId = "dashboards" + IdConcessionnaire;
+                    var imgId = "img" + IdConcessionnaire;
+                    $('#' + dashboardsId).html(result);
+                    $('#' + dashboardsId).toggle();
+                    $('#' + imgId).attr('onclick', 'hideDashboard(' + IdConcessionnaire + ')');
+                    $('#' + imgId).attr('src', '../Content/Images/Layout/Moins.png');
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+
+        function hideDashboard(IdConcessionnaire) {
+            //$('#detailsClient').css('visibility', 'hidden');
+            var dashboardsId = "dashboards" + IdConcessionnaire;
+            var imgId = "img" + IdConcessionnaire;
+            $('#' + imgId).attr('onclick', 'displayDashboard(' + IdConcessionnaire + ')');
+            $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
+            $('#' + dashboardsId).toggle();
+            $('#' + dashboardsId).empty();
+        }
+
+
+    </script>
+
+
+
+    

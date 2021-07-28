@@ -49,10 +49,11 @@
     height: 450px;
 }
 .donutsTitle {
-    display: flex;
+    /*display: flex;
     flex-direction: row;
     padding-top: 20px;
-    padding-left: 50px;
+    padding-left: 50px;*/
+    margin :15px;
 }
 .localTitle {
     font-size: 35px;

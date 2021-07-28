@@ -2,36 +2,14 @@
     ViewBag.Title = "Dashboard";
 }
 @model Autoveille.TestingModels.Dashboard
-<div class="row alertRow" id="eventDiv">
-    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
-        <p class="eventText" style="color: white;">
-            EVENEMENT
-            <span id="eventState"> EN COURS </span>
-        </p>
-    </div>
-    <div style="float:left;display:flex;justify-content:center" class="col-md-4 col-sm-12 col-xs-12">
-        <a class="eventText" style="color: white;" href="@Url.Action("CurrentEventDashboard", "Home")">
-        @*<a class="eventText" style="color: white;" href="@Url.Action("ExportToPdf", "Home")">*@
-            EVENEMENT
-            <span id="eventState"> A VENIR </span>
-        </a>
-    </div>
-    <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
-        NOM DU CONCESSIONNAIRE
-    </div>
-</div>
-<br />
-<br />
-
-
 <div class="row mainRow">
     <div class="col" style="margin-left:35px;width:50%;">
         <div class="row flip-date">
-            <div id="calendar-Label" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <div id="calendar-Label">
                 <img src="~/Content/Images/Layout/Calendar.png" />
                 <text style="color: #ed145b"> Date </text>
             </div>
-            <div class="tick flipContainer col-lg-8 col-md-12 col-sm-12 col-xs-12" data-did-init="handleTickInit">
+            <div class="tick flipContainer" data-did-init="TickInit">
                 <div data-repeat="true" data-layout="horizontal fit" data-transform="preset( d, M,y) -> delay">
                     <div class="tick-group">
                         <div data-key="value" data-transform="pad(00)">
@@ -98,7 +76,7 @@
                     </div>
 
                 </div>
-                </div>
+            </div>
 
             <br />
 
@@ -141,19 +119,22 @@
     window.requestAnimationFrame = raf;
 
     function percentageToRadians(percentage) {
-        var degrees = (percentage/100) * 360;
+        var degrees = (percentage / 100) * 360;
         console.log('for ' + percentage + 'equal ' + (degrees * (Math.PI / 180)));
         var radians = degrees * (Math.PI / 180);
         return radians;
     }
-    $(document).ready(function () {
+    $(function () {
+        
+
+
         var vente = $(".ventePercent").text();
         var opportunities = $('.opportunitiesPercent').text();
         var walkIn = $('.walkInPercent').text();
         var rdvs = $('.rdvPercent').text();
-        
-       /*****************animation task  */
-        var rdvCanvas = document.getElementById('rendezVous-circle'); 
+
+        /*****************animation task  */
+        var rdvCanvas = document.getElementById('rendezVous-circle');
         var ctx = rdvCanvas.getContext('2d');
         var $canvas = $("#rendezVous-circle");
         var canvasOffset = $canvas.offset();
@@ -177,8 +158,8 @@
             y: 170,
             radius: 100,
             // 0deg   - 1.5 * Pi,
-            // 90deg  - 0   * Pi, 
-            // 180deg - 0.5 * Pi, 
+            // 90deg  - 0   * Pi,
+            // 180deg - 0.5 * Pi,
             // 270deg - 1   * Pi
             angleStartArc: 1.5 * Math.PI,
             angleEndArc: 0 * Math.PI,
@@ -190,7 +171,7 @@
             circum: Math.PI * 2
         }
 
-       
+
         drawCircle(rdvCircle, false);
 
         function drawCircle(circle, isInside, draw_to) {
@@ -257,18 +238,18 @@
         /*********** end animation task  */
 
 
-  
 
-    //Create gradient
-    /*var gradient = ctx.createLinearGradient(0, 500, 0, 0);
-    gradient.addColorStop(0, '#c0e674');
-    gradient.addColorStop(1, '#40d6a5');*/
 
-    /****************** Opportunities circle canvas ******************* */
-    //var canvas = document.getElementById('oppo-circle');
-    //var oppoCtx = canvas.getContext('2d');
-    //Create gradient
- 
+        //Create gradient
+        /*var gradient = ctx.createLinearGradient(0, 500, 0, 0);
+        gradient.addColorStop(0, '#c0e674');
+        gradient.addColorStop(1, '#40d6a5');*/
+
+        /****************** Opportunities circle canvas ******************* */
+        //var canvas = document.getElementById('oppo-circle');
+        //var oppoCtx = canvas.getContext('2d');
+        //Create gradient
+
 
 
 
@@ -355,26 +336,26 @@
 
 
 
-    //Draw circle
-    //oppoCtx.beginPath();
-    //oppoCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
-    //oppoCtx.lineWidth = 40;
-    //oppoCtx.shadowColor = '#f39f86';
-    //oppoCtx.shadowBlur = 50;
-    //oppoCtx.shadowOffsetY = 3;
-    //oppoCtx.stroke();
+        //Draw circle
+        //oppoCtx.beginPath();
+        //oppoCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
+        //oppoCtx.lineWidth = 40;
+        //oppoCtx.shadowColor = '#f39f86';
+        //oppoCtx.shadowBlur = 50;
+        //oppoCtx.shadowOffsetY = 3;
+        //oppoCtx.stroke();
 
 
-    //Draw arc
-    //oppoCtx.beginPath();
-    //    oppoCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(opportunities));
-    //oppoCtx.strokeStyle = yellowGradient;
-    //oppoCtx.lineWidth = 40;
-    //oppoCtx.lineCap = 'round';
-    //oppoCtx.stroke();
+        //Draw arc
+        //oppoCtx.beginPath();
+        //    oppoCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(opportunities));
+        //oppoCtx.strokeStyle = yellowGradient;
+        //oppoCtx.lineWidth = 40;
+        //oppoCtx.lineCap = 'round';
+        //oppoCtx.stroke();
 
 
-    /**********WALK iN CIRCLE  */
+        /**********WALK iN CIRCLE  */
 
 
 
@@ -454,34 +435,32 @@
 
 
 
-   /* var canvas = document.getElementById('walkIn-circle');
-
-    var walkInCtx = canvas.getContext('2d');
-    //Create gradient
-    var blueGradient = ctx.createLinearGradient(0, 500, 0, 0);
-    blueGradient.addColorStop(0, '#32B9A9');
-    blueGradient.addColorStop(1, '#32B9A9');
-
-
-    //Draw circle
-    walkInCtx.beginPath();
-    walkInCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
-    walkInCtx.lineWidth = 40;
-    walkInCtx.shadowColor = '#09c6f9';
-    walkInCtx.shadowBlur = 50;
-    walkInCtx.shadowOffsetY = 3;
-    walkInCtx.stroke();
-
-
-    //Draw arc
-    walkInCtx.beginPath();
-    walkInCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(walkIn));
-    walkInCtx.strokeStyle = blueGradient;
-    walkInCtx.lineWidth = 40;
-    walkInCtx.lineCap = 'round';
-    walkInCtx.stroke();*/
-
-
+        /* var canvas = document.getElementById('walkIn-circle');
+ 
+         var walkInCtx = canvas.getContext('2d');
+         //Create gradient
+         var blueGradient = ctx.createLinearGradient(0, 500, 0, 0);
+         blueGradient.addColorStop(0, '#32B9A9');
+         blueGradient.addColorStop(1, '#32B9A9');
+ 
+ 
+         //Draw circle
+         walkInCtx.beginPath();
+         walkInCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
+         walkInCtx.lineWidth = 40;
+         walkInCtx.shadowColor = '#09c6f9';
+         walkInCtx.shadowBlur = 50;
+         walkInCtx.shadowOffsetY = 3;
+         walkInCtx.stroke();
+ 
+ 
+         //Draw arc
+         walkInCtx.beginPath();
+         walkInCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(walkIn));
+         walkInCtx.strokeStyle = blueGradient;
+         walkInCtx.lineWidth = 40;
+         walkInCtx.lineCap = 'round';
+         walkInCtx.stroke();*/
 
 
 
@@ -495,7 +474,9 @@
 
 
 
-    /******************sales circle **********/
+
+
+        /******************sales circle **********/
 
         var venteCanvas = document.getElementById('vente-circle');
         var ctx = venteCanvas.getContext('2d');
@@ -580,46 +561,48 @@
 
 
 
-   /* var canvas = document.getElementById('vente-circle');
+        /* var canvas = document.getElementById('vente-circle');
+ 
+         var venteCtx = canvas.getContext('2d');
+         //Create gradient
+         var purpleGradient = ctx.createLinearGradient(0, 500, 0, 0);
+         purpleGradient.addColorStop(0, '#ffa69e');
+         purpleGradient.addColorStop(1, '#861657');
+ 
+ 
+         //Draw circle
+         venteCtx.beginPath();
+         venteCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
+         venteCtx.lineWidth = 40;
+         venteCtx.shadowColor = '#a4508b';
+         venteCtx.shadowBlur = 50;
+         venteCtx.shadowOffsetY = 3;
+         venteCtx.stroke();
+ 
+ 
+         //Draw arc
+         venteCtx.beginPath();
+             venteCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(vente));
+         venteCtx.strokeStyle = purpleGradient;
+         venteCtx.lineWidth = 40;
+         venteCtx.lineCap = 'round';
+         venteCtx.stroke();
+ 
+ 
+ 
+ 
+             console.log(vente)
+             console.log(opportunities);
+             console.log(walkIn);
+             console.log(typeof(rdvs));
+ 
+     */
 
-    var venteCtx = canvas.getContext('2d');
-    //Create gradient
-    var purpleGradient = ctx.createLinearGradient(0, 500, 0, 0);
-    purpleGradient.addColorStop(0, '#ffa69e');
-    purpleGradient.addColorStop(1, '#861657');
-
-
-    //Draw circle
-    venteCtx.beginPath();
-    venteCtx.arc(x, x, radius, 0, 2 * Math.PI, false);
-    venteCtx.lineWidth = 40;
-    venteCtx.shadowColor = '#a4508b';
-    venteCtx.shadowBlur = 50;
-    venteCtx.shadowOffsetY = 3;
-    venteCtx.stroke();
-
-
-    //Draw arc
-    venteCtx.beginPath();
-        venteCtx.arc(x, y, radius, angleStart, angleStart + percentageToRadians(vente));
-    venteCtx.strokeStyle = purpleGradient;
-    venteCtx.lineWidth = 40;
-    venteCtx.lineCap = 'round';
-    venteCtx.stroke();
 
 
 
-
-        console.log(vente)
-        console.log(opportunities);
-        console.log(walkIn);
-        console.log(typeof(rdvs));
-
-*/
     });
-
-
-
+  
 
     //var canvaas = document.getElementById("barChart");
     //var cttx = canvaas.getContext('2d');
@@ -676,6 +659,15 @@
 
 
 
+    var element = document.querySelector('.flipContainer');
+    var tick = Tick.DOM.create(element, {
+        //value: 1000,
+        didInit: function (tick) {
+            //console.log(tick);
+            handleTickInit(tick);
+        },
+        // repeater : 
+    });
 
 
     //Flip Date script
@@ -705,7 +697,7 @@
             tick.setConstant(key, locale[key]);
         }
         var dd = Tick.helper.date();
-        console.log(dd);
+        //console.log(dd);
         tick.value = [dd.getDate(), dd.getMonth() + 1, dd.getFullYear()];
     }
 </script>
