@@ -28,6 +28,11 @@
                 </td>
                 <td class="appels-td">
                     @Html.DisplayFor(modelItem => item.DateEvenement)
+                    <label style="float:right;">
+                        <input type="checkbox" name="vente" value="Vente">
+                        <span>     </span>
+                    </label>
+                    @*<input class="custom-checkbox" style="border-color:black;display:block;float:right;" checked="checked" type="checkbox" name="concessionCheck" value="@item.Id" />*@
                 </td>
 
             </tr>
@@ -82,6 +87,11 @@
             $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
             $('#' + dashboardsId).toggle();
             $('#' + dashboardsId).empty();
+
+
+            //if (myBar) {
+            //    myBar.destroy();
+            //}
         }
 
 

@@ -557,7 +557,17 @@
                         duration: 1,
                         easing: 'linear'
                     },
-                }
+                },
+                // Core options
+                aspectRatio: 5 / 3,
+                layout: {
+                    padding: {
+                        top: 24,
+                        right: 55,
+                        bottom: 0,
+                        left: 10
+                    }
+                },
             }
         });
         $("#legend-container").html(verticalBars.generateLegend());
@@ -1229,6 +1239,9 @@
         };
 
         var lineOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 5 / 3,
             layout: {
                 padding: {
                     left: 15,

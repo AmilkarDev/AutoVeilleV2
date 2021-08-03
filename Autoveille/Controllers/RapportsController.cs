@@ -101,5 +101,16 @@ namespace Autoveille.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult Comparateur()
+        {
+
+            return View();
+        }
+
+        public ActionResult Rapports_PartialCurrentEvent()
+        {
+            return PartialView();
+        }
     }
 }

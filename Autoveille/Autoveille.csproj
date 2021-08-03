@@ -305,6 +305,7 @@
     <Content Include="Scripts\jquery.yacal.js" />
     <Content Include="Scripts\MyScripts\RapportEvenemenentEnCoursScript.js" />
     <Content Include="Scripts\pqinaScript.js" />
+    <Content Include="Scripts\MyScripts\Rapports_PartialCurrentEvent.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -354,6 +355,8 @@
     <Content Include="Views\Rapports\EvenementParFabricant.cshtml" />
     <Content Include="Views\Rapports\EvenementAvenirParFabricant.cshtml" />
     <Content Include="Views\Rapports\RapportsEvenementEnCours.cshtml" />
+    <Content Include="Views\Rapports\Comparateur.cshtml" />
+    <Content Include="Views\Rapports\Rapports_PartialCurrentEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

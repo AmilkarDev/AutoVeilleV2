@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Comparateur";
+    Layout = "~/Views/Shared/_LayoutBlack.cshtml";
+}
+<div class="rootContainer" style="display:flex;flex-direction:column;">
+    <div style="display:flex;width:100%;">
+        <div style="width:50%; height:auto;">
+            @{
+                Html.RenderAction("Rapports_PartialCurrentEvent","Rapports");
+            }
+        </div>
+        <div style="width:50%;">
+                @{
+                    Html.RenderAction("Rapports_PartialCurrentEvent","Rapports");
+                }
+            </div>
+
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
+<script src="~/Scripts/MyScripts/Rapports_PartialCurrentEvent.js"></script>
+@*<script>
+       var  setUpCanvas = (c) => {
+            c.width = c.clientWidth;
+            c.height = c.clientHeight;
+        };
+    </script>*@

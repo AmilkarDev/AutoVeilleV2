@@ -1,4 +1,5 @@
-﻿//var chartColors = {
+﻿
+//var chartColors = {
 //    red: 'rgb(255, 99, 132)',
 //    orange: 'rgb(255, 159, 64)',
 //    yellow: 'rgb(255, 205, 86)',
@@ -12,7 +13,10 @@
 //    c.width = c.clientWidth;
 //    c.height = c.clientHeight;
 //};
-
+var setUpCanvas = (c) => {
+    c.width = c.clientWidth;
+    c.height = c.clientHeight;
+};
 var randomScalingFactor = function () {
     return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
 };
@@ -207,8 +211,20 @@ var verticalBars = new Chart(ctx, {
     },
     options: {
         //cornerRadius: 8,
+       // responsive: true,
+        aspectRatio: 5 / 3,
+       // maintainAspectRatio: false,
+        layout: {
+            padding: {
+                top: 24,
+                right: 55,
+                bottom: 0,
+                left: 10
+            }
+        },
         plugins: {
             datalabels: {
+                display: true,
                 align: 'end',
                 anchor: 'end',
                 color: 'white',
@@ -314,277 +330,8 @@ $("#legend-container").html(verticalBars.generateLegend());
 
 
 
-/********* Horizontal Bar Chart display and animation ******/
 
-Chart.elements.Rectangle.prototype.draw = function () {
-
-    var ctx = this._chart.ctx;
-    var vm = this._view;
-    var left, right, top, bottom, signX, signY, borderSkipped, radius;
-    var borderWidth = vm.borderWidth;
-
-    // Set Radius Here
-    // If radius is large enough to cause drawing errors a max radius is imposed
-    var cornerRadius = 75;
-
-    left = vm.base;
-    right = vm.x;
-    top = vm.y - vm.height / 2;
-    bottom = vm.y + vm.height / 2;
-    signX = right > left ? 1 : -1;
-    signY = 1;
-    borderSkipped = vm.borderSkipped || 'left';
-
-    // Canvas doesn't allow us to stroke inside the width so we can
-    // adjust the sizes to fit if we're setting a stroke on the line
-    if (borderWidth) {
-        // borderWidth shold be less than bar width and bar height.
-        var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
-        borderWidth = borderWidth > barSize ? barSize : borderWidth;
-        var halfStroke = borderWidth / 2;
-        // Adjust borderWidth when bar top position is near vm.base(zero).
-        var borderLeft = left + (borderSkipped !== 'left' ? halfStroke * signX : 0);
-        var borderRight = right + (borderSkipped !== 'right' ? -halfStroke * signX : 0);
-        var borderTop = top + (borderSkipped !== 'top' ? halfStroke * signY : 0);
-        var borderBottom = bottom + (borderSkipped !== 'bottom' ? -halfStroke * signY : 0);
-        // not become a vertical line?
-        if (borderLeft !== borderRight) {
-            top = borderTop;
-            bottom = borderBottom;
-        }
-        // not become a horizontal line?
-        if (borderTop !== borderBottom) {
-            left = borderLeft;
-            right = borderRight;
-        }
-    }
-
-    ctx.beginPath();
-    ctx.shadowColor = 'purple';
-    ctx.shadowBlur = 80;
-    // ctx.shadowOffsetY=15;
-    // ctx.shadowOffsetX=15;
-    ctx.fillStyle = vm.backgroundColor;
-    ctx.strokeStyle = vm.borderColor;
-    ctx.lineWidth = borderWidth;
-
-    // Corner points, from bottom-left to bottom-right clockwise
-    // | 1 2 |
-    // | 0 3 |
-    var corners = [
-        [left, bottom],
-        [left, top],
-        [right, top],
-        [right, bottom]
-    ];
-
-    // Find first (starting) corner with fallback to 'bottom'
-    var borders = ['bottom', 'left', 'top', 'right'];
-    var startCorner = borders.indexOf(borderSkipped, 0);
-    if (startCorner === -1) {
-        startCorner = 0;
-    }
-
-    function cornerAt(index) {
-        return corners[(startCorner + index) % 4];
-    }
-
-    // Draw rectangle from 'startCorner'
-    var corner = cornerAt(0);
-    var width, height, x, y, nextCorner, nextCornerId
-    var x_tl, x_tr, y_tl, y_tr;
-    var x_bl, x_br, y_bl, y_br;
-    ctx.moveTo(corner[0], corner[1]);
-
-    for (var i = 1; i < 4; i++) {
-        corner = cornerAt(i);
-        nextCornerId = i + 1;
-        if (nextCornerId == 4) {
-            nextCornerId = 0
-        }
-
-        nextCorner = cornerAt(nextCornerId);
-
-        width = corners[2][0] - corners[1][0];
-        height = corners[0][1] - corners[1][1];
-        x = corners[1][0];
-        y = corners[1][1];
-        radius = cornerRadius;
-
-        // Fix radius being too large
-        if (radius > Math.abs(height) / 2) {
-            radius = Math.floor(Math.abs(height) / 2);
-        }
-        if (radius > Math.abs(width) / 2) {
-            radius = Math.floor(Math.abs(width) / 2);
-        }
-        ctx.moveTo(x, y);
-        ctx.lineTo(x + width - radius, y);
-        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-        ctx.lineTo(x + width, y + height - radius);
-        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-        ctx.lineTo(x, y + height);
-    }
-    ctx.fill();
-    if (borderWidth) {
-        ctx.stroke();
-    }
-};
-
-
-
-var ctx = document.getElementById("horizontalBarsCanvas").getContext("2d");
-
-var green_blue_gradient = ctx.createLinearGradient(0, 0, 250, 0);
-green_blue_gradient.addColorStop(0, '#4f0457');
-green_blue_gradient.addColorStop(1, '#940f66');
-
-
-var purple_orange_gradient = ctx.createLinearGradient(0, 0, 250, 0);
-purple_orange_gradient.addColorStop(0, '#ba4e97');
-purple_orange_gradient.addColorStop(1, '#dc3c85');
-
-
-var orange_red_gradient = ctx.createLinearGradient(0, 0, 70, 0);
-orange_red_gradient.addColorStop(1, '#cc3677');
-orange_red_gradient.addColorStop(0, '#dc2567');
-
-var myBar = new Chart(ctx, {
-    type: 'horizontalBar',
-
-    data: {
-        labels: ["Neuf", "Occasion", "Location"],
-        datasets: [{
-            axis: 'y',
-            //label: 'My First Dataset',
-            data: [47, 52, 31],
-            barPercentage: 0.4,
-
-            fill: false,
-            hoverBackgroundColor:
-                ['#c83a79', '#bf4e9a', '#55015c'],
-            backgroundColor: [orange_red_gradient, purple_orange_gradient, green_blue_gradient, 'green'],
-        }]
-    },
-    options: {
-        //cornerRadius: 8,
-        //barPercentage : 0.5,
-        barThickness: 10,
-        indexAxis: 'y',
-        plugins: {
-            datalabels: {
-                align: 'end',
-                anchor: 'end',
-                color: 'white',
-                //   padding : {
-                //   right : 150
-                // },
-                font: {
-                    weight: 'bold',
-                    size: 15
-                },
-
-                formatter: function (value, context) {
-                    return value;
-                }
-            },
-        },
-        legend: {
-            display: false,
-            position: 'bottom'
-        },
-        legendCallback: function (chart) {
-            var text = [];
-
-            text.push('<ul class="' + chart.id + '-legend">');
-            for (var i = 0; i < chart.data.labels.length; i++) {
-                text.push('<li style="list-style-type:none;"><div class="legendValue"><span style="border-radius :15px;margin-right:15px;background-color:' + chart.data.datasets[0].hoverBackgroundColor[i] + '">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
-
-                if (chart.data.labels[i]) {
-                    text.push('<span class="label" style="color:white;">' + chart.data.labels[i] + '</span><br> <br>');
-                }
-
-                text.push('</div></li><div class="clear"></div>');
-            }
-
-            text.push('</ul>');
-
-            return text.join('');
-        },
-
-        responsive: true,
-        //barRoundness: 10,
-
-        title: {
-            display: false,
-            text: "Chart.js - Bar Chart with Rounded Tops and customized grid"
-        },
-        scales: {
-            xAxes: [{
-                display: true,
-                gridLines: {
-                    display: true,
-                    drawBorder: false,
-                    color: 'white'
-                },
-
-                ticks: {
-                    min: 0,
-                    stepSize: 5,
-                    padding: 10,
-                    fontSize: 15,
-                    fontStyle: 'Bold',
-                },
-                beginAtZero: true,
-
-
-            }],
-            yAxes: [{
-                gridLines: {
-                    display: true,
-                    drawOnChartArea: false,
-                    drawBorder: true,
-                    borderColor: 'white',
-                    color: 'white',
-                    width: 15,
-                    tickMarkLength: 100,
-                    drawTicks: false,
-                    min: 0,
-                },
-                ticks: {
-                    display: false,
-
-                    // min :0,
-                    stepSize: 50,
-                    padding: 10,
-                    fontSize: 15,
-                    fontStyle: 'Bold',
-                }
-            }],
-            animation: {
-                duration: 1,
-                easing: 'linear'
-            },
-        },
-
-        // Core options
-        aspectRatio: 5 / 3,
-        layout: {
-            padding: {
-                top: 24,
-                right: 55,
-                bottom: 0,
-                left: 10
-            }
-        },
-    }
-});
-
-
-// Create our legend
-$("#horizontalBarsLegendContainer").html(myBar.generateLegend());
-
-
+//myBar.update();
 
 
 
@@ -967,14 +714,16 @@ var data = {
 };
 
 var lineOptions = {
-    layout: {
-        padding: {
-            left: 15,
-            right: 30,
-            top: 15,
-            bottom: 15
-        }
-    },
+    //layout: {
+    //    padding: {
+    //        left: 15,
+    //        right: 30,
+    //        top: 15,
+    //        bottom: 15
+    //    }
+    //},
+    //aspectRatio:5 / 3,
+    //maintainAspectRatio: false,
     scales: {
         xAxes: [{
             stacked: false,
@@ -1035,24 +784,304 @@ var myLineChart = new Chart(ctx, {
 
 
 
+/********* Horizontal Bar Chart display and animation ******/
+
+Chart.elements.Rectangle.prototype.draw = function () {
+
+    var ctx = this._chart.ctx;
+    var vm = this._view;
+    var left, right, top, bottom, signX, signY, borderSkipped, radius;
+    var borderWidth = vm.borderWidth;
+
+    // Set Radius Here
+    // If radius is large enough to cause drawing errors a max radius is imposed
+    var cornerRadius = 75;
+
+    left = vm.base;
+    right = vm.x;
+    top = vm.y - vm.height / 2;
+    bottom = vm.y + vm.height / 2;
+    signX = right > left ? 1 : -1;
+    signY = 1;
+    borderSkipped = vm.borderSkipped || 'left';
+
+    // Canvas doesn't allow us to stroke inside the width so we can
+    // adjust the sizes to fit if we're setting a stroke on the line
+    if (borderWidth) {
+        // borderWidth shold be less than bar width and bar height.
+        var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
+        borderWidth = borderWidth > barSize ? barSize : borderWidth;
+        var halfStroke = borderWidth / 2;
+        // Adjust borderWidth when bar top position is near vm.base(zero).
+        var borderLeft = left + (borderSkipped !== 'left' ? halfStroke * signX : 0);
+        var borderRight = right + (borderSkipped !== 'right' ? -halfStroke * signX : 0);
+        var borderTop = top + (borderSkipped !== 'top' ? halfStroke * signY : 0);
+        var borderBottom = bottom + (borderSkipped !== 'bottom' ? -halfStroke * signY : 0);
+        // not become a vertical line?
+        if (borderLeft !== borderRight) {
+            top = borderTop;
+            bottom = borderBottom;
+        }
+        // not become a horizontal line?
+        if (borderTop !== borderBottom) {
+            left = borderLeft;
+            right = borderRight;
+        }
+    }
+
+    ctx.beginPath();
+    ctx.shadowColor = 'purple';
+    ctx.shadowBlur = 80;
+    // ctx.shadowOffsetY=15;
+    // ctx.shadowOffsetX=15;
+    ctx.fillStyle = vm.backgroundColor;
+    ctx.strokeStyle = vm.borderColor;
+    ctx.lineWidth = borderWidth;
+
+    // Corner points, from bottom-left to bottom-right clockwise
+    // | 1 2 |
+    // | 0 3 |
+    var corners = [
+        [left, bottom],
+        [left, top],
+        [right, top],
+        [right, bottom]
+    ];
+
+    // Find first (starting) corner with fallback to 'bottom'
+    var borders = ['bottom', 'left', 'top', 'right'];
+    var startCorner = borders.indexOf(borderSkipped, 0);
+    if (startCorner === -1) {
+        startCorner = 0;
+    }
+
+    function cornerAt(index) {
+        return corners[(startCorner + index) % 4];
+    }
+
+    // Draw rectangle from 'startCorner'
+    var corner = cornerAt(0);
+    var width, height, x, y, nextCorner, nextCornerId
+    var x_tl, x_tr, y_tl, y_tr;
+    var x_bl, x_br, y_bl, y_br;
+    ctx.moveTo(corner[0], corner[1]);
+
+    for (var i = 1; i < 4; i++) {
+        corner = cornerAt(i);
+        nextCornerId = i + 1;
+        if (nextCornerId == 4) {
+            nextCornerId = 0
+        }
+
+        nextCorner = cornerAt(nextCornerId);
+
+        width = corners[2][0] - corners[1][0];
+        height = corners[0][1] - corners[1][1];
+        x = corners[1][0];
+        y = corners[1][1];
+        radius = cornerRadius;
+
+        // Fix radius being too large
+        if (radius > Math.abs(height) / 2) {
+            radius = Math.floor(Math.abs(height) / 2);
+        }
+        if (radius > Math.abs(width) / 2) {
+            radius = Math.floor(Math.abs(width) / 2);
+        }
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        ctx.lineTo(x, y + height);
+    }
+    ctx.fill();
+    if (borderWidth) {
+        ctx.stroke();
+    }
+};
+
+
+
+var ctx = document.getElementById("horizontalBarsCanvas").getContext("2d");
+
+var green_blue_gradient = ctx.createLinearGradient(0, 0, 250, 0);
+green_blue_gradient.addColorStop(0, '#4f0457');
+green_blue_gradient.addColorStop(1, '#940f66');
+
+
+var purple_orange_gradient = ctx.createLinearGradient(0, 0, 250, 0);
+purple_orange_gradient.addColorStop(0, '#ba4e97');
+purple_orange_gradient.addColorStop(1, '#dc3c85');
+
+
+var orange_red_gradient = ctx.createLinearGradient(0, 0, 70, 0);
+orange_red_gradient.addColorStop(1, '#cc3677');
+orange_red_gradient.addColorStop(0, '#dc2567');
+//console.log("horizontal Bar chart");
+
+var myBarConfig = {
+    type: 'horizontalBar',
+
+    data: {
+        //labels: ["Neuf", "Occasion", "Location"],
+        datasets: [{
+            axis: 'y',
+            //label: 'My First Dataset',
+            //data: [50, 52, 51],
+            barPercentage: 0.4,
+
+            fill: false,
+            hoverBackgroundColor:
+                ['#c83a79', '#bf4e9a', '#55015c'],
+            backgroundColor: [orange_red_gradient, purple_orange_gradient, green_blue_gradient, 'green'],
+        }]
+    },
+    options: {
+        //cornerRadius: 8,
+        //barPercentage : 0.5,
+        barThickness: 10,
+        indexAxis: 'y',
+        plugins: {
+            datalabels: {
+                display: true,
+                align: 'end',
+                anchor: 'end',
+                color: 'white',
+                //   padding : {
+                //   right : 150
+                // },
+                font: {
+                    weight: 'bold',
+                    size: 15
+                },
+
+                //formatter: function (value, context) {
+                //    console.log(value);
+                //    //return value;
+                //},
+                //labels: {
+                //    value: {
+                //        color: 'white'
+                //    }
+                //}
+            },
+        },
+        legend: {
+            display: false,
+            position: 'bottom'
+        },
+        legendCallback: function (chart) {
+            var text = [];
+
+            text.push('<ul class="' + chart.id + '-legend">');
+            for (var i = 0; i < chart.data.labels.length; i++) {
+                text.push('<li style="list-style-type:none;"><div class="legendValue"><span style="border-radius :15px;margin-right:15px;background-color:' + chart.data.datasets[0].hoverBackgroundColor[i] + '">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+
+                if (chart.data.labels[i]) {
+                    text.push('<span class="label" style="color:white;">' + chart.data.labels[i] + '</span><br> <br>');
+                }
+
+                text.push('</div></li><div class="clear"></div>');
+            }
+
+            text.push('</ul>');
+
+            return text.join('');
+        },
+
+        responsive: true,
+        //barRoundness: 10,
+
+        title: {
+            display: false,
+            text: "Chart.js - Bar Chart with Rounded Tops and customized grid"
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                gridLines: {
+                    display: true,
+                    drawBorder: false,
+                    color: 'white'
+                },
+
+                ticks: {
+                    min: 0,
+                    stepSize: 5,
+                    padding: 10,
+                    fontSize: 15,
+                    fontStyle: 'Bold',
+                },
+                beginAtZero: true,
+
+
+            }],
+            yAxes: [{
+                gridLines: {
+                    display: true,
+                    drawOnChartArea: false,
+                    drawBorder: true,
+                    borderColor: 'white',
+                    color: 'white',
+                    width: 15,
+                    tickMarkLength: 100,
+                    drawTicks: false,
+                    min: 0,
+                },
+                ticks: {
+                    display: false,
+
+                    // min :0,
+                    stepSize: 50,
+                    padding: 10,
+                    fontSize: 15,
+                    fontStyle: 'Bold',
+                }
+            }],
+            animation: {
+                duration: 1,
+                easing: 'linear'
+            },
+        },
+        // Core options
+        aspectRatio: 5 / 3,
+        layout: {
+            padding: {
+                top: 24,
+                right: 55,
+                bottom: 0,
+                left: 10
+            }
+        },
+    }
+};
+var myBar = new Chart(ctx, myBarConfig);
+
+myBar.data.datasets[0].data = [47, 52, 31];
+myBar.data.labels = ["Neuf", "Occasion", "Location"];
+myBar.update();
+
+$("#horizontalBarsLegendContainer").html(myBar.generateLegend());
+
 function explodePieceOnSelect() {
     $('#ExplodedPieChart').on('click', function (event) {
-        var activePoints = myChart.getElementsAtEvent(event);
+        var activePoints = myPie.getElementsAtEvent(event);
 
         if (activePoints.length > 0) {
             //get the internal index of slice in pie chart
             var clickedElementindex = activePoints[0]["_index"];
 
             //get specific label by index
-            var clickedLabel = myChart.data.labels[clickedElementindex];
+            var clickedLabel = myPie.data.labels[clickedElementindex];
 
             if (currentSelectedPieceLabel.toUpperCase() == "") {
                 // no piece selected yet, save piece label
                 currentSelectedPieceLabel = clickedLabel.toUpperCase();
 
                 // clear whole pie
-                myChart.outerRadius = defaultRadiusMyChart;
-                myChart.update();
+                myPie.outerRadius = defaultRadiusMyChart;
+                myPie.update();
 
                 // update selected pie
                 activePoints[0]["_model"].outerRadius = defaultRadiusMyChart + addRadiusMargin;
@@ -1063,8 +1092,8 @@ function explodePieceOnSelect() {
                     currentSelectedPieceLabel = "";
 
                     // clear whole pie
-                    myChart.outerRadius = defaultRadiusMyChart;
-                    myChart.update();
+                    myPie.outerRadius = defaultRadiusMyChart;
+                    myPie.update();
 
                     // update selected pie
                     activePoints[0]["_model"].outerRadius = defaultRadiusMyChart;
@@ -1074,14 +1103,14 @@ function explodePieceOnSelect() {
                     currentSelectedPieceLabel = clickedLabel.toUpperCase();
 
                     // clear whole pie
-                    myChart.outerRadius = defaultRadiusMyChart;
-                    myChart.update();
+                    myPie.outerRadius = defaultRadiusMyChart;
+                    myPie.update();
 
                     // update the newly selected piece
                     activePoints[0]["_model"].outerRadius = defaultRadiusMyChart + addRadiusMargin;
                 }
             }
-            myChart.render(200, false);
+            myPie.render(200, false);
         }
     });
 }
@@ -1095,6 +1124,9 @@ var addRadiusMargin = 10;
 var currentSelectedPieceLabel = "";
 var myPie;
 $(document).ready(function () {
+   
+
+
 
     /****************** Exploded pie chart display and animation ************/
 
@@ -1181,19 +1213,8 @@ $(document).ready(function () {
     });
     $("#pieLegends").html(myPie.generateLegend());
 
-
-
-
-
-
-
-    defaultRadiusMyChart = myChart.outerRadius;
-
+    defaultRadiusMyChart = myPie.outerRadius;
+     
     explodePieceOnSelect();
-
-
-
-
-
 
 });
