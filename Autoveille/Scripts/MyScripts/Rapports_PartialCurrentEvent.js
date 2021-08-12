@@ -435,8 +435,12 @@ var defaultRadiusMyChart;
 var addRadiusMargin = 10;
 var currentSelectedPieceLabel = "";
 var myPie;
-$(document).ready(function () {
-
+//$(document).ready(function () {
+   // id++;
+    eventId = evt;
+    //console.log(id);
+    //var eventId = $(".eventIdentifier").last().val();
+    //console.log($(this).find('input[type=hidden]').filter(':first').val());
     Chart.helpers.merge(Chart.defaults.global, {
         datasets: {
             roundedBar: {
@@ -552,9 +556,9 @@ $(document).ready(function () {
     Chart.controllers.roundedBar = Chart.controllers.bar.extend({
         dataElementType: Chart.elements.RoundedTopRectangle
     });
-/*******************Vertcal Bars chart *********** */
-    var ctx = document.getElementById("barsCanvas").getContext("2d");
-
+    /*******************Vertcal Bars chart *********** */
+    var ctx = document.getElementById("barsCanvas" + eventId).getContext("2d");
+    //console.log("contexta is " + ctx);
     var green_blue_gradient = ctx.createLinearGradient(0, 0, 0, 600);
     green_blue_gradient.addColorStop(1, '#f07654');
     green_blue_gradient.addColorStop(0, '#f5df2e');
@@ -627,7 +631,7 @@ $(document).ready(function () {
         },
         options: verticalBarsOptions
     });
-    $("#legend-container").html(verticalBars.generateLegend());
+    $("#legend-container" + eventId).html(verticalBars.generateLegend());
 
 
     /*************** */
@@ -783,20 +787,20 @@ $(document).ready(function () {
     gradient.addColorStop(0, '#01baef');
     gradient.addColorStop(1, '#20bf55');
 
-    drawCircle(circleRdvJour1, 'circleRdvJour1', false);
-    drawCircle(circleRdvJour2, 'circleRdvJour2', false);
-    drawCircle(circleRdvJour3, 'circleRdvJour3', false);
-    drawCircle(circleRdvHorsEvt, 'circleRdvHorsEvt', false);
+    drawCircle(circleRdvJour1, 'circleRdvJour1_' + eventId, false);
+    drawCircle(circleRdvJour2, 'circleRdvJour2_' + eventId, false);
+    drawCircle(circleRdvJour3, 'circleRdvJour3_' + eventId, false);
+    drawCircle(circleRdvHorsEvt, 'circleRdvHorsEvt_' + eventId, false);
 
-    drawCircle(circleVenteJour1, 'circleVenteJour1', false);
-    drawCircle(circleVenteJour2, 'circleVenteJour2', false);
-    drawCircle(circleVenteJour3, 'circleVenteJour3', false);
-    drawCircle(circleVenteHorsEvt, 'circleVenteHorsEvt', false);
-
-
+    drawCircle(circleVenteJour1, 'circleVenteJour1_' + eventId, false);
+    drawCircle(circleVenteJour2, 'circleVenteJour2_' + eventId, false);
+    drawCircle(circleVenteJour3, 'circleVenteJour3_' + eventId, false);
+    drawCircle(circleVenteHorsEvt, 'circleVenteHorsEvt_' + eventId, false);
 
 
-    var ctx = document.getElementById("lineChart");
+
+
+    var ctx = document.getElementById("lineChart" + eventId);
     /********* Line charts display and configuration  ************/
 
     Chart.defaults.global.plugins.datalabels.display = false;
@@ -924,7 +928,7 @@ $(document).ready(function () {
             ctx.stroke();
         }
     };
-    var ctx = document.getElementById("horizontalBarsCanvas").getContext("2d");
+    var ctx = document.getElementById("horizontalBarsCanvas" + eventId).getContext("2d");
 
     var green_blue_gradient = ctx.createLinearGradient(0, 0, 250, 0);
     green_blue_gradient.addColorStop(0, '#4f0457');
@@ -987,7 +991,7 @@ $(document).ready(function () {
 
                 text.push('<ul class="' + chart.id + '-legend">');
                 for (var i = 0; i < chart.data.labels.length; i++) {
-                    text.push('<li style="list-style-type:none;"><div class="legendValue"><span style="border-radius :15px;margin-right:15px;background-color:' + chart.data.datasets[0].hoverBackgroundColor[i] + '">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+                    text.push('<li style="list-style-type:none;"><div class="legendValue" > <span style="border-radius :15px;margin-right:15px;background-color:' + chart.data.datasets[0].hoverBackgroundColor[i] + '">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 
                     if (chart.data.labels[i]) {
                         text.push('<span class="label" style="color:white;">' + chart.data.labels[i] + '</span><br> <br>');
@@ -1075,10 +1079,10 @@ $(document).ready(function () {
     myBar.data.labels = ["Neuf", "Occasion", "Location"];
     myBar.update();
 
-    $("#horizontalBarsLegendContainer").html(myBar.generateLegend());
+    $("#horizontalBarsLegendContainer"+eventId).html(myBar.generateLegend());
     /****************** Exploded pie chart display and animation ************/
 
-    var ctx = document.getElementById("ExplodedPieChart");
+    var ctx = document.getElementById("ExplodedPieChart" + eventId);
 
     var draw = Chart.controllers.pie.prototype.draw;
     Chart.controllers.pie = Chart.controllers.doughnut.extend({
@@ -1159,7 +1163,7 @@ $(document).ready(function () {
             }
         }
     });
-    $("#pieLegends").html(myPie.generateLegend());
+    $("#pieLegends"+  eventId ).html(myPie.generateLegend());
 
 
 
@@ -1176,4 +1180,4 @@ $(document).ready(function () {
 
 
 
-});
+//});

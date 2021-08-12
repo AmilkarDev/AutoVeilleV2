@@ -1,1 +1,170 @@
 ﻿
+
+@model IEnumerable<Autoveille.TestingModels.ConcessionnaireParFabricant>
+
+    <div id="searchDiv" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+        <div style="width: 50%;display:flex;">
+            <i class="fas fa-search fa-3x iconSearch"></i>
+            <input class="InputRecherche" type="search" placeholder="| Recherche par nom du concessionnaire" />
+        </div>
+        <div style="width:50%;display:flex;flex-direction:row;">
+            <i class="fas fa-search fa-3x iconSearch"></i>
+            <input class="InputRecherche" type="search" placeholder="| Recherche par nom du date" />
+        </div>
+    </div>
+
+    <table class="table appelsTable" style="width:100%;">
+        @foreach (var item in Model)
+        {
+            var rowId = "row" + item.Id;
+            var dashboardsId = "dashboards" + item.Id;
+            var imgId = "img" + item.Id;
+
+            <tr id="@rowId" style="background-color:#fbbb29;height:70px;margin-bottom:5px;color:#160F0C;text-align:center;padding-top:20px;">
+                <td>
+                    <img id="@imgId" src="~/Content/Images/Layout/Plus.png" width="30" height="30" alt="Plus button Logo" onclick="displayDashboard(@item.Id )" role="button">
+                </td>
+                <td class="appels-td">
+                    @Html.DisplayFor(modelItem => item.NomConcessionnaire)
+                </td>
+                <td class="appels-td">
+                    @Html.DisplayFor(modelItem => item.DateEvenement)
+                    <label style="float:right;">
+                        <input type="checkbox" name="checkEvent" value="@item.Id">
+                        <span>     </span>
+                    </label>
+                    @*<input class="custom-checkbox" style="border-color:black;display:block;float:right;" checked="checked" type="checkbox" name="concessionCheck" value="@item.Id" />*@
+                </td>
+
+            </tr>
+            <tr>
+                <td id="@dashboardsId" colspan="3" style="display:none;padding:0;">
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+    <script>
+        var idConcession;
+
+
+        function displayDashboard(IdConcessionnaire) {
+            if (idConcession === undefined) {
+                idConcession = IdConcessionnaire;
+            }
+            else if (idConcession != IdConcessionnaire) {
+                hideDashboard(idConcession);
+                idConcession = IdConcessionnaire;
+            }
+
+
+            $.ajax({
+                url: '../Rapports/RapportsEvenementEnCours/',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                data: { IdConcessionnaire: IdConcessionnaire },
+                dataType: 'html',
+                success: function (result) {
+                    var dashboardsId = "dashboards" + IdConcessionnaire;
+                    var imgId = "img" + IdConcessionnaire;
+                    $('#' + dashboardsId).html(result);
+                    //$('#' + dashboardsId).toggle();
+                    $('#' + dashboardsId).css("display", "");
+                    $('#' + imgId).attr('onclick', 'hideDashboard(' + IdConcessionnaire + ')');
+                    $('#' + imgId).attr('src', '../Content/Images/Layout/Moins.png');
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+
+        function hideDashboard(IdConcessionnaire) {
+            //$('#detailsClient').css('visibility', 'hidden');
+            var dashboardsId = "dashboards" + IdConcessionnaire;
+            var imgId = "img" + IdConcessionnaire;
+            $('#' + imgId).attr('onclick', 'displayDashboard(' + IdConcessionnaire + ')');
+            $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
+            //$('#' + dashboardsId).toggle();
+            $('#' + dashboardsId).css("display", "none");
+            $('#' + dashboardsId).empty();
+
+
+            //if (myBar) {
+            //    myBar.destroy();
+            //}
+        }
+
+
+        function saveAsPdf(dashId) {
+            console.log(dashId);
+            html2canvas($(dashId), { scrollY: -window.scrollY }) //#barsContainer  mainCurrentRow
+                .then(function (canvas) {
+                    var imgData = canvas.toDataURL('image/png');
+                    var doc = new jsPDF({ orientation: 'l', format: 'a5' });
+
+                    var width = doc.internal.pageSize.width;
+                    var height = doc.internal.pageSize.height;
+                    doc.addImage(imgData, 'PNG', 0, 0, width, height);
+                    doc.save('sample-file.pdf');
+                }
+                );
+        }
+
+
+
+        $(document).ready(function () {
+
+
+            $('input:checkbox').click(function (e) {
+                console.clear();
+                var $box = $(this);
+                //console.log($box.is(":checked"));
+                var checkedCheckBoxes = $('input:checkbox:checked').length;
+                if (checkedCheckBoxes > 0) {
+                    var firstCheckedRow = $('input:checkbox:checked')[0].value;
+                }
+                else {
+                    $(".downloadIcon").css("color", "grey");
+                }
+
+                if (checkedCheckBoxes == 1) {
+                    $(".downloadIcon").css("color", "white");
+                    var finalElement = $('#AfficherConcessionnairesAvenir input:checked')[0].value;
+                    if ($("dashboards" + finalElement).length == 0) {
+                        console.log("let's show it");
+                        displayDashboard(finalElement);
+                    }
+
+                    $('.comparButton').prop("disabled", "true");
+                    //console.log('#dashboards' + finalElement);
+                    $(".downloadIcon").click(function () { saveAsPdf('#dashboards' + finalElement) });
+                }
+                else if (checkedCheckBoxes != 0) {
+                    hideDashboard(firstCheckedRow);
+                    $(".downloadIcon").css("color", "grey");
+                    $('.comparButton').prop("disabled", false);
+                }
+                console.log(firstCheckedRow);
+                if ($box.is(":checked")) {
+
+
+                } else {
+                    $box.prop("checked", false);
+                    //console.log($box.val());
+                    hideDashboard($box.val());
+                }
+
+
+
+            });
+
+        });
+
+    </script>
+
+
+
+

@@ -13,31 +13,36 @@
 
 
 <div class="row alertRow" id="eventDiv" style="height:35px;">
-    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
+    <div style="float:left;display:flex;" class="col-md-3 col-sm-12 col-xs-12">
         <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesEnCours()">
-            EVENEMENT
-            <span id="eventState"> EN COURS </span>
+            Evenement en cours
+            @*<span id="eventState"> EN COURS </span>*@
         </a>
     </div>
-    <div style="float:left;display:flex;justify-content:center" class="col-md-4 col-sm-12 col-xs-12">
+    <div style="float:left;display:flex;justify-content:center" class="col-md-3 col-sm-12 col-xs-12">
         <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesAvenir()">
-            EVENEMENT
-            <span id="eventState"> A VENIR </span>
+            Evenement a venir
+            @*<span id="eventState"> A VENIR </span>*@
         </a>
     </div>
-    <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
-        NOM DU FABRICANT
+    <div class="eventText col-md-3 col-sm-12 col-xs-12">
+        <i class="fas fa-download downloadIcon" style="color:grey;"></i>
+    </div>
+    <div id="searchInput" class="eventText col-md-3 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
+        Nom du concessionnaire
     </div>
 </div>
 <br />
 
 <div class="comparDiv" style="color:white;display:flex;margin:auto;width:95%;">
     <div style="width:50%;">
-        <p> <span class="boldText" style="font-weight:bold;font-size:2.5em;">Comparateur d'événements</span> <br />
-            <span class="normalText" style="font-size:1.5em;">Cochez, à droite, les évènements à comparer </span></p>
+        <p>
+            <span class="boldText" style="font-weight:bold;font-size:2.5em;">Comparateur d'événements</span> <br />
+            <span class="normalText" style="font-size:1.5em;">Cochez, à droite, les évènements à comparer </span>
+        </p>
     </div>
     <div style="width:50%;margin:auto;">
-        <button class="btn btn-danger" style="width:20rem;height:3.5em;border-radius:10px;">Comparer</button>
+        <button class="btn btn-danger comparButton" disabled style="width:20rem;height:3.5em;border-radius:10px;" onclick="compareEvents()">Comparer</button>
     </div>
 </div>
 <div id="AfficherConcessionnairesEnCours" style="margin:auto;width:95%;">
@@ -49,8 +54,11 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 <script>
     $(function () {
         AfficherLesConcessionnairesEnCours();
@@ -79,9 +87,37 @@
         $('#AfficherConcessionnairesAvenir').css('display', 'block');
     }
 
+    function compareEvents() {
+        @*var aa = JSON.stringify({ checkedEvents });
+        var url = '@Url.Action("Comparateur", "Rapports", new { checkedEvents = "aa" })';
+        console.log(aa);
+        window.location.href = url.replace('aa', aa);*@
+
+
+        $.ajax({
+            url: '@Url.Action("allComparateur")',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ checkedEvents }),
+            dataType: "json",
+            success: function () {
+                console.log('redirect');
+                var url = '@Url.Action("Comparateur", "Rapports")';
+                window.location.href = url;
+            },
+            error: function () {
+                alert("impossible de lancer la comparaison");
+            }
+        })
+    }
+
+
+
+
+
     //chartColors = {
     //    red: 'rgb(255, 99, 132)',
-    //    orange: 'rgb(255, 159, 64)',
+    //    orange: 'rgb(255, 1UrlAuthorizationModule9, 64)',
     //    yellow: 'rgb(255, 205, 86)',
     //    green: 'rgb(75, 192, 192)',
     //    blue: 'rgb(54, 162, 235)',

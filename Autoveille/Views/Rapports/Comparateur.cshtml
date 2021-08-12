@@ -1,31 +1,116 @@
-﻿
-@{
-    ViewBag.Title = "Comparateur";
-    Layout = "~/Views/Shared/_LayoutBlack.cshtml";
-}
-<div class="rootContainer" style="display:flex;flex-direction:column;">
-    <div style="display:flex;width:100%;">
-        <div style="width:50%; height:auto;">
-            @{
-                Html.RenderAction("Rapports_PartialCurrentEvent","Rapports");
+﻿@model IEnumerable<Autoveille.TestingModels.Dashboard>
+    @{
+        ViewBag.Title = "Comparateur";
+        Layout = "~/Views/Shared/_LayoutBlack.cshtml";
+    }
+    <div style="display:flex;justify-content:center;">
+        <button style="margin:auto;width:20vw; border-radius:15px;color:white;" class="btn btn-danger" onclick="Telecharger()">Télécharger</button>
+    </div>
+    <div class="rootContainer" style="display:flex;flex-direction:column;">
+        <div style="display:flex;width:100%;flex-wrap:wrap;">
+            @foreach (var item in Model)
+            {
+                <div class="OneDash" style="width:50%; height:auto;">
+                    <div style="margin:15px;">
+                        <p style="color:white;font-size:2.5em;">Nom du Concessionnaire</p>
+                        <p style="color:white;font-size:2.5em;"> 00 au 00 mois 2021</p>
+                    </div>
+                    @{
+
+                        Html.RenderAction("Rapports_PartialCurrentEvent", "Rapports", new { eventId = item.IdEvenement });
+                    }
+                </div>
+                @*<div style="width:50%;">
+                            <div style="margin:15px;">
+                                <p style="color:white;font-size:2.5em;">Nom du Concessionnaire</p>
+                                <p style="color:white;font-size:2.5em;"> 00 au 00 mois 2021</p>
+                            </div>
+                            @{
+                                Html.RenderAction("Rapports_PartialCurrentEvent", "Rapports", new { eventId = 2 });
+                            }
+                        </div>
+                        <div style="width:50%;">
+                            <div style="margin:15px;">
+                                <p style="color:white;font-size:2.5em;">Nom du Concessionnaire</p>
+                                <p style="color:white;font-size:2.5em;"> 00 au 00 mois 2021</p>
+                            </div>
+                            @{
+                                Html.RenderAction("Rapports_PartialCurrentEvent", "Rapports", new { eventId = 3 });
+                            }
+                        </div>
+                        <div style="width:50%;">
+                        <p style="color:white;font-size:2.5em;">Nom du Concessionnaire</p>
+                        <p style="color:white;font-size:2.5em;"> 00 au 00 mois 2021</p>
+                        @{
+                            Html.RenderAction("Rapports_PartialCurrentEvent", "Rapports", new { eventId = 4 });
+                        }
+                    </div>*@
+
             }
         </div>
-        <div style="width:50%;">
-                @{
-                    Html.RenderAction("Rapports_PartialCurrentEvent","Rapports");
-                }
-            </div>
-
     </div>
-</div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
-<script src="~/Scripts/MyScripts/Rapports_PartialCurrentEvent.js"></script>
-@*<script>
-       var  setUpCanvas = (c) => {
-            c.width = c.clientWidth;
-            c.height = c.clientHeight;
-        };
-    </script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>*@
+    @*<script src="~/Scripts/MyScripts/Rapports_PartialCurrentEvent.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script>
+        //var  setUpCanvas = (c) => {
+        //     c.width = c.clientWidth;
+        //     c.height = c.clientHeight;
+        // };
+        var id = 0;
+        var hhh;
+
+        $(document).ready(function () {
+            hhh = $('.OneDash').height();
+            console.log(hhh);
+        });
+
+        function Telecharger() {
+            //console.log(dashId);
+            //html2canvas($('.rootContainer'), { scrollY: -window.scrollY }) //#barsContainer  mainCurrentRow
+            //    .then(function (canvas) {
+            //        var imgData = canvas.toDataURL('image/png');
+            //        var doc = new jsPDF({ orientation: 'p', format: 'a1' });
+            //        var options = { pagesplit: true };
+            //        var width = doc.internal.pageSize.width;
+            //        var height = doc.internal.pageSize.height;
+            //        doc.addImage(imgData, 'PNG', 0, 0,width,height);
+            //        doc.save('sample-file.pdf');
+            //    }
+            //    );
+
+            var HTML_Width = $(".rootContainer").width();
+            var HTML_Height = $(".rootContainer").height();
+            var top_left_margin = 15;
+            var PDF_Width = HTML_Width + (top_left_margin * 2);
+            var PDF_Height = hhh;//(PDF_Width * 1.5) + (top_left_margin * 2);
+            var canvas_image_width = HTML_Width;
+            var canvas_image_height = HTML_Height;
+
+            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+            html2canvas($(".rootContainer")[0], { allowTaint: true }).then(function (canvas) {
+                canvas.getContext('2d');
+
+                console.log(canvas.height + "  " + canvas.width);
+
+
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                var pdf = new jsPDF('p', 'pt', [PDF_Width, hhh]);
+                pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+
+
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(PDF_Width, PDF_Height);
+                    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) /*+ (top_left_margin * 4)*/, canvas_image_width, canvas_image_height);
+                }
+
+                pdf.save("HTML-Document.pdf");
+            });
+
+        }
+    </script>

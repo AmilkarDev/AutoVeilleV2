@@ -1,26 +1,28 @@
 ﻿
 
 
-
-<div class="mainCurrentRow">
-    <div id="barsContainer">
-        <div style="margin:15px;">
-            <div class="titleContainer">
-                <div style="display:flex;">
-                    <img src="~/Content/Images/face bars.png" />
-                    <p class="localTitle">Appels</p>
+@model Autoveille.TestingModels.Dashboard
+@*<p style="color:white;font-size:2.5em;">Nom du Concessionnaire</p>
+<p style="color:white;font-size:2.5em;"> 00 au 00 mois 2021</p>*@
+    <div class="mainCurrentRow">
+        <div id="barsContainer">
+            <div style="margin:15px;">
+                <div class="titleContainer">
+                    <div style="display:flex;">
+                        <img src="~/Content/Images/face bars.png" />
+<p class="localTitle">Appels</p>
                 </div>
                 <div>
-                <p class="localStats">47</p>
+                    <p class="localStats">47</p>
                 </div>
             </div>
             <div class="graph">
-                <canvas id="barsCanvas"></canvas>
+                <canvas id="@("barsCanvas"+Model.IdEvenement)"></canvas>
                 <br />
                 <br />
                 <br />
                 <br />
-                <div id="legend-container"> </div>
+                <div id="@("legend-container"+Model.IdEvenement)"> </div>
             </div>
 
         </div>
@@ -34,19 +36,19 @@
         <div class="donutsDiv">
             <div class="row donutsTitle">
                 <img src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" height="50" width="50" />
-                <p class="localTitle" style="color: #25b34b;">Rendez-vous / jour</p>
+                <p class="localTitle" style="color: #25b34b;font-size:2em;">Rendez-vous / jour</p>
             </div>
             <br />
             <div class="donutsContainer">
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas class="donutCanvas" id="circleRdvJour1" height="110" width="110"></canvas>
+                        <canvas class="donutCanvas" id="@("circleRdvJour1_"+Model.IdEvenement)" height="110" width="110"></canvas>
                         <div class="description">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
                     </div>
                     <div>
-                        <p class="donutsText" style="font-size:1.3em;">Jour 1</p>
+                        <p class="donutsText" style="font-size:1em;">Jour 1</p>
                     </div>
                 </div>
 
@@ -56,13 +58,13 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas class="donutCanvas" id="circleRdvJour2" height="110" width="110"></canvas>
+                        <canvas class="donutCanvas" id="@("circleRdvJour2_"+Model.IdEvenement)" height="110" width="110"></canvas>
                         <div class="description">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
                     </div>
                     <div>
-                        <p class="donutsText" style="font-size:1.3em;">Jour 2</p>
+                        <p class="donutsText" style="font-size:1em;">Jour 2</p>
                     </div>
                 </div>
 
@@ -71,13 +73,13 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas class="donutCanvas" id="circleRdvJour3" height="110" width="110"></canvas>
+                        <canvas class="donutCanvas" id="@("circleRdvJour3_"+Model.IdEvenement)" height="110" width="110"></canvas>
                         <div class="description">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
                     </div>
                     <div>
-                        <p class="donutsText" style="font-size:1.3em;">Jour 3</p>
+                        <p class="donutsText" style="font-size:1em;">Jour 3</p>
                     </div>
                 </div>
 
@@ -88,13 +90,13 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas class="donutCanvas" id="circleRdvHorsEvt" height="110" width="110"></canvas>
+                        <canvas class="donutCanvas" id="@("circleRdvHorsEvt_"+Model.IdEvenement)" height="110" width="110"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
                     </div>
                     <div>
-                        <p class="donutsText" style="font-size:1.3em;">Hors évènement</p>
+                        <p class="donutsText" style="font-size:1em;">Hors évènement</p>
                     </div>
                 </div>
             </div>
@@ -104,7 +106,7 @@
 
             <div class="row donutsTitle">
                 <img src="~/Content/Images/ICONES_SVG_Couleurs_Vente.svg" height="50" width="50" />
-                <p class="localTitle" style="color: #C1529E;">Ventes / jour</p>
+                <p class="localTitle" style="color: #C1529E;font-size:2em;">Ventes / jour</p>
             </div>
             <br />
 
@@ -112,7 +114,7 @@
             <div class="donutsContainer">
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas class="donutCanvas" id="circleVenteJour1"></canvas>
+                        <canvas class="donutCanvas" id="@("circleVenteJour1_"+Model.IdEvenement)"></canvas>
                         <div class="description">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
@@ -124,7 +126,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas id="circleVenteJour2" class="donutCanvas"></canvas>
+                        <canvas id="@("circleVenteJour2_" +Model.IdEvenement)" class="donutCanvas"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
@@ -136,7 +138,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas id="circleVenteJour3" class="donutCanvas"></canvas>
+                        <canvas id="@("circleVenteJour3_" + Model.IdEvenement)" class="donutCanvas"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
@@ -148,7 +150,7 @@
 
                 <div class="UniqueDonutContainer">
                     <div id="fullContent" style="width:110px;height:110px;">
-                        <canvas id="circleVenteHorsEvt" class="donutCanvas"></canvas>
+                        <canvas id="@("circleVenteHorsEvt_" + Model.IdEvenement)" class="donutCanvas"></canvas>
                         <div class="description" style="position:absolute;">
                             <span class="number" style="font-size:1.9em;">22</span>
                         </div>
@@ -173,18 +175,18 @@
             <div class="newPieContainer">
                 <div class="row donutsTitle">
                     <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Vert.svg" height="50" width="50" />
-                    <p class="localTitle" style="color: #32B9A9;">Ventes / jour</p>
+                    <p class="localTitle" style="color: #32B9A9;font-size:2em;">Ventes / jour</p>
                 </div>
 
                 <div class="rowFlex">
                     <div class="pieGraph">
-                        <div style="background-color:black;position: relative; height:350px; width:350px;margin-top:-30px;vertical-align:middle;">
-                            <canvas id="ExplodedPieChart" width="20" height="20"></canvas>
+                        <div style="background-color:black;position: relative; height:300px; width:300px;margin-top:-30px;vertical-align:middle;">
+                            <canvas id="@("ExplodedPieChart"+ Model.IdEvenement)" width="20" height="20"></canvas>
                         </div>
                     </div>
                     <div class="pieTextContainer">
                         <p class="Total">24</p>
-                        <div id="pieLegends">
+                        <div id="@("pieLegends"+Model.IdEvenement)">
                         </div>
                     </div>
 
@@ -201,12 +203,12 @@
                 <div class="row donutsTitle">
                     <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Blue.svg" height="50" width="50" />
 
-                    <p class="localTitle" style="color: #2ea6de;">Walk-In / jour</p>
+                    <p class="localTitle" style="color: #2ea6de;font-size:2em;">Walk-In / jour</p>
                 </div>
 
 
                 <div id="container">
-                    <canvas id="lineChart" width="1050" height="330"></canvas>
+                    <canvas id="@("lineChart"+Model.IdEvenement)" width="1050" height="330"></canvas>
                 </div>
 
 
@@ -219,23 +221,32 @@
         <div class="rightBottomCol">
             <div class="row donutsTitle">
                 <img src="~/Content/Images/ICONES_SVG_Couleurs_Vente.svg" height="50" width="50" style="color: #dd266a;" />
-                <p class="localTitle" style="color: #dd266a;">Types de Ventes</p>
+                <p class="localTitle" style="color: #dd266a;font-size:2em;">Types de Ventes</p>
 
                 <p class="localStats" style="padding-left:40%;">47</p>
             </div>
 
             <div style="width: 100%; padding:25px;background-color:black;">
-                <canvas id="horizontalBarsCanvas"></canvas>
+                <canvas id="@("horizontalBarsCanvas"+Model.IdEvenement)"></canvas>
                 <br />
                 <br />
                 <br />
-                <div id="horizontalBarsLegendContainer" style="display:flex;margin-left:100px;"> </div>
+                <div id="@("horizontalBarsLegendContainer" + Model.IdEvenement)" style="display:flex;margin-left:100px;"> </div>
             </div>
         </div>
     </div>
 </div>
 
-@*<script src="~/Scripts/MyScripts/Rapports_PartialCurrentEvent.js"></script>*@
+<script>
+    var object = @(Html.Raw(Json.Encode(Model)));
+    //console.log(object.IdEvenement);
+    var evt = object.IdEvenement;
+    console.log('initial evt '+ evt)
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
+<script src="~/Scripts/MyScripts/Rapports_PartialCurrentEvent.js"></script>
+
 @*<script src="~/Scripts/MyScripts/RapportEvenemenentEnCoursScript.js"></script>*@
 
 

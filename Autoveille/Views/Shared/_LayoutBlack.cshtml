@@ -30,8 +30,8 @@
     <link href="~/Content/css/CompteARebours.css" rel="stylesheet" />
     <link href="~/Content/css/TableauDeBordDesFabricants.css" rel="stylesheet" />
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
-    <script src="~/Scripts/MyScripts/RapportEvenemenentEnCoursScript.js"></script>*@
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
+        <script src="~/Scripts/MyScripts/RapportEvenemenentEnCoursScript.js"></script>*@
     <style>
         .downMenu li {
             display: inline;
@@ -123,10 +123,10 @@
     <div id="menu">
         <ul class="downMenu" style="padding-top: 10px;">
             <li>
-                <a href="Dashboard">Tableau de Bord <span class="sr-only">(current)</span></a>
+                <a href="/Home/TableauDeBordDesFabicants">Tableau de Bord <span class="sr-only">(current)</span></a>
             </li>
             <li>
-                @Html.ActionLink("Rappels", "DisplayDashboard", "Home", null, null)
+                @Html.ActionLink("Rapports", "index", "Rapports", null, null)
             </li>
             <li>
                 @Html.ActionLink("Gestionnaire d'appels", "InfoConcession", "Home", null, null)

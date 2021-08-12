@@ -1,6 +1,18 @@
 ﻿
 @model IEnumerable<Autoveille.TestingModels.ConcessionnaireParFabricant>
 
+    <div id="searchDiv" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+        <div style="width: 50%;display:flex;">
+            <i class="fas fa-search fa-3x iconSearch"></i>
+            <input class="InputRecherche" type="search" placeholder="| Recherche par nom du concessionnaire" />
+        </div>
+        <div style="width:50%;display:flex;flex-direction:row;">
+            <i class="fas fa-search fa-3x iconSearch"></i>
+            <input class="InputRecherche" type="search" placeholder="| Recherche par nom du date" />
+        </div>
+    </div>
+
+
     <table class="table appelsTable" style="width:100%;">
         @foreach (var item in Model)
         {
@@ -30,47 +42,47 @@
 
 
     <script>
-    var idConcession;
-    function displayDashboard(IdConcessionnaire) {
-        if (idConcession === undefined) {
-            idConcession = IdConcessionnaire;
-        }
-        else if (idConcession != IdConcessionnaire) {
-            hideDashboard(idConcession);
-            idConcession = IdConcessionnaire;
-        }
-
-
-
-        $.ajax({
-            url: '../Home/FutureEventDashboard',
-            contentType: 'application/html; charset=utf-8',
-            type: 'GET',
-            data: { IdConcessionnaire: IdConcessionnaire },
-            dataType: 'html',
-            success: function (result) {
-                var dashboardsId = "dashboards" + IdConcessionnaire;
-                var imgId = "img" + IdConcessionnaire;
-                $('#' + dashboardsId).html(result);
-                $('#' + dashboardsId).toggle();
-                $('#' + imgId).attr('onclick', 'hideDashboard(' + IdConcessionnaire + ')');
-                $('#' + imgId).attr('src', '../Content/Images/Layout/Moins.png');
-            },
-            error: function (xhr, status) {
-                alert(status);
+        var idConcession;
+        function displayDashboard(IdConcessionnaire) {
+            if (idConcession === undefined) {
+                idConcession = IdConcessionnaire;
             }
-        });
-    }
+            else if (idConcession != IdConcessionnaire) {
+                hideDashboard(idConcession);
+                idConcession = IdConcessionnaire;
+            }
 
-    function hideDashboard(IdConcessionnaire) {
-        //$('#detailsClient').css('visibility', 'hidden');
-        var dashboardsId = "dashboards" + IdConcessionnaire;
-        var imgId = "img" + IdConcessionnaire;
-        $('#' + imgId).attr('onclick', 'displayDashboard(' + IdConcessionnaire + ')');
-        $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
-        $('#' + dashboardsId).toggle();
-        $('#' + dashboardsId).empty();
-    }
+
+
+            $.ajax({
+                url: '../Home/FutureEventDashboard',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                data: { IdConcessionnaire: IdConcessionnaire },
+                dataType: 'html',
+                success: function (result) {
+                    var dashboardsId = "dashboards" + IdConcessionnaire;
+                    var imgId = "img" + IdConcessionnaire;
+                    $('#' + dashboardsId).html(result);
+                    $('#' + dashboardsId).toggle();
+                    $('#' + imgId).attr('onclick', 'hideDashboard(' + IdConcessionnaire + ')');
+                    $('#' + imgId).attr('src', '../Content/Images/Layout/Moins.png');
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+
+        function hideDashboard(IdConcessionnaire) {
+            //$('#detailsClient').css('visibility', 'hidden');
+            var dashboardsId = "dashboards" + IdConcessionnaire;
+            var imgId = "img" + IdConcessionnaire;
+            $('#' + imgId).attr('onclick', 'displayDashboard(' + IdConcessionnaire + ')');
+            $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
+            $('#' + dashboardsId).toggle();
+            $('#' + dashboardsId).empty();
+        }
 
 
     </script>

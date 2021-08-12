@@ -7,7 +7,7 @@ namespace Autoveille.TestingModels
 {
     public class Dashboard
     {
-        public int IdEventement { get; set; }
+        public int IdEvenement { get; set; }
         public DateTime DateEvenement { get; set; }
         public int RDV { get; set; }
         public int WalkIn { get; set; }

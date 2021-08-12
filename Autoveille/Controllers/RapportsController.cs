@@ -101,16 +101,45 @@ namespace Autoveille.Controllers
         {
             return PartialView();
         }
+        [HttpPost]
+        public JsonResult allComparateur(List<int> checkedEvents)
+        {
+            TempData["checkedEvents"] = checkedEvents;
+            return Json("successfully transported check events ids",JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Comparateur()
         {
+            var checkedEvents = TempData["checkedEvents"] as List<int>;
+            if (checkedEvents != null)
+            {
+                List<Dashboard> dashboards = new List<Dashboard>();
+                foreach (int i in checkedEvents)
+                {
+                    dashboards.Add(new Dashboard { IdEvenement = i, WalkIn = 50, DateEvenement = new DateTime(2020 / 12 / 10), Oportunites = 10, Potentiels = 20, RDV = 15, Ventes = 12 });
+                }
+                return View(dashboards);
+            }
+            return View("selectionnerEvents");
+        }
 
+        public ActionResult selectionnerEvents()
+        {
             return View();
         }
 
-        public ActionResult Rapports_PartialCurrentEvent()
+        public ActionResult Rapports_PartialCurrentEvent(int eventId)
         {
-            return PartialView();
+            var dashboard = new Dashboard()
+            {
+                IdEvenement = eventId,
+                RDV = 24,
+                Ventes = 15,
+                Oportunites = 94,
+                Potentiels = 300,
+                WalkIn = 32,
+            };
+            return PartialView(dashboard);
         }
     }
 }

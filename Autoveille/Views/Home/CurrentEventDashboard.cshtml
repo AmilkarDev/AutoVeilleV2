@@ -9,11 +9,14 @@
             <span id="eventState"> EN COURS </span>
         </p>
     </div>
-    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
+    <div style="float:left;display:flex;justify-content:space-between;" class="col-md-4 col-sm-12 col-xs-12">
         <p class="eventText" style="color: white;" href="@Url.Action("CurrentEventDashboard", "Home")">
             EVENEMENT
             <span id="eventState"> A VENIR </span>
         </p>
+        <a style="color: white;font-size:2em;font-weight:bold;" onclick="saveAsPdf()">
+            download Report
+        </a>
     </div>
     <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
         NOM DU CONCESSIONNAIRE
@@ -22,218 +25,245 @@
 </div>
 <br />
 <br />
+<div class="fullDashboard">
+    <div class="mainCurrentRow">
+        <div id="barsContainer">
+            <div style="margin:15px;">
+                <div class="titleContainer" style="justify-content:normal;">
+                    <img src="~/Content/Images/face bars.png" />
+                    <p class="localTitle">Appels</p>
+                </div>
+                <div class="graph">
+                    <canvas id="barsCanvas"></canvas>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div id="legend-container"> </div>
+                </div>
 
-<div class="mainCurrentRow">
-    <div id="barsContainer">
-        <div style="margin:15px;">
-            <div class="titleContainer">
-                <img src="~/Content/Images/face bars.png" />
-                <p class="localTitle">Appels</p>
             </div>
-            <div class="graph">
-                <canvas id="barsCanvas"></canvas>
-                <br />
-                <br />
-                <br />
-                <br />
-                <div id="legend-container"> </div>
-            </div>
-
         </div>
+
+
+
+
+        <div class="wheelsContainer">
+
+            <div class="donutsDiv">
+                <div class="row donutsTitle">
+                    <img src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" height="50" width="50" />
+                    <p class="localTitle" style="color: #25b34b;">Rendez-vous / jour</p>
+                </div>
+                <br />
+                <div class="donutsContainer">
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas class="donutCanvas" id="circleRdvJour1"></canvas>
+                            <div class="description">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="donutsText">Jour 1</p>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas class="donutCanvas" id="circleRdvJour2"></canvas>
+                            <div class="description">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="donutsText">Jour 2</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas class="donutCanvas" id="circleRdvJour3"></canvas>
+                            <div class="description">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="donutsText">Jour 3</p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas class="donutCanvas" id="circleRdvHorsEvt"></canvas>
+                            <div class="description" style="position:absolute;">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="donutsText">Hors évènement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="donutsDiv" style="background-color:black;border:1px white solid;width:100%;margin:15px;border-radius:15px;height:420px;">
+
+                <div class="row donutsTitle">
+                    <img src="~/Content/Images/ICONES_SVG_Couleurs_Vente.svg" height="50" width="50" />
+                    <p class="localTitle" style="color: #C1529E;">Ventes / jour</p>
+                </div>
+                <br />
+
+
+                <div class="donutsContainer">
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas class="donutCanvas" id="circleVenteJour1"></canvas>
+                            <div class="description">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
+                        </div>
+                    </div>
+
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas id="circleVenteJour2" class="donutCanvas"></canvas>
+                            <div class="description" style="position:absolute;">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
+                        </div>
+                    </div>
+
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas id="circleVenteJour3" class="donutCanvas"></canvas>
+                            <div class="description" style="position:absolute;">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
+                        </div>
+                    </div>
+
+                    <div class="UniqueDonutContainer">
+                        <div id="fullContent">
+                            <canvas id="circleVenteHorsEvt" class="donutCanvas"></canvas>
+                            <div class="description" style="position:absolute;">
+                                <span class="number">22</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
     </div>
 
+    <div class="row">
+        <div class="bottomRow">
 
+            <div class="pieContainer">
+                <div class="row donutsTitle">
+                    <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Vert.svg" height="50" width="50" />
+                    <p class="localTitle" style="color: #32B9A9;">Ventes / jour</p>
+                </div>
 
+                <div class="rowFlex">
+                    <div class="pieGraph">
+                        <div style="background-color:black;position: relative; height:350px; width:350px;margin-top:-30px;vertical-align:middle;">
+                            <canvas id="ExplodedPieChart" width="20" height="20"></canvas>
+                        </div>
+                    </div>
+                    <div class="pieTextContainer">
+                        <p class="Total">24</p>
+                        <div id="pieLegends">
+                        </div>
+                    </div>
 
-    <div class="wheelsContainer">
-        
-        <div class="donutsDiv">
-            <div class="row donutsTitle">
-                <img src="~/Content/Images/ICONES_SVG_Base_Couleurs_RDV.svg" height="50" width="50" />
-                <p class="localTitle" style="color: #25b34b;">Rendez-vous / jour</p>
+                </div>
             </div>
-            <br />
-            <div class="donutsContainer">
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas class="donutCanvas" id="circleRdvJour1"></canvas>
-                        <div class="description">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="donutsText">Jour 1</p>
-                    </div>
+
+
+
+
+
+            <div class="linesChart">
+
+                <div class="row donutsTitle">
+                    <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Blue.svg" height="50" width="50" />
+                    <p class="localTitle" style="color: #2ea6de;">Walk-In / jour</p>
                 </div>
 
 
-
-
-
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas class="donutCanvas" id="circleRdvJour2"></canvas>
-                        <div class="description">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="donutsText">Jour 2</p>
-                    </div>
+                <div id="container">
+                    <canvas id="lineChart" width="1050" height="330"></canvas>
                 </div>
 
 
+            </div>
 
-
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas class="donutCanvas" id="circleRdvJour3"></canvas>
-                        <div class="description">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="donutsText">Jour 3</p>
-                    </div>
-                </div>
-
-
-
-
-
-
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas class="donutCanvas" id="circleRdvHorsEvt"></canvas>
-                        <div class="description" style="position:absolute;">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="donutsText">Hors évènement</p>
-                    </div>
-                </div>
-                </div>
         </div>
 
-        <div class ="donutsDiv" style="background-color:black;border:1px white solid;width:100%;margin:15px;border-radius:15px;height:420px;">
-
-            <div class="row donutsTitle">
-                <img src="~/Content/Images/ICONES_SVG_Couleurs_Vente.svg" height="50" width="50"/>
-                <p class="localTitle" style="color: #C1529E;">Ventes / jour</p>
-            </div>
-            <br />
-
-
-            <div class="donutsContainer">
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas class="donutCanvas" id="circleVenteJour1"></canvas>
-                        <div class="description">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
-                    </div>
-                </div>
-
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas id="circleVenteJour2"  class="donutCanvas"></canvas>
-                        <div class="description" style="position:absolute;">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
-                    </div>
-                </div>
-
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas id="circleVenteJour3"  class="donutCanvas"></canvas>
-                        <div class="description" style="position:absolute;">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
-                    </div>
-                </div>
-
-                <div class="UniqueDonutContainer">
-                    <div id="fullContent">
-                        <canvas id="circleVenteHorsEvt"  class="donutCanvas"></canvas>
-                        <div class="description" style="position:absolute;">
-                            <span class="number">22</span>
-                        </div>
-                    </div>
-                    <div>
-                        <p style="text-align:center;font-size:30px;font-weight:bold;color:white;margin-top:10px;">Jour 1</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
-
-
-
 </div>
-
-<div class="row">
-    <div class="bottomRow">
-
-        <div class="pieContainer">
-            <div class="row donutsTitle">
-                <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Vert.svg" height="50" width="50"  />
-                <p class="localTitle" style="color: #32B9A9;">Ventes / jour</p>
-            </div>
-            
-            <div class="rowFlex">
-                <div class="pieGraph">
-                    <div style="background-color:black;position: relative; height:350px; width:350px;margin-top:-30px;vertical-align:middle;">
-                        <canvas id="ExplodedPieChart" width="20" height="20"></canvas>
-                    </div>
-                </div>
-                <div class="pieTextContainer">
-                    <p class="Total">24</p>
-                    <div id="pieLegends">
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-
-
-
-
-
-        <div class="linesChart">
-
-            <div class="row donutsTitle">
-                <img src="~/Content/Images/ICONES_SVG_Couleurs_WaklIn_Blue.svg" height="50" width="50"  />
-                <p class="localTitle" style="color: #2ea6de;">Walk-In / jour</p>
-            </div>
-
-
-            <div id="container">
-                <canvas id="lineChart" width="1050" height="330"></canvas>
-            </div>
-
-
-        </div>
-
-    </div>
-
-</div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
 @*<script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"> </script>*@
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.2.1/html2canvas.min.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 <script>
+
+
+    function saveAsPdf() {
+        html2canvas($(".fullDashboard"), { scrollY: -window.scrollY }) //#barsContainer  mainCurrentRow
+            .then(function (canvas) {
+                var imgData = canvas.toDataURL('image/png');
+                var doc = new jsPDF({ orientation: 'l' ,  format: 'a5'});
+
+                var width = doc.internal.pageSize.width;
+                var height = doc.internal.pageSize.height;
+                //const imgProps = doc.getImageProperties(imgData);
+                //const pdfWidth = doc.internal.pageSize.getWidth();
+                //const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                //doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                //doc.save('download.pdf');
+                doc.addImage(imgData, 'PNG',0,0,width , height);
+                doc.save('sample-file.pdf');
+            }
+        );
+    }
+
+
+
+
     var chartColors = {
         red: 'rgb(255, 99, 132)',
         orange: 'rgb(255, 159, 64)',
@@ -566,7 +596,7 @@
         angleEndArc: 0 * Math.PI,
         wasInside: false,
         lineWidth: 30,
-        shadowBlur : 20,
+        shadowBlur: 20,
         finish: 25, // Finish (in %)
         gradientaColor: gradienta,
         gradientColor: gradient,
@@ -802,7 +832,7 @@
                 circleVenteJour1.lineWidth = 20;
                 circleVenteJour2.lineWidth = 20;
                 circleVenteJour3.lineWidth = 20;
-                circleVenteHorsEvt.lineWidth = 20; 
+                circleVenteHorsEvt.lineWidth = 20;
 
 
                 circleRdvJour1.shadowBlur = 20;
@@ -867,7 +897,7 @@
     }
 
 
-    
+
 
 
     /********* Line charts display and configuration  ************/
@@ -1069,13 +1099,13 @@
             },
             plugins: {
                 datalabels: {
-                    display : true ,
+                    display: true,
                     color: 'white',
                     font: {
                         weight: 'bold',
-                        size : 35
+                        size: 35
                     },
-                    padding : 6,
+                    padding: 6,
                 }
             }
         }
