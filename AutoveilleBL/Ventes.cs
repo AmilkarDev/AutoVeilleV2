@@ -1,4 +1,4 @@
-﻿using AutoveilleBL.Models;
+﻿  using AutoveilleBL.Models;
 using AutoveilleDAL.SQL;
 using Outils;
 using System;
@@ -14,7 +14,7 @@ namespace AutoveilleBL
     public class Ventes
     {
         
-       public static Evenement GetEvenement(int aIdEvenement,int aNoCommerce)
+        public static Evenement GetEvenement(int aIdEvenement,int aNoCommerce)
         {
             try
             {

@@ -1,4 +1,7 @@
 ﻿@model  Autoveille.Models.EvenementModel
+@section styles {
+    <link href="@Url.Content("~/Content/jquery.yacal.css")" rel="stylesheet" type="text/css" />
+}
 @{
     ViewBag.Title = "InfoConcession";
 }
@@ -7,7 +10,7 @@
     <p id="eventEndDate" style="display:none;"> @Model.DateFin</p>
     <div id="eventDiv" class="alert alert-heading">
         <div style="float:left;">
-            <p class="eventText">   
+            <p class="eventText">
                 <span id="eventState"> @Model.TypeEvenement </span>
             </p>
         </div>
@@ -20,7 +23,7 @@
     <div id="mainDiv">
         <div id="innerContent">
             <div id="leftContent">
-                <div id="prospects">                
+                <div id="prospects">
                     <p id="prospectsText" style="float: left;"><img src="~/Content/Images/OpportunityOrange.svg" height="55" width="55" />OPPORTUNITEE TOTALE <span id="nbrstat">00</span></p>
                     <p id="prospectsText" style="text-align:center;"> REJOINTES <span id="nbrstat">0000</span></p>
                     <p class="pull-right" id="prospectsText" style="text-align:right;float: right;">A REJOINDRE <span id="nbrstat">0000</span></p>
@@ -32,28 +35,28 @@
                 </div>
             </div>
         </div>
-      
+
         <div style="clear: both;"> </div>
     </div>
 </div>
-    @section Scripts{
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $.ajax({
-                    url: '../Home/GetNomAppels',
-                    contentType: 'application/html; charset=utf-8',
-                    type: 'GET',
-                    dataType: 'html',
-                    success: function (result) {
-                        $('#dvCampaignDetails').html(result);
-                    },
-                    error: function (xhr, status) {
-                        alert(status);
-                    }
-                });
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: '../Home/GetNomAppels',
+                contentType: 'application/html; charset=utf-8',
+                type: 'GET',
+                dataType: 'html',
+                success: function (result) {
+                    $('#dvCampaignDetails').html(result);
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
             });
+        });
 
-           
-        
-        </script>
-    }
+
+
+    </script>
+}

@@ -81,7 +81,7 @@
                 </div>
                 <br />
                 <div id="input-container">
-                    <input value="@Model.Courriel" class="phoneInput float-left"  style="display:block;" />
+                    <input value="@Model.Courriel" class="phoneInput float-left" style="display:block;" />
                 </div>
                 <br class="brClientPhone" />
 
@@ -415,7 +415,7 @@
                 <label for="déménagé">Déménagé</label>
                 <input type="radio" name="resultatDesactivee" value="incapacité" id="incapacite" class="desa">
                 <label for="Incapacité de conduire un véhicule">Incapacité de conduire un véhicule</label>
-                <input type="radio" name="resultatDesactivee" value="pasDePermis" id="pasDePermis"  class="desa">
+                <input type="radio" name="resultatDesactivee" value="pasDePermis" id="pasDePermis" class="desa">
                 <label for="Pas de permis de conduire">N'a plus de pemis de conduire</label>
             </span>
         </div>
@@ -481,7 +481,7 @@
             <div class="modal-body">
 
             </div>
-            <div class="modal-footer"  style="display:none;">
+            <div class="modal-footer" style="display:none;">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
             </div>
         </div>
@@ -494,7 +494,7 @@
 <script>
     function removeBackdrop() {
         $('.modal-backdrop').remove();
-        if ($('.checkMarksDiv input:checkbox').is(":checked")){
+        if ($('.checkMarksDiv input:checkbox').is(":checked")) {
             $('.checkMarksDiv input:checkbox').prop("checked", false);
         }
     }
@@ -645,8 +645,8 @@
             });
             calendar.render();
 
-        } , 300)
-    
+        }, 300)
+
 
     };
     var clickCnt = 0;
@@ -661,7 +661,7 @@
                     newEvent.title = info.event.title;
                     newEvent.start = info.event.start;;
                     newEvent.end = info.event.end;;
-                    newEvent.allday = false;                   
+                    newEvent.allday = false;
                     info.view.calendar.addEvent(newEvent);
                     var rdvDateTime = moment(newEvent.startStr).format('YYYY-MM-DD') + " à " + moment.utc(newEvent.startStr).format('hh:mm');
                     $('#slectedChoice').html(rdvDateTime);
@@ -678,9 +678,9 @@
         var startDate = new Date();
         var endDate = new Date();
         var numberOfDaysToAdd = 2;
-        endDate = endDate.setDate(startDate.getDate() + numberOfDaysToAdd); 
+        endDate = endDate.setDate(startDate.getDate() + numberOfDaysToAdd);
         startDate = startDate.setDate(startDate.getDate() - 1);
-        if (startDate <= info.date && info.date <= endDate) { 
+        if (startDate <= info.date && info.date <= endDate) {
             info.el.classList.add("coloredBackground");
         }
     }
@@ -738,7 +738,7 @@
 
     $(document).on('click', '.day.active', function () {
         var selectedDate = new Date($(this).data('time'));
-        var dd  =moment(selectedDate).format();
+        var dd = moment(selectedDate).format();
         var first = selectedDate.getDate() - selectedDate.getDay(); // First day is the day of the month - the day of the week
         var last = first + 6; // last day is the first day + 6
 
@@ -749,7 +749,7 @@
         $('.fc-col-header-cell').css('background-color', '');
     });
 
-    $('.checkMarksDiv input:checkbox').click(function (e) {     
+    $('.checkMarksDiv input:checkbox').click(function (e) {
         var $box = $(this);
         //console.log($box.is(":checked"));
         if ($box.is(":checked")) {
@@ -757,7 +757,7 @@
             $(group).prop("checked", false);
             $box.prop("checked", true);
 
-           
+
             if ($(this).val() != 'desactivee' && $(this).val() != 'relanceFuture') {
                 $('.dropdown-relanceFuture').css('display', 'none');
                 $('.dropdown-desactivee').css('display', 'none');
@@ -771,12 +771,12 @@
                 $('.dropdown-relanceFuture').css('display', '');
                 $('.dropdown-relanceFuture').css('visibility', 'visible');
             } else if ($(this).val() === 'rvFixee') {
-                
-                
+
+
                 displayCalendarRendezVous('rendezVous');
             }
             else if ($(this).val() === 'retourAppel') {
-                
+
                 displayCalendar('retourAppel');
             }
             else if ($(this).val() == 'nonInterresse') {
@@ -834,7 +834,7 @@
             //console.log($(e.target).attr('for'));
             //var dateTimeNow = moment().format('YYYY-MM-DD HH-MM-SS')
             //console.log(dateTimeNow);
-            //$('#Datenow').html(dateTimeNow);   
+            //$('#Datenow').html(dateTimeNow);
         }
 
 
@@ -855,8 +855,8 @@
         // causeDesactivation.replace("'", "\\\'");
         if (causeDesactivation == 'Pas de permis de conduire') {
             $('#selectedChoice').html('N\'a plus de permis de conduire');
-        }else
-        $('#selectedChoice').html(causeDesactivation);
+        } else
+            $('#selectedChoice').html(causeDesactivation);
     });
 
 
@@ -871,7 +871,7 @@
             //console.log($(e.target).attr('for'));
             //var dateTimeNow = moment().format('YYYY-MM-DD HH-mm-ss')
             //console.log(dateTimeNow);
-           // $('#Datenow').html(dateTimeNow);
+            // $('#Datenow').html(dateTimeNow);
         }
 
 

@@ -10,6 +10,13 @@ namespace Autoveille.Controllers
 {
     public class CompteController : BaseController
     {
+
+        public ActionResult EnregistrerUtilisateur()
+        {
+            return View();
+        }
+
+
         //
         // GET: /Compte/
 
@@ -109,6 +116,8 @@ namespace Autoveille.Controllers
                 Session["FirstName"] = utilisateur.FirstName;
                 Session["LastName"] = utilisateur.LastName;
                 Session["Nom"] = nom;
+                Session["Role"] = utilisateur.Role.ToString();
+                Session["Type"] = utilisateur.TypeUsager.ToString();
                 //Session["Role"] = utilisateur.Role;
 
                 //FormsAuthentication.SetAuthCookie(username, false);
@@ -128,8 +137,7 @@ namespace Autoveille.Controllers
             }
             else
             {
-                return RedirectToAction("InfoConcession", "Home");
-               
+                 return RedirectToAction("InfoConcession", "Home");              
             }
         }
 

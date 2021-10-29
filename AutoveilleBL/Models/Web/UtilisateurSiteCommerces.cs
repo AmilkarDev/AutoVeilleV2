@@ -11,8 +11,10 @@ namespace AutoveilleBL.Models.Web
         public int UserId { get; set; }
         public int NoCommerce { get; set; }
         public string NomCommerce { get; set; }
-        public int Role { get; set; }
-        public int TypeUsager { get; set; }
-        
+        public Roles Role { get; set; }
+        public UserTypes TypeUsager { get; set; }
+
+        public string Titre { get; set; }
+
     }
 }

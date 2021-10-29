@@ -15,7 +15,7 @@
         </div>
 
         <div>
-            <p  class="labelName">Vente </p>
+            <p class="labelName">Vente </p>
             <div class="squareRadioButtons OptionsVente">
                 <label>
                     <input type="checkbox" name="vente" value="Vente">
@@ -29,10 +29,10 @@
         </div>
 
         <div>
-            <p  class="labelName">Vendeur </p>
-            <input class="rdvInput"/>
+            <p class="labelName">Vendeur </p>
+            <input class="rdvInput" />
 
-            <p  class="labelName">Code du consultant </p>
+            <p class="labelName">Code du consultant </p>
             <select class="DdlCode listFilter rdvInput" id="ddlCode">
                 <option value="all">Tout </option>
                 <option value="AA">AA </option>
@@ -53,7 +53,7 @@
         <p class="labelName">Année </p>
         <input class="rdvInput" />
         <br />
-        <button  onclick="displayCalendar('rendezVous')" data-toggle="modal" data-target="#myModal" class="btn btn-center changeRdvBtn">Déplacer le R.V.</button>
+        <button onclick="displayCalendar('rendezVous')" data-toggle="modal" data-target="#myModal" class="btn btn-center changeRdvBtn">Déplacer le R.V.</button>
     </div>
 
 
@@ -112,18 +112,44 @@
             <b>  Notes du Consultant</b>
 
 
-            
+
         </div>
-        
+
         <div class="box box-content" style="height:160px;margin-left: 15px;margin-bottom:15px;">
             <b>  Notes du Centre d'appels</b>
 
 
-          
+
         </div>
 
     </div>
 </div>
+
+
+
+
+
+
+<!--Calendar Modal -->
+<!--<div id="myModal" class="modal modal-wide fade" role="dialog">
+    <div class="modal-dialog modal-xl">-->
+
+        <!-- Modal content-->
+        <!--<div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()">&times;</button>
+                <h4 class="modal-title" style="display:none;">Calendrier des rendez Vous</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer" style="display:none;">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeBackdrop()">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>-->
 
 
 <script>
@@ -143,5 +169,29 @@
         }
 
     });
+
+
+   
+
+        //function displayCalendar(reservationType) {
+        //    console.log("am here");
+        //    $.ajax({
+        //        url: '../Home/GetCalendarRendezVous',
+        //        contentType: 'application/html; charset=utf-8',
+        //        type: 'GET',
+        //        dataType: 'html',
+        //        success: function (result) {
+        //            $('.modal-body').html(result);
+        //            daysCalendarDisplay(reservationType);
+        //            monthsCalendarDisplay();
+        //            $('.modal-body').modal("show");
+        //        },
+        //        error: function (xhr, status) {
+        //            alert(status);
+        //        }
+        //    });
+        //}
+
+    
 
 </script>

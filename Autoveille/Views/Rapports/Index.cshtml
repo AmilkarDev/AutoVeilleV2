@@ -14,15 +14,13 @@
 
 <div class="row alertRow" id="eventDiv" style="height:35px;">
     <div style="float:left;display:flex;" class="col-md-3 col-sm-12 col-xs-12">
-        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesEnCours()">
+        <a class="eventText" id="enCours" style="color: white;" onclick="AfficherLesConcessionnairesEnCours()">
             Evenement en cours
-            @*<span id="eventState"> EN COURS </span>*@
         </a>
     </div>
     <div style="float:left;display:flex;justify-content:center" class="col-md-3 col-sm-12 col-xs-12">
-        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesAvenir()">
+        <a class="eventText" id="aVenir" style="color: white;" onclick="AfficherLesConcessionnairesAvenir()">
             Evenement a venir
-            @*<span id="eventState"> A VENIR </span>*@
         </a>
     </div>
     <div class="eventText col-md-3 col-sm-12 col-xs-12">
@@ -74,6 +72,8 @@
             $("#AfficherConcessionnairesEnCours").html(data);
         });
         $('#AfficherConcessionnairesEnCours').css('display', 'block');
+        $("#aVenir").removeClass("activeNav");
+        $("#enCours").addClass("activeNav");
     }
 
     function AfficherLesConcessionnairesAvenir() {
@@ -85,6 +85,8 @@
             $("#AfficherConcessionnairesAvenir").html(data);
         });
         $('#AfficherConcessionnairesAvenir').css('display', 'block');
+        $("#aVenir").addClass("activeNav");
+        $("#enCours").removeClass("activeNav");
     }
 
     function compareEvents() {
@@ -101,7 +103,7 @@
             data: JSON.stringify({ checkedEvents }),
             dataType: "json",
             success: function () {
-                console.log('redirect');
+               // console.log('redirect');
                 var url = '@Url.Action("Comparateur", "Rapports")';
                 window.location.href = url;
             },

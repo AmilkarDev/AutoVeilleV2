@@ -1,9 +1,6 @@
-﻿@*@{
-        ViewBag.Title = "RendezVous";
-        Layout = "~/Views/Shared/_LayoutBlack.cshtml";
-    }
-
-    <h2>RendezVous</h2>*@
+﻿@section styles {
+    <link href="@Url.Content("~/Content/jquery.yacal.css")" rel="stylesheet" type="text/css" />
+}
 @model  Autoveille.Models.EvenementModel
 @{
     ViewBag.Title = "InfoConcession";
@@ -44,13 +41,14 @@
     </div>
 </div>
 
+
 <!--Calendar Modal -->
 <div id="myModal" class="modal modal-wide fade" role="dialog">
     <div class="modal-dialog modal-xl">
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="display:none;">
                 <button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()">&times;</button>
                 <h4 class="modal-title" style="display:none;">Calendrier des rendez Vous</h4>
             </div>
@@ -107,7 +105,7 @@
         }
 
         function displayCalendar(reservationType) {
-
+            console.log("am here");
             $.ajax({
                 url: '../Home/GetCalendarRendezVous',
                 contentType: 'application/html; charset=utf-8',

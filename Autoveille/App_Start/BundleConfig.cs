@@ -17,6 +17,10 @@ namespace Autoveille
                 "~/Scripts/jquery-ui-{version}.js")
             );
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                "~/Scripts/jquery.validate*"));
+
+
             //bundles.Add(new ScriptBundle("~/Scripts/knockout").Include(
             //     "~/Scripts/Lib/knockout/knockout-{version}.js",
             //     "~/Scripts/Lib/knockout/knockout-deferred-updates.js")

@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace AutoveilleBL.Models.Enumerations
 {
     [Flags]
-    public enum TypeProgramme
+    public enum s
     {
 
         [Description("Autoveille v2")]

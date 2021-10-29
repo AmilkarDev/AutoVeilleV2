@@ -1,0 +1,107 @@
+﻿@model AutoveilleBL.Models.Evenement
+
+<div class="form-horizontal">
+    <div class="row form-group" hidden="hidden">
+        <label class="col-md-3">Id Evenement</label>
+        <input class="form-control col-md-9" id="eventIdInput" value="5"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Evenement Debut</label>
+        <input class="form-control col-md-9" id="eventStartDateInput" value="10/11/2020"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Evenement Fin</label>
+        <input class="form-control col-md-9" id="eventEndDateInput" value="15/11/2020"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Total Evenements</label>
+        <input class="form-control col-md-9" id="TotalEventsInput" value="15"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Creation</label>
+        <input class="form-control col-md-9" id="creationDateInput" value="01/11/2020"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Utilisateur</label>
+        <input class="form-control col-md-9" id="userInput"  value="UserOne"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">No Commerce</label>
+        <input class="form-control col-md-9" id="CommerceNoInput" value="160"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Appels Prevus Dir Evenement</label>
+        <input class="form-control col-md-9" id="callsPrevusDirEvInput" value="05"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Appels Prevus CA Suly</label>
+        <input class="form-control col-md-9" id="callsPrevusCaSulyInput" value="18"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Modification</label>
+        <input class="form-control col-md-9" id="ModificationDateInput" value="08/11/2020"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Utilisateur Modification</label>
+        <input class="form-control col-md-9" id="userModificationInput" value="MaUser"/>
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Dates Confirmer</label>
+        <input class="form-control col-md-9" id="ConfirmedDatesInput" value="12"/>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button id="eventModifButton" class="btn btn-success">Ajouter</button>
+        </div>
+    </div>
+</div>
+@*}*@
+
+
+<script>
+    $("#eventModifButton").click(function () {
+        var event = {
+            IdEvenement: $("#eventIdInput").val(),
+            DateEvenementDebut: $("#eventStartDateInput").val(),
+            DateEvenementFin: $("#eventEndDateInput").val(),
+            TotalEvenements: $("#TotalEventsInput").val(),
+            DateCreation: $("#creationDateInput").val(),
+            Utilisateur: $("#userInput").val(),
+            NoCommerce: $("#CommerceNoInput").val(),
+            AppelsPrevusDirEv: $("#callsPrevusDirEvInput").val(),
+            AppelsPrevusCASuly: $("#callsPrevusCaSulyInput").val(),
+            DateModification: $("#ModificationDateInput").val(),
+            UtilisateurModification: $("#userModificationInput").val(),
+            DatesConfirmer: $("#ConfirmedDatesInput").val(),
+        };
+
+        console.log(event);
+        $.ajax({
+            url: "../Evenements/AjouterEvenement",
+            contentType: 'application/json; charset=utf-8',
+            type: "post", //send it through get method
+            dataType: 'json',
+            data: JSON.stringify(event),
+            success: function (response) {
+                $('.modal-body').html(response);
+                $('.modal-body').modal("show");
+                $('#TableId').DataTable().ajax.reload();
+            },
+            error: function (xhr) {
+                alert("error updating the event");
+            }
+        });
+    });
+</script>

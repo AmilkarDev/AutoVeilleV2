@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoveilleDAL;
+using System.Data.SqlClient; 
 using AutoveilleDAL.SQL;
 using Outils;
 using AutoveilleBL.Models.Web;
@@ -26,7 +22,7 @@ namespace AutoveilleBL
                 SqlExecFramework.Execute("AutoveilleMain", null, (conn, trans) =>
                 {
                     cmd = new SqlCommand("SELECT [Password] FROM usersGroupe WHERE username=@user AND id in " +
-                                         " (SELECT idusergroupe FROM [UsersGroupeCommerce] WHERE role & 1>0) ", conn);
+                                         " (SELECT idusergroupe FROM [UsersGroupeCommerce] WHERE role = 'Gestionnaire') ", conn);
                     cmd.AddParameterWithValue("@user", userName);
 
                     lookupPassword = (string)cmd.ExecuteScalar();
@@ -119,9 +115,9 @@ namespace AutoveilleBL
                             u = new UtilisateurSite
                             {
                                 UserID = reader.GetInt32(0),
-                                Role = reader.GetInt32(3),
+                                Role = (Roles)Enum.Parse(typeof(Roles), reader.GetString(3)),
                                 NoCommerce=aNoCommerce,
-                                TypeUsager=reader.GetInt32(4),
+                                TypeUsager= (UserTypes)Enum.Parse(typeof(UserTypes), reader.GetString(4)),
                                 UserName = aUserName,
                                 //Role = reader.GetInt32(6),
                                 //TypeUsager = reader.GetInt32(7),
@@ -149,9 +145,9 @@ namespace AutoveilleBL
                     conn.Open();
 
                     string sql =
-                        "SELECT id, email,  u.Prenom, u.nom " + 
-                            " FROM usersgroupe u   " +
-                        " WHERE username=@user  AND  id in (SELECT idusergroupe FROM [UsersGroupeCommerce] WHERE role & 1>0)  ";
+                        "SELECT u.Id, u.Email,  u.Prenom, u.nom, u.role, uc.TypeUsager " +
+                            " FROM [usersgroupe] u inner join [UsersGroupeCommerce] uc on u.Id= uc.IdUserGroupe  " +
+                        " WHERE username=@user ";
 
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@user", aUserName);
@@ -171,8 +167,9 @@ namespace AutoveilleBL
                                 FirstName = reader.GetNullableString(2),
                                 LastName = reader.GetNullableString(3),
                                 UserName = aUserName,
-                                //Role = reader.GetInt32(6),
-                                //TypeUsager = reader.GetInt32(7),
+                                
+                                //Role = (Roles)Enum.Parse(typeof(Roles),reader.GetString(4)),
+                                //TypeUsager = (UserTypes)Enum.Parse(typeof(UserTypes), reader.GetString(5)),
                             };
 
                         }
@@ -198,14 +195,15 @@ namespace AutoveilleBL
                     conn.Open();
 
                     string sql =
-                        "SELECT ug.id, cm.nocommerce, cm.nomcommerce, ugc.role, typeusager  " +
+                        "SELECT ug.id, cm.nocommerce, cm.nomcommerce" +
                         " FROM usersgroupe ug  INNER JOIN usersgroupecommerce ugc ON ug.id=ugc.idusergroupe  " +
                         " INNER JOIN tbcommerces cm ON cm.nocommerce=ugc.nocommerce  OR ugc.nocommerce=0 " +
-                        " WHERE ug.username=@user  AND ugc.role & 1>0   ";
-
+                        " WHERE ug.username=@user ";
+                    //" WHERE ug.username=@user  AND ugc.role & 1>0   ";
+                    //Console.Write("Hello world");
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@user", aUserName);
-
+                     
 
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -217,8 +215,48 @@ namespace AutoveilleBL
                                 UserId = reader.GetInt32(0),
                                 NoCommerce = reader.GetInt32(1),
                                 NomCommerce = reader.GetNullableString(2),
-                                Role = reader.GetInt32(3),
-                                TypeUsager = reader.GetInt32(4),
+                                //Role = reader.GetInt32(3),
+                                //TypeUsager = reader.GetInt32(4),
+                            };
+                            res.Add(u);
+                        }
+                    }
+                    return res;
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                throw new ReadableException("Une erreure est survenue à la génération de la liste des concessions", ex);
+            }
+        }
+
+        public static List<UtilisateurSite> GetAllUtilisateurs()
+        {
+            string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
+            var res = new List<UtilisateurSite>();
+            try
+            {
+                using (var conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    string sql = "SELECT u.Id, u.Email,  u.Prenom, u.nom, u.username, u.Langue, u.role FROM [usersgroupe] u  ";
+                    var cmd = new SqlCommand(sql, conn);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var u = new UtilisateurSite()
+                            {
+                                UserID = reader.GetInt32(0),
+                                Email = reader.GetString(1),
+                                LastName = reader.GetString(2),
+                                FirstName = reader.GetString(3),
+                                UserName = reader.GetString(4),
+                                Langue = (Langues)Enum.Parse(typeof(Langues),reader.GetString(5)),
+                                Role = (Roles)Enum.Parse(typeof(Roles), reader.GetString(6)),
                             };
                             res.Add(u);
                         }

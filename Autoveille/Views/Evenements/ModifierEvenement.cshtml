@@ -1,0 +1,160 @@
+﻿@model AutoveilleBL.Models.Evenement
+
+@functions {
+            string FormatNullableDate(DateTime? value) {
+                return value.HasValue? value.Value.ToString("dd/MM/yyyy"):" ";
+
+            }
+        }
+<div class="form-horizontal">
+    <h4>Evenement</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div id="Alerts">
+
+    </div>
+    <div class="row form-group" hidden="hidden">
+        <label class="col-md-3">Id Evenement</label>
+        <input class="form-control col-md-9" id="eventIdInput" value="@Model.IdEvenement" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Evenement Debut</label>
+        <input class="form-control col-md-9" id="eventStartDateInput" value="@FormatNullableDate(Model.DateEvenementDebut)" />
+        @Html.ValidationMessageFor(model => model.DateEvenementDebut, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Evenement Fin</label>
+        <input class="form-control col-md-9" id="eventEndDateInput" value="@FormatNullableDate(Model.DateEvenementFin)" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Total Evenements</label>
+        @*@Html.TextBoxFor(Model=>Model.TotalEvenements,"",new { @class = "text-danger" })*@
+        <input class="form-control col-md-9" id="TotalEventsInput" value="@Model.TotalEvenements" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Creation</label>
+        <input class="form-control col-md-9" id="creationDateInput" value="@FormatNullableDate(Model.DateCreation)" />
+        @Html.ValidationMessageFor(model => model.DateCreation, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Utilisateur</label>
+        <input class="form-control col-md-9" id="userInput" value="@Model.Utilisateur" />
+        @Html.ValidationMessageFor(model => model.Utilisateur, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">No Commerce</label>
+        <input class="form-control col-md-9" id="CommerceNoInput" value="@Model.NoCommerce" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Appels Prevus Dir Evenement</label>
+        <input class="form-control col-md-9" id="callsPrevusDirEvInput" value="@Model.AppelsPrevusDirEv" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Appels Prevus CA Suly</label>
+        <input class="form-control col-md-9" id="callsPrevusCaSulyInput" value="@Model.AppelsPrevusCASuly" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Date Modification</label>
+        <input class="form-control col-md-9" id="ModificationDateInput" value="@FormatNullableDate(Model.DateModification)" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Utilisateur Modification</label>
+        <input class="form-control col-md-9" id="userModificationInput" value="@Model.UtilisateurModification" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Dates Confirmer</label>
+        <input class="form-control col-md-9" id="ConfirmedDatesInput" value="@Model.DatesConfirmer" />
+    </div>
+    <div class="row form-group">
+        <label class="col-md-3">Evenement Actif</label>
+        <div class="col-md-9" style="text-align:left;" id="activeEvent">
+            <label class="activeEvent">
+                <input type="checkbox"  checked="@Model.Actif">
+                <span class=""></span>
+            </label>
+        </div>
+
+        @*<label class="col-md-3">Dates Confirmer</label>
+        <input class="form-control col-md-9" id="ConfirmedDatesInput" value="@Model.DatesConfirmer" />*@
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button id="eventModifButton" class="btn btn-success">Modifier</button>
+        </div>
+    </div>
+</div>
+@*}*@
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+}
+<script>
+    $("#eventModifButton").click(function () {
+        var $box = $('.activeEvent input:checkbox');
+        console.log("active content  : " + $box.is(":checked"));
+        var event = {
+        IdEvenement: $("#eventIdInput").val(),
+            DateEvenementDebut: $("#eventStartDateInput").val(),
+            DateEvenementFin: $("#eventEndDateInput").val(),
+            TotalEvenements: $("#TotalEventsInput").val(),
+            DateCreation: $("#creationDateInput").val(),
+            Utilisateur: $("#userInput").val(),
+            NoCommerce: $("#CommerceNoInput").val(),
+            AppelsPrevusDirEv: $("#callsPrevusDirEvInput").val(),
+            AppelsPrevusCASuly: $("#callsPrevusCaSulyInput").val(),
+            DateModification: $("#ModificationDateInput").val(),
+            UtilisateurModification: $("#userModificationInput").val(),
+            DatesConfirmer: $("#ConfirmedDatesInput").val(),
+            Actif: $box.is(":checked")
+        };
+        //console.log("hello world");
+        $.ajax({
+        url: "../Evenements/ModifierEvenement",
+            contentType: 'application/json; charset=utf-8',
+            type: "post", //send it through get method
+            dataType: 'json',
+            data: JSON.stringify(event),
+            success: function (response) {
+                console.log("success response : " + response.message);
+                $('.modal-body').html(response.message);
+                $('.modal-body').modal("show");
+                $('#TableId').DataTable().ajax.reload();
+            },
+            error: function (xhr) {
+                console.log("xhr error:  " + JSON.stringify(xhr.responseJSON));
+                var jsonArray = xhr.responseJSON;
+                $.each(jsonArray, function (index, jsonObject) {
+                    /* $.each(jsonObject, function (key, val) {*/
+                    console.log("key : " + jsonObject.key + " ; value : " + jsonObject.errors[0]);
+                    $("#Alerts").append('<p class="text-danger">  ' + jsonObject.key + " : " + jsonObject.errors[0] + "</p>");
+                    /*});*/
+                });
+
+                //alert("error updating the event");
+            }
+        });
+    });
+
+
+    $('.activeEvent input:checkbox').click(function (e) {
+        //console.log(e);
+        var $box = $(this);
+        //console.log("hello");
+        console.log($box.is(":checked"));
+        if ($box.is(":checked")) {
+            $box.prop("checked", true);
+        }
+    });
+</script>

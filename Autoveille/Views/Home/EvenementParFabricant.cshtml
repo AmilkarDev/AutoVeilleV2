@@ -42,6 +42,7 @@
 <script>
     var idConcession;
     function displayDashboard(IdConcessionnaire) {
+        console.log("display");
         if (idConcession === undefined) {
             idConcession = IdConcessionnaire;
         }
@@ -60,8 +61,10 @@
             success: function (result) {
                 var dashboardsId = "dashboards" + IdConcessionnaire;
                 var imgId = "img" + IdConcessionnaire;
+                //$('#' + dashboardsId).toggle();
+                $('#' + dashboardsId).css("display", "");
                 $('#' + dashboardsId).html(result);
-                $('#' + dashboardsId).toggle();
+
                 $('#' + imgId).attr('onclick', 'hideDashboard(' + IdConcessionnaire + ')');
                 $('#' + imgId).attr('src', '../Content/Images/Layout/Moins.png');
             },
@@ -72,12 +75,14 @@
     }
 
     function hideDashboard(IdConcessionnaire) {
+        console.log("hide");
         //$('#detailsClient').css('visibility', 'hidden');
         var dashboardsId = "dashboards" + IdConcessionnaire;
         var imgId = "img" + IdConcessionnaire;
         $('#' + imgId).attr('onclick', 'displayDashboard(' + IdConcessionnaire + ')');
         $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
-        $('#' + dashboardsId).toggle();
+        //$('#' + dashboardsId).toggle();
+        $('#' + dashboardsId).css("display", "none");
         $('#' + dashboardsId).empty();
     }
 

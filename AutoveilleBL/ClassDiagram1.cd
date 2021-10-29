@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AutoveilleBL.Models.Concession">
+    <Position X="14.25" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAACAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Concession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoveilleBL.Models.Evenement">
+    <Position X="12.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAAABIAFgAAAEAAiAAAAAAAAAAAABAAAAAEAAAIAA=</HashCode>
+      <FileName>Models\Evenement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoveilleBL.Models.EvenementAutoveille">
+    <Position X="14.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAAABIAIAAAAEgAiAAAQAAAAAAAABIAAAgAAAQAoA=</HashCode>
+      <FileName>Models\EvenementAutoveille.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoveilleBL.Models.ListeAppels">
+    <Position X="7.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEBQAAAAQAAAAACBAEAARAAAAAABAAAABAAAAAAA=</HashCode>
+      <FileName>Models\ListeAppels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoveilleBL.Models.NoteAppel">
+    <Position X="12" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Note.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoveilleBL.Models.Relance">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AzIKYAIOADhAARIQBAQBAAAwEDFBIYjBiSkASNFQQgA=</HashCode>
+      <FileName>Models\Relance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoveilleBL.Models.Web.UtilisateurSite">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAEAAACAAAAAAECAAAAgAAAACAAAAAQAAAAAAAAg=</HashCode>
+      <FileName>Models\Web\UtilisateurSite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoveilleBL.Models.Web.UtilisateurSiteCommerces">
+    <Position X="3" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAECAAAAgAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Web\UtilisateurSiteCommerces.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="AutoveilleBL.Models.Enumerations.s">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAIAAAAAAAAAQAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Enumerations\TypeProgramme.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

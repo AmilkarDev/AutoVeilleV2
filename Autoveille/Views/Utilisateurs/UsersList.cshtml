@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AutoveilleBL.Models.Web.UtilisateurSite>
+
+<div style="background:white;color:black;padding:15px;">
+    <button class="btn btn-success" id="buttonAdd" data-toggle="modal" data-target="#userModal">Ajouter utilisateur</button>
+    <button id="buttonSupp" class="btn btn-danger">Supprimer un utilisateur</button>
+    <button id="buttonEdit" class="btn btn-info" data-toggle="modal" data-target="#userModal">Modifier tilisateur</button>
+    <table class="table table-striped table-bordered table-hover" id="usersTable" cellspacing="0" align="center" width="100%">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Langue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+        </tr>
+
+    </table>
+
+    </div>

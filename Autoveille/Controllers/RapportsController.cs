@@ -102,7 +102,7 @@ namespace Autoveille.Controllers
             return PartialView();
         }
         [HttpPost]
-        public JsonResult allComparateur(List<int> checkedEvents)
+        public JsonResult allComparateur(List<int> checkedEvents) 
         {
             TempData["checkedEvents"] = checkedEvents;
             return Json("successfully transported check events ids",JsonRequestBehavior.AllowGet);

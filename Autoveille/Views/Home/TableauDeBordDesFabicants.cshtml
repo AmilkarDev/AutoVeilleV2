@@ -6,23 +6,21 @@
 
 
 <div class="row alertRow" id="eventDiv">
-    <div style="float:left;display:flex;" class="col-md-3 col-sm-12 col-xs-12">
-        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesEnCours()">
+    <div style="float:left;display:flex;" class="col-md-4 col-sm-12 col-xs-12">
+        <a class="eventText" id="enCours" style="color: white;" onclick="AfficherLesConcessionnairesEnCours()">
             Evenement en cours
-            @*<span id="eventState"> EN COURS </span>*@
         </a>
     </div>
-    <div style="float:left;display:flex;justify-content:center" class="col-md-3 col-sm-12 col-xs-12">
-        <a class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesAvenir()">
+    <div style="float:left;display:flex;justify-content:center" class="col-md-4 col-sm-12 col-xs-12">
+        <a id="aVenir" class="eventText" style="color: white;" onclick="AfficherLesConcessionnairesAvenir()">
             Evenement a venir
-            @*<span id="eventState"> A VENIR </span>*@
         </a>
     </div>
-    <div class="eventText col-md-3 col-sm-12 col-xs-12">
+    @*<div class="eventText col-md-3 col-sm-12 col-xs-12">
         <i class="fas fa-download"></i>
-    </div>
-    <div id="searchInput" class="eventText col-md-3 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
-        Nom du fabicant
+    </div>*@
+    <div id="searchInput" class="eventText col-md-4 col-sm-12 col-xs-12" style="color:white;display:flex;flex-flow:row-reverse;">
+        Nom du fabricant
     </div>
 </div>
 <br />
@@ -49,6 +47,8 @@
             $("#AfficherConcessionnairesEnCours").html(data);
         });
         $('#AfficherConcessionnairesEnCours').css('display', 'block');
+        $("#aVenir").removeClass("activeNav");
+        $("#enCours").addClass("activeNav");
     }
 
     function AfficherLesConcessionnairesAvenir() {
@@ -60,6 +60,8 @@
             $("#AfficherConcessionnairesAvenir").html(data);
         });
         $('#AfficherConcessionnairesAvenir').css('display', 'block');
+        $("#aVenir").addClass("activeNav");
+        $("#enCours").removeClass("activeNav");
     }
 
 

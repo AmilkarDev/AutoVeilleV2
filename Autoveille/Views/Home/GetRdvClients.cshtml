@@ -58,9 +58,6 @@
             </th>
         </tr>
 
-
-
-
         <tr>
             <td class="tdFilter">
                 <select class="DdlConf listFilter" id="ddlConf">
@@ -268,7 +265,7 @@
                         @Html.DisplayFor(modelItem => item.NotesConsultant)
                     </p>
                 </div>
-                <button class="bttn" data-toggle="popover" title="Notes Consultant" data-placement="bottom" data-content="@item.NotesConsultant"> + </button>
+                <button class="bttn" data-toggle="popover" title="Notes Consultant" data-placement="bottom" data-content="@item.NotesConsultant" style="pointer-events:auto;"> + </button>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CourrielClient)
@@ -286,11 +283,11 @@
 
 
 <!--Calendar Modal -->
-<div id="myModal" class="modal modal-wide fade" role="dialog">
-    <div class="modal-dialog modal-xl">
+<!--<div id="myModal" class="modal modal-wide fade" role="dialog">
+    <div class="modal-dialog modal-xl">-->
 
         <!-- Modal content-->
-        <div class="modal-content">
+        <!--<div class="modal-content">
             <div class="modal-header" style="display:none;">
                 <button type="button" class="close" data-dismiss="modal" onclick="removeBackdrop()">&times;</button>
                 <h4 class="modal-title" style="display:none;">Calendrier des rendez Vous</h4>
@@ -304,7 +301,7 @@
         </div>
 
     </div>
-</div>
+</div>-->
 
 
 
@@ -478,9 +475,9 @@
     }
 
 
-    function handleClick() {
-        event.stopPropagation();
-    }
+    //function handleClick() {
+    //    event.stopPropagation();
+    //}
 
     
 </script>

@@ -258,12 +258,16 @@ namespace Autoveille.Controllers
         }
         public ActionResult InfoConcession()
         {
-            var role = 0;
+            string role ;
             if (Session["User"]!=null)
             {
-                role = Utilisateurs.GetRoles(Session["User"].ToString());
+                role = (string)Session["Role"];
             }
-            if (role==1)
+            else
+            {
+                return RedirectToAction("Connexion", "Compte");
+            }
+            if (role  == "Gestionnaire")
             {
                 int userId = -1;
                 bool resParse;

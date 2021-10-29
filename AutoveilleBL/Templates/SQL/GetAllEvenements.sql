@@ -1,4 +1,4 @@
-﻿SELECT  Id
+SELECT  Id
       ,DateEvenementDebut
       ,DateEvenementFin
       ,TotalEvenements
@@ -13,4 +13,3 @@
       ,Actif
   FROM atv.TbEvenement
   WHERE NoCommerce=@nocommerce
-  AND id=@id

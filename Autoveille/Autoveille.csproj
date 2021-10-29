@@ -153,8 +153,10 @@
     <Compile Include="App_Start\LogonAuthorize.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CompteController.cs" />
+    <Compile Include="Controllers\EvenementsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RapportsController.cs" />
+    <Compile Include="Controllers\UtilisateursController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +179,9 @@
     <Compile Include="TestingModels\Client.cs" />
     <Compile Include="TestingModels\FicheClient.cs" />
     <Compile Include="TestingModels\NomAppel.cs" />
+    <Compile Include="Utils\DateGreaterThanAttribute.cs" />
+    <Compile Include="Utils\RazorViewToString.cs" />
+    <Compile Include="Utils\ValidateAjaxAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -271,6 +276,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -303,7 +309,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.yacal.js" />
+    <Content Include="Scripts\MyScripts\EventScripts.js" />
     <Content Include="Scripts\MyScripts\RapportEvenemenentEnCoursScript.js" />
+    <Content Include="Scripts\MyScripts\UserScripts.js" />
     <Content Include="Scripts\pqinaScript.js" />
     <Content Include="Scripts\MyScripts\Rapports_PartialCurrentEvent.js" />
     <Content Include="Web.config" />
@@ -358,6 +366,12 @@
     <Content Include="Views\Rapports\Comparateur.cshtml" />
     <Content Include="Views\Rapports\Rapports_PartialCurrentEvent.cshtml" />
     <Content Include="Views\Rapports\selectionnerEvents.cshtml" />
+    <Content Include="Views\Evenements\Index.cshtml" />
+    <Content Include="Views\Evenements\EventsList.cshtml" />
+    <Content Include="Views\Evenements\ModifierEvenement.cshtml" />
+    <Content Include="Views\Evenements\AjouterEvenement.cshtml" />
+    <Content Include="Views\Utilisateurs\Index.cshtml" />
+    <Content Include="Views\Utilisateurs\UsersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

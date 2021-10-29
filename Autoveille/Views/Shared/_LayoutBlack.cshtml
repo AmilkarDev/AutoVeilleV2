@@ -17,7 +17,7 @@
     <link href="~/Content/css/InfoConcession.css" rel="stylesheet" />
     <link href="~/Content/css/RendezVous.css" rel="stylesheet" />
     <link href="~/Content/css/RapportsEvenementsEnCours.css" rel="stylesheet" />
-    <link href="~/Content/jquery.yacal.css" rel="stylesheet" />
+    @*<link href="~/Content/jquery.yacal.css" rel="stylesheet" />*@
 
     <script src="~/Scripts/flip.min.js"></script>
     <link href="~/Content/flip.min.css" rel="stylesheet" />
@@ -29,6 +29,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.structure.min.css" rel="stylesheet" />
     <link href="~/Content/css/CompteARebours.css" rel="stylesheet" />
     <link href="~/Content/css/TableauDeBordDesFabricants.css" rel="stylesheet" />
+    @*<link href="https://cdn.datatables.net/1.11.1/css/jquery. " rel="stylesheet"/>*@
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/0.7.0/chartjs-plugin-datalabels.min.js"></script>
         <script src="~/Scripts/MyScripts/RapportEvenemenentEnCoursScript.js"></script>*@
@@ -48,11 +49,11 @@
                     text-decoration: none;
                 }
 
-                .downMenu li a:active {
-                    font-weight: bold;
-                    color: #fbd72b;
-                    text-decoration: none;
-                }
+        .activeNav {
+            font-weight: bold;
+            color: #fbd72b !important;
+            text-decoration: none;
+        }
 
         #eventDiv {
             margin-right: 35px;
@@ -156,18 +157,19 @@
 
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/jquery.yacal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/fr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/locales-all.min.js"></script>
     <script src="~/Scripts/jquery.filtertable.min.js"></script>
-    @*<script src="~/Scripts/jquery-labelauty.js"></script>*@
-
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.9/js/dataTables.fixedHeader.min.js"></script>
 
     @RenderSection("scripts", required: false)
     @RenderSection("css", required: false)
-
+    @RenderSection("styles", required: false)
 
     <script type="text/javascript">
         function displayMenu() {
@@ -219,6 +221,20 @@
             var dd = Tick.helper.date();
             console.log(dd);
             tick.value = [dd.getDate(), dd.getMonth() + 1, dd.getFullYear()];
+        }
+        $(function () {
+            //$(".downMenu li a").on("click", function () {
+            //console.log($(".downMenu").find(".activeNav"));
+            //$(".downMenu").find(".activeNav").removeClass("activeNav");
+            //$(this).addClass("activeNav");
+            //});
+            //console.log(location.pathname.split("/").slice(-1)[0]);
+            //console.log($('.downMenu li a[href$="/' + location.pathname.split("/").slice(-1)[0] + '"]'));
+            $('.downMenu li a[href$="/' + location.pathname.split("/").slice(-1)[0] + '"]').addClass('activeNav');
+        });
+
+        function removeBackdrop() {
+            $('.modal-backdrop').remove();
         }
     </script>
 
