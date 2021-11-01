@@ -329,12 +329,12 @@ namespace Autoveille.Controllers
 
         public ActionResult RendezVous()
         {
-            var role = 0;
+            var role = "";
             if (Session["User"] != null)
             {
                 role = Utilisateurs.GetRoles(Session["User"].ToString());
             }
-            if (role == 1)
+            if (role == "Gestionnaire")
             {
                 int userId = -1;
                 bool resParse;
@@ -623,10 +623,10 @@ namespace Autoveille.Controllers
             if (noClient != null && noClient > 0)
             {
                 var notes = Ventes.GetNotesPrecedente(noCommerce, r.Id, (int)noClient);
-                var noteGeneral = Ventes.GetNotesGeneral(noCommerce, (int)noClient);
+               // var noteGeneral = Ventes.GetNotesGeneral(noCommerce, (int)noClient);
                 client.NotesAppelsPrecedentes = new List<NoteAppel>();
                 client.NotesAppelsPrecedentes = notes;
-                client.NotesGenerals = noteGeneral;
+                //client.NotesGenerals = noteGeneral;
             }
 
             //Vehicule vehicule = new Vehicule()

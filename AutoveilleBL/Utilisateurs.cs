@@ -48,10 +48,10 @@ namespace AutoveilleBL
 
         }
 
-        public static int GetRoles(string aUserName)
+        public static string GetRoles(string aUserName)
         {
             string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
-            var role = 0;
+            var role = "";
             try
             {
                 using (var conn = new SqlConnection(connStr))
@@ -62,7 +62,7 @@ namespace AutoveilleBL
                         "SELECT id,  role" +
                           "  FROM  dbo.UsersGroupe " +
                           "  WHERE	UserName=@username  " +
-                          "   AND role & 1>0 " ;
+                          "   AND role = 'Gestionnaire' " ;
 
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@username", aUserName);
@@ -72,7 +72,7 @@ namespace AutoveilleBL
                     {
                         if (reader.Read())
                         {
-                             role = reader.GetInt32(1);
+                             role = reader.GetString(1);
                         }
                     }
                     return role;
