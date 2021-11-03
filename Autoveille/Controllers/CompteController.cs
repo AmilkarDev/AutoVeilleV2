@@ -72,8 +72,8 @@ namespace Autoveille.Controllers
         //
         // POST: /Compte/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             SignOut();

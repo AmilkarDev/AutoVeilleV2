@@ -135,8 +135,15 @@
             <li>
                 @Html.ActionLink("Gestionnaire de rendez vous", "RendezVous", "Home", null, null)
             </li>
+            <li>
+                @Html.ActionLink("Utilisateurs", "Index", "Utilisateurs", null, null)
+            </li>
+            <li>
+                @Html.ActionLink("Evenements", "Index", "Evenements", null, null)
+            </li>
             <li style="float:right;margin-right:-15px;">
-                <a href="#"> Fermer la session  X</a>
+                @Html.ActionLink("Fermer la session", "LogOff", "Compte", null, null)
+                @*<a href="#"> Fermer la session  X</a>*@
             </li>
         </ul>
 

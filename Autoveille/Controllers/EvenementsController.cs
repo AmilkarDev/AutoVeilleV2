@@ -201,7 +201,7 @@ namespace Autoveille.Controllers
         // GET: Evenements
         public ActionResult Index()
         {
-            List<Evenement> events = Evenements.GetAllEvenements(160);
+            //List<Evenement> events = Evenements.GetAllEvenements(160);
             return View();
         }
 

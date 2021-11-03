@@ -280,7 +280,7 @@ namespace Autoveille.Controllers
                 {
                     //return "error user id pas bon";
                 }
-                var evenements = Ventes.GetEvenementsByConsultant(userId);
+                 var evenements = Ventes.GetEvenementsByConsultant(userId);
                 if (evenements == null || evenements.Count == 0)
                 {
                     //return "aucune evenement n'est pas associé à l'utilisateur";
