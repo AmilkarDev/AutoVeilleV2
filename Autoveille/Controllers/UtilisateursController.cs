@@ -5,11 +5,16 @@ using AutoveilleBL;
 using System;
 using System.Linq;
 using AutoveilleBL.Models;
+using Autoveille.Views;
 
 namespace Autoveille.Controllers
 {
     public class UtilisateursController : Controller
     {
+        private List<Concession> _commerces = Concessions.GetConcessionsActiveAutoveilleV2();
+
+        List<UtilisateurSite> users = Utilisateurs.GetAllUtilisateurs();
+
         // GET: Utilisateurs
         public ActionResult Index()
         {
@@ -51,7 +56,7 @@ namespace Autoveille.Controllers
                 }
 
                 //Sorting.
-               //data = this.SortByColumnWithOrder(order, orderDir, data);
+                //data = this.SortByColumnWithOrder(order, orderDir, data);
 
 
                 //Filtering 
@@ -74,6 +79,80 @@ namespace Autoveille.Controllers
 
             // Return info.
             return result;
+        }
+
+        [HttpPost]
+        public JsonResult SupprimerUtilisateur(UtilisateurSite user)
+        {
+            bool result = Utilisateurs.DeleteUtilisateur(user);
+            return result ? Json("Utilisateur supprimée avec succés") : Json("Problème du suppression de l'utilisateur sélectionné");
+        }
+
+        [HttpGet]
+        public ActionResult ModifierUtilisateur(int UserID)
+        {
+            List<UtilisateurSite> data = users;
+            UtilisateurSite user = users.Where(x => x.UserID == UserID).First();
+            return PartialView(user);
+        }
+        [HttpPost]
+        [ValidateAjax]
+        public ActionResult ModifierUtilisateur(UtilisateurSite user)
+        {
+            if (ModelState.IsValid)
+            {
+                int s = Utilisateurs.SaveUtilisateur(user);
+                return Json(new { success = true, message = "Mise a jour de l'utilisateur terminé avec succés !!" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                //return PartialView(evenement);
+                return Json(new
+                {
+                    success = false,
+                    message = RazorViewToString.RenderRazorViewToString(this, "ModifierUtilisateur", user),
+                    errors = "ss"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult AjouterUtilisateur()
+        {
+            ViewData["commerces"] = ToSelectList(_commerces);
+            return PartialView();
+        }
+
+        [NonAction]
+        public SelectList ToSelectList(List<Concession> commerces)
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (Concession commerce in commerces)
+            {
+                list.Add(new SelectListItem()
+                {
+                    Text = commerce.NomCommerce,
+                    Value = commerce.NoCommerce.ToString()
+                });
+            }
+
+            return new SelectList(list, "Value", "Text");
+        }
+
+        [HttpPost]
+        public JsonResult AjouterUtilisateur(UtilisateurSite user)
+        {
+            if (user.NoCommerce != 0)
+                user.NomCommerce = _commerces.Where(c => c.NoCommerce == user.NoCommerce).Select(c => c.NomCommerce).FirstOrDefault();
+
+            int s = Utilisateurs.InsertUtilisateur(user);
+
+            if (s != 0)
+                return Json("Utilisateur ajouté avec succés");
+            else
+                return Json(new { success = false, message = "Utilisateur non ajouté !!" });
         }
     }
 }

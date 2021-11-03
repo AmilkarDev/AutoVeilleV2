@@ -372,6 +372,8 @@
     <Content Include="Views\Evenements\AjouterEvenement.cshtml" />
     <Content Include="Views\Utilisateurs\Index.cshtml" />
     <Content Include="Views\Utilisateurs\UsersList.cshtml" />
+    <Content Include="Views\Utilisateurs\ModifierUtilisateur.cshtml" />
+    <Content Include="Views\Utilisateurs\AjouterUtilisateur.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
