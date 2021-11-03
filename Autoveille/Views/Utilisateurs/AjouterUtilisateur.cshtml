@@ -1,0 +1,144 @@
+﻿@model AutoveilleBL.Models.Web.UtilisateurSite
+
+@functions {
+    string FormatNullableDate(DateTime? value)
+    {
+        return value.HasValue ? value.Value.ToString("dd/MM/yyyy") : " ";
+
+    }
+}
+<div class="form-horizontal">
+    <h4>Ajouter Utilisateur</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div id="Alerts">
+
+    </div>
+    <div class="row form-group" hidden="hidden">
+        <label class="col-md-3">Id Utilisateurt</label>
+        <input class="form-control col-md-9" id="userIdInput" value="" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">username</label>
+        <input class="form-control col-md-9" id="usernameInput" value="" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Nom</label>
+        <input class="form-control col-md-9" id="nomInput" value="" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Prenom</label>
+        @*@Html.TextBoxFor(Model=>Model.TotalEvenements,"",new { @class = "text-danger" })*@
+        <input class="form-control col-md-9" id="prenomInput" value="" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Mot de passe</label>
+        <input type="password" class="form-control col-md-9" id="passwordInput" value="" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Confirmer mot de passe</label>
+        <input type="password" class="form-control col-md-9" id="passwordConfirmInput" value="" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Email</label>
+        <input class="form-control col-md-9" id="emailInput" value="" />
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Langue</label>
+        @*<input class="form-control col-md-9" id="langueInput" value="" />*@
+        @Html.EnumDropDownListFor(
+                                    x => x.Langue,
+                                    new { @class = "form-control ", style = "width: 400px;", id = "langueInput" })
+    </div>
+
+    <div class="row form-group">
+        <label class="col-md-3">Role</label>
+        @*<input class="form-control col-md-9" id="roleInput" value="@Model.Role" />*@
+        @Html.EnumDropDownListFor(
+                                    x => x.Role,
+                                    new { @class = "form-control ", style = "width: 400px;", id = "roleInput" })
+
+
+        @Html.DropDownList("commerces", (SelectList)ViewData["commerces"], "Select Commerce",
+                                    new { @class = "form-control ", style = "width: 400px;display: none;", id = "concessionInput" })
+    </div>
+
+    <div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button id="userAddButton" class="btn btn-success">Ajouter</button>
+        </div>
+    </div>
+</div>
+@*}*@
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+}
+<script>
+    $("#userAddButton").click(function () {
+        var noCom = $("#concessionInput").val();
+        noCom = noCom !== "" ? noCom : 0
+        //console.log(noCom);
+        var user = {
+            UserId: $("#userIdInput").val(),
+            Role: $("#roleInput").val(),
+            Langue: $("#langueInput").val(),
+            Email: $("#emailInput").val(),
+            Password: $("#passwordInput").val(),
+            ConfirmPassword: $("#passwordConfirmInput").val(),
+            LastName: $("#prenomInput").val(),
+            FirstName: $("#nomInput").val(),
+            UserName: $("#usernameInput").val(),
+            NoCommerce: noCom
+        };
+
+        $.ajax({
+            url: "../Utilisateurs/AjouterUtilisateur",
+            contentType: 'application/json; charset=utf-8',
+            type: "post", //send it through get method
+            dataType: 'json',
+            data: JSON.stringify(user),
+            success: function (response) {
+                console.log("success response : " + response.message);
+                $('.modal-body').html(response.message);
+                $('.modal-body').modal("show");
+                $('#usersTable').DataTable().ajax.reload();
+            },
+            error: function (xhr) {
+                console.log("xhr error:  " + JSON.stringify(xhr.responseJSON));
+                var jsonArray = xhr.responseJSON;
+                $.each(jsonArray, function (index, jsonObject) {
+                    /* $.each(jsonObject, function (key, val) {*/
+                    console.log("key : " + jsonObject.key + " ; value : " + jsonObject.errors[0]);
+                    $("#Alerts").append('<p class="text-danger">  ' + jsonObject.key + " : " + jsonObject.errors[0] + "</p>");
+                    /*});*/
+                });
+            }
+        });
+    });
+
+
+    $(function () {
+        $("#roleInput").change(function () {
+            var val = $(this).val();
+            if (val === "2") {
+                $("#concessionInput").show();
+            }
+            else {
+                $("#concessionInput").hide();
+            }
+        });
+    });
+
+</script>

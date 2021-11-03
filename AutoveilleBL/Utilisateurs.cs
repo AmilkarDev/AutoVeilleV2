@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
 using AutoveilleDAL.SQL;
 using Outils;
 using AutoveilleBL.Models.Web;
@@ -11,12 +11,13 @@ namespace AutoveilleBL
     public static class Utilisateurs
     {
 
-     
+
         public static bool ValidateUtilisateurGroupe(string userName, string passWord)
         {
             SqlCommand cmd;
             string lookupPassword = null;
-
+            //passWord = Encryption.EncryptRijndael(passWord, Cle.Salt, Cle.Key, Cle.IterationEncryption);
+            //string ss = Encryption.DecryptRijndael(passWord, Cle.SaltSite, Cle.KeySite, Cle.IterationEncryptionSite);
             try
             {
                 SqlExecFramework.Execute("AutoveilleMain", null, (conn, trans) =>
@@ -62,7 +63,7 @@ namespace AutoveilleBL
                         "SELECT id,  role" +
                           "  FROM  dbo.UsersGroupe " +
                           "  WHERE	UserName=@username  " +
-                          "   AND role & 1>0 " ;
+                          "   AND role & 1>0 ";
 
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@username", aUserName);
@@ -72,7 +73,7 @@ namespace AutoveilleBL
                     {
                         if (reader.Read())
                         {
-                             role = reader.GetInt32(1);
+                            role = reader.GetInt32(1);
                         }
                     }
                     return role;
@@ -85,6 +86,172 @@ namespace AutoveilleBL
             }
         }
 
+        public static bool DeleteUtilisateur(UtilisateurSite user)
+        {
+            bool result = false;
+            try
+            {
+                var nameConnStr = "AutoveilleMain";
+                SqlExecFramework.Execute(nameConnStr, null, (conn, trans) =>
+                {
+                    var sql = new StringTemplate(".sql").LoadAndFill("deleteUtilisateur", StringTemplateOptions.TrimBlanks, new { });
+                    var cmd = new SqlCommand(sql, conn, trans);
+                    cmd.AddParameterWithValue("@idUtilisateur", user.UserID);
+
+                    int rowsDeletedCount = cmd.ExecuteNonQuery();
+                    if (rowsDeletedCount != 0)
+                        result = true;
+                });
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
+            }
+            return result;
+        }
+
+        public static int SaveUtilisateur(UtilisateurSite user)
+        {
+            if (user != null && !string.IsNullOrWhiteSpace(user.Password) && user.Password.Equals(user.ConfirmPassword))
+            {
+                string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
+                //Encrypt password
+                string password = Encryption.EncryptRijndael(user.Password, Cle.SaltSite, Cle.KeySite, Cle.IterationEncryptionSite);
+                //Create the SQL Query for inserting a user
+                string createQuery = String.Format("Insert into dbo.UsersGroupe (UserName,Password,Nom,Prenom,Email,Langue,Role) " +
+                                                    "Values('{0}','{1}', {2},'{3}','{4}',{5},{6}); " +
+                                                    "Select @@Identity",
+                    user.UserName, password, user.FirstName, user.LastName, user.Email, user.Langue.ToString(), user.Role.ToString());
+
+
+                //Create the SQL Query for updating an event
+                string updateQuery = String.Format("Update dbo.UsersGroupe " +
+                                                    "SET UserName='{0}', Password = '{1}', Nom ='{2}', Prenom = '{3}',Email='{4}', Langue ='{5}',Role='{6}' " +
+                                                    "Where Id = {7};",
+                    user.UserName, password, user.FirstName, user.LastName, user.Email, user.Langue.ToString(), user.Role.ToString(),
+                    user.UserID);
+
+                //Create and open a connection to SQL Server 
+                SqlConnection connection = new SqlConnection(connStr);
+                connection.Open();
+
+                //Create a Command object
+                SqlCommand command = null;
+
+                if (user.UserID != 0)
+                    command = new SqlCommand(updateQuery, connection);
+                else
+                    command = new SqlCommand(createQuery, connection);
+
+                int savedUserID = 0;
+                try
+                {
+                    //Execute the command to SQL Server and return the newly created ID
+                    var commandResult = command.ExecuteScalar();
+                    if (commandResult != null)
+                    {
+                        savedUserID = Convert.ToInt32(commandResult);
+                    }
+                    else
+                    {
+                        //the update SQL query will not return the primary key but if doesn't throw exception 
+                        //then we will take it from the already provided data
+                        savedUserID = user.UserID;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Trace.TraceError(ex.ToString());
+                    throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
+                }
+
+                //Close and dispose
+                command.Dispose();
+                connection.Close();
+                connection.Dispose();
+
+                return savedUserID;
+            }
+            return 0;
+        }
+        public static int InsertUtilisateurCommerce(UtilisateurSiteCommerces utilisateurSiteCommerces)
+        {
+            int newUserGroupCommercesId = 0;
+
+            string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
+
+            string sqlQuery = "INSERT INTO AutoveilleMain.dbo.UsersGroupeCommerce (IdUserGroupe,Titre,nocommerce,TypeUsager) values (@IdUserGroupe,@Titre,@nocommerce,@TypeUsager);" +
+                                "Select @@Identity;";
+
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@IdUserGroupe", utilisateurSiteCommerces.UserId);
+                    command.Parameters.AddWithValue("@Titre", utilisateurSiteCommerces.Titre);
+                    command.Parameters.AddWithValue("@nocommerce", utilisateurSiteCommerces.NoCommerce);
+                    command.Parameters.AddWithValue("@TypeUsager", utilisateurSiteCommerces.TypeUsager.ToString());
+
+                    newUserGroupCommercesId = Convert.ToInt32((decimal)command.ExecuteScalar());
+                }
+            }
+
+            return newUserGroupCommercesId;
+        }
+        public static int InsertUtilisateur(UtilisateurSite user)
+        {
+            int newUserId = 0;
+
+            if (user != null && !string.IsNullOrWhiteSpace(user.Password) && user.Password.Equals(user.ConfirmPassword))
+            {
+                string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
+                //Encrypt password
+                string password = Encryption.EncryptRijndael(user.Password, Cle.SaltSite, Cle.KeySite, Cle.IterationEncryptionSite);
+
+                //Create the SQL Query for inserting an user
+                string sqlQuery = String.Format("Insert into dbo.UsersGroupe (UserName,Password,Nom,Prenom,Email,Langue,Role) " +
+                                                    "Values('{0}','{1}', '{2}','{3}','{4}','{5}','{6}'); " +
+                                                    "Select @@Identity",
+                    user.UserName, password, user.FirstName, user.LastName, user.Email, user.Langue.ToString(), user.Role.ToString());
+
+                //Create and open a connection to SQL Server 
+                using (SqlConnection connection = new SqlConnection(connStr))
+                {
+                    connection.Open();
+
+                    //Create a Command object
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        //Execute the command to SQL Server and return the newly created ID
+                        newUserId = Convert.ToInt32((decimal)command.ExecuteScalar());
+                    }
+
+                }
+
+                // Create and Insert UserGroupCommerce
+                if (newUserId != 0)
+                {
+                    user.UserID = newUserId;
+
+                    UtilisateurSiteCommerces utilisateurSiteCommerces = new UtilisateurSiteCommerces()
+                    {
+                        NoCommerce = user.NoCommerce,
+                        Role = user.Role,
+                        NomCommerce = user.NomCommerce,
+                        Titre = user.FirstName,
+                        TypeUsager = UserTypes.Suly,
+                        UserId = user.UserID
+                    };
+                    int newUserGroupCommercesId = InsertUtilisateurCommerce(utilisateurSiteCommerces);
+                }
+            }
+
+            // Set return value
+            return newUserId;
+        }
+
         public static UtilisateurSite GetRoles(string aUserName, int aNoCommerce)
         {
             string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
@@ -95,13 +262,13 @@ namespace AutoveilleBL
                     conn.Open();
 
                     string sql =
-                        "SELECT IdUserGroupe, titre, nocommerce, role, TypeUsager, uc.id " + 
-                          "  FROM dbo.UsersGroupeCommerce uc INNER JOIN dbo.UsersGroupe u ON "+
-	                           " uc.IdUserGroupe=u.Id" +
+                        "SELECT IdUserGroupe, titre, nocommerce, role, TypeUsager, uc.id " +
+                          "  FROM dbo.UsersGroupeCommerce uc INNER JOIN dbo.UsersGroupe u ON " +
+                               " uc.IdUserGroupe=u.Id" +
                           "  WHERE	UserName=@username  " +
                           "  AND (nocommerce=@nocommerce " +
                          "   OR nocommerce=0) AND role & 1>0 " +
-                          "  ORDER BY nocommerce desc   " ;
+                          "  ORDER BY nocommerce desc   ";
 
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@username", aUserName);
@@ -116,8 +283,8 @@ namespace AutoveilleBL
                             {
                                 UserID = reader.GetInt32(0),
                                 Role = (Roles)Enum.Parse(typeof(Roles), reader.GetString(3)),
-                                NoCommerce=aNoCommerce,
-                                TypeUsager= (UserTypes)Enum.Parse(typeof(UserTypes), reader.GetString(4)),
+                                NoCommerce = aNoCommerce,
+                                TypeUsager = (UserTypes)Enum.Parse(typeof(UserTypes), reader.GetString(4)),
                                 UserName = aUserName,
                                 //Role = reader.GetInt32(6),
                                 //TypeUsager = reader.GetInt32(7),
@@ -167,7 +334,7 @@ namespace AutoveilleBL
                                 FirstName = reader.GetNullableString(2),
                                 LastName = reader.GetNullableString(3),
                                 UserName = aUserName,
-                                
+
                                 //Role = (Roles)Enum.Parse(typeof(Roles),reader.GetString(4)),
                                 //TypeUsager = (UserTypes)Enum.Parse(typeof(UserTypes), reader.GetString(5)),
                             };
@@ -200,10 +367,10 @@ namespace AutoveilleBL
                         " INNER JOIN tbcommerces cm ON cm.nocommerce=ugc.nocommerce  OR ugc.nocommerce=0 " +
                         " WHERE ug.username=@user ";
                     //" WHERE ug.username=@user  AND ugc.role & 1>0   ";
-                    //Console.Write("Hello world");
+
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@user", aUserName);
-                     
+
 
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -255,7 +422,7 @@ namespace AutoveilleBL
                                 LastName = reader.GetString(2),
                                 FirstName = reader.GetString(3),
                                 UserName = reader.GetString(4),
-                                Langue = (Langues)Enum.Parse(typeof(Langues),reader.GetString(5)),
+                                Langue = (Langues)Enum.Parse(typeof(Langues), reader.GetString(5)),
                                 Role = (Roles)Enum.Parse(typeof(Roles), reader.GetString(6)),
                             };
                             res.Add(u);
