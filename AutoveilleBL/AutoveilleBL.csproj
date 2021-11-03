@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <EmbeddedResource Include="Templates\SQL\deleteUtilisateurConcession.sql" />
     <EmbeddedResource Include="Templates\SQL\deleteUtilisateur.sql" />
     <EmbeddedResource Include="Templates\SQL\deleteEvenement.sql" />
     <EmbeddedResource Include="Templates\SQL\GetAllEvenements.sql" />

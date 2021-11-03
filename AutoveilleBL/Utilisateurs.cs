@@ -102,6 +102,17 @@ namespace AutoveilleBL
                     if (rowsDeletedCount != 0)
                         result = true;
                 });
+
+                SqlExecFramework.Execute(nameConnStr, null, (conn, trans) =>
+                {
+                    var sql = new StringTemplate(".sql").LoadAndFill("deleteUtilisateurConcession", StringTemplateOptions.TrimBlanks, new { });
+                    var cmd = new SqlCommand(sql, conn, trans);
+                    cmd.AddParameterWithValue("@idUtilisateur", user.UserID);
+
+                    int rowsDeletedCount = cmd.ExecuteNonQuery();
+                    if (rowsDeletedCount != 0)
+                        result = true;
+                });
             }
             catch (Exception ex)
             {
@@ -181,7 +192,7 @@ namespace AutoveilleBL
 
             string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
 
-            string sqlQuery = "INSERT INTO AutoveilleMain.dbo.UsersGroupeCommerce (IdUserGroupe,Titre,nocommerce,TypeUsager) values (@IdUserGroupe,@Titre,@nocommerce,@TypeUsager);" +
+            string sqlQuery = "INSERT INTO dbo.UsersGroupeCommerce (IdUserGroupe,Titre,nocommerce,TypeUsager) values (@IdUserGroupe,@Titre,@nocommerce,@TypeUsager);" +
                                 "Select @@Identity;";
 
             using (SqlConnection connection = new SqlConnection(connStr))

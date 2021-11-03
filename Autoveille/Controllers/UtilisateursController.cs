@@ -150,7 +150,7 @@ namespace Autoveille.Controllers
             int s = Utilisateurs.InsertUtilisateur(user);
 
             if (s != 0)
-                return Json("Utilisateur ajouté avec succés");
+                return Json(new { success = true, message = "Utilisateur ajouté avec succés" });
             else
                 return Json(new { success = false, message = "Utilisateur non ajouté !!" });
         }

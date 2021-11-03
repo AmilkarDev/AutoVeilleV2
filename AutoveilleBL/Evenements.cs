@@ -115,15 +115,15 @@ namespace AutoveilleBL
             //Create the SQL Query for inserting an event
             string sqlQuery = String.Format("Insert into atv.TbEvenement (DateEvenementDebut, DateEvenementFin ,TotalEvenements, " +
                 "DateCreation,Utilisateur,NoCommerce   ,AppelsPrevusDirEv  ,AppelsPrevusCASuly  ,DateModification ,UtilisateurModification " +
-                ", DatesConfirmer) Values('{0}', '{1}', {2}, '{3}','{4}',{5},{6}, {7},'{8}', '{9}', {10}    );"
+                ", DatesConfirmer, Actif) Values('{0}', '{1}', {2}, '{3}','{4}',{5},{6}, {7},'{8}', '{9}', {10}, {11});"
             + "Select @@Identity",
-            HandleDate(   evenement.DateEvenementDebut), HandleDate(evenement.DateEvenementFin)
-            
+            HandleDate(evenement.DateEvenementDebut), HandleDate(evenement.DateEvenementFin)
+
             , evenement.TotalEvenements,
-            evenement.DateCreation.ToString("yyyy-MM-dd"), evenement.Utilisateur,evenement.NoCommerce,evenement.AppelsPrevusDirEv, evenement.AppelsPrevusCASuly
+            evenement.DateCreation.ToString("yyyy-MM-dd"), evenement.Utilisateur, evenement.NoCommerce, evenement.AppelsPrevusDirEv, evenement.AppelsPrevusCASuly
             , HandleDate(evenement.DateModification)
 
-            , evenement.UtilisateurModification,evenement.DatesConfirmer   );
+            , evenement.UtilisateurModification, evenement.DatesConfirmer, 1);
 
             //Create and open a connection to SQL Server 
             SqlConnection connection = new SqlConnection(connStr);
@@ -155,7 +155,7 @@ namespace AutoveilleBL
             + "Select @@Identity",
             HandleDate(evenement.DateEvenementDebut), HandleDate(evenement.DateEvenementFin), evenement.TotalEvenements,
             evenement.DateCreation.ToString("yyyy-MM-dd"), evenement.Utilisateur, evenement.NoCommerce, evenement.AppelsPrevusDirEv, evenement.AppelsPrevusCASuly
-            , HandleDate(evenement.DateModification), evenement.UtilisateurModification, evenement.DatesConfirmer, evenement.Actif ? 1 : 0 );
+            , HandleDate(evenement.DateModification), evenement.UtilisateurModification, evenement.DatesConfirmer, evenement.Actif ? 1 : 0);
 
 
             //Create the SQL Query for updating an event
@@ -165,7 +165,7 @@ namespace AutoveilleBL
                 "Where Id = {12};",
                 HandleDate(evenement.DateEvenementDebut), HandleDate(evenement.DateEvenementFin), evenement.TotalEvenements,
             evenement.DateCreation.ToString("yyyy-MM-dd"), evenement.Utilisateur, evenement.NoCommerce, evenement.AppelsPrevusDirEv, evenement.AppelsPrevusCASuly
-            , HandleDate(evenement.DateModification), evenement.UtilisateurModification, evenement.DatesConfirmer,evenement.Actif?1:0, evenement.IdEvenement);
+            , HandleDate(evenement.DateModification), evenement.UtilisateurModification, evenement.DatesConfirmer, evenement.Actif ? 1 : 0, evenement.IdEvenement);
 
             //Create and open a connection to SQL Server 
             SqlConnection connection = new SqlConnection(connStr);
@@ -188,11 +188,11 @@ namespace AutoveilleBL
                 {
                     savedEventID = Convert.ToInt32(commandResult);
                 }
-                else 
+                else
                 {
                     //the update SQL query will not return the primary key but if doesn't throw exception 
                     //then we will take it from the already provided data
-                     savedEventID = evenement.IdEvenement;
+                    savedEventID = evenement.IdEvenement;
                 }
             }
             catch (Exception ex)
