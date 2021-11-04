@@ -63,6 +63,9 @@
         @Html.EnumDropDownListFor(
                                     x => x.Role,
                                     new { @class = "form-control ", style = "width: 400px;", id = "roleInput" })
+
+        @Html.DropDownList("commerces", (SelectList)ViewData["commerces"],
+                                    new { @class = "form-control ", style = "width: 400px;display: none;", id = "concessionInput" })
     </div>
 
 
@@ -79,7 +82,8 @@
 }
 <script>
     $("#userModifButton").click(function () {
-
+        var noCom = $("#concessionInput").val();
+        noCom = noCom !== "" ? noCom : 0
         var user = {
             UserId: $("#userIdInput").val(),
             Role: $("#roleInput").val(),
@@ -89,7 +93,8 @@
             ConfirmPassword: $("#passwordConfirmInput").val(),
             LastName: $("#prenomInput").val(),
             FirstName: $("#nomInput").val(),
-            UserName: $("#usernameInput").val()
+            UserName: $("#usernameInput").val(),
+            NoCommerce: noCom
         };
 
         $.ajax({
@@ -119,4 +124,26 @@
         });
     });
 
+    $(function () {
+        $("#roleInput").change(function () {
+            var val = $(this).val();
+            if (val === "2") {
+                $("#concessionInput").show();
+            }
+            else {
+                $("#concessionInput").hide();
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        var val = $("#roleInput").val();
+        if (val === "2") {
+            $("#concessionInput").val(@Model.NoCommerce.ToString());
+            $("#concessionInput").show();
+        }
+        else {
+            $("#concessionInput").hide();
+        }
+    });
 </script>

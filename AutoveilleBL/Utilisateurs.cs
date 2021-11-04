@@ -63,7 +63,7 @@ namespace AutoveilleBL
                         "SELECT id,  role" +
                           "  FROM  dbo.UsersGroupe " +
                           "  WHERE	UserName=@username  " +
-                          "   AND role = 'Gestionnaire' " ;
+                          "   AND role = 'Gestionnaire' ";
 
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@username", aUserName);
@@ -73,7 +73,7 @@ namespace AutoveilleBL
                     {
                         if (reader.Read())
                         {
-                             role = reader.GetString(1);
+                            role = reader.GetString(1);
                         }
                     }
                     return role;
@@ -124,67 +124,67 @@ namespace AutoveilleBL
 
         public static int SaveUtilisateur(UtilisateurSite user)
         {
+            int savedUserID = 0;
+
             if (user != null && !string.IsNullOrWhiteSpace(user.Password) && user.Password.Equals(user.ConfirmPassword))
             {
                 string connStr = ConnectionHelpers.GetConnectionString("AutoveilleMain");
                 //Encrypt password
                 string password = Encryption.EncryptRijndael(user.Password, Cle.SaltSite, Cle.KeySite, Cle.IterationEncryptionSite);
-                //Create the SQL Query for inserting a user
-                string createQuery = String.Format("Insert into dbo.UsersGroupe (UserName,Password,Nom,Prenom,Email,Langue,Role) " +
-                                                    "Values('{0}','{1}', {2},'{3}','{4}',{5},{6}); " +
-                                                    "Select @@Identity",
-                    user.UserName, password, user.FirstName, user.LastName, user.Email, user.Langue.ToString(), user.Role.ToString());
-
-
-                //Create the SQL Query for updating an event
-                string updateQuery = String.Format("Update dbo.UsersGroupe " +
-                                                    "SET UserName='{0}', Password = '{1}', Nom ='{2}', Prenom = '{3}',Email='{4}', Langue ='{5}',Role='{6}' " +
-                                                    "Where Id = {7};",
-                    user.UserName, password, user.FirstName, user.LastName, user.Email, user.Langue.ToString(), user.Role.ToString(),
-                    user.UserID);
 
                 //Create and open a connection to SQL Server 
-                SqlConnection connection = new SqlConnection(connStr);
-                connection.Open();
-
-                //Create a Command object
-                SqlCommand command = null;
-
-                if (user.UserID != 0)
-                    command = new SqlCommand(updateQuery, connection);
-                else
-                    command = new SqlCommand(createQuery, connection);
-
-                int savedUserID = 0;
-                try
+                using (SqlConnection connection = new SqlConnection(connStr))
                 {
-                    //Execute the command to SQL Server and return the newly created ID
-                    var commandResult = command.ExecuteScalar();
-                    if (commandResult != null)
+                    connection.Open();
+
+                    //Create the SQL Query for updating an event
+                    string updateQuery = "Update dbo.UsersGroupe SET UserName = @UserName, Password = @Password, Nom = @Nom, Prenom = @Prenom, Email = @Email, Langue = @Langue, Role= @Role Where Id = @Id;";
+
+                    //Create a Command object
+                    using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
-                        savedUserID = Convert.ToInt32(commandResult);
+                        command.Parameters.AddWithValue("@UserName", user.UserName);
+                        command.Parameters.AddWithValue("@Password", user.Password);
+                        command.Parameters.AddWithValue("@Nom", user.FirstName);
+                        command.Parameters.AddWithValue("@Prenom", user.LastName);
+                        command.Parameters.AddWithValue("@Email", user.Email);
+                        command.Parameters.AddWithValue("@Langue", user.Langue.ToString());
+                        command.Parameters.AddWithValue("@Role", user.Role.ToString());
+                        command.Parameters.AddWithValue("@Id", user.UserID);
+                        try
+                        {
+                            var commandResult = command.ExecuteNonQuery();
+
+                            savedUserID = user.UserID;
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.TraceError(ex.ToString());
+                            throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
+                        }
                     }
-                    else
+
+                    updateQuery = "UPDATE  [AutoveilleMain].[dbo].[UsersGroupeCommerce] set nocommerce = @nocommerce, Titre = @Titre where IdUserGroupe = @IdUserGroupe;";
+
+                    using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
-                        //the update SQL query will not return the primary key but if doesn't throw exception 
-                        //then we will take it from the already provided data
-                        savedUserID = user.UserID;
+                        command.Parameters.AddWithValue("@nocommerce", user.NoCommerce);
+                        command.Parameters.AddWithValue("@Titre", user.FirstName);
+                        command.Parameters.AddWithValue("@IdUserGroupe", user.UserID);
+
+                        try
+                        {
+                            var commandResult = command.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.TraceError(ex.ToString());
+                            throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
+                        }
                     }
                 }
-                catch (Exception ex)
-                {
-                    Trace.TraceError(ex.ToString());
-                    throw new ReadableException("Une erreures c'est produite lors de la generation de la liste de concessions active.");
-                }
-
-                //Close and dispose
-                command.Dispose();
-                connection.Close();
-                connection.Dispose();
-
-                return savedUserID;
             }
-            return 0;
+            return savedUserID;
         }
         public static int InsertUtilisateurCommerce(UtilisateurSiteCommerces utilisateurSiteCommerces)
         {
@@ -419,7 +419,7 @@ namespace AutoveilleBL
                 {
                     conn.Open();
 
-                    string sql = "SELECT u.Id, u.Email,  u.Prenom, u.nom, u.username, u.Langue, u.role FROM [usersgroupe] u  ";
+                    string sql = "SELECT u.Id, u.Email,  u.Prenom, u.nom, u.username, u.Langue, u.role, uc.nocommerce FROM dbo.usersgroupe u left join dbo.UsersGroupeCommerce uc on u.Id = uc.IdUserGroupe;";
                     var cmd = new SqlCommand(sql, conn);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -435,6 +435,7 @@ namespace AutoveilleBL
                                 UserName = reader.GetString(4),
                                 Langue = (Langues)Enum.Parse(typeof(Langues), reader.GetString(5)),
                                 Role = (Roles)Enum.Parse(typeof(Roles), reader.GetString(6)),
+                                NoCommerce = reader.GetInt32(7)
                             };
                             res.Add(u);
                         }

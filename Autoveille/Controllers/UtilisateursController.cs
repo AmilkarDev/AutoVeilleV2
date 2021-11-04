@@ -91,6 +91,7 @@ namespace Autoveille.Controllers
         [HttpGet]
         public ActionResult ModifierUtilisateur(int UserID)
         {
+            ViewData["commerces"] = ToSelectList(_commerces);
             List<UtilisateurSite> data = users;
             UtilisateurSite user = users.Where(x => x.UserID == UserID).First();
             return PartialView(user);
@@ -101,12 +102,18 @@ namespace Autoveille.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (user.NoCommerce != 0)
+                    user.NomCommerce = _commerces.Where(c => c.NoCommerce == user.NoCommerce).Select(c => c.NomCommerce).FirstOrDefault();
+
                 int s = Utilisateurs.SaveUtilisateur(user);
-                return Json(new { success = true, message = "Mise a jour de l'utilisateur terminé avec succés !!" }, JsonRequestBehavior.AllowGet);
+
+                if (s > 0)
+                    return Json(new { success = true, message = "Mise a jour de l'utilisateur terminé avec succés !!" }, JsonRequestBehavior.AllowGet);
+                else
+                    return Json(new { success = false, message = "La mise a jour de l'utilisateur n'est pas validée !!" }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                //return PartialView(evenement);
                 return Json(new
                 {
                     success = false,
