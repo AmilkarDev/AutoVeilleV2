@@ -83,7 +83,7 @@
 <script>
     $("#userModifButton").click(function () {
         var noCom = $("#concessionInput").val();
-        noCom = noCom !== "" ? noCom : 0
+        noCom = noCom !== "" ? noCom : 0;
         var user = {
             UserId: $("#userIdInput").val(),
             Role: $("#roleInput").val(),
@@ -128,6 +128,7 @@
         $("#roleInput").change(function () {
             var val = $(this).val();
             if (val === "2") {
+                $("#concessionInput").val(@Model.NoCommerce.ToString());
                 $("#concessionInput").show();
             }
             else {
