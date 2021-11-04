@@ -37,13 +37,10 @@ namespace Autoveille.Controllers
         {
             if (Authenticate(model.UserName, model.Password, false))
             {
-                //return RedirectToAction("Index", "Home");
-
                 return RedirectToLocal("");
             }
 
             return View(model);
-
         }
 
 
@@ -118,9 +115,7 @@ namespace Autoveille.Controllers
                 Session["Nom"] = nom;
                 Session["Role"] = utilisateur.Role.ToString();
                 Session["Type"] = utilisateur.TypeUsager.ToString();
-                //Session["Role"] = utilisateur.Role;
 
-                //FormsAuthentication.SetAuthCookie(username, false);
                 SetAuthenticationCookie(username, 1, rememberMe);
             }
 

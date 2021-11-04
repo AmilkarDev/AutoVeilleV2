@@ -377,7 +377,6 @@ namespace AutoveilleBL
                         " FROM usersgroupe ug  INNER JOIN usersgroupecommerce ugc ON ug.id=ugc.idusergroupe  " +
                         " INNER JOIN tbcommerces cm ON cm.nocommerce=ugc.nocommerce  OR ugc.nocommerce=0 " +
                         " WHERE ug.username=@user ";
-                    //" WHERE ug.username=@user  AND ugc.role & 1>0   ";
 
                     var cmd = new SqlCommand(sql, conn);
                     cmd.AddParameterWithValue("@user", aUserName);
@@ -393,8 +392,6 @@ namespace AutoveilleBL
                                 UserId = reader.GetInt32(0),
                                 NoCommerce = reader.GetInt32(1),
                                 NomCommerce = reader.GetNullableString(2),
-                                //Role = reader.GetInt32(3),
-                                //TypeUsager = reader.GetInt32(4),
                             };
                             res.Add(u);
                         }
