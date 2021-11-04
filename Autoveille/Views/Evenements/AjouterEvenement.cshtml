@@ -97,7 +97,7 @@
         $.ajax({
             url: "../Evenements/AjouterEvenement",
             contentType: 'application/json; charset=utf-8',
-            type: "post", //send it through get method
+            type: "post",
             dataType: 'json',
             data: JSON.stringify(event),
             success: function (response) {

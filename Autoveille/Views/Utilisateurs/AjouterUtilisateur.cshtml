@@ -8,19 +8,15 @@
     }
 }
 <div class="form-horizontal">
-    <h4>Ajouter Utilisateur</h4>
+    <h4>Ajouter un utilisateur</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div id="Alerts">
 
     </div>
-    <div class="row form-group" hidden="hidden">
-        <label class="col-md-3">Id Utilisateurt</label>
-        <input class="form-control col-md-9" id="userIdInput" value="" />
-    </div>
 
     <div class="row form-group">
-        <label class="col-md-3">username</label>
+        <label class="col-md-3">Nom d'utilisateur</label>
         <input class="form-control col-md-9" id="usernameInput" value="" />
     </div>
 
@@ -30,8 +26,7 @@
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Prenom</label>
-        @*@Html.TextBoxFor(Model=>Model.TotalEvenements,"",new { @class = "text-danger" })*@
+        <label class="col-md-3">Prénom</label>
         <input class="form-control col-md-9" id="prenomInput" value="" />
     </div>
 
@@ -65,7 +60,6 @@
                                     x => x.Role,
                                     new { @class = "form-control ", style = "width: 400px;", id = "roleInput" })
 
-
         @Html.DropDownList("commerces", (SelectList)ViewData["commerces"], "Select Commerce",
                                     new { @class = "form-control ", style = "width: 400px;display: none;", id = "concessionInput" })
     </div>
@@ -76,7 +70,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <button id="userAddButton" class="btn btn-success">Ajouter</button>
+            <button id="userAddButton" class="btn btn-success">Sauvegarder</button>
         </div>
     </div>
 </div>
@@ -88,8 +82,7 @@
 <script>
     $("#userAddButton").click(function () {
         var noCom = $("#concessionInput").val();
-        noCom = noCom !== "" ? noCom : 0
-        //console.log(noCom);
+        noCom = noCom !== "" ? noCom : 0;
         var user = {
             UserId: $("#userIdInput").val(),
             Role: $("#roleInput").val(),
@@ -106,7 +99,7 @@
         $.ajax({
             url: "../Utilisateurs/AjouterUtilisateur",
             contentType: 'application/json; charset=utf-8',
-            type: "post", //send it through get method
+            type: "post", 
             dataType: 'json',
             data: JSON.stringify(user),
             success: function (response) {
@@ -118,11 +111,10 @@
             error: function (xhr) {
                 console.log("xhr error:  " + JSON.stringify(xhr.responseJSON));
                 var jsonArray = xhr.responseJSON;
+                $("#Alerts").empty();
                 $.each(jsonArray, function (index, jsonObject) {
-                    /* $.each(jsonObject, function (key, val) {*/
                     console.log("key : " + jsonObject.key + " ; value : " + jsonObject.errors[0]);
                     $("#Alerts").append('<p class="text-danger">  ' + jsonObject.key + " : " + jsonObject.errors[0] + "</p>");
-                    /*});*/
                 });
             }
         });
