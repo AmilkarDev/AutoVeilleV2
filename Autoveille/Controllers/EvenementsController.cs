@@ -401,10 +401,24 @@ namespace Autoveille.Controllers
         }
 
         [HttpPost]
+        [ValidateAjax]
         public JsonResult AjouterEvenement(Evenement evenement)
         {
-            int s = Evenements.InsertEvenement(evenement); 
-            return Json("Evenement ajoutée avec succés");
+            if (ModelState.IsValid)
+            {
+                int s = Evenements.InsertEvenement(evenement); 
+                return Json("Evenement ajoutée avec succés", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                //return PartialView(evenement);
+                return Json(new
+                {
+                    success = false,
+                    message = RazorViewToString.RenderRazorViewToString(this, "ModifierEvenement", evenement),
+                    errors = "ss"
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpPost]

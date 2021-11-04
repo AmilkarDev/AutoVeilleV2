@@ -3,19 +3,6 @@
         (
             {
                 "columnDefs": [
-                    //{
-                    //    "title": "Id Evenement ",
-                    //    "targets": 0
-                    //},    
-                    //{
-                    //    "width": "5%",
-                    //    "targets": [0],
-
-                    //},
-                    //{
-                    //    "searchable": true,
-                    //    "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                    //},
                     {
                         "className": "text-center custom-middle-align",
                         "targets": [0, 1, 2, 3, 4, 5, 6]
@@ -63,8 +50,6 @@
                         "data": "Langue",
                         "title": "Langue",
                         "render": function (data, type, row) {
-                            //console.log(data);
-                            //return data;
                             if (data) {
                                 return "Anglais";
                             }
@@ -77,8 +62,6 @@
                         "data": "Role",
                         "title": "Role",
                         "render": function (data, type, row) {
-                            //console.log(data);
-                            //return data
                             if (data == 0) {
                                 return "Gestionnaire";
                             }
@@ -106,39 +89,51 @@
 
     $('#buttonSupp').click(function () {
         var user = table.row('.selected').data();
-        console.log(user);
-        $.ajax({
-            url: "../Utilisateurs/SupprimerUtilisateur",
-            contentType: 'application/json; charset=utf-8',
-            type: "POST", //send it through get method
-            dataType: 'json',
-            data: JSON.stringify(user),
-            success: function (response) {
-                $('.modal-body').html(response);
-                $('#userModal').modal("show");
-                $('#usersTable').DataTable().ajax.reload();
-            },
-            error: function (xhr) {
-                alert("Problème de suppression de l'utilisateur");
-            }
-        });
+        if (user) {
+
+            $.ajax({
+                url: "../Utilisateurs/SupprimerUtilisateur",
+                contentType: 'application/json; charset=utf-8',
+                type: "POST",
+                dataType: 'json',
+                data: JSON.stringify(user),
+                success: function (response) {
+                    $('.modal-body').html(response);
+                    $('#userModal').modal("show");
+                    $('#usersTable').DataTable().ajax.reload();
+                },
+                error: function (xhr) {
+                    alert("Problème de suppression de l'utilisateur");
+                }
+            });
+
+        }
+        else {
+            $('.modal-body').html("Veuillez sélectionner un utilisateur à supprimer");
+            $('.modal-body').modal("show");
+        }
     });
 
     $('#buttonEdit').click(function () {
         var user = table.row('.selected').data();
-        console.log(user);
-        $.ajax({
-            url: "../Utilisateurs/ModifierUtilisateur",
-            type: "get", //send it through get method
-            data: { UserID: user.UserID },
-            success: function (response) {
-                //console.log("rrrrrrrr");
-                $('.modal-body').html(response);
-                $('.modal-body').modal("show");
-            },
-            error: function (xhr) {
-            }
-        });
+        if (user) {
+            $.ajax({
+                url: "../Utilisateurs/ModifierUtilisateur",
+                type: "get",
+                data: { UserID: user.UserID },
+                success: function (response) {
+                    $('.modal-body').html(response);
+                    $('.modal-body').modal("show");
+                },
+                error: function (xhr) {
+                }
+            });
+        }
+        else {
+            $('.modal-body').html("Veuillez sélectionner un utilisateur à modifier");
+            $('.modal-body').modal("show");
+        }
+       
     });
 
     $('#buttonAdd').click(function () {

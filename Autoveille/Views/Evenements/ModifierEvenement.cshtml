@@ -31,7 +31,6 @@
 
     <div class="row form-group">
         <label class="col-md-3">Total Evenements</label>
-        @*@Html.TextBoxFor(Model=>Model.TotalEvenements,"",new { @class = "text-danger" })*@
         <input class="form-control col-md-9" id="TotalEventsInput" value="@Model.TotalEvenements" />
     </div>
 
@@ -85,9 +84,6 @@
                 <span class=""></span>
             </label>
         </div>
-
-        @*<label class="col-md-3">Dates Confirmer</label>
-        <input class="form-control col-md-9" id="ConfirmedDatesInput" value="@Model.DatesConfirmer" />*@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -103,9 +99,8 @@
 <script>
     $("#eventModifButton").click(function () {
         var $box = $('.activeEvent input:checkbox');
-        console.log("active content  : " + $box.is(":checked"));
         var event = {
-        IdEvenement: $("#eventIdInput").val(),
+            IdEvenement: $("#eventIdInput").val(),
             DateEvenementDebut: $("#eventStartDateInput").val(),
             DateEvenementFin: $("#eventEndDateInput").val(),
             TotalEvenements: $("#TotalEventsInput").val(),
@@ -119,7 +114,7 @@
             DatesConfirmer: $("#ConfirmedDatesInput").val(),
             Actif: $box.is(":checked")
         };
-        //console.log("hello world");
+
         $.ajax({
         url: "../Evenements/ModifierEvenement",
             contentType: 'application/json; charset=utf-8',
@@ -133,26 +128,18 @@
                 $('#TableId').DataTable().ajax.reload();
             },
             error: function (xhr) {
-                console.log("xhr error:  " + JSON.stringify(xhr.responseJSON));
                 var jsonArray = xhr.responseJSON;
+                $("#Alerts").empty();
                 $.each(jsonArray, function (index, jsonObject) {
-                    /* $.each(jsonObject, function (key, val) {*/
-                    console.log("key : " + jsonObject.key + " ; value : " + jsonObject.errors[0]);
                     $("#Alerts").append('<p class="text-danger">  ' + jsonObject.key + " : " + jsonObject.errors[0] + "</p>");
-                    /*});*/
                 });
-
-                //alert("error updating the event");
             }
         });
     });
 
 
     $('.activeEvent input:checkbox').click(function (e) {
-        //console.log(e);
         var $box = $(this);
-        //console.log("hello");
-        console.log($box.is(":checked"));
         if ($box.is(":checked")) {
             $box.prop("checked", true);
         }

@@ -17,11 +17,14 @@ namespace Autoveille.Utils
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-             DateTime laterDate = (DateTime)value;
-
-            DateTime earlierDate = (DateTime)validationContext.ObjectType.GetProperty(DateToCompareFieldName).GetValue(validationContext.ObjectInstance, null);
+            if(value == null)
+            {
+                return new ValidationResult(string.Format("{0} est obligatoire!", "Date fin"));
+            }
+            DateTime laterDate = (DateTime)value;
+            var earlierDate = validationContext.ObjectType.GetProperty(DateToCompareFieldName).GetValue(validationContext.ObjectInstance, null);
             displayName = validationContext.DisplayName;
-            if (laterDate > earlierDate)
+            if (earlierDate!=null && laterDate > (DateTime)earlierDate)
             {
                 return ValidationResult.Success;
             }

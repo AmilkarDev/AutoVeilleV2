@@ -1,8 +1,6 @@
 ﻿$(document).ready(function () {
-    // Setup - add a text input to each footer cell
     $('#TableId thead tr')
         .clone(true)
-        //.addClass('filters')
         .appendTo('#TableId thead');
 
     $('#TableId thead tr:eq(1) th').each(function (i) {
@@ -110,16 +108,10 @@
                 {
                     "data": "Actif",
                     "render": function (data, type, row) {
-                        //console.log(data);
                         if (data) {
-                            //return '<label class="">   <input type = "checkbox" checked = "checked" disabled >'+
-                            //            '<span class="">Actif</span> </label >';
-
                             return "Actif";
                         }
                         else {
-                            //return '<label class="">   <input type = "checkbox"  disabled >' +
-                            //    '<span class="">Inactif</span> </label >';
                             return "Inactif";
                         }
                     }
@@ -146,7 +138,6 @@
 
 
     function convertDate(data) {
-        console.log(data);
         if (data == null) return "";
         var s = data.substr(6, data.length - 8);
         var date = new Date(parseInt(s));
@@ -167,50 +158,55 @@
 
     $('#buttonSupp').click(function () {
         var event = table.row('.selected').data();
-        event.DateCreation = convertDate(event.DateCreation);
-        event.DateEvenementDebut = convertDate(event.DateEvenementDebut);
-        event.DateEvenementFin = convertDate(event.DateEvenementFin);
-        event.DateModification = convertDate(event.DateModification);
-        console.log(event);
-        $.ajax({
-            url: "../Evenements/SupprimerEvenement",
-            contentType: 'application/json; charset=utf-8',
-            type: "POST", //send it through get method
-            dataType: 'json',
-            data: JSON.stringify(event),
-            success: function (response) {
-                $('.modal-body').html(response);
-                $('#eventModal').modal("show");
-                $('#TableId').DataTable().ajax.reload();
-            },
-            error: function (xhr) {
-                alert("Problème de suppression d'évènements");
-            }
-        });
+        if (event) {
 
-        //table.row('.selected').remove().draw(false);
+            event.DateCreation = convertDate(event.DateCreation);
+            event.DateEvenementDebut = convertDate(event.DateEvenementDebut);
+            event.DateEvenementFin = convertDate(event.DateEvenementFin);
+            event.DateModification = convertDate(event.DateModification);
+            $.ajax({
+                url: "../Evenements/SupprimerEvenement",
+                contentType: 'application/json; charset=utf-8',
+                type: "POST",
+                dataType: 'json',
+                data: JSON.stringify(event),
+                success: function (response) {
+                    $('.modal-body').html(response);
+                    $('#eventModal').modal("show");
+                    $('#TableId').DataTable().ajax.reload();
+                },
+                error: function (xhr) {
+                    alert("Problème de suppression d'évènements");
+                }
+            });
+
+        }
+        else {
+            $('.modal-body').html("Veuillez sélectionner un évènement à supprimer");
+            $('.modal-body').modal("show");
+        }
     });
 
     $('#buttonEdit').click(function () {
         var event = table.row('.selected').data();
-        //event.DateCreation = convertDate(event.DateCreation);
-        //event.DateEvenementDebut = convertDate(event.DateEvenementDebut);
-        //event.DateFin = convertDate(event.DateFin);
-        //event.DateModification = convertDate(event.DateModification);
-        //console.log(event);
-        $.ajax({
-            url: "../Evenements/ModifierEvenement",
-            type: "get", //send it through get method
-            data: { IdEvenement: event.IdEvenement },
-            success: function (response) {
-                //console.log("rrrrrrrr");
-                $('.modal-body').html(response);
-                $('.modal-body').modal("show");
-            },
-            error: function (xhr) {
-                //console.log("hahahahaha");
-            }
-        });
+        if (event) {
+            $.ajax({
+                url: "../Evenements/ModifierEvenement",
+                type: "get", 
+                data: { IdEvenement: event.IdEvenement },
+                success: function (response) {
+                    $('.modal-body').html(response);
+                    $('.modal-body').modal("show");
+                },
+                error: function (xhr) {
+                    console.log("hahahahaha");
+                }
+            });
+        }
+        else {
+            $('.modal-body').html("Veuillez sélectionner un évènement à modifier");
+            $('.modal-body').modal("show");
+        }
     });
 
     $('#buttonAdd').click(function () {

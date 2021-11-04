@@ -12,12 +12,14 @@ namespace AutoveilleBL.Models
 
 		[DataType(DataType.DateTime)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyy}", ApplyFormatInEditMode = true)]
+		[Required(ErrorMessage = "Date début  est obligatoire")]
 		[DisplayName("date début evenement")]
 		[Display(Name = "Date Début èvénement")]
 		public DateTime? DateEvenementDebut {get;set;}
 
 		[DataType(DataType.DateTime)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyy}", ApplyFormatInEditMode = true)]
+		[Required(ErrorMessage = "Date fin  est obligatoire")]
 		[DateGreaterThan("DateEvenementDebut")]
 		[Display(Name = "Date Fin évènement")]
 		[DisplayName("Date Fin évènement")]
