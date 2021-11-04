@@ -70,6 +70,7 @@
     <Compile Include="Models\EvenementAutoveille.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Relance.cs" />
+    <Compile Include="Models\Utils\ConcessionnaireCommerceAttribute.cs" />
     <Compile Include="Models\Utils\DateGreaterThanAttribute.cs" />
     <Compile Include="Models\Web\UtilisateurSite.cs" />
     <Compile Include="Models\Web\UtilisateurSiteCommerces.cs" />

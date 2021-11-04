@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoveilleBL.Models.Utils;
 
 namespace AutoveilleBL.Models.Web
 {
@@ -15,7 +16,7 @@ namespace AutoveilleBL.Models.Web
 
         public int UserID { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Please select Commerce")]
+        [ConcessionnaireCommerceAttribute("Role")]
         public int NoCommerce { get; set; }
 
         public string NomCommerce { get; set; }
