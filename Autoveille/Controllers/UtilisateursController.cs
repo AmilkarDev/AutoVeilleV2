@@ -149,6 +149,7 @@ namespace Autoveille.Controllers
         }
 
         [HttpPost]
+        [ValidateAjax]
         public JsonResult AjouterUtilisateur(UtilisateurSite user)
         {
             if (user.NoCommerce != 0)
@@ -159,7 +160,12 @@ namespace Autoveille.Controllers
             if (s != 0)
                 return Json(new { success = true, message = "Utilisateur ajouté avec succés" });
             else
-                return Json(new { success = false, message = "Utilisateur non ajouté !!" });
+                return Json(new
+                {
+                    success = false,
+                    message = RazorViewToString.RenderRazorViewToString(this, "AjouterUtilisateur", user),
+                    errors = "ss"
+                }, JsonRequestBehavior.AllowGet);
         }
     }
 }

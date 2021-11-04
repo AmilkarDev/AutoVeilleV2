@@ -14,13 +14,15 @@
     <div id="Alerts">
 
     </div>
+
     <div class="row form-group" hidden="hidden">
+
         <label class="col-md-3 ulabel">Id Utilisateur</label>
         <input class="form-control col-md-9" id="userIdInput" value="@Model.UserID" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3 ulabel">username</label>
+        <label class="col-md-3 ulabel">Nom d'utilisateur</label>
         <input class="form-control col-md-9" id="usernameInput" value="@Model.UserName" />
     </div>
 
@@ -31,15 +33,14 @@
 
     <div class="row form-group">
         <label class="col-md-3 ulabel">Prenom</label>
-        @*@Html.TextBoxFor(Model=>Model.TotalEvenements,"",new { @class = "text-danger" })*@
         <input class="form-control col-md-9" id="prenomInput" value="@Model.LastName" />
     </div>
 
     <div class="row form-group">
         <label class="col-md-3 ulabel">Nouveau mot de passe</label>
         <input type="password" class="form-control col-md-9" id="passwordInput" value="@Model.Password" />
-
     </div>
+
     <div class="row form-group">
         <label class="col-md-3 ulabel">Confirmer mot de passe</label>
         <input type="password" class="form-control col-md-9" id="passwordConfirmInput" value="@Model.ConfirmPassword" />
@@ -59,7 +60,6 @@
 
     <div class="row form-group">
         <label class="col-md-3 ulabel">Role</label>
-        @*<input class="form-control col-md-9" id="roleInput" value="@Model.Role" />*@
         @Html.EnumDropDownListFor(
                                     x => x.Role,
                                     new { @class = "form-control ", style = "width: 400px;", id = "roleInput" })
@@ -82,8 +82,8 @@
 }
 <script>
     $("#userModifButton").click(function () {
-        var noCom = $("#concessionInput").val();
-        noCom = noCom !== "" ? noCom : 0;
+        var numeroCommerce = $("#concessionInput").val();
+        numeroCommerce = numeroCommerce !== "" ? numeroCommerce : 0;
         var user = {
             UserId: $("#userIdInput").val(),
             Role: $("#roleInput").val(),
@@ -94,13 +94,13 @@
             LastName: $("#prenomInput").val(),
             FirstName: $("#nomInput").val(),
             UserName: $("#usernameInput").val(),
-            NoCommerce: noCom
+            NoCommerce: numeroCommerce
         };
 
         $.ajax({
             url: "../Utilisateurs/ModifierUtilisateur",
             contentType: 'application/json; charset=utf-8',
-            type: "post", //send it through get method
+            type: "post",
             dataType: 'json',
             data: JSON.stringify(user),
             success: function (response) {
@@ -112,14 +112,11 @@
             error: function (xhr) {
                 console.log("xhr error:  " + JSON.stringify(xhr.responseJSON));
                 var jsonArray = xhr.responseJSON;
+                $("#Alerts").empty();
                 $.each(jsonArray, function (index, jsonObject) {
-                    /* $.each(jsonObject, function (key, val) {*/
                     console.log("key : " + jsonObject.key + " ; value : " + jsonObject.errors[0]);
                     $("#Alerts").append('<p class="text-danger">  ' + jsonObject.key + " : " + jsonObject.errors[0] + "</p>");
-                    /*});*/
                 });
-
-                //alert("error updating the event");
             }
         });
     });

@@ -21,7 +21,6 @@
     <div class="row form-group">
         <label class="col-md-3  ulabel">Date Evenement Debut</label>
         <input class="form-control col-md-9" id="eventStartDateInput" value="@FormatNullableDate(Model.DateEvenementDebut)" />
-        @Html.ValidationMessageFor(model => model.DateEvenementDebut, "", new { @class = "text-danger" })
     </div>
 
     <div class="row form-group">
@@ -37,14 +36,12 @@
     <div class="row form-group">
         <label class="col-md-3 ulabel">Date Creation</label>
         <input class="form-control col-md-9" id="creationDateInput" value="@FormatNullableDate(Model.DateCreation)" />
-        @Html.ValidationMessageFor(model => model.DateCreation, "", new { @class = "text-danger" })
 
     </div>
 
     <div class="row form-group">
         <label class="col-md-3 ulabel">Utilisateur</label>
         <input class="form-control col-md-9" id="userInput" value="@Model.Utilisateur" />
-        @Html.ValidationMessageFor(model => model.Utilisateur, "", new { @class = "text-danger" })
     </div>
 
     <div class="row form-group">
