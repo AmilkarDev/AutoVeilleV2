@@ -40,7 +40,7 @@ namespace AutoveilleBL.Models
 		public DateTime? DateModification  {get;set;}
 	    public string UtilisateurModification {get;set;}
 	    public int DatesConfirmer {get;set;}
-		[Required]
+		[Required(ErrorMessage = "Etat d'evenement est obligatoire")]
 		public bool Actif { get; set; }
 		public List<ListeAppels> ListeAppels { get; set; }
     }

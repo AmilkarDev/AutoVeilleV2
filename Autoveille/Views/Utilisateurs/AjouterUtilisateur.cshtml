@@ -15,43 +15,43 @@
 
     </div>
     <div class="row form-group" hidden="hidden">
-        <label class="col-md-3">Id Utilisateurt</label>
+        <label class="col-md-3">Id Utilisateur</label>
         <input class="form-control col-md-9" id="userIdInput" value="" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">username</label>
+        <label class="col-md-3 ulabel">nom d'utilisateur</label>
         <input class="form-control col-md-9" id="usernameInput" value="" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Nom</label>
+        <label class="col-md-3 ulabel">Nom</label>
         <input class="form-control col-md-9" id="nomInput" value="" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Prenom</label>
+        <label class="col-md-3 ulabel">Prenom</label>
         @*@Html.TextBoxFor(Model=>Model.TotalEvenements,"",new { @class = "text-danger" })*@
         <input class="form-control col-md-9" id="prenomInput" value="" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Mot de passe</label>
+        <label class="col-md-3 ulabel">Mot de passe</label>
         <input type="password" class="form-control col-md-9" id="passwordInput" value="" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Confirmer mot de passe</label>
+        <label class="col-md-3 ulabel">Confirmer mot de passe</label>
         <input type="password" class="form-control col-md-9" id="passwordConfirmInput" value="" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Email</label>
+        <label class="col-md-3 ulabel">Email</label>
         <input class="form-control col-md-9" id="emailInput" value="" />
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Langue</label>
+        <label class="col-md-3 ulabel">Langue</label>
         @*<input class="form-control col-md-9" id="langueInput" value="" />*@
         @Html.EnumDropDownListFor(
                                     x => x.Langue,
@@ -59,7 +59,7 @@
     </div>
 
     <div class="row form-group">
-        <label class="col-md-3">Role</label>
+        <label class="col-md-3 ulabel">Role</label>
         @*<input class="form-control col-md-9" id="roleInput" value="@Model.Role" />*@
         @Html.EnumDropDownListFor(
                                     x => x.Role,

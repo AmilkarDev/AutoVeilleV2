@@ -272,15 +272,12 @@ namespace Autoveille.Controllers
                 int userId = -1;
                 bool resParse;
 
-                //to do : a verifier role : consultant
-
                 resParse = int.TryParse(Session["UserId"].ToString(), out userId);
-                //to do
                 if (!resParse)
                 {
-                    //return "error user id pas bon";
+                    return RedirectToAction("Connexion", "Compte");
                 }
-                 var evenements = Ventes.GetEvenementsByConsultant(userId);
+                var evenements = Ventes.GetEvenementsByConsultant(userId);
                 if (evenements == null || evenements.Count == 0)
                 {
                     //return "aucune evenement n'est pas associé à l'utilisateur";

@@ -61,8 +61,8 @@
                 var imgId = "img" + CampaignId;
                 $('#' + clientsId).html(result);
                 $('#' + clientsId).toggle();
-                $('#' + imgId).attr('onclick', 'hideClients(' + CampaignId + ')');
                 $('#' + imgId).attr('src', '../Content/Images/Layout/Moins.png');
+                $('#' + imgId).attr('onclick', 'hideClients(' + CampaignId + ')');                
             },
             error: function (xhr, status) {
                 alert(status);
@@ -74,8 +74,8 @@
         $('#detailsClient').css('visibility', 'hidden');
         var clientsId = "clients" + CampaignId;
         var imgId = "img" + CampaignId;
-        $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');
         $('#' + imgId).attr('src', '../Content/Images/Layout/Plus.png');
+        $('#' + imgId).attr('onclick', 'displayClients(' + CampaignId + ')');       
         $('#' + clientsId).toggle();
     }
 </script>
