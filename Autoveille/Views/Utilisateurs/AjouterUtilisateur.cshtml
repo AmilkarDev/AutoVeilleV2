@@ -81,8 +81,8 @@
 }
 <script>
     $("#userAddButton").click(function () {
-        var noCom = $("#concessionInput").val();
-        noCom = noCom !== "" ? noCom : 0;
+        var numeroCommerce = $("#concessionInput").val();
+        numeroCommerce = numeroCommerce !== "" ? numeroCommerce : 0;
         var user = {
             UserId: $("#userIdInput").val(),
             Role: $("#roleInput").val(),
@@ -93,7 +93,7 @@
             LastName: $("#prenomInput").val(),
             FirstName: $("#nomInput").val(),
             UserName: $("#usernameInput").val(),
-            NoCommerce: noCom
+            NoCommerce: numeroCommerce
         };
 
         $.ajax({

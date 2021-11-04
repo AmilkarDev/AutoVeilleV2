@@ -15,6 +15,11 @@
 
     </div>
 
+    <div class="row form-group" hidden="hidden">
+        <label class="col-md-3">Id d'utilisateur</label>
+        <input class="form-control col-md-9" id="userIdInput" value="@Model.UserID" />
+    </div>
+
     <div class="row form-group">
         <label class="col-md-3">Nom d'utilisateur</label>
         <input class="form-control col-md-9" id="usernameInput" value="@Model.UserName" />
@@ -76,8 +81,8 @@
 }
 <script>
     $("#userModifButton").click(function () {
-        var noCom = $("#concessionInput").val();
-        noCom = noCom !== "" ? noCom : 0;
+        var numeroCommerce = $("#concessionInput").val();
+        numeroCommerce = numeroCommerce !== "" ? numeroCommerce : 0;
         var user = {
             UserId: $("#userIdInput").val(),
             Role: $("#roleInput").val(),
@@ -88,7 +93,7 @@
             LastName: $("#prenomInput").val(),
             FirstName: $("#nomInput").val(),
             UserName: $("#usernameInput").val(),
-            NoCommerce: noCom
+            NoCommerce: numeroCommerce
         };
 
         $.ajax({

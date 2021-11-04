@@ -138,13 +138,13 @@ namespace AutoveilleBL
                     connection.Open();
 
                     //Create the SQL Query for updating an event
-                    string updateQuery = "Update dbo.UsersGroupe SET UserName = @UserName, Password = @Password, Nom = @Nom, Prenom = @Prenom, Email = @Email, Langue = @Langue, Role= @Role Where Id = @Id;";
+                    string updateQuery = "Update [AutoveilleMain].dbo.UsersGroupe SET UserName = @UserName, Password = @Password, Nom = @Nom, Prenom = @Prenom, Email = @Email, Langue = @Langue, Role= @Role Where Id = @Id;";
 
                     //Create a Command object
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
                         command.Parameters.AddWithValue("@UserName", user.UserName);
-                        command.Parameters.AddWithValue("@Password", user.Password);
+                        command.Parameters.AddWithValue("@Password", password);
                         command.Parameters.AddWithValue("@Nom", user.FirstName);
                         command.Parameters.AddWithValue("@Prenom", user.LastName);
                         command.Parameters.AddWithValue("@Email", user.Email);
